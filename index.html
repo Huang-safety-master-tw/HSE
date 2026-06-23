@@ -1849,7 +1849,7 @@
                 <div class="mb-4">
                     <span class="bg-purple-500/20 text-purple-400 text-xs px-3 py-1 rounded-full font-bold">考點十九：有害物與職業危害</span>
                     <h2 class="text-2xl font-black mt-2">有害物連連看</h2>
-                    <p class="text-sm text-slate-400 mt-1">請將左欄「有害物」與右欄「對應危害」正確配對。點選左欄後再點右欄完成配對。</p>
+                    <p class="text-sm text-slate-400 mt-1">請將左欄「有害物」與右欄「對應危害」正確配對。可拖曳連線，或點選左欄後再點右欄完成配對。</p>
                 </div>
                 <!-- 三等份連連看佈局 -->
                 <div class="mt-4" style="max-width:480px;">
@@ -1889,7 +1889,7 @@
                         <h3 class="text-sm font-bold text-orange-300 mb-1 flex items-center gap-2">
                             <i data-lucide="link" class="w-4 h-4"></i> 延伸小題①：職業病與致病原配對
                         </h3>
-                        <p class="text-xs text-slate-400 mb-3">請將左欄「職業病」與右欄「致病原」正確配對。點選左欄後再點右欄完成配對。</p>
+                        <p class="text-xs text-slate-400 mb-3">請將左欄「職業病」與右欄「致病原」正確配對。可拖曳連線，或點選左欄後再點右欄完成配對。</p>
                         <!-- 三等份連連看 -->
                         <div style="max-width:480px;">
                             <div class="relative" id="g19e1-board">
@@ -1929,7 +1929,7 @@
                         <h3 class="text-sm font-bold text-orange-300 mb-1 flex items-center gap-2">
                             <i data-lucide="briefcase" class="w-4 h-4"></i> 延伸小題②：職業代號與職業病配對
                         </h3>
-                        <p class="text-xs text-slate-400 mb-3">請將左欄「職業代號」與右欄「職業病」正確配對。點選左欄後再點右欄完成配對。</p>
+                        <p class="text-xs text-slate-400 mb-3">請將左欄「職業代號」與右欄「職業病」正確配對。可拖曳連線，或點選左欄後再點右欄完成配對。</p>
                         <!-- 三等份連連看 -->
                         <div style="max-width:480px;">
                             <div class="relative" id="g19e2-board">
@@ -5855,9 +5855,10 @@ function checkGame10() {
                 const blank = document.querySelector('.g14-blank[data-blank-id="' + bid + '"]');
                 if (!blank) return;
                 const correctKey = blank.dataset.correct;
-                const opt = g14FindOption(correctKey);
                 const isCorrect = g14IsBlankCorrect(blank);
-                blank.innerText = opt ? g14DisplayLabel(opt) : correctKey;
+                const displayKey = isCorrect && blank.dataset.filled ? blank.dataset.filled : correctKey;
+                const opt = g14FindOption(displayKey);
+                blank.innerText = opt ? g14DisplayLabel(opt) : displayKey;
                 g14MarkBlank(blank, isCorrect);
             });
             showToast('📖 第' + grp + '組解答已公布！綠色=正確，紅色=未答或錯誤', 'info');
@@ -6611,6 +6612,16 @@ function checkGame10() {
                 card.onclick = () => selectG19Right(card);
                 rightDiv.appendChild(card);
             });
+            setTimeout(() => _g19BindDragGroup({
+                leftSelector: '.g19-left-card',
+                rightSelector: '.g19-right-card',
+                svgId: 'g19-svg',
+                boardId: 'g19-board',
+                matchedObj: g19Matched,
+                selectLeft: selectG19Left,
+                selectRight: selectG19Right,
+                stroke: '#c084fc'
+            }), 50);
         
         }
         function selectG19Left(card) {
@@ -7725,11 +7736,12 @@ function checkGame10() {
             const blanks = document.querySelectorAll('#tab-matching .g14-blank');
             blanks.forEach(blank => {
                 const correctKey = blank.dataset.correct;
-                const option = g14FindOption(correctKey);
+                const isCorrect = g14IsBlankCorrect(blank);
+                const displayKey = isCorrect && blank.dataset.filled ? blank.dataset.filled : correctKey;
+                const option = g14FindOption(displayKey);
                 if (option) {
                     blank.textContent = g14DisplayLabel(option);
-                    blank.classList.remove('text-yellow-300', 'border-yellow-400');
-                    blank.classList.add('text-emerald-300', 'border-emerald-400', 'font-black');
+                    g14MarkBlank(blank, isCorrect);
                 }
             });
             // 第10組是非題：標記正確答案並顯示說明
@@ -7872,6 +7884,90 @@ function checkGame10() {
             const board = document.getElementById(boardId);
             if (!svg || !board) return;
             _g19DrawLines(svgId, boardId, leftPrefix, rightPrefix, data, matchedObj);
+        }
+
+        function _g19RemoveDragLine(svgId) {
+            const svg = document.getElementById(svgId);
+            if (!svg) return;
+            const line = svg.querySelector('[data-drag-line="true"]');
+            if (line) line.remove();
+        }
+
+        function _g19DrawDragLine(svgId, boardId, startEl, clientX, clientY, stroke) {
+            const svg = document.getElementById(svgId);
+            const board = document.getElementById(boardId);
+            if (!svg || !board || !startEl) return;
+            _g19SyncSvgSize(svg, board);
+            _g19RemoveDragLine(svgId);
+            const start = _g19GetSvgCoords(startEl, svg);
+            const svgRect = svg.getBoundingClientRect();
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.dataset.dragLine = 'true';
+            line.setAttribute('x1', start.left + start.width);
+            line.setAttribute('y1', start.top + start.height / 2);
+            line.setAttribute('x2', clientX - svgRect.left);
+            line.setAttribute('y2', clientY - svgRect.top);
+            line.setAttribute('stroke', stroke || '#facc15');
+            line.setAttribute('stroke-width', '2.5');
+            line.setAttribute('stroke-linecap', 'round');
+            line.setAttribute('stroke-dasharray', '5,4');
+            svg.appendChild(line);
+        }
+
+        function _g19BindDragGroup(config) {
+            const board = document.getElementById(config.boardId);
+            if (!board) return;
+            board.querySelectorAll(config.leftSelector).forEach(card => {
+                if (card.dataset.dragBound === '1') return;
+                card.dataset.dragBound = '1';
+                card.style.touchAction = 'none';
+                card.addEventListener('pointerdown', event => {
+                    const id = parseInt(card.dataset.id);
+                    if (config.matchedObj && config.matchedObj[id]) return;
+                    const startX = event.clientX;
+                    const startY = event.clientY;
+                    let moved = false;
+                    let active = true;
+
+                    const move = moveEvent => {
+                        if (!active) return;
+                        const dx = Math.abs(moveEvent.clientX - startX);
+                        const dy = Math.abs(moveEvent.clientY - startY);
+                        if (dx + dy > 6) moved = true;
+                        if (!moved) return;
+                        moveEvent.preventDefault();
+                        _g19DrawDragLine(config.svgId, config.boardId, card, moveEvent.clientX, moveEvent.clientY, config.stroke);
+                    };
+
+                    const up = upEvent => {
+                        if (!active) return;
+                        active = false;
+                        document.removeEventListener('pointermove', move);
+                        document.removeEventListener('pointerup', up);
+                        document.removeEventListener('pointercancel', cancel);
+                        _g19RemoveDragLine(config.svgId);
+                        if (!moved) return;
+                        upEvent.preventDefault();
+                        const target = document.elementFromPoint(upEvent.clientX, upEvent.clientY);
+                        const rightCard = target ? target.closest(config.rightSelector) : null;
+                        if (!rightCard || !board.contains(rightCard)) return;
+                        config.selectLeft(card);
+                        config.selectRight(rightCard);
+                    };
+
+                    const cancel = () => {
+                        active = false;
+                        document.removeEventListener('pointermove', move);
+                        document.removeEventListener('pointerup', up);
+                        document.removeEventListener('pointercancel', cancel);
+                        _g19RemoveDragLine(config.svgId);
+                    };
+
+                    document.addEventListener('pointermove', move, { passive: false });
+                    document.addEventListener('pointerup', up, { passive: false });
+                    document.addEventListener('pointercancel', cancel, { passive: false });
+                });
+            });
         }
 
         function showAnswer19() {
@@ -9119,6 +9215,16 @@ function exportSave() {
                 rightDiv.appendChild(card);
             });
             document.getElementById('g19e1-progress').innerText = '0';
+            setTimeout(() => _g19BindDragGroup({
+                leftSelector: '.g19e1-left-card',
+                rightSelector: '.g19e1-right-card',
+                svgId: 'g19e1-svg',
+                boardId: 'g19e1-board',
+                matchedObj: g19e1Matched,
+                selectLeft: selectG19e1Left,
+                selectRight: selectG19e1Right,
+                stroke: '#c084fc'
+            }), 50);
             setTimeout(lsSave, 150);
         }
 
@@ -9252,6 +9358,16 @@ function exportSave() {
                 rightDiv.appendChild(card);
             });
             document.getElementById('g19e2-progress').innerText = '0';
+            setTimeout(() => _g19BindDragGroup({
+                leftSelector: '.g19e2-left-card',
+                rightSelector: '.g19e2-right-card',
+                svgId: 'g19e2-svg',
+                boardId: 'g19e2-board',
+                matchedObj: g19e2Matched,
+                selectLeft: selectG19e2Left,
+                selectRight: selectG19e2Right,
+                stroke: '#60a5fa'
+            }), 50);
             setTimeout(lsSave, 150);
         }
 
