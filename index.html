@@ -4251,7 +4251,7 @@ function initGame10() {
         row.className = "flex items-center gap-3 bg-slate-800/30 p-1.5 rounded-lg border border-slate-800/50 hover:bg-slate-800/50 transition";
         row.innerHTML = `
             <div class="text-[11px] font-black text-slate-500 w-14 text-right italic uppercase">${num}</div>
-            <div class="sds-dropzone flex-grow min-h-[40px] bg-slate-950/40 rounded-lg border-2 border-dashed border-slate-700 flex items-center px-4 text-sm transition-all cursor-pointer hover:border-blue-500/50" data-correct-id="${i}"></div>
+            <div class="sds-dropzone flex-grow min-h-[40px] bg-slate-950/40 rounded-lg border-2 border-dashed border-slate-700 flex items-center px-4 text-sm transition-all cursor-pointer hover:border-blue-500/50" data-correct-id="${i}" data-sds-zone="${i}"></div>
         `;
         slots.appendChild(row);
     });
@@ -4267,46 +4267,16 @@ function initGame10() {
 
     document.querySelectorAll('.sds-dropzone').forEach(zone => {
         _makeDropTarget(zone, (z, drag) => {
-            if (drag.type !== 'g10') return;
+            if (drag.type !== 'g10' && drag.type !== 'g10placed') return;
             soundClick();
-            if (z.innerHTML !== '') {
-                const prevId = z.dataset.placedId;
-                const orig = Array.from(document.querySelectorAll('#sds-pool div')).find(c => c.dataset.id === prevId);
-                if (orig) orig.style.display = 'block';
-            }
-            z.innerHTML = `<div class="flex justify-between items-center w-full"><span>${drag.elem.innerText}</span><button class="text-rose-400 font-bold">×</button></div>`;
-            z.dataset.placedId = drag.elem.dataset.id;
-            z.classList.replace('border-dashed', 'border-solid');
-            z.querySelector('button').onclick = (e) => {
-                e.stopPropagation(); soundClick();
-                const orig = Array.from(document.querySelectorAll('#sds-pool div')).find(c => c.dataset.id === z.dataset.placedId);
-                if (orig) orig.style.display = 'block';
-                z.innerHTML = ''; delete z.dataset.placedId;
-                z.classList.replace('border-solid', 'border-dashed'); updateSDSCount();
-            };
-            drag.elem.style.display = 'none';
-            if (activeSelection && activeSelection.element === drag.elem) { drag.elem.classList.remove('ring-4', 'ring-blue-500'); activeSelection = null; }
+            if (drag.type === 'g10') g10PlaceFromPool(z, drag.elem);
+            if (drag.type === 'g10placed') g10MovePlacedCard(drag.elem.closest('.sds-dropzone'), z);
             updateSDSCount();
         });
         zone.onclick = () => {
             if (activeSelection && activeSelection.type === 'g10') {
                 soundClick();
-                if (zone.innerHTML !== '') {
-                    const prevId = zone.dataset.placedId;
-                    const orig = Array.from(document.querySelectorAll('#sds-pool div')).find(c => c.dataset.id === prevId);
-                    if (orig) orig.style.display = 'block';
-                }
-                zone.innerHTML = `<div class="flex justify-between items-center w-full"><span>${activeSelection.element.innerText}</span><button class="text-rose-400 font-bold">×</button></div>`;
-                zone.dataset.placedId = activeSelection.element.dataset.id;
-                zone.classList.replace('border-dashed', 'border-solid');
-                zone.querySelector('button').onclick = (e) => {
-                    e.stopPropagation(); soundClick();
-                    const orig = Array.from(document.querySelectorAll('#sds-pool div')).find(c => c.dataset.id === zone.dataset.placedId);
-                    if (orig) orig.style.display = 'block';
-                    zone.innerHTML = ''; delete zone.dataset.placedId;
-                    zone.classList.replace('border-solid', 'border-dashed'); updateSDSCount();
-                };
-                activeSelection.element.style.display = 'none';
+                g10PlaceFromPool(zone, activeSelection.element);
                 activeSelection.element.classList.remove('ring-4', 'ring-blue-500'); activeSelection = null; updateSDSCount();
             }
         };
@@ -4740,6 +4710,69 @@ const _origSelectMatch11 = window.selectMatch11 || null;
 function g11HookDraw() {
     // 每次配對後延遲重繪所有線
     setTimeout(g11DrawMatchedLines, 100);
+}
+function g10GetPoolCard(id) {
+    return Array.from(document.querySelectorAll('#sds-pool div')).find(c => c.dataset.id === String(id));
+}
+function g10ClearZone(zone, restorePool = true) {
+    if (!zone) return;
+    const prevId = zone.dataset.placedId;
+    if (restorePool && prevId !== undefined) {
+        const orig = g10GetPoolCard(prevId);
+        if (orig) orig.style.display = 'block';
+    }
+    zone.innerHTML = '';
+    delete zone.dataset.placedId;
+    zone.classList.add('border-dashed');
+    zone.classList.remove('border-solid', 'border-emerald-500', 'bg-emerald-950/40', 'text-emerald-300', 'border-rose-500', 'bg-rose-950/40', 'text-rose-300');
+}
+function g10SetZone(zone, id, text) {
+    if (!zone) return;
+    zone.innerHTML = '';
+    zone.dataset.placedId = String(id);
+    zone.classList.remove('border-dashed', 'border-emerald-500', 'bg-emerald-950/40', 'text-emerald-300', 'border-rose-500', 'bg-rose-950/40', 'text-rose-300');
+    zone.classList.add('border-solid');
+
+    const card = document.createElement('div');
+    card.className = 'sds-placed-card flex justify-between items-center gap-2 w-full cursor-grab select-none';
+    card.dataset.id = String(id);
+    card.innerHTML = `<span class="truncate">${text}</span><button class="text-rose-400 hover:text-rose-300 font-bold px-1 shrink-0">×</button>`;
+    card.querySelector('button').onclick = (e) => {
+        e.stopPropagation();
+        soundClick();
+        g10ClearZone(zone, true);
+        updateSDSCount();
+        setTimeout(lsSave, 150);
+    };
+    _makeDraggable(card, 'g10placed');
+    zone.appendChild(card);
+}
+function g10PlaceFromPool(zone, sourceCard) {
+    if (!zone || !sourceCard) return;
+    g10ClearZone(zone, true);
+    g10SetZone(zone, sourceCard.dataset.id, sourceCard.innerText);
+    sourceCard.style.display = 'none';
+    if (activeSelection && activeSelection.element === sourceCard) {
+        sourceCard.classList.remove('ring-4', 'ring-blue-500', 'ring-cyan-500');
+        activeSelection = null;
+    }
+    setTimeout(lsSave, 150);
+}
+function g10MovePlacedCard(sourceZone, targetZone) {
+    if (!sourceZone || !targetZone || sourceZone === targetZone) return;
+    const sourceId = sourceZone.dataset.placedId;
+    const sourceText = sourceZone.querySelector('.sds-placed-card span')?.innerText || '';
+    const targetId = targetZone.dataset.placedId;
+    const targetText = targetZone.querySelector('.sds-placed-card span')?.innerText || '';
+    if (!sourceId) return;
+
+    g10SetZone(targetZone, sourceId, sourceText);
+    if (targetId) {
+        g10SetZone(sourceZone, targetId, targetText);
+    } else {
+        g10ClearZone(sourceZone, false);
+    }
+    setTimeout(lsSave, 150);
 }
 function updateSDSCount() {
     const placed = document.querySelectorAll('.sds-dropzone:not(:empty)').length;
@@ -8488,7 +8521,10 @@ function checkGame10() {
                     const data = {};
                     slots.forEach(s => {
                         const id = s.id || s.dataset.step || s.dataset.correctId || Array.from(s.parentNode.children).indexOf(s);
-                        if (s.dataset.placedId) data[id] = { id: s.dataset.placedId, text: s.innerText || s.textContent };
+                        if (s.dataset.placedId) {
+                            const placedText = key === 'g10' ? (s.querySelector('.sds-placed-card span')?.innerText || s.innerText || s.textContent) : (s.innerText || s.textContent);
+                            data[id] = { id: s.dataset.placedId, text: placedText };
+                        }
                     });
                     if (Object.keys(data).length > 0) state[key] = data;
                 });
@@ -8775,11 +8811,19 @@ function exportSave() {
                 let card = scope ? scope.querySelector(`[data-id="${placedId}"]`) : null;
                 if (!card && scope) card = scope.querySelector(`[data-card-id="${placedId}"]`);
                 if (card) {
-                    slot.innerText = card.innerText || card.textContent;
+                    if (sel === '.sds-dropzone') {
+                        g10SetZone(slot, placedId, card.innerText || card.textContent);
+                    } else {
+                        slot.innerText = card.innerText || card.textContent;
+                    }
                     card.style.display = 'none';
                 } else if (cardText) {
                     // Use saved text if card not found (e.g., already hidden by previous restore)
-                    slot.innerText = cardText;
+                    if (sel === '.sds-dropzone') {
+                        g10SetZone(slot, placedId, cardText);
+                    } else {
+                        slot.innerText = cardText;
+                    }
                 } else {
                     return; // Cannot restore without card text
                 }
