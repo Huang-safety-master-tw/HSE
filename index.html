@@ -2133,6 +2133,7 @@
                 <!-- 主題目驗證按鈕 -->
                 <div class="mt-3 flex justify-end gap-2">
                     <button onclick="initGame20()" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition flex items-center gap-1"><i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> 重置主題目</button>
+                    <button onclick="showAnswerG20Main()" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> 公布解答</button>
                     <button onclick="checkGame20()" class="bg-gradient-to-r from-red-500 to-orange-600 hover:brightness-110 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 驗證主題目</button>
                 </div>
 
@@ -2194,6 +2195,7 @@
                         </div>
                         <div class="mt-3 flex justify-end gap-2">
                             <button onclick="resetG20e1()" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition">重置</button>
+                            <button onclick="showAnswerG20e1()" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition">公布解答</button>
                             <button onclick="checkG20e1()" class="bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">驗證答案</button>
                         </div>
                         <div id="g20e1-result" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 全對！拆除法→窒息法→冷卻法→抑制法</div>
@@ -2248,6 +2250,7 @@
                         </div>
                         <div class="mt-3 flex justify-end gap-2">
                             <button onclick="resetG20e2()" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition">重置</button>
+                            <button onclick="showAnswerG20e2()" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition">公布解答</button>
                             <button onclick="checkG20e2()" class="bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">驗證答案</button>
                         </div>
                         <div id="g20e2-result" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 全對！A普通→B油類→C電氣→D金屬</div>
@@ -2273,7 +2276,7 @@
                                 <tbody class="text-slate-200">
                                     <tr class="hover:bg-slate-700/40">
                                         <td class="border border-slate-600 px-3 py-2 text-center">
-                                            <span class="g20e3-blank inline-block min-w-[4.5rem] text-center font-bold border-b-2 border-yellow-500 cursor-pointer px-2 py-0.5 hover:bg-yellow-900/30 rounded text-slate-400" data-blank-id="e3-1" data-correct="ABC乾粉" onclick="fillG20e3(this)">＿＿</span>
+                                            <span class="g20e3-blank inline-block min-w-[4.5rem] text-center font-bold border-b-2 border-yellow-500 cursor-pointer px-2 py-0.5 hover:bg-yellow-900/30 rounded text-slate-400" data-blank-id="e3-1" data-correct="ABC乾粉" data-alt-correct="鹵化烷" onclick="fillG20e3(this)">＿＿</span>
                                         </td>
                                         <td class="border border-slate-600 px-3 py-2 text-center text-emerald-400 font-bold">可</td>
                                         <td class="border border-slate-600 px-3 py-2 text-center text-emerald-400 font-bold">可</td>
@@ -2300,7 +2303,7 @@
                                     </tr>
                                     <tr class="hover:bg-slate-700/40">
                                         <td class="border border-slate-600 px-3 py-2 text-center">
-                                            <span class="g20e3-blank inline-block min-w-[4.5rem] text-center font-bold border-b-2 border-yellow-500 cursor-pointer px-2 py-0.5 hover:bg-yellow-900/30 rounded text-slate-400" data-blank-id="e3-4" data-correct="鹵化烷" onclick="fillG20e3(this)">＿＿</span>
+                                            <span class="g20e3-blank inline-block min-w-[4.5rem] text-center font-bold border-b-2 border-yellow-500 cursor-pointer px-2 py-0.5 hover:bg-yellow-900/30 rounded text-slate-400" data-blank-id="e3-4" data-correct="鹵化烷" data-alt-correct="ABC乾粉" onclick="fillG20e3(this)">＿＿</span>
                                         </td>
                                         <td class="border border-slate-600 px-3 py-2 text-center text-emerald-400 font-bold">可</td>
                                         <td class="border border-slate-600 px-3 py-2 text-center text-emerald-400 font-bold">可</td>
@@ -2312,6 +2315,7 @@
                         </div>
                         <div class="mt-3 flex justify-end gap-2">
                             <button onclick="resetG20e3()" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition">重置</button>
+                            <button onclick="showAnswerG20e3()" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition">公布解答</button>
                             <button onclick="checkG20e3()" class="bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">驗證答案</button>
                         </div>
                         <div id="g20e3-result" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 全對！ABC乾粉→化學泡沫→二氧化碳→鹵化烷</div>
@@ -2362,6 +2366,7 @@
                         </div>
                         <div class="mt-3 flex justify-end gap-2">
                             <button onclick="resetG20e4()" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition">重置</button>
+                            <button onclick="showAnswerG20e4()" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition">公布解答</button>
                             <button onclick="checkG20e4()" class="bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">驗證答案</button>
                         </div>
                         <div id="g20e4-result" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 全對！燃燒四面體、滅火方法與常用設備都配對正確。</div>
@@ -2370,23 +2375,28 @@
                     <!-- 5. 危險性判斷分類 -->
                     <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
                         <h3 class="text-sm font-bold text-orange-300 mb-2 flex items-center gap-2"><i data-lucide="flame" class="w-4 h-4"></i> 延伸小題⑤：以下數值越大是否越危險？</h3>
-                        <p class="text-xs text-slate-400 mb-3">請把字卡放入對應區域；同一區內順序不限。</p>
-                        <div id="g20b-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 mb-4"></div>
-                        <div id="g20b-slots" class="grid lg:grid-cols-2 gap-4">
+                        <p class="text-xs text-slate-400 mb-3">請把字卡放入對應空格；同一小題內順序不限。每個小題的牌池緊接在該小題空格下方。</p>
+                        <div id="g20b-slots" class="space-y-4">
                             <div class="rounded-xl border border-orange-700/50 bg-orange-950/20 p-3">
-                                <div class="text-sm font-black text-orange-200 mb-2">一、越大越危險</div>
-                                <div class="space-y-2">
+                                <div class="text-sm font-black text-orange-200 mb-2">⑤-1、越大越危險</div>
+                                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-2 mb-3">
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-1" data-group="greater" onclick="placeG20b('greater-1')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-2" data-group="greater" onclick="placeG20b('greater-2')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-3" data-group="greater" onclick="placeG20b('greater-3')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-4" data-group="greater" onclick="placeG20b('greater-4')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-5" data-group="greater" onclick="placeG20b('greater-5')">點此放入</div>
-                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-6" data-group="greater" onclick="placeG20b('greater-6')">點此放入</div>
+                                </div>
+                                <div id="g20b-cards-greater" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2"></div>
+                                <div id="g20b-result-greater" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 正確！已完成「越大越危險」分類。</div>
+                                <div class="mt-3 flex justify-end gap-2">
+                                    <button onclick="initG20b('greater')" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition">重置</button>
+                                    <button onclick="showAnswerG20b('greater')" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition">公布解答</button>
+                                    <button onclick="checkG20b('greater')" class="bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">驗證答案</button>
                                 </div>
                             </div>
                             <div class="rounded-xl border border-cyan-700/50 bg-cyan-950/20 p-3">
-                                <div class="text-sm font-black text-cyan-200 mb-2">二、越小越危險</div>
-                                <div class="space-y-2">
+                                <div class="text-sm font-black text-cyan-200 mb-2">⑤-2、越小越危險</div>
+                                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-3">
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-1" data-group="smaller" onclick="placeG20b('smaller-1')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-2" data-group="smaller" onclick="placeG20b('smaller-2')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-3" data-group="smaller" onclick="placeG20b('smaller-3')">點此放入</div>
@@ -2395,14 +2405,17 @@
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-6" data-group="smaller" onclick="placeG20b('smaller-6')">點此放入</div>
                                     <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-7" data-group="smaller" onclick="placeG20b('smaller-7')">點此放入</div>
                                 </div>
+                                <div id="g20b-cards-smaller" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2"></div>
+                                <div id="g20b-result-smaller" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 正確！已完成「越小越危險」分類。</div>
+                                <div class="mt-3 flex justify-end gap-2">
+                                    <button onclick="initG20b('smaller')" class="text-slate-400 hover:text-white text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition">重置</button>
+                                    <button onclick="showAnswerG20b('smaller')" class="text-white text-xs bg-slate-600 hover:bg-slate-500 px-3 py-1.5 rounded-lg transition">公布解答</button>
+                                    <button onclick="checkG20b('smaller')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">驗證答案</button>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-3 text-xs text-slate-500">提示：導電性越小越容易產生靜電；蒸氣壓越大越容易揮發。</div>
                         <div id="g20b-result" class="hidden mt-3 text-sm text-emerald-300 font-bold">✅ 正確！已完成「越大越危險」與「越小越危險」分類。</div>
-                        <div class="mt-3 flex justify-end gap-2">
-                            <button onclick="initG20b()" class="text-slate-400 hover:text-white text-sm bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition">重置</button>
-                            <button onclick="checkG20b()" class="bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold px-4 py-2 rounded-lg transition">驗證分類</button>
-                        </div>
                     </div>
 
                 </div>
@@ -5359,11 +5372,27 @@ function checkGame10() {
                 if (slot) slot.innerHTML = '';
                 zone.dataset.placedIconId = '';
                 zone.className = 'pressure-text-zone bg-slate-900/50 p-4 rounded-xl border-2 border-dashed border-slate-700 flex flex-col items-center justify-center min-h-[140px] cursor-pointer transition hover:border-slate-500';
+                if (!zone.dataset.dropInit) {
+                    zone.dataset.dropInit = '1';
+                    _makeDropTarget(zone, (target, drag) => {
+                        if (!drag || drag.type !== 'pressure') return;
+                        selectedPressureIcon = drag.elem;
+                        placePressureIcon(target);
+                    });
+                }
             });
             // 洗牌：隨機排列圖示字卡
             const pool = document.getElementById('pressure-icon-pool');
             const cards = Array.from(pool.querySelectorAll('.pressure-icon-card'));
-            cards.forEach(card => { card.style.display = 'flex'; card.classList.remove('ring-4', 'ring-cyan-500'); });
+            cards.forEach(card => {
+                card.dataset.id = card.dataset.iconId;
+                card.style.display = 'flex';
+                card.classList.remove('ring-4', 'ring-cyan-500');
+                if (!card.dataset.dragInit) {
+                    card.dataset.dragInit = '1';
+                    _makeDraggable(card, 'pressure');
+                }
+            });
             // 隨機重排 DOM 順序
             cards.sort(() => Math.random() - 0.5).forEach(card => pool.appendChild(card));
             updatePressureProgress();
@@ -7310,13 +7339,38 @@ function checkGame10() {
             document.getElementById(selLabelId).innerText = card.innerText;
         }
         function _g20eFillBlank(prefix, blank, items, selState, selIndicatorId) {
-            if (!selState.val) return;
+            if (!selState.val) {
+                if (blank.dataset.filled) {
+                    const oldCard = document.getElementById(prefix + '-card-' + blank.dataset.filled);
+                    if (oldCard) oldCard.classList.remove('opacity-40','pointer-events-none','ring-2','ring-orange-400','scale-105');
+                    blank.innerText = '＿＿';
+                    blank.dataset.filled = '';
+                    blank.classList.remove('text-yellow-300','text-emerald-300','text-rose-300','border-emerald-500','border-rose-500','bg-emerald-950/30');
+                    blank.classList.add('text-slate-400','border-yellow-500');
+                    soundClick();
+                    setTimeout(lsSave, 150);
+                }
+                return;
+            }
             soundClick();
             const item = items.find(i => i.id === selState.val);
+            if (!item) return;
+            document.querySelectorAll('.' + prefix + '-blank').forEach(other => {
+                if (other !== blank && other.dataset.filled === String(item.id)) {
+                    other.innerText = '＿＿';
+                    other.dataset.filled = '';
+                    other.classList.remove('text-yellow-300','text-emerald-300','text-rose-300','border-emerald-500','border-rose-500','bg-emerald-950/30');
+                    other.classList.add('text-slate-400','border-yellow-500');
+                }
+            });
+            if (blank.dataset.filled && blank.dataset.filled !== String(item.id)) {
+                const oldCard = document.getElementById(prefix + '-card-' + blank.dataset.filled);
+                if (oldCard) oldCard.classList.remove('opacity-40','pointer-events-none','ring-2','ring-orange-400','scale-105');
+            }
             blank.innerText = item.label;
             blank.dataset.filled = item.id;
-            blank.classList.remove('text-slate-400');
-            blank.classList.add('text-yellow-300');
+            blank.classList.remove('text-slate-400','text-emerald-300','text-rose-300','border-emerald-500','border-rose-500','bg-emerald-950/30');
+            blank.classList.add('text-yellow-300','border-yellow-500');
             const card = document.getElementById(prefix + '-card-' + selState.val);
             if (card) { card.classList.add('opacity-40','pointer-events-none'); card.classList.remove('ring-2','ring-orange-400','scale-105'); }
             selState.val = null;
@@ -7329,7 +7383,8 @@ function checkGame10() {
             blanks.forEach(blank => {
                 const filledId = parseInt(blank.dataset.filled);
                 const item = items.find(i => i.id === filledId);
-                if (item && item.label === blank.dataset.correct) {
+                const validAnswers = [blank.dataset.correct, blank.dataset.altCorrect].filter(Boolean);
+                if (item && validAnswers.includes(item.label)) {
                     blank.classList.add('text-emerald-300','border-emerald-500');
                     blank.classList.remove('text-yellow-300','border-yellow-500','text-rose-300','border-rose-500');
                     correct++;
@@ -7357,6 +7412,26 @@ function checkGame10() {
             });
             _makeG20eCards(prefix, items, selectFn, cardsDivId, selIndicatorId, selLabelId);
         }
+        function _g20eShowAnswer(prefix, items, resultId) {
+            const usedIds = new Set();
+            document.querySelectorAll('.' + prefix + '-blank').forEach(blank => {
+                const item = items.find(i => i.label === blank.dataset.correct);
+                if (!item) return;
+                blank.innerText = item.label;
+                blank.dataset.filled = item.id;
+                blank.classList.remove('text-slate-400','text-yellow-300','text-rose-300','border-yellow-500','border-rose-500');
+                blank.classList.add('text-emerald-300','border-emerald-500','bg-emerald-950/30');
+                usedIds.add(String(item.id));
+            });
+            document.querySelectorAll('.' + prefix + '-card').forEach(card => {
+                card.classList.remove('ring-2','ring-orange-400','scale-105');
+                if (usedIds.has(card.dataset.id)) card.classList.add('opacity-40','pointer-events-none');
+                else card.classList.remove('opacity-40','pointer-events-none');
+            });
+            const res = document.getElementById(resultId);
+            if (res) res.classList.remove('hidden');
+            setTimeout(lsSave, 150);
+        }
 
         // ===== 延伸小題① 滅火基本方法 =====
         const g20e1Items = [
@@ -7376,6 +7451,7 @@ function checkGame10() {
             triggerTimer(); _g20eFillBlank('g20e1', blank, g20e1Items, g20e1Sel, 'g20e1-sel-indicator'); }
         function checkG20e1() { _g20eCheck('g20e1', g20e1Items, 'g20e1-result', '全對！拆除法→窒息法→冷卻法→抑制法'); }
         function resetG20e1() { _g20eReset('g20e1', g20e1Items, 'g20e1-cards', 'g20e1-sel-indicator', 'g20e1-sel-label', 'g20e1-result', g20e1Sel, selectG20e1Card); }
+        function showAnswerG20e1(silent) { _g20eShowAnswer('g20e1', g20e1Items, 'g20e1-result'); if (!silent) showToast('📖 第20關小題①解答已填入。','info'); }
 
         // ===== 延伸小題② 火災類型名稱 =====
         const g20e2Items = [
@@ -7395,6 +7471,7 @@ function checkGame10() {
             triggerTimer(); _g20eFillBlank('g20e2', blank, g20e2Items, g20e2Sel, 'g20e2-sel-indicator'); }
         function checkG20e2() { _g20eCheck('g20e2', g20e2Items, 'g20e2-result', '全對！A普通→B油類→C電氣→D金屬'); }
         function resetG20e2() { _g20eReset('g20e2', g20e2Items, 'g20e2-cards', 'g20e2-sel-indicator', 'g20e2-sel-label', 'g20e2-result', g20e2Sel, selectG20e2Card); }
+        function showAnswerG20e2(silent) { _g20eShowAnswer('g20e2', g20e2Items, 'g20e2-result'); if (!silent) showToast('📖 第20關小題②解答已填入。','info'); }
 
         // ===== 延伸小題③ 滅火藥劑名稱 =====
         const g20e3Items = [
@@ -7414,6 +7491,7 @@ function checkGame10() {
             triggerTimer(); _g20eFillBlank('g20e3', blank, g20e3Items, g20e3Sel, 'g20e3-sel-indicator'); }
         function checkG20e3() { _g20eCheck('g20e3', g20e3Items, 'g20e3-result', '全對！ABC乾粉→化學泡沫→二氧化碳→鹵化烷'); }
         function resetG20e3() { _g20eReset('g20e3', g20e3Items, 'g20e3-cards', 'g20e3-sel-indicator', 'g20e3-sel-label', 'g20e3-result', g20e3Sel, selectG20e3Card); }
+        function showAnswerG20e3(silent) { _g20eShowAnswer('g20e3', g20e3Items, 'g20e3-result'); if (!silent) showToast('📖 第20關小題③解答已填入。','info'); }
 
         // ===== 延伸小題④ 各類滅火藥劑適用性總表 =====
         const g20e4Items = [
@@ -7567,6 +7645,29 @@ function checkGame10() {
             initG20e4();
         }
 
+        function showAnswerG20e4(silent) {
+            document.querySelectorAll('.g20e4-slot').forEach(slot => {
+                const item = g20e4Items.find(i => i.label === slot.dataset.correct);
+                if (!item) return;
+                if (g20e4CardSlots[item.id]) {
+                    const oldSlot = document.querySelector('.g20e4-slot[data-slot-id="' + g20e4CardSlots[item.id] + '"]');
+                    if (oldSlot && oldSlot !== slot) g20e4ResetSlotVisual(oldSlot);
+                }
+                g20e4SlotData[slot.dataset.slotId] = item.label;
+                g20e4CardSlots[item.id] = slot.dataset.slotId;
+                slot.innerText = item.label;
+                slot.dataset.filled = item.label;
+                slot.dataset.cardId = item.id;
+                slot.className = 'g20e4-slot min-h-[2.5rem] rounded-lg border-2 border-emerald-500 bg-emerald-950/40 flex items-center justify-center text-emerald-300 font-bold cursor-pointer hover:border-emerald-400 transition';
+                const card = document.getElementById('g20e4-card-' + item.id);
+                if (card) card.classList.add('opacity-40');
+            });
+            const res = document.getElementById('g20e4-result');
+            if (res) res.classList.remove('hidden');
+            setTimeout(lsSave, 150);
+            if (!silent) showToast('📖 第20關小題④解答已填入。','info');
+        }
+
         // ===== 延伸小題⑤ 危險性判斷分類 =====
         const g20bItems = [
             { id: 'range', label: '燃燒範圍(爆炸範圍)', group: 'greater' },
@@ -7574,7 +7675,6 @@ function checkGame10() {
             { id: 'burningVelocity', label: '燃燒速度', group: 'greater' },
             { id: 'heatOfCombustion', label: '燃燒熱', group: 'greater' },
             { id: 'flamePropagation', label: '火焰傳播速度', group: 'greater' },
-            { id: 'dangerDegree', label: '危險度', group: 'greater' },
             { id: 'lowerLimit', label: '燃燒下限(爆炸下限)', group: 'smaller' },
             { id: 'flashPoint', label: '閃火點', group: 'smaller' },
             { id: 'ignitionPoint', label: '著火點', group: 'smaller' },
@@ -7599,26 +7699,49 @@ function checkGame10() {
             return 'g20b-slot min-h-[2.5rem] border-2 border-orange-500 bg-orange-950/30 rounded-xl flex items-center justify-center text-orange-100 text-sm font-bold cursor-pointer hover:border-orange-400 transition';
         }
 
-        function initG20b() {
-            g20bSelCard = null; g20bSlotData = {};
+        function g20bGroupsFromArg(group) {
+            return group ? [group] : ['greater', 'smaller'];
+        }
+
+        function initG20b(group) {
+            g20bSelCard = null;
+            const groups = g20bGroupsFromArg(group);
+            if (!group) g20bSlotData = {};
             const res = document.getElementById('g20b-result');
-            if (res) res.classList.add('hidden');
-            document.querySelectorAll('.g20b-slot').forEach(slot => {
+            if (res && !group) res.classList.add('hidden');
+            groups.forEach(g => {
+                const groupRes = document.getElementById('g20b-result-' + g);
+                if (groupRes) groupRes.classList.add('hidden');
+            });
+            document.querySelectorAll(groups.map(g => '.g20b-slot[data-group="' + g + '"]').join(',')).forEach(slot => {
                 slot.innerText = '點此放入';
                 slot.dataset.cardId = '';
                 slot.className = g20bSlotClass(slot.dataset.group);
+                delete g20bSlotData[slot.dataset.slotId];
+                if (!slot.dataset.dropInit) {
+                    slot.dataset.dropInit = '1';
+                    _makeDropTarget(slot, (target, drag) => {
+                        if (!drag || drag.type !== 'g20b') return;
+                        g20bSelCard = drag.id;
+                        placeG20b(target.dataset.slotId);
+                    });
+                }
             });
-            const cardsDiv = document.getElementById('g20b-cards');
-            if (!cardsDiv) return;
-            cardsDiv.innerHTML = '';
-            [...g20bItems].sort(() => Math.random() - 0.5).forEach(item => {
-                const card = document.createElement('div');
-                card.id = 'g20b-card-' + item.id;
-                card.dataset.id = item.id;
-                card.className = 'g20b-card bg-slate-900/70 border border-slate-600 text-slate-100 text-sm px-4 py-2.5 rounded-xl cursor-pointer transition hover:bg-slate-800 font-bold text-center';
-                card.innerText = item.label;
-                card.onclick = () => selectG20bCard(card);
-                cardsDiv.appendChild(card);
+            groups.forEach(g => {
+                const cardsDiv = document.getElementById('g20b-cards-' + g);
+                if (!cardsDiv) return;
+                cardsDiv.innerHTML = '';
+                [...g20bItems].filter(item => item.group === g).sort(() => Math.random() - 0.5).forEach(item => {
+                    const card = document.createElement('div');
+                    card.id = 'g20b-card-' + item.id;
+                    card.dataset.id = item.id;
+                    card.dataset.group = item.group;
+                    card.className = 'g20b-card bg-slate-900/70 border border-slate-600 text-slate-100 text-sm px-4 py-2.5 rounded-xl cursor-pointer transition hover:bg-slate-800 font-bold text-center';
+                    card.innerText = item.label;
+                    card.onclick = () => selectG20bCard(card);
+                    _makeDraggable(card, 'g20b');
+                    cardsDiv.appendChild(card);
+                });
             });
         }
         function selectG20bCard(card) {
@@ -7662,9 +7785,10 @@ function checkGame10() {
             g20bSelCard = null;
                     setTimeout(lsSave, 150);
         }
-        function checkG20b() {
+        function checkG20b(group) {
             let correct = 0, total = 0;
-            document.querySelectorAll('.g20b-slot').forEach(slot => {
+            const selector = group ? '.g20b-slot[data-group="' + group + '"]' : '.g20b-slot';
+            document.querySelectorAll(selector).forEach(slot => {
                 total++;
                 const slotId = slot.dataset.slotId;
                 const placedId = g20bSlotData[slotId];
@@ -7680,12 +7804,42 @@ function checkGame10() {
             });
             if (correct === total) {
                 soundSuccess();
-                document.getElementById('g20b-result').classList.remove('hidden');
+                const res = document.getElementById(group ? 'g20b-result-' + group : 'g20b-result');
+                if (res) res.classList.remove('hidden');
+                if (!group) {
+                    const mainRes = document.getElementById('g20b-result');
+                    if (mainRes) mainRes.classList.remove('hidden');
+                }
                 showToast('🎉 分類正確！','success');
             } else {
                 soundError();
                 showToast('❌ 答對 ' + correct + '/' + total + '，請修正紅色槽位！','error');
             }
+        }
+
+        function showAnswerG20b(arg, silent) {
+            const group = typeof arg === 'string' ? arg : null;
+            const quiet = typeof arg === 'boolean' ? arg : !!silent;
+            g20bGroupsFromArg(group).forEach(group => {
+                const items = g20bItems.filter(item => item.group === group);
+                const slots = Array.from(document.querySelectorAll('.g20b-slot[data-group="' + group + '"]'));
+                items.forEach((item, idx) => {
+                    const slot = slots[idx];
+                    if (!slot) return;
+                    slot.innerText = item.label;
+                    slot.dataset.cardId = item.id;
+                    slot.className = 'g20b-slot min-h-[2.5rem] border-2 border-emerald-500 bg-emerald-950/30 rounded-xl flex items-center justify-center text-emerald-300 text-sm font-bold cursor-pointer hover:border-emerald-400 transition';
+                    g20bSlotData[slot.dataset.slotId] = item.id;
+                    const card = document.getElementById('g20b-card-' + item.id);
+                    if (card) card.classList.add('opacity-40','pointer-events-none');
+                });
+                const groupRes = document.getElementById('g20b-result-' + group);
+                if (groupRes) groupRes.classList.remove('hidden');
+            });
+            const res = document.getElementById('g20b-result');
+            if (res && !group) res.classList.remove('hidden');
+            setTimeout(lsSave, 150);
+            if (!quiet) showToast('📖 第20關小題⑤解答已填入。','info');
         }
 
 
@@ -7862,12 +8016,43 @@ function checkGame10() {
         }
 
         function showAnswer8() {
-            _showAnswerPanel('第8關：職安演進階段', `
-                <div class="space-y-2">
-                    <div><strong class="text-indigo-400">第一階段：技術階段</strong> — 工程、設備、安全、遵守規定</div>
-                    <div><strong class="text-indigo-400">第二階段：系統階段</strong> — 承諾、能力、風險評估</div>
-                    <div><strong class="text-indigo-400">第三階段：文化階段</strong> — 行為、領導、負責、態度、安全價值</div>
-                </div>`, 'indigo');
+            const answerMap = {
+                1: { name: '技術階段', items: ['工程', '設備', '安全', '遵守規定'] },
+                2: { name: '系統階段', items: ['承諾', '能力', '風險評估'] },
+                3: { name: '文化階段', items: ['行為', '領導', '負責', '態度', '安全價值'] }
+            };
+            const poolCards = Array.from(document.querySelectorAll('#evolution-pool div'));
+            poolCards.forEach(card => { card.style.display = 'block'; card.classList.remove('ring-4', 'ring-indigo-500', 'ring-cyan-500'); });
+            document.querySelectorAll('[data-evo-stage]').forEach(zoneCard => {
+                const stageId = Number(zoneCard.dataset.evoStage);
+                const data = answerMap[stageId];
+                if (!data) return;
+                const nameSlot = zoneCard.querySelector('.evo-stage-slot');
+                const nameCard = poolCards.find(card => card.innerText === data.name);
+                if (nameSlot) {
+                    nameSlot.innerText = data.name;
+                    nameSlot.dataset.placedId = nameCard ? nameCard.dataset.id : 'answer-name-' + stageId;
+                    nameSlot.dataset.correctStage = String(stageId);
+                    nameSlot.className = 'evo-stage-slot border-2 border-emerald-500 bg-emerald-950/40 rounded-lg p-2 text-center text-sm font-bold text-emerald-300 mb-3 min-h-[40px]';
+                    if (nameCard) nameCard.style.display = 'none';
+                }
+                const contentZone = zoneCard.querySelector('.evo-content-zone');
+                if (!contentZone) return;
+                contentZone.innerHTML = '';
+                data.items.forEach(text => {
+                    const card = poolCards.find(c => c.innerText === text);
+                    const item = document.createElement('div');
+                    item.className = 'bg-emerald-950/60 p-1.5 rounded border border-emerald-500 text-[11px] flex justify-between items-center text-emerald-300';
+                    item.innerHTML = `<span>${text}</span>`;
+                    item.dataset.correctStage = String(stageId);
+                    item.dataset.origId = card ? card.dataset.id : 'answer-' + text;
+                    contentZone.appendChild(item);
+                    if (card) card.style.display = 'none';
+                });
+            });
+            activeSelection = null;
+            setTimeout(lsSave, 150);
+            showToast('📖 第8關解答已直接填入空格。', 'info');
         }
 
         function showAnswer9() {
@@ -7931,12 +8116,29 @@ function checkGame10() {
         }
 
         function showAnswer12() {
-            _showAnswerPanel('第12關：壓力圖示配對', `
-                <div class="space-y-2">
-                    <div>圖示1 → <strong class="text-teal-300">全壓（TP）</strong></div>
-                    <div>圖示2 → <strong class="text-teal-300">動壓（VP）</strong></div>
-                    <div>圖示3 → <strong class="text-teal-300">靜壓（SP）</strong></div>
-                </div>`, 'teal');
+            const correctMap = { '1': '1', '2': '2', '3': '3' };
+            document.querySelectorAll('.pressure-icon-card').forEach(card => {
+                card.style.display = 'flex';
+                card.classList.remove('ring-4', 'ring-cyan-500');
+            });
+            document.querySelectorAll('.pressure-text-zone').forEach(zone => {
+                const iconId = correctMap[zone.dataset.zoneId];
+                const card = document.querySelector(`.pressure-icon-card[data-icon-id="${iconId}"]`);
+                const slot = zone.querySelector('.pressure-icon-slot');
+                if (!card || !slot) return;
+                slot.innerHTML = '';
+                slot.style.position = 'relative';
+                const img = card.querySelector('img').cloneNode(true);
+                img.className = 'w-24 h-20 object-contain';
+                slot.appendChild(img);
+                zone.dataset.placedIconId = iconId;
+                zone.className = 'pressure-text-zone bg-emerald-950/30 p-4 rounded-xl border-2 border-emerald-500 flex flex-col items-center justify-center min-h-[140px] transition';
+                card.style.display = 'none';
+            });
+            selectedPressureIcon = null;
+            updatePressureProgress();
+            setTimeout(lsSave, 150);
+            showToast('📖 第12關解答已直接填入空格。', 'info');
         }
 
         function showAnswer13() {
@@ -8199,7 +8401,7 @@ function checkGame10() {
             showToast('📖 有害物連連看解答已公布！綠色=已配對，紅色=未配對', 'info');
         }
 
-        function showAnswer20() {
+        function showAnswerG20Main(silent) {
             // 主題目：直接填入所有空格
             const g20AnswerMap = {
                 'A-burn': '7', 'A-ext': '1',
@@ -8219,6 +8421,12 @@ function checkGame10() {
                     }
                 }
             });
+            setTimeout(lsSave, 150);
+            if (!silent) showToast('📖 第20關主題目解答已填入。', 'info');
+        }
+
+        function showAnswer20() {
+            showAnswerG20Main(true);
             // 延伸小題①：直接填入
             const e1Map = { 'e1-1': '拆除法', 'e1-2': '窒息法', 'e1-3': '冷卻法', 'e1-4': '抑制法' };
             document.querySelectorAll('.g20e1-blank').forEach(blank => {
@@ -8288,6 +8496,11 @@ function checkGame10() {
             });
             const g20bRes = document.getElementById('g20b-result');
             if (g20bRes) g20bRes.classList.remove('hidden');
+            showAnswerG20e1(true);
+            showAnswerG20e2(true);
+            showAnswerG20e3(true);
+            showAnswerG20e4(true);
+            showAnswerG20b(true);
             showToast('📖 第20關解答已全部填入！', 'info');
         }
 
@@ -8509,90 +8722,16 @@ function checkGame10() {
             }
         }
         function showAnswer24() {
-            _showAnswerPanel('第24關：化學方程式係數解答', `
-                <div class="text-xs space-y-3">
-                    <div class="bg-cyan-950/40 border border-cyan-700 rounded p-3 mb-3">
-                        <p class="text-cyan-300 font-bold mb-1">📌 填係數的基本原則（超簡單版）</p>
-                        <p class="text-slate-200 leading-relaxed">化學方程式就像食譜：<strong class="text-yellow-300">左邊是食材，右邊是成品</strong>。<br>
-                        規則只有一個：<strong class="text-yellow-300">每種原子，左右兩邊數量必須一樣多</strong>。<br>
-                        係數就是「幾份」的意思，係數 1 通常可以省略不寫。</p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">一　<span class="text-white font-mono">2 Na + 2 H₂O → 2 NaOH + 1 H₂</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        Na（鈉）碰到水會爆炸產生氫氣。<br>
-                        左邊：<span class="text-yellow-300">2個Na、4個H、2個O</span><br>
-                        右邊：<span class="text-yellow-300">2個Na、2個O+2個H（NaOH）、2個H（H₂）= 2Na、2O、4H</span> ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">二　<span class="text-white font-mono">1 SnO₂ + 2 H₂ → 1 Sn + 2 H₂O</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        SnO₂ 裡有 2 個 O，所以右邊要 2 個 H₂O 才能用掉這 2 個 O。<br>
-                        右邊 2 個 H₂O 需要 4 個 H，左邊 2 個 H₂ 剛好有 4 個 H ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">三　<span class="text-white font-mono">3 KOH + 1 H₃PO₄ → 1 K₃PO₄ + 3 H₂O</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        K₃PO₄ 裡有 3 個 K，所以左邊要 3 個 KOH。<br>
-                        3 個 KOH 帶來 3 個 OH，加上 H₃PO₄ 的 3 個 H，合成 3 個 H₂O ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">四　<span class="text-white font-mono">2 KNO₃ + 1 H₂CO₃ → 1 K₂CO₃ + 2 HNO₃</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        K₂CO₃ 裡有 2 個 K，所以左邊要 2 個 KNO₃。<br>
-                        2 個 KNO₃ 的 NO₃ 配上 H₂CO₃ 的 2 個 H，變成 2 個 HNO₃ ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">五　<span class="text-white font-mono">1 Na₃PO₄ + 3 HCl → 3 NaCl + 1 H₃PO₄</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        Na₃PO₄ 有 3 個 Na，右邊要 3 個 NaCl，所以需要 3 個 HCl 提供 3 個 Cl ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">六　<span class="text-white font-mono">1 TiCl₄ + 2 H₂O → 1 TiO₂ + 4 HCl</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        TiCl₄ 有 4 個 Cl，右邊要 4 個 HCl 才能用掉。<br>
-                        4 個 HCl 需要 4 個 H，左邊 2 個 H₂O 剛好有 4 個 H ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">七　<span class="text-white font-mono">1 C₂H₆O + 3 O₂ → 2 CO₂ + 3 H₂O</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        C₂H₆O（酒精）燃燒。C 有 2 個 → 右邊要 2 個 CO₂。<br>
-                        H 有 6 個 → 右邊要 3 個 H₂O（3×2=6）。<br>
-                        右邊共需 O：2×2+3×1=7個，左邊 C₂H₆O 帶 1 個 O，還差 6 個 → 3 個 O₂ ✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">八　<span class="text-white font-mono">4 NH₃ + 5 O₂ → 4 NO + 6 H₂O</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        NH₃ 有 N 和 H。右邊 NO 的 N 要和左邊 NH₃ 的 N 一樣多，所以 4 NH₃ → 4 NO。<br>
-                        4 個 NH₃ 有 12 個 H → 右邊要 6 個 H₂O（6×2=12）。<br>
-                        右邊 O：4+6=10 個 → 左邊要 5 個 O₂（5×2=10）✓
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-800 rounded p-2 space-y-1">
-                        <p class="text-cyan-300 font-bold">九　<span class="text-white font-mono">1 CH₄ + 2 O₂ → 2 H₂O + 1 CO₂</span></p>
-                        <p class="text-slate-300 leading-relaxed">
-                        甲烷燃燒。C 有 1 個 → 右邊 1 個 CO₂。<br>
-                        H 有 4 個 → 右邊要 2 個 H₂O（2×2=4）。<br>
-                        右邊 O：2+2=4 個 → 左邊要 2 個 O₂（2×2=4）✓
-                        </p>
-                    </div>
-                </div>`, 'cyan');
+            document.querySelectorAll('.g24-input').forEach(inp => {
+                inp.value = inp.dataset.ans || '';
+                inp.classList.remove(
+                    'border-cyan-500','bg-slate-700','text-cyan-300',
+                    'border-rose-500','bg-rose-950/40','text-rose-300'
+                );
+                inp.classList.add('border-emerald-400','bg-emerald-900/40','text-emerald-300');
+            });
+            setTimeout(lsSave, 150);
+            showToast('📖 第24關答案已直接填入。', 'info');
         }
 
         function showAnswer23() {
@@ -10780,6 +10919,74 @@ function exportSave() {
                     }
         ,
         {
+                    title: '溫濕環境危害 WBGT',
+                    subgroups: [
+                        {
+                            subtitle: '（一）室內無日曬 WBGT',
+                            desc: '某工作環境測得乾球溫度 31℃、自然濕球溫度 28℃、黑球溫度 35℃，為室內無日曬環境，求 WBGT。',
+                            table: '',
+                            visualFormula: [
+                                { title: '室內無日曬', math: 'WBGT = 0.7Tnwb + 0.3Tg', note: '室內無日曬不代入乾球溫度。' }
+                            ],
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p>WBGT = 0.7×28 + 0.3×35 = <strong class="text-yellow-300">30.1℃</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: 'WBGT（℃，小數點後1位）', answer: 30.1, tolerance: 0.1 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（二）室外有日曬與休息比例',
+                            desc: '戶外燒窯作業，有日曬。乾球 31℃、自然濕球 28℃、黑球 34℃。求 WBGT；若為中度工作，依表判斷每小時休息比例。',
+                            table: `<div class="overflow-x-auto mb-3"><table class="min-w-full text-xs text-center border border-slate-600 text-slate-200"><tr class="bg-slate-800"><th class="border border-slate-600 px-2 py-1">工作強度</th><th class="border border-slate-600 px-2 py-1">連續作業</th><th class="border border-slate-600 px-2 py-1">75%作業25%休息</th><th class="border border-slate-600 px-2 py-1">50%作業50%休息</th><th class="border border-slate-600 px-2 py-1">25%作業75%休息</th></tr><tr><td class="border border-slate-600 px-2 py-1">輕工作</td><td class="border border-slate-600 px-2 py-1">30.6</td><td class="border border-slate-600 px-2 py-1">31.4</td><td class="border border-slate-600 px-2 py-1">32.2</td><td class="border border-slate-600 px-2 py-1">33.0</td></tr><tr><td class="border border-slate-600 px-2 py-1">中度工作</td><td class="border border-slate-600 px-2 py-1">28.0</td><td class="border border-slate-600 px-2 py-1">29.4</td><td class="border border-slate-600 px-2 py-1">31.1</td><td class="border border-slate-600 px-2 py-1">32.6</td></tr><tr><td class="border border-slate-600 px-2 py-1">重工作</td><td class="border border-slate-600 px-2 py-1">25.9</td><td class="border border-slate-600 px-2 py-1">27.9</td><td class="border border-slate-600 px-2 py-1">30.0</td><td class="border border-slate-600 px-2 py-1">32.1</td></tr></table></div>`,
+                            visualFormula: [
+                                { title: '室外有日曬', math: 'WBGT = 0.7Tnwb + 0.2Tg + 0.1Tdb', note: '室外有日曬要納入乾球溫度。' }
+                            ],
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p>WBGT = 0.7×28 + 0.2×34 + 0.1×31 = <strong class="text-yellow-300">29.5℃</strong></p>
+                                <p>中度工作 29.5℃ 超過 75%作業25%休息之 29.4，落入下一格：<strong class="text-yellow-300">50%作業、50%休息</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: 'WBGT（℃，小數點後1位）', answer: 29.5, tolerance: 0.1 },
+                                { label: '每小時休息比例（%）', answer: 50, tolerance: 0 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（三）室外有日曬 WBGT 練習',
+                            desc: '① 乾球 26.2℃、自然濕球 25℃、黑球 26.9℃，求 WBGT。② 乾球 30℃、自然濕球 27℃、黑球 33℃，求 WBGT。',
+                            table: '',
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p>① 0.7×25 + 0.2×26.9 + 0.1×26.2 = <strong class="text-yellow-300">25.5℃</strong></p>
+                                <p>② 0.7×27 + 0.2×33 + 0.1×30 = <strong class="text-yellow-300">28.5℃</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: '第一題 WBGT（℃，小數點後1位）', answer: 25.5, tolerance: 0.1 },
+                                { label: '第二題 WBGT（℃，小數點後1位）', answer: 28.5, tolerance: 0.1 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（四）時間加權 WBGT 與熱分佈不均',
+                            desc: '① WBGT1=27℃、t1=10分；WBGT2=29℃、t2=20分；WBGT3=31℃、t3=30分，求 WBGTTWA。② 熱分佈不均，頭部 WBGT=31.5℃、腹部=27.6℃、腳踝=32.5℃，依 1:2:1 加權求平均。',
+                            table: '',
+                            visualFormula: [
+                                { title: '時間加權 WBGT', math: 'WBGTavg = Σ(WBGT × t) / Σt', note: '熱分佈不均時可依頭:腹:腳 = 1:2:1 加權。' }
+                            ],
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p>WBGTTWA = (27×10 + 29×20 + 31×30) ÷ 60 = <strong class="text-yellow-300">29.67℃</strong></p>
+                                <p>熱分佈平均 = (31.5×1 + 27.6×2 + 32.5×1) ÷ 4 = <strong class="text-yellow-300">29.8℃</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: 'WBGTTWA（℃，小數點後2位）', answer: 29.67, tolerance: 0.05 },
+                                { label: '熱分佈加權平均 WBGT（℃，小數點後1位）', answer: 29.8, tolerance: 0.1 }
+                            ],
+                            solution: ''
+                        }
+                    ]
+                },
+        {
                     title: '失能傷害統計計算',
                     subgroups: [
                         {
@@ -12306,74 +12513,6 @@ function exportSave() {
                                 { label: '3小時後濃度（ppm，小數點後2位）', answer: 220.73, tolerance: 0.1 },
                                 { label: '換氣率1 hr⁻¹所需時間（分鐘，整數）', answer: 117, tolerance: 1 },
                                 { label: '換氣率2 hr⁻¹所需時間（分鐘，小數點後2位）', answer: 65.92, tolerance: 0.1 }
-                            ],
-                            solution: ''
-                        }
-                    ]
-                },
-        {
-                    title: '溫濕環境危害 WBGT',
-                    subgroups: [
-                        {
-                            subtitle: '（一）室內無日曬 WBGT',
-                            desc: '某工作環境測得乾球溫度 31℃、自然濕球溫度 28℃、黑球溫度 35℃，為室內無日曬環境，求 WBGT。',
-                            table: '',
-                            visualFormula: [
-                                { title: '室內無日曬', math: 'WBGT = 0.7Tnwb + 0.3Tg', note: '室內無日曬不代入乾球溫度。' }
-                            ],
-                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
-                                <p>WBGT = 0.7×28 + 0.3×35 = <strong class="text-yellow-300">30.1℃</strong></p>
-                            </div>`,
-                            blanks: [
-                                { label: 'WBGT（℃，小數點後1位）', answer: 30.1, tolerance: 0.1 }
-                            ],
-                            solution: ''
-                        },
-                        {
-                            subtitle: '（二）室外有日曬與休息比例',
-                            desc: '戶外燒窯作業，有日曬。乾球 31℃、自然濕球 28℃、黑球 34℃。求 WBGT；若為中度工作，依表判斷每小時休息比例。',
-                            table: `<div class="overflow-x-auto mb-3"><table class="min-w-full text-xs text-center border border-slate-600 text-slate-200"><tr class="bg-slate-800"><th class="border border-slate-600 px-2 py-1">工作強度</th><th class="border border-slate-600 px-2 py-1">連續作業</th><th class="border border-slate-600 px-2 py-1">75%作業25%休息</th><th class="border border-slate-600 px-2 py-1">50%作業50%休息</th><th class="border border-slate-600 px-2 py-1">25%作業75%休息</th></tr><tr><td class="border border-slate-600 px-2 py-1">輕工作</td><td class="border border-slate-600 px-2 py-1">30.6</td><td class="border border-slate-600 px-2 py-1">31.4</td><td class="border border-slate-600 px-2 py-1">32.2</td><td class="border border-slate-600 px-2 py-1">33.0</td></tr><tr><td class="border border-slate-600 px-2 py-1">中度工作</td><td class="border border-slate-600 px-2 py-1">28.0</td><td class="border border-slate-600 px-2 py-1">29.4</td><td class="border border-slate-600 px-2 py-1">31.1</td><td class="border border-slate-600 px-2 py-1">32.6</td></tr><tr><td class="border border-slate-600 px-2 py-1">重工作</td><td class="border border-slate-600 px-2 py-1">25.9</td><td class="border border-slate-600 px-2 py-1">27.9</td><td class="border border-slate-600 px-2 py-1">30.0</td><td class="border border-slate-600 px-2 py-1">32.1</td></tr></table></div>`,
-                            visualFormula: [
-                                { title: '室外有日曬', math: 'WBGT = 0.7Tnwb + 0.2Tg + 0.1Tdb', note: '室外有日曬要納入乾球溫度。' }
-                            ],
-                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
-                                <p>WBGT = 0.7×28 + 0.2×34 + 0.1×31 = <strong class="text-yellow-300">29.5℃</strong></p>
-                                <p>中度工作 29.5℃ 超過 75%作業25%休息之 29.4，落入下一格：<strong class="text-yellow-300">50%作業、50%休息</strong></p>
-                            </div>`,
-                            blanks: [
-                                { label: 'WBGT（℃，小數點後1位）', answer: 29.5, tolerance: 0.1 },
-                                { label: '每小時休息比例（%）', answer: 50, tolerance: 0 }
-                            ],
-                            solution: ''
-                        },
-                        {
-                            subtitle: '（三）室外有日曬 WBGT 練習',
-                            desc: '① 乾球 26.2℃、自然濕球 25℃、黑球 26.9℃，求 WBGT。② 乾球 30℃、自然濕球 27℃、黑球 33℃，求 WBGT。',
-                            table: '',
-                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
-                                <p>① 0.7×25 + 0.2×26.9 + 0.1×26.2 = <strong class="text-yellow-300">25.5℃</strong></p>
-                                <p>② 0.7×27 + 0.2×33 + 0.1×30 = <strong class="text-yellow-300">28.5℃</strong></p>
-                            </div>`,
-                            blanks: [
-                                { label: '第一題 WBGT（℃，小數點後1位）', answer: 25.5, tolerance: 0.1 },
-                                { label: '第二題 WBGT（℃，小數點後1位）', answer: 28.5, tolerance: 0.1 }
-                            ],
-                            solution: ''
-                        },
-                        {
-                            subtitle: '（四）時間加權 WBGT 與熱分佈不均',
-                            desc: '① WBGT1=27℃、t1=10分；WBGT2=29℃、t2=20分；WBGT3=31℃、t3=30分，求 WBGTTWA。② 熱分佈不均，頭部 WBGT=31.5℃、腹部=27.6℃、腳踝=32.5℃，依 1:2:1 加權求平均。',
-                            table: '',
-                            visualFormula: [
-                                { title: '時間加權 WBGT', math: 'WBGTavg = Σ(WBGT × t) / Σt', note: '熱分佈不均時可依頭:腹:腳 = 1:2:1 加權。' }
-                            ],
-                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
-                                <p>WBGTTWA = (27×10 + 29×20 + 31×30) ÷ 60 = <strong class="text-yellow-300">29.67℃</strong></p>
-                                <p>熱分佈平均 = (31.5×1 + 27.6×2 + 32.5×1) ÷ 4 = <strong class="text-yellow-300">29.8℃</strong></p>
-                            </div>`,
-                            blanks: [
-                                { label: 'WBGTTWA（℃，小數點後2位）', answer: 29.67, tolerance: 0.05 },
-                                { label: '熱分佈加權平均 WBGT（℃，小數點後1位）', answer: 29.8, tolerance: 0.1 }
                             ],
                             solution: ''
                         }
@@ -14037,3 +14176,4 @@ window.addEventListener('resize', () => {
 </script>
 </body>
 </html>
+
