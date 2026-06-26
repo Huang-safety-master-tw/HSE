@@ -5966,25 +5966,43 @@ function checkGame10() {
             return g14FlexibleBlankGroups.find(group => group.includes(String(blankId))) || null;
         }
 
+        function g14CountKeys(keys) {
+            return keys.reduce((acc, key) => {
+                acc[key] = (acc[key] || 0) + 1;
+                return acc;
+            }, {});
+        }
+
+        function g14GetGroupKeys(group, attr) {
+            return group
+                .map(id => {
+                    const b = document.querySelector('.g14-blank[data-blank-id="' + id + '"]');
+                    return b ? b.dataset[attr] : '';
+                })
+                .filter(Boolean);
+        }
+
+        function g14IsFlexibleGroupComplete(group) {
+            const actual = g14GetGroupKeys(group, 'filled').sort();
+            const expected = g14GetGroupKeys(group, 'correct').sort();
+            return actual.length === expected.length && actual.every((key, index) => key === expected[index]);
+        }
+
+        function g14IsFlexibleBlankIndividuallyCorrect(blank, group) {
+            const filled = blank ? blank.dataset.filled : '';
+            if (!filled) return false;
+            const expected = g14GetGroupKeys(group, 'correct');
+            if (!expected.includes(filled)) return false;
+            const actualCounts = g14CountKeys(g14GetGroupKeys(group, 'filled'));
+            const expectedCounts = g14CountKeys(expected);
+            return (actualCounts[filled] || 0) <= (expectedCounts[filled] || 0);
+        }
+
         function g14IsBlankCorrect(blank) {
             if (!blank) return false;
             const flexGroup = g14GetFlexibleGroup(blank.dataset.blankId);
             if (!flexGroup) return blank.dataset.filled === blank.dataset.correct;
-            const actual = flexGroup
-                .map(id => {
-                    const b = document.querySelector('.g14-blank[data-blank-id="' + id + '"]');
-                    return b ? b.dataset.filled : '';
-                })
-                .filter(Boolean)
-                .sort();
-            const expected = flexGroup
-                .map(id => {
-                    const b = document.querySelector('.g14-blank[data-blank-id="' + id + '"]');
-                    return b ? b.dataset.correct : '';
-                })
-                .filter(Boolean)
-                .sort();
-            return actual.length === expected.length && actual.every((key, index) => key === expected[index]);
+            return g14IsFlexibleGroupComplete(flexGroup);
         }
 
         function g14MarkBlank(blank, isCorrect) {
@@ -6015,11 +6033,17 @@ function checkGame10() {
             } else {
                 const blankIds = g14GroupBlanks[grp];
                 if (!blankIds) return;
+                let groupHasIncompleteFlexibleSet = false;
                 blankIds.forEach(bid => {
                 const blank = document.querySelector('.g14-blank[data-blank-id="' + bid + '"]');
                 if (!blank) return;
                 total++;
-                if (g14IsBlankCorrect(blank)) {
+                const flexGroup = g14GetFlexibleGroup(blank.dataset.blankId);
+                const isCorrect = flexGroup
+                    ? g14IsFlexibleBlankIndividuallyCorrect(blank, flexGroup)
+                    : g14IsBlankCorrect(blank);
+                if (flexGroup && !g14IsFlexibleGroupComplete(flexGroup)) groupHasIncompleteFlexibleSet = true;
+                if (isCorrect) {
                     const displayKey = blank.dataset.filled || blank.dataset.correct;
                     const opt = g14FindOption(displayKey);
                     blank.innerText = opt ? g14DisplayLabel(opt) : displayKey;
@@ -6029,6 +6053,7 @@ function checkGame10() {
                     g14MarkBlank(blank, false);
                 }
                 });
+                if (groupHasIncompleteFlexibleSet) correct = Math.min(correct, total - 1);
             }
             if (correct === total && total > 0) {
                 soundSuccess();
@@ -12157,7 +12182,7 @@ function exportSave() {
                                 <p>所以 V₁ = V₀/11，為 <strong class="text-yellow-300">1/11</strong></p>
                             </div>`,
                             blanks: [
-                                { label: '分母（填11代表1/11）', answer: 11, tolerance: 0 }
+                                { label: '答案', answer: '1/11', tolerance: 0, inputMode: 'fraction' }
                             ],
                             solution: ''
                         },
@@ -13075,9 +13100,12 @@ function exportSave() {
                         <div class="space-y-3 mt-2">`;
                     sg.blanks.forEach((b, bi) => {
                         const savedValue = g29EscapeText(g29GetSavedAnswer(g29Current, si, bi));
+                        const isFractionInput = b.inputMode === 'fraction' || String(b.answer).includes('/');
+                        const inputType = isFractionInput ? 'text' : 'number';
+                        const inputStep = isFractionInput ? '' : ' step="0.01"';
                         html += `<div class="flex items-center gap-3 flex-wrap">
                             <span class="text-slate-300 text-sm min-w-[220px]">${b.label}：</span>
-                            <input type="number" step="0.01" id="g29-input-${si}-${bi}" value="${savedValue}" oninput="g29HandleInput(${g29Current}, ${si}, ${bi}, this.value)" placeholder="請輸入答案"
+                            <input type="${inputType}"${inputStep} id="g29-input-${si}-${bi}" value="${savedValue}" oninput="g29HandleInput(${g29Current}, ${si}, ${bi}, this.value)" placeholder="請輸入答案"
                                 class="bg-slate-900 border border-slate-600 text-white rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-sky-400 transition">
                             <span id="g29-result-${si}-${bi}" class="text-sm font-bold"></span>
                         </div>`;
@@ -13103,9 +13131,12 @@ function exportSave() {
                     <div class="space-y-3 mt-2">`;
                 q.blanks.forEach((b, i) => {
                     const savedValue = g29EscapeText(g29GetSavedAnswer(g29Current, 0, i));
+                    const isFractionInput = b.inputMode === 'fraction' || String(b.answer).includes('/');
+                    const inputType = isFractionInput ? 'text' : 'number';
+                    const inputStep = isFractionInput ? '' : ' step="0.01"';
                     html += `<div class="flex items-center gap-3 flex-wrap">
                         <span class="text-slate-300 text-sm min-w-[220px]">${b.label}：</span>
-                        <input type="number" step="0.01" id="g29-input-0-${i}" value="${savedValue}" oninput="g29HandleInput(${g29Current}, 0, ${i}, this.value)" placeholder="請輸入答案"
+                        <input type="${inputType}"${inputStep} id="g29-input-0-${i}" value="${savedValue}" oninput="g29HandleInput(${g29Current}, 0, ${i}, this.value)" placeholder="請輸入答案"
                             class="bg-slate-900 border border-slate-600 text-white rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-sky-400 transition">
                         <span id="g29-result-0-${i}" class="text-sm font-bold"></span>
                     </div>`;
@@ -13171,7 +13202,15 @@ function exportSave() {
         }
 
         function g29NormalizeNumber(value) {
-            return parseFloat(String(value).trim().replace(/,/g, ''));
+            const raw = String(value).trim().replace(/,/g, '');
+            const fraction = raw.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/);
+            if (fraction) {
+                const numerator = Number(fraction[1]);
+                const denominator = Number(fraction[2]);
+                if (denominator === 0) return NaN;
+                return numerator / denominator;
+            }
+            return parseFloat(raw);
         }
 
         function g29AnswerTolerance(blank) {
@@ -13180,7 +13219,7 @@ function exportSave() {
         }
 
         function g29IsAnswerCorrect(value, blank) {
-            const answer = Number(blank.answer);
+            const answer = g29NormalizeNumber(blank.answer);
             const tolerance = g29AnswerTolerance(blank);
             if (!Number.isFinite(value) || !Number.isFinite(answer)) return false;
             return Math.abs(value - answer) <= tolerance + 1e-9;
