@@ -364,13 +364,6 @@
                 <button onclick="resetAllGames()" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg">
                     <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置全部
                 </button>
-                <button onclick="exportSave()" class="text-slate-400 hover:text-emerald-400 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm">
-                    <i data-lucide="download" class="w-4 h-4"></i> 下載同步檔
-                </button>
-                <label class="text-slate-400 hover:text-sky-400 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm cursor-pointer">
-                    <i data-lucide="upload" class="w-4 h-4"></i> 載入同步檔
-                    <input type="file" accept=".json" class="hidden" onchange="importSave(event)">
-                </label>
                 <button onclick="openCloudSyncModal()" class="text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm">
                     <i data-lucide="cloud" class="w-4 h-4"></i> 雲端同步
                 </button>
@@ -421,6 +414,23 @@
                     <p class="text-xs text-slate-500 leading-relaxed">
                         自動雲端存檔：輸入同步碼後，作答變動會先存到本機，約 1 分鐘後自動上傳；頁面開著時每 5 分鐘也會補傳一次。
                     </p>
+                    <div class="border-t border-slate-800 pt-4">
+                        <div class="flex items-center justify-between gap-3 mb-3">
+                            <div>
+                                <h4 class="text-sm font-black text-slate-200">備份工具</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">雲端異常或要手動留底時再使用。</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button onclick="exportSave()" class="text-slate-300 hover:text-emerald-200 transition flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2.5 rounded-lg text-sm border border-slate-700">
+                                <i data-lucide="download" class="w-4 h-4"></i> 下載備份檔
+                            </button>
+                            <label class="text-slate-300 hover:text-sky-200 transition flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2.5 rounded-lg text-sm cursor-pointer border border-slate-700">
+                                <i data-lucide="upload" class="w-4 h-4"></i> 載入備份檔
+                                <input type="file" accept=".json" class="hidden" onchange="importSave(event)">
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
