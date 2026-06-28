@@ -359,7 +359,7 @@
             <div class="flex items-center gap-4 text-sm">
                 <div class="bg-slate-800/80 px-4 py-2 rounded-lg border border-slate-700 flex items-center gap-2">
                     <i data-lucide="trophy" class="text-yellow-500 w-4 h-4"></i>
-                    <span>完美過關：<strong id="completed-count" class="text-yellow-400">0</strong>/34</span>
+                    <span>完美過關：<strong id="completed-count" class="text-yellow-400">0</strong>/36</span>
                 </div>
                 <button onclick="resetAllGames()" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg">
                     <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置全部
@@ -479,7 +479,7 @@
             <div class="flex items-center gap-3">
                 <div class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 text-xs">
                     <i data-lucide="trophy" class="text-yellow-500 w-3.5 h-3.5"></i>
-                    <span>過關 <strong id="completed-count-game" class="text-yellow-400">0</strong>/34</span>
+                    <span>過關 <strong id="completed-count-game" class="text-yellow-400">0</strong>/36</span>
                 </div>
                 <div id="game-timer-display" class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 text-xs font-mono cursor-pointer select-none hover:bg-slate-700/80 transition" onclick="toggleTimerPause()" title="點擊暫停計時">
                     <i data-lucide="timer" class="text-sky-400 w-3.5 h-3.5"></i>
@@ -515,6 +515,68 @@
                     </button>
                     <button onclick="showAnswer1()" class="bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white font-bold px-5 py-2.5 rounded-lg shadow-lg transition flex items-center gap-1.5"><i data-lucide="eye" class="w-4 h-4"></i> 公布解答</button>
                     <button onclick="checkGame1()" class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold px-6 py-2.5 rounded-lg shadow-lg hover:brightness-110 transition">檢查答案</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 第 35 關：考前重點填空題 ===== -->
+        <section id="tab-key-fill" class="game-section hidden w-full">
+            <div class="glass-panel p-6 rounded-2xl">
+                <div class="mb-4">
+                    <span class="bg-emerald-500/20 text-emerald-300 text-xs px-3 py-1 rounded-full font-bold">2026.06.27 測驗卷</span>
+                    <h2 class="text-2xl font-bold text-white mt-3 mb-2">考前重點填空題</h2>
+                    <p class="text-slate-400 text-sm">請直接用鍵盤輸入答案，內容一致即判定正確。</p>
+                </div>
+                <div class="space-y-4 text-left text-slate-200" id="g35-list">
+                    <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">
+                        <p class="font-bold text-emerald-300 mb-2">（1）藥品製造業，勞工人數 650 人，依規定需要設置：</p>
+                        <p>甲種職業安全衛生業務主管 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="1"> 人。</p>
+                        <p>職業安全（衛生）師 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="1"> 人。</p>
+                        <p>職業安全衛生管理員 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="1"> 人。</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（2）勞動檢查機構受理勞工申訴後，應於 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="14"> 日內通知檢查結果。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（3）第二、三類事業勞工人數在 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="5"> 人以下者，增列丁種業務主管。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（4）護蓋為柵狀構造者，柵條間隔不得大於 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="3"> 公分。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（5）急救人員在職教育訓練，應於 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="15"> 日前檢附文件。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（6）特殊健康檢查與健康追蹤檢查，與工作無關者為第 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="2"> 級管理。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（7）設置衝剪機械 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="5"> 台以上，必須指定作業管理人員。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（8）驗證機構認可期限為 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-20 text-center text-white" data-answer="3"> 年，期限屆滿前 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-20 text-center text-white" data-answer="60"> 日內申請展延。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（9）自動電擊防止裝置安全電壓 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="25"> V 以下。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（10）急救藥品與器材，應每 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="6"> 個月定期檢查。</label>
+                        <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（11）良導體機器設備內檢修之手提式照明燈，使用電壓不得超過 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="24"> 伏特。</label>
+                    </div>
+                </div>
+                <div class="mt-5 flex justify-end gap-3">
+                    <button onclick="resetSingleGame(35)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-4 py-2.5 rounded-lg border border-slate-700 font-bold">重玩本關</button>
+                    <button onclick="showAnswer35()" class="bg-slate-700 hover:bg-slate-600 text-white font-bold px-5 py-2.5 rounded-lg">公布解答</button>
+                    <button onclick="checkGame35()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-2.5 rounded-lg">檢查答案</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 第 36 關：考前重點連連看 ===== -->
+        <section id="tab-quick-link" class="game-section hidden w-full">
+            <div class="glass-panel p-6 rounded-2xl">
+                <div class="mb-4">
+                    <span class="bg-cyan-500/20 text-cyan-300 text-xs px-3 py-1 rounded-full font-bold">2026.06.27 測驗卷</span>
+                    <h2 class="text-2xl font-bold text-white mt-3 mb-2">考前重點連連看</h2>
+                    <p class="text-slate-400 text-sm">點選每列右側答案完成配對。</p>
+                </div>
+                <div class="space-y-5">
+                    <div class="bg-slate-950/60 border border-cyan-800/50 rounded-xl p-5 text-left">
+                        <h3 class="text-cyan-300 font-bold mb-3">第一題：名詞與定義</h3>
+                        <div id="g36-def-rows" class="space-y-3"></div>
+                    </div>
+                    <div class="bg-slate-950/60 border border-cyan-800/50 rounded-xl p-5 text-left">
+                        <h3 class="text-cyan-300 font-bold mb-3">第二題：職業安全衛生委員會是否召開</h3>
+                        <div id="g36-committee-rows" class="space-y-3"></div>
+                    </div>
+                </div>
+                <div class="mt-5 flex justify-end gap-3">
+                    <button onclick="resetSingleGame(36)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-4 py-2.5 rounded-lg border border-slate-700 font-bold">重玩本關</button>
+                    <button onclick="showAnswer36()" class="bg-slate-700 hover:bg-slate-600 text-white font-bold px-5 py-2.5 rounded-lg">公布解答</button>
+                    <button onclick="checkGame36()" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-6 py-2.5 rounded-lg">檢查答案</button>
                 </div>
             </div>
         </section>
@@ -1624,6 +1686,62 @@
                       <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十組
                     </button>
                     <button onclick="showAnswer14Group(10)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
+                  </div>
+                </div>
+
+                <!-- 第十二組 -->
+                <div class="bg-slate-950/60 border border-fuchsia-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group12">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-fuchsia-800/40">
+                    <span class="bg-fuchsia-900/60 text-fuchsia-300 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-700">第十二組</span>
+                    <span class="text-xs text-slate-400">2026.06.27 測驗卷配合新增題（空格 1201–1212）</span>
+                  </div>
+                  <p class="font-bold text-fuchsia-300 text-xs">（1）自動電擊防止裝置各區名稱：</p>
+                  <div class="overflow-x-auto">
+                    <table class="w-full min-w-[720px] text-xs border-collapse">
+                      <thead>
+                        <tr class="bg-fuchsia-950/50 text-fuchsia-200">
+                          <th class="border border-slate-700 px-3 py-2">A. 電弧持續區段</th>
+                          <th class="border border-slate-700 px-3 py-2">B. 無載電壓回復後區段</th>
+                          <th class="border border-slate-700 px-3 py-2">C. 起始低電壓區段</th>
+                          <th class="border border-slate-700 px-3 py-2">D. 電弧起動瞬間</th>
+                          <th class="border border-slate-700 px-3 py-2">E. 回復至無載電壓所需時間</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="border border-slate-700 px-3 py-3 text-center"><span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1201" data-correct="G12T3" onclick="fillBlank14(this)">＿</span></td>
+                          <td class="border border-slate-700 px-3 py-3 text-center"><span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1202" data-correct="G12T2" onclick="fillBlank14(this)">＿</span></td>
+                          <td class="border border-slate-700 px-3 py-3 text-center"><span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1203" data-correct="G12T2" onclick="fillBlank14(this)">＿</span></td>
+                          <td class="border border-slate-700 px-3 py-3 text-center"><span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1204" data-correct="G12T1" onclick="fillBlank14(this)">＿</span></td>
+                          <td class="border border-slate-700 px-3 py-3 text-center"><span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1205" data-correct="G12T4" onclick="fillBlank14(this)">＿</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="space-y-3">
+                    <p>（2）一般健康檢查項目與定期健康檢查項目差異點為定期健康檢查多一 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1206" data-correct="G12C" onclick="fillBlank14(this)">＿</span> 之檢查。</p>
+                    <p>（3）<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1207" data-correct="G12B" onclick="fillBlank14(this)">＿</span>：針對機械的特別規定所辦理之法定檢查。</p>
+                    <p>（4）<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1208" data-correct="G12A" onclick="fillBlank14(this)">＿</span>：由驗證機構對某一型式之機械、設備或器具產品，審驗其符合安全標準之程序。</p>
+                    <p>（5）交流電焊機之內藏式 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1209" data-correct="G12E" onclick="fillBlank14(this)">＿</span> 設置電壓指示表。</p>
+                    <p>（6）製造危險性設備完成後申請：<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1210" data-correct="G12H" onclick="fillBlank14(this)">＿</span>。</p>
+                    <p>（7）危險性機械及設備之製造與修改時：<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1211" data-correct="G12G" onclick="fillBlank14(this)">＿</span>。</p>
+                    <p>（8）雇主於製造完成使用前或從外國進口使用前，應填具使用檢查申請書，向當地檢查機構申請 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1212" data-correct="G12I" onclick="fillBlank14(this)">＿</span>。</p>
+                  </div>
+                </div>
+                <!-- 第十二組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-fuchsia-800/30 rounded-xl p-4" id="g14-group12-opts-wrap">
+                  <h3 class="text-xs font-bold text-fuchsia-300 mb-2 flex items-center gap-2">
+                    <i data-lucide="table" class="w-4 h-4"></i> 第十二組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-12"></div>
+                  <div id="g14-selected-indicator-12" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-12"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(12)" class="bg-fuchsia-700 hover:bg-fuchsia-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1.5">
+                      <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十二組
+                    </button>
+                    <button onclick="showAnswer14Group(12)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
                   </div>
                 </div>
                 <!-- 舊選項表（隱藏，保留相容性） -->
@@ -3356,7 +3474,7 @@
 
     <script>
         let activeSelection = null;
-        let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false};
+        let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false};
         let gameMastery = {};
 
         // --- 音效 ---
@@ -4947,6 +5065,7 @@ function checkGame10() {
         const gameList = [
             { num: 25, tabId: 'tab-mock-exam', icon: 'clipboard-list', title: '學科模擬考試', desc: '考點二十五：隨機抽題模擬考（單選60題＋複選20題）' },
             { num: 14, tabId: 'tab-matching',     icon: 'file-text',    title: '職安法配合題',      desc: '考點十四：職業安全衛生法相關規定配合題' },
+            { num: 35, tabId: 'tab-key-fill',     icon: 'keyboard',     title: '考前重點填空題',    desc: '2026.06.27 測驗卷：鍵盤輸入填空練習' },
             { num: 29, tabId: 'tab-game29', icon: 'calculator', title: '計算題練習', desc: '考點二十九：職安計算題（WBGT等）' },
             { num: 1,  tabId: 'tab-contractor',  icon: 'users',        title: '承攬管理流程',      desc: '考點一：承攬管理技術指引' },
             { num: 2,  tabId: 'tab-change',       icon: 'shuffle',      title: '變更管理流程',      desc: '考點二：變更管理流程排序' },
@@ -4979,6 +5098,7 @@ function checkGame10() {
             { num: 32, tabId: 'tab-game32', icon: 'link', title: '職安衛責任連連看', desc: '考點三十二：職安衛責任分配配對' },
             { num: 33, tabId: 'tab-game33', icon: 'weight', title: '人工搬運重量連連看', desc: '考點三十三：人工搬運重量限制配對' },
             { num: 34, tabId: 'tab-game34', icon: 'flask-conical', title: '化學物質危險分類', desc: '考點三十四：危險化學物質分類配對' },
+            { num: 36, tabId: 'tab-quick-link',   icon: 'git-merge',    title: '考前重點連連看',    desc: '2026.06.27 測驗卷：名詞定義與委員會召開判斷' },
         ];
         let currentGameNum = 1;
 
@@ -5098,6 +5218,8 @@ function checkGame10() {
             else if (gameNum === 32 && typeof initGame32 === 'function') initGame32();
             else if (gameNum === 33 && typeof initGame33 === 'function') initGame33();
             else if (gameNum === 34 && typeof initGame34 === 'function') initGame34();
+            else if (gameNum === 35 && typeof initGame35 === 'function') initGame35();
+            else if (gameNum === 36 && typeof initGame36 === 'function') initGame36();
         }
 
         function goToGame(num) {
@@ -5162,12 +5284,14 @@ function checkGame10() {
 
         function goToNextGame() {
             soundClick();
-            const next = currentGameNum < 34 ? currentGameNum + 1 : 1;
+            const idx = gameList.findIndex(g => g.num === currentGameNum);
+            const next = gameList[(idx + 1 + gameList.length) % gameList.length].num;
             goToGame(next);
         }
         function goToPrevGame() {
             soundClick();
-            const prev = currentGameNum > 1 ? currentGameNum - 1 : 34;
+            const idx = gameList.findIndex(g => g.num === currentGameNum);
+            const prev = gameList[(idx - 1 + gameList.length) % gameList.length].num;
             goToGame(prev);
         }
 
@@ -5223,6 +5347,12 @@ function checkGame10() {
             else if (gameNum === 28) initGame28();
             else if (gameNum === 29) initGame29();
             else if (gameNum === 30) { g30InitSlots(); g30BuildPool(); }
+            else if (gameNum === 31 && typeof initGame31 === 'function') initGame31();
+            else if (gameNum === 32 && typeof initGame32 === 'function') initGame32();
+            else if (gameNum === 33 && typeof initGame33 === 'function') initGame33();
+            else if (gameNum === 34 && typeof initGame34 === 'function') initGame34();
+            else if (gameNum === 35) initGame35();
+            else if (gameNum === 36) initGame36();
             else if (gameNum === 25) { g25Questions=[]; g25Answers={}; g25Current=0; if(g25TimerInterval){clearInterval(g25TimerInterval);g25TimerInterval=null;} document.getElementById("g25-start").classList.remove("hidden"); document.getElementById("g25-exam").classList.add("hidden"); document.getElementById("g25-result").classList.add("hidden"); }
             updateTrophyCount();
             showToast(`🔄 第 ${gameNum} 關已重置！`, "info");
@@ -5235,7 +5365,7 @@ function checkGame10() {
             g29Answers = {};
             window._lsPendingState = null; _lsHideIndicator();
             soundClick(); 
-            completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false, game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false };
+            completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false, game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false };
             bestTimes = {};
             if (currentGameNum) initGameByNumber(currentGameNum);
             updateTrophyCount(); showToast("🔄 所有關卡已重新配置！", "info");
@@ -5651,7 +5781,23 @@ function checkGame10() {
             { key: 'G10G', label: 'G：140' },
             { key: 'G10H', label: 'H：160' },
             { key: 'G10I', label: 'I：200' },
-            { key: 'G10J', label: 'J：300' }
+            { key: 'G10J', label: 'J：300' },
+            // ===== 第十二組：2026.06.27 測驗卷配合新增題 =====
+            { key: 'G12T1', label: '起動時間' },
+            { key: 'G12T2', label: '安全電壓' },
+            { key: 'G12T3', label: '電弧電壓' },
+            { key: 'G12T4', label: '運動時間' },
+            { key: 'G12T5', label: '額定電壓' },
+            { key: 'G12A', label: '型式驗證' },
+            { key: 'G12B', label: '型式檢定' },
+            { key: 'G12C', label: '低密度脂蛋白膽固醇' },
+            { key: 'G12D', label: '高密度脂蛋白膽固醇' },
+            { key: 'G12E', label: '自動電擊防止裝置' },
+            { key: 'G12F', label: '漏電斷路器' },
+            { key: 'G12G', label: '型式檢查' },
+            { key: 'G12H', label: '構造檢查' },
+            { key: 'G12I', label: '使用檢查' },
+            { key: 'G12J', label: '熔接檢查' }
         ];
 
         const g14DistractorOptions = [
@@ -5664,7 +5810,8 @@ function checkGame10() {
             { key: 'G14D7A', label: '3.5' }, { key: 'G14D7B', label: '1.5' }, { key: 'G14D7C', label: '30' },
             { key: 'G14D8A', label: '10' }, { key: 'G14D8B', label: '7.5' }, { key: 'G14D8C', label: '40' },
             { key: 'G14D9A', label: '1.5' }, { key: 'G14D9B', label: '7%' }, { key: 'G14D9C', label: '5.5' },
-            { key: 'G14D10A', label: '40' }, { key: 'G14D10B', label: '70' }, { key: 'G14D10C', label: '100' }
+            { key: 'G14D10A', label: '40' }, { key: 'G14D10B', label: '70' }, { key: 'G14D10C', label: '100' },
+            { key: 'G14D12A', label: '血糖' }, { key: 'G14D12B', label: '定期檢查' }, { key: 'G14D12C', label: '竣工檢查' }
         ];
 
         function g14FindOption(key) {
@@ -5777,6 +5924,7 @@ function checkGame10() {
             8: ['G8A','G8B','G8C','G8D','G8E','G8F','G8G','G8H'],
             9: ['G9A','G9B','G9C','G9D','G9E','G9F','G9G','G9H'],
             10: ['G10A','G10B','G10C','G10D','G10E','G10F','G10G','G10H','G10I','G10J'],
+            12: ['G12T1','G12T2','G12T3','G12T4','G12T5','G12A','G12B','G12C','G12D','G12E','G12F','G12G','G12H','G12I','G12J'],
             distractors: {
                 1: ['G14D1A','G14D1B','G14D1C'],
                 2: ['G14D2A','G14D2B','G14D2C'],
@@ -5787,7 +5935,8 @@ function checkGame10() {
                 7: ['G14D7A','G14D7B','G14D7C'],
                 8: ['G14D8A','G14D8B','G14D8C'],
                 9: ['G14D9A','G14D9B','G14D9C'],
-                10: ['G14D10A','G14D10B','G14D10C']
+                10: ['G14D10A','G14D10B','G14D10C'],
+                12: ['G14D12A','G14D12B','G14D12C']
             }
         };
         // 各組空格 blank-id 清單
@@ -5801,7 +5950,8 @@ function checkGame10() {
             7: ['701','702','703','704','705','706','707','708','709','710'],
             8: ['801','802','803','804','805','806','807','808','809'],
             9: ['901','902','903','904','905','906','907','908'],
-            10: ['1001','1002','1003','1004','1005','1006','1007','1008','1009','1010']
+            10: ['1001','1002','1003','1004','1005','1006','1007','1008','1009','1010'],
+            12: ['1201','1202','1203','1204','1205','1206','1207','1208','1209','1210','1211','1212']
         };
 
         function _g14RenderGroupOpts(grp) {
@@ -5813,7 +5963,7 @@ function checkGame10() {
                 1:'hover:bg-violet-900/40', 2:'hover:bg-amber-900/40', 3:'hover:bg-emerald-900/40',
                 4:'hover:bg-teal-900/40',   5:'hover:bg-sky-900/40',   6:'hover:bg-orange-900/40',
                 7:'hover:bg-indigo-900/40', 8:'hover:bg-rose-900/40',  9:'hover:bg-lime-900/40',
-                10:'hover:bg-cyan-900/40'
+                10:'hover:bg-cyan-900/40', 12:'hover:bg-fuchsia-900/40'
             };
             keys.forEach(key => {
                 const opt = g14FindOption(key);
@@ -5845,7 +5995,7 @@ function checkGame10() {
             g14Selected = null;
             g14ActiveGroup = 0;
             g14DragKey = null;
-            [1,2,3,4,5,6,7,8,9,10].forEach(g => _g14RenderGroupOpts(g));
+            [1,2,3,4,5,6,7,8,9,10,12].forEach(g => _g14RenderGroupOpts(g));
             ensureG14MasteryControls();
             renderG14MasteryStars();
             // Reset blanks and bind drag events
@@ -5881,7 +6031,7 @@ function checkGame10() {
                     }
                 });
             });
-            [1,2,3,4,5,6,7,8,9].forEach(g => {
+            [1,2,3,4,5,6,7,8,9,10,12].forEach(g => {
                 const ind = document.getElementById('g14-selected-indicator-' + g);
                 if (ind) ind.classList.add('hidden');
             });
@@ -5907,7 +6057,7 @@ function checkGame10() {
             // Deselect all in this group
             document.querySelectorAll('.g14-opt-grp' + grp).forEach(b => b.classList.remove('ring-2', 'ring-violet-400', 'bg-violet-900/60'));
             // Hide other groups' indicators
-            [1,2,3,4,5,6,7,8,9].forEach(g => {
+            [1,2,3,4,5,6,7,8,9,10,12].forEach(g => {
                 if (g !== grp) {
                     const ind = document.getElementById('g14-selected-indicator-' + g);
                     if (ind) ind.classList.add('hidden');
@@ -6130,7 +6280,7 @@ function checkGame10() {
             } else {
                 // 檢查是否有任一組全對
                 let anyGroupDone = false;
-                [1,2,3,4,5,6,7,8,9,10].forEach(g => {
+                [1,2,3,4,5,6,7,8,9,10,12].forEach(g => {
                     if (!g14GroupBlanks[g]) return;
                     let gCorrect = 0;
                     g14GroupBlanks[g].forEach(bid => {
@@ -14188,6 +14338,150 @@ window.addEventListener('resize', () => {
                 card.className = g34PlacedCardClass('correct');
             });
             showToast('📖 第34關解答已顯示！', 'info');
+        }
+
+        function normalizeFillAnswer(value) {
+            return String(value || '').trim().replace(/\s+/g, '').replace(/，/g, ',');
+        }
+
+        function initGame35() {
+            document.querySelectorAll('.g35-input').forEach(function(input) {
+                input.value = '';
+                input.className = 'g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 text-center text-white ' + (input.classList.contains('w-20') ? 'w-20' : 'w-24');
+                input.oninput = function() { triggerTimer(); };
+            });
+        }
+
+        function checkGame35() {
+            var correct = 0;
+            var total = 0;
+            document.querySelectorAll('.g35-input').forEach(function(input) {
+                total++;
+                var ok = normalizeFillAnswer(input.value) === normalizeFillAnswer(input.dataset.answer);
+                input.classList.remove('border-slate-600', 'border-emerald-500', 'border-rose-500', 'bg-emerald-950', 'bg-rose-950');
+                input.classList.add(ok ? 'border-emerald-500' : 'border-rose-500', ok ? 'bg-emerald-950' : 'bg-rose-950');
+                if (ok) correct++;
+            });
+            if (correct === total) {
+                completedGames.game35 = true;
+                recordTime(35);
+                soundSuccess();
+                showConfetti();
+                showToast('🎉 填空題全部正確！', 'success');
+            } else {
+                soundError();
+                showToast('❌ 答對 ' + correct + '/' + total + '，請修正紅框答案。', 'error');
+            }
+            updateTrophyCount();
+        }
+
+        function showAnswer35() {
+            document.querySelectorAll('.g35-input').forEach(function(input) {
+                input.value = input.dataset.answer;
+                input.classList.remove('border-slate-600', 'border-rose-500', 'bg-rose-950');
+                input.classList.add('border-emerald-500', 'bg-emerald-950');
+            });
+            showToast('📖 第35關解答已填入！', 'info');
+        }
+
+        const g36DefItems = [
+            { id: 'perf', left: '績效', answer: '可量測之結果。' },
+            { id: 'hazard', left: '危害', answer: '潛在造成人員受傷及健康妨礙之來源。' },
+            { id: 'competence', left: '適任性', answer: '運用知識與技能達成預期結果之能力。' },
+            { id: 'incident', left: '事故', answer: '由工作所引起或工作過程中發生，可能或確實造成受傷及健康妨礙的情勢。' },
+            { id: 'risk', left: '風險', answer: '不確定性之效應。' }
+        ];
+        const g36DefOptions = [
+            '不確定性之效應。',
+            '運用知識與技能達成預期結果之能力。',
+            '潛在造成人員受傷及健康妨礙之來源。',
+            '由工作所引起或工作過程中發生，可能或確實造成受傷及健康妨礙的情勢。',
+            '可量測之結果。'
+        ];
+        const g36CommitteeItems = [
+            { id: 'a', left: '第二類事業｜500人餐旅業', answer: '召開' },
+            { id: 'b', left: '第二類事業｜250人醫院', answer: '不用召開' },
+            { id: 'c', left: '第二類事業｜200人印刷製品製造業', answer: '不用召開' },
+            { id: 'd', left: '第一類事業｜200人紡織業', answer: '召開' },
+            { id: 'e', left: '第一類事業｜120人水泥製品製造業', answer: '召開' }
+        ];
+
+        function initGame36() {
+            renderG36Rows('g36-def-rows', g36DefItems, g36DefOptions);
+            renderG36Rows('g36-committee-rows', g36CommitteeItems, ['召開', '不用召開']);
+        }
+
+        function renderG36Rows(containerId, items, options) {
+            var container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = items.map(function(item) {
+                var buttons = options.map(function(opt) {
+                    return '<button type="button" class="g36-choice bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 px-3 py-2 rounded-lg text-left text-sm transition" data-value="' + escapeHtml(opt) + '">' + escapeHtml(opt) + '</button>';
+                }).join('');
+                return '<div class="g36-row bg-slate-900/70 border border-slate-700 rounded-xl p-3" data-answer="' + escapeHtml(item.answer) + '">' +
+                    '<div class="font-bold text-white mb-2">' + escapeHtml(item.left) + '</div>' +
+                    '<div class="grid md:grid-cols-2 gap-2">' + buttons + '</div>' +
+                    '</div>';
+            }).join('');
+            container.querySelectorAll('.g36-choice').forEach(function(btn) {
+                btn.onclick = function() {
+                    triggerTimer();
+                    soundClick();
+                    var row = btn.closest('.g36-row');
+                    row.dataset.selected = btn.dataset.value;
+                    row.querySelectorAll('.g36-choice').forEach(function(b) {
+                        b.className = 'g36-choice bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 px-3 py-2 rounded-lg text-left text-sm transition';
+                    });
+                    btn.className = 'g36-choice bg-cyan-900/70 border border-cyan-400 text-cyan-100 px-3 py-2 rounded-lg text-left text-sm transition ring-2 ring-cyan-400';
+                };
+            });
+        }
+
+        function checkGame36() {
+            var correct = 0;
+            var total = 0;
+            document.querySelectorAll('.g36-row').forEach(function(row) {
+                total++;
+                var ok = row.dataset.selected === row.dataset.answer;
+                row.classList.remove('border-slate-700', 'border-emerald-500', 'border-rose-500');
+                row.classList.add(ok ? 'border-emerald-500' : 'border-rose-500');
+                if (ok) correct++;
+            });
+            if (correct === total) {
+                completedGames.game36 = true;
+                recordTime(36);
+                soundSuccess();
+                showConfetti();
+                showToast('🎉 連連看全部正確！', 'success');
+            } else {
+                soundError();
+                showToast('❌ 答對 ' + correct + '/' + total + '，請修正紅框題目。', 'error');
+            }
+            updateTrophyCount();
+        }
+
+        function showAnswer36() {
+            document.querySelectorAll('.g36-row').forEach(function(row) {
+                row.dataset.selected = row.dataset.answer;
+                row.querySelectorAll('.g36-choice').forEach(function(btn) {
+                    var ok = btn.dataset.value === row.dataset.answer;
+                    btn.className = ok
+                        ? 'g36-choice bg-emerald-900/70 border border-emerald-400 text-emerald-100 px-3 py-2 rounded-lg text-left text-sm transition ring-2 ring-emerald-400'
+                        : 'g36-choice bg-slate-800 border border-slate-700 text-slate-400 px-3 py-2 rounded-lg text-left text-sm transition';
+                });
+                row.classList.remove('border-slate-700', 'border-rose-500');
+                row.classList.add('border-emerald-500');
+            });
+            showToast('📖 第36關解答已顯示！', 'info');
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
 
 </script>
