@@ -485,7 +485,10 @@
                     <i data-lucide="timer" class="text-sky-400 w-3.5 h-3.5"></i>
                     <span id="timer-label" class="text-sky-300 font-bold">00:00</span>
                 </div>
-                <span id="ls-save-indicator" class="hidden text-xs text-emerald-400 bg-slate-800/80 px-2 py-1.5 rounded-lg border border-slate-700">💾 已存檔</span>
+                <button id="ls-save-indicator" onclick="manualSaveNow()" class="text-xs text-emerald-300 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-emerald-700/60 hover:bg-emerald-900/30 hover:text-emerald-100 transition flex items-center gap-1.5" title="立即儲存目前進度">
+                    <i data-lucide="save" class="w-3.5 h-3.5"></i>
+                    <span id="ls-save-label">一鍵存檔</span>
+                </button>
 <button onclick="goToNextGame()" class="flex items-center gap-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 px-4 py-2 rounded-lg transition font-bold text-sm shadow-lg">
                     下一關 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
@@ -9561,6 +9564,18 @@ function checkGame10() {
             }
         }
 
+        async function manualSaveNow() {
+            soundClick();
+            lsSave();
+            if (typeof hasCloudSyncCode === 'function' && hasCloudSyncCode()) {
+                _cloudAutoSaveDirty = true;
+                await flushCloudAutoSave('manual-save-button');
+                showToast('💾 已存到本機並送出雲端同步', 'success');
+                return;
+            }
+            showToast('💾 已存到本機', 'success');
+        }
+
         function lsLoad() {
             try {
                 const raw = localStorage.getItem(LS_KEY);
@@ -9664,16 +9679,22 @@ function exportSave() {
         function _lsShowIndicator() {
             const el = document.getElementById('ls-save-indicator');
             if (el) {
+                const label = document.getElementById('ls-save-label');
                 const raw = localStorage.getItem(LS_KEY);
                 const state = raw ? safeJsonParse(raw, null) : null;
-                el.textContent = state && state.savedAt ? '💾 ' + state.savedAt : '💾 已存檔';
+                const text = state && state.savedAt ? '已存檔 ' + state.savedAt : '一鍵存檔';
+                if (label) label.textContent = text;
+                else el.textContent = '💾 ' + text;
                 el.classList.remove('hidden');
+                safeCreateIcons();
             }
         }
 
         function _lsHideIndicator() {
             const el = document.getElementById('ls-save-indicator');
-            if (el) el.classList.add('hidden');
+            const label = document.getElementById('ls-save-label');
+            if (label) label.textContent = '一鍵存檔';
+            if (el) el.classList.remove('hidden');
         }
 
         // Restore a specific game's DOM state after initGameN() is called
