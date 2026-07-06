@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!-- v8.0 build 2026-07-02 -->
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>乙級職業安全管理員測驗系統 v7.1（模擬考試：學科＋術科）</title>
+<title>乙級職業安全管理員測驗系統 v8.0（模擬考試：學科＋術科）</title>
 <style>
 :root{--primary:#1a5276;--pl:#2980b9;--ok:#1e8449;--err:#922b21;--warn:#d68910;--bg:#f4f6f8;--card:#fff;--text:#1c2833;--muted:#7f8c8d;--bdr:#d5d8dc;--sh:0 2px 8px rgba(0,0,0,.1)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -11,8 +12,6 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
 #app{max-width:880px;margin:0 auto;padding:20px 16px}
 .card{background:var(--card);border-radius:12px;box-shadow:var(--sh);padding:26px;margin-bottom:14px}
 .screen{display:none}.screen.active{display:block}
-.fixed-back-main{position:fixed;right:18px;bottom:18px;z-index:80;display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:10px 14px;border-radius:999px;border:1px solid #9dc6ba;background:rgba(26,82,118,.94);color:#fff;text-decoration:none;font-weight:900;box-shadow:0 10px 26px rgba(26,82,118,.24)}
-.fixed-back-main:hover{background:#154360}
 /* header */
 .site-hd{text-align:center;padding:16px 0 8px}
 .site-hd h1{font-size:1.55rem;color:var(--primary);font-weight:700}
@@ -114,7 +113,6 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
   .mode-row{flex-direction:column}
   .tname{width:105px;font-size:.76rem}
   .stat-box .num{font-size:1.4rem}
-  .fixed-back-main{right:12px;bottom:12px;padding:9px 12px;font-size:.88rem}
 }
 /* law update banner */
 .law-banner{background:linear-gradient(135deg,#1a5276,#2980b9);color:#fff;border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:.86rem;line-height:1.6}
@@ -156,18 +154,17 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
 </style>
 </head>
 <body>
-<a class="fixed-back-main" href="index.html">← 返回職安大師</a>
 <div id="app">
 
 <!-- HOME -->
 <div id="screen-home" class="screen active">
   <div class="site-hd">
-    <h1>🏗️ 乙級職業安全管理員<span class="badge-new">v7.0 模擬考試</span></h1>
-    <p>模擬考試分「學科考試」（單選＋複選，729 題庫）與「術科考試」（計算／填充／問答／配合 104 題，關鍵字計分）｜另有自適應練習與分類練習</p>
+    <h1>🏗️ 乙級職業安全管理員<span class="badge-new">v8.0 模擬考試</span></h1>
+    <p>模擬考試分「學科考試」（單選＋複選）與「術科考試」（計算／填充／問答／配合，關鍵字計分）｜另有自適應練習與分類練習</p>
   </div>
 
   <div class="law-banner">
-    <strong>📘 v7.1 更新：自課程講義 PDF「化學性危害預防」「營造作業安全」擴充，新增學科 13 題、術科 4 題（正己烷神經炎、錳與巴金森氏症、鉻酸鼻中膈穿孔、酸性白土塵肺症、呼吸道暴露途徑、LD50、單純性窒息物質、營造職災占比、高架作業認定、模板支撐330㎡、粒狀有害物；營造施工災害五類型、施工安全管理內容、吸收劑量計算、職業病與致病物質配對）。目前學科 760 題、術科 117 題，及格 60 分。</strong>
+    <strong>📘 v8.0 更新：①模擬考全面擬真——單選60題(1分)＋複選20題(2分)共100分、100分鐘倒數計時、自動交卷、以分數計成績；②弱點診斷升級——跨場次累計主題正確率、錯題間隔重練（1/3/7/14天，連對4次移除）；③新增115.7.1施行職安法修法題組（營造源頭防災、承攬管理、職場霸凌專章、擴大公布）、高氣溫熱危害指引第三版、風險評估、個人防護、環保節能、工作倫理共學科52題＋術科10題；④鍵盤快捷鍵（1-4/A-D選答、Enter下一題、←→換題）與詳解法條出處。目前學科 855 題、術科 157 題，及格 60 分。</strong>
   </div>
 
   <div class="card">
@@ -194,7 +191,7 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
       <div class="sec-title mt12">選擇考試類型</div>
       <div class="mode-row">
         <button class="mode-btn active" onclick="selExam('academic')" id="exam-academic">
-          <span class="mi">📝</span><span class="mn">學科考試</span><span class="md">單選＋複選 80題 100分鐘</span>
+          <span class="mi">📝</span><span class="mn">學科考試</span><span class="md">單選60題(1分)＋複選20題(2分)｜100分鐘｜60分及格</span>
         </button>
         <button class="mode-btn" onclick="selExam('skill')" id="exam-skill">
           <span class="mi">🛠️</span><span class="mn">術科考試</span><span class="md">計算／填充／問答／配合</span>
@@ -239,6 +236,7 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
     <div class="qhdr">
       <span class="qmeta" id="q-counter">第 1/40 題</span>
       <div style="display:flex;gap:10px;align-items:center">
+        <span class="qmeta" id="q-timer" style="display:none;font-weight:700">⏱ 100:00</span>
         <span class="qmeta" id="q-score">✓ 0 分</span>
         <button class="btn bo bsm" onclick="endEarly()">結束</button>
       </div>
@@ -261,7 +259,9 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
     </div>
     <div class="fb" id="fb" style="display:none"></div>
     <div class="next-wrap">
+      <button class="btn bo" id="prev-btn" onclick="prevQ()" style="display:none">← 上一題</button>
       <button class="btn bp" id="next-btn" onclick="nextQ()" style="display:none">下一題 →</button>
+      <button class="btn bp" id="submit-exam-btn" onclick="submitExam()" style="display:none">交卷看成績</button>
     </div>
   </div>
 </div>
@@ -353,7 +353,9 @@ body{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(-
     </div>
     <div class="fb" id="sk-fb" style="display:none"></div>
     <div class="next-wrap">
+      <button class="btn bo" id="sk-prev" onclick="skPrev()" style="display:none">← 上一題</button>
       <button class="btn bp" id="sk-next" onclick="skNext()" style="display:none">下一題 →</button>
+      <button class="btn bp" id="sk-submit-exam" onclick="skSubmitExam()" style="display:none">交卷看成績</button>
     </div>
   </div>
 </div>
@@ -1396,13 +1398,129 @@ pairs:[
  {id:757,topic:'營造作業',q:'依高架作業勞工保護措施標準，已依規定設置平台、護欄等設備並採取防止墜落必要安全措施者，其高度達幾公尺以上始為高架作業？',opts:['2公尺','3公尺','5公尺','7公尺'],ans:2,type:'single',explain:'依高架作業勞工保護措施標準，未設置平台護欄等設備而採必要安全措施者，高度在2公尺以上即為高架作業；已依規定設置平台、護欄等設備並採防墜必要措施者，則高度在5公尺以上者方為高架作業。'},
  {id:758,topic:'營造作業',q:'依營造安全衛生設施標準，模板支撐高度達多少公尺以上且面積達330平方公尺以上者，應由專任工程人員或委由相關執業技師依結構力學原理妥為設計？',opts:['5公尺','7公尺','9公尺','10公尺'],ans:1,type:'single',explain:'為防止模板倒塌，高度在7公尺以上且面積達330平方公尺以上之模板支撐，其構築及拆除應事先依模板形狀、預期荷重及混凝土澆置方法，由所僱專任工程人員或委由執業技師依結構力學原理設計，置備施工圖說及強度計算書並簽章確認。'},
  {id:759,topic:'營造作業',q:'對於營造施工可能之潛在危害，採行對策之優先順序，下列何者正確？',opts:['加強安全管理→設置安全設施→強化工程本質安全','強化工程本質安全→設置安全設施→加強安全管理','設置安全設施→加強安全管理→強化工程本質安全','加強安全管理→強化工程本質安全→設置安全設施'],ans:1,type:'single',explain:'施工災害預防對策之採行依序為：強化工程本質安全（從設計、施工方法消除危害）→設置安全設施（含警告標示、安全設備）→加強安全管理；本質安全為最優先且最有效之手段。'},
- {id:760,topic:'作業環境',q:'下列何者屬於空氣中之「粒狀有害物」？（複選）',opts:['粉塵','燻煙','霧滴','氯氣'],ans:[0,1,2],type:'multi',explain:'空氣中有害物分為粒狀（粉塵、燻煙、煙塵、霧滴、纖維、霧）與氣狀（氣體、蒸氣）；氯氣於常溫常壓為氣態，屬氣狀有害物而非粒狀。'}
+ {id:760,topic:'作業環境',q:'下列何者屬於空氣中之「粒狀有害物」？（複選）',opts:['粉塵','燻煙','霧滴','氯氣'],ans:[0,1,2],type:'multi',explain:'空氣中有害物分為粒狀（粉塵、燻煙、煙塵、霧滴、纖維、霧）與氣狀（氣體、蒸氣）；氯氣於常溫常壓為氣態，屬氣狀有害物而非粒狀。'},
+// ===== 2026 課程PDF補充（化學性危害、物理性危害｜學科）=====
+ {id:761,topic:'化學品',q:'刺激性氣體對呼吸道之作用部位與其水溶性有關。下列何者主要作用於「上呼吸道」？',opts:['氨、氯化氫、甲醛等高溶解度者','二氧化氮、光氣等低溶解度者','僅一氧化碳等不溶性氣體','僅惰性氣體'],ans:0,type:'single',explain:'高溶解度刺激物（氨、氯化氫、氟化氫、甲醛）一接觸即溶於上呼吸道黏膜而作用於上呼吸道；中溶解度者（二氧化硫、氯、溴）同時影響上、下呼吸道；低溶解度者（二氧化氮、光氣）穿透至下呼吸道末端，潛伏後易致肺水腫。'},
+ {id:762,topic:'化學品',q:'一般而言，職業性中毒事故約有百分之九十係經由下列何種途徑使有害物進入人體？',opts:['呼吸道吸入','皮膚接觸','食入','眼睛接觸'],ans:0,type:'single',explain:'蒸氣、氣體、燻煙、粉塵經鼻口進入氣管、支氣管而至肺部，再經血液送至各器官，約90%中毒事故由此途徑發生，故通風換氣與呼吸防護為化學危害控制重點。'},
+ {id:763,topic:'化學品',q:'下列何者「並非」防範有害物經食入途徑進入人體之適當方法？',opts:['將食物與有害物質適當隔離','不在有害物作業場所進食、飲水或吸菸','養成洗手、漱口之良好習慣','僅穿著一般工作服即可避免食入'],ans:3,type:'single',explain:'防範食入應從隔離食物、不在污染場所飲食吸菸、勤洗手漱口著手；穿一般工作服主要防皮膚接觸，無法防止經口食入。食入因胃酸、腸鹼及肝代謝等作用，並非危害最大之途徑，但仍須避免。'},
+ {id:764,topic:'物理危害',q:'量測綜合溫度熱指數（WBGT）所使用之「黑球溫度計」，係以直徑15公分之中空黑色銅球量測，其代表下列何種效應？',opts:['輻射熱之效應','單純空氣溫度之效應','相對濕度之效應','風速之效應'],ans:0,type:'single',explain:'黑球溫度（TGT）以直徑15公分中空黑銅球中央插入溫度計量測，代表輻射熱效應，約需25分鐘達穩定平衡；自然濕球溫度代表空氣溫度、濕度及風速之綜合效應；乾球溫度代表單純空氣溫度。'},
+ {id:765,topic:'物理危害',q:'於室內或無日曬之戶外，下列何項參數對綜合溫度熱指數（WBGT）數值之影響最大？',opts:['自然濕球溫度','乾球溫度','黑球溫度','風速'],ans:0,type:'single',explain:'室內WBGT＝0.7×自然濕球溫度＋0.3×黑球溫度，自然濕球溫度權重達0.7為最高，故對WBGT影響最大；其同時反映氣溫、濕度與風速之綜合效應。'},
+ {id:766,topic:'物理危害',q:'「風寒指數（wind chill index）」主要用以評估下列何種作業環境？',opts:['冷環境','熱環境','高架作業環境','精密作業環境'],ans:0,type:'single',explain:'風寒指數同時考量空氣溫度與風速對人體散熱速率之影響，用以評估低溫（冷）環境；風速越大、氣溫越低，人體感覺溫度越低，凍傷與低體溫風險越高。'},
+ {id:767,topic:'物理危害',q:'依高溫作業勞工作息時間標準，「於走動中提舉或推動一般重量物體者」屬於下列何種工作等級？',opts:['中度工作','輕工作','重工作','極重工作'],ans:0,type:'single',explain:'該標準將工作分為輕工作（僅坐姿或立姿操作機器之手臂部動作）、中度工作（走動中提舉或推動一般重量物體）、重工作（鏟、掘、推等全身運動）；工作越重，容許之時量平均WBGT越低。'},
+ {id:768,topic:'物理危害',q:'依高溫作業勞工作息時間標準，調整作業與休息比例時，休息區之綜合溫度熱指數（WBGT）原則上不得低於攝氏幾度？',opts:['24度','18度','20度','28度'],ans:0,type:'single',explain:'降低休息區WBGT可降低時量平均WBGT而增加可工作時間，惟休息區WBGT不得低於24℃，以免與作業區溫差過大造成生理負擔；另作業場所黑球溫度達50℃以上時應供給身體熱防護設備。'},
+// ===== 2026 課程PDF補充（組織協調與溝通、工作倫理、危害通識｜學科）=====
+ {id:769,topic:'管理系統',q:'管理者要有效執行工作達成組織目標，通常需具備技術性技巧、人性技巧及理念性技巧三種技巧。其中「與人相處、協調溝通能力以及判斷力」係屬下列何種技巧？',opts:['技術性技巧','人性技巧','理念性技巧','專業性技巧'],ans:1,type:'single',explain:'管理者三技巧：技術性技巧（工作所需知識方法與技術能力）、人性技巧（與人相處、協調溝通能力及判斷力）、理念性技巧（從方向面、整體面與策略面思考決策）；各階層管理人員均須具備相當程度之人性技巧。'},
+ {id:770,topic:'管理系統',q:'根據統計，一般管理者平均花在「協調與溝通」之時間約佔其工作時間之多少比例？',opts:['約25%','約50%','約75%','約90%'],ans:2,type:'single',explain:'據統計一般管理者平均約有75%時間花在協調與溝通，可見其對主管之重要；安全衛生人員推動工作除理念思考與技術學習外，更應強化協調溝通技巧方能有效推動。'},
+ {id:771,topic:'管理系統',q:'周哈里窗（Johari Window）將人際認知分為公開、盲目、隱私、未知四區域。其中「自己不知道而他人卻知道」的區域稱為何？主要可透過下列何種方式縮小？',opts:['公開區；透過表露','盲目區；透過互相回饋','隱私區；透過嘗試','未知區；透過澄清'],ans:1,type:'single',explain:'周哈里窗：公開（自己與他人皆知）、盲目（己不知他人知，往往為不自覺之缺點，透過互相回饋縮小）、隱私（己知他人不知，透過表露縮小）、未知（彼此皆不知，透過嘗試與澄清縮小）。'},
+ {id:772,topic:'管理系統',q:'相較於單向溝通，下列關於「雙向溝通」特性之敘述何者正確？（複選）',opts:['內容的正確性較優','回饋較多','傳遞速度較慢','發訊者的心理壓力較小'],ans:[0,1,2],type:'multi',explain:'雙向溝通：正確性優、回饋多、受訊者較有信心，但傳遞速度慢、傳播情況較吵雜、發訊者心理壓力較大；單向溝通則速度快、安靜、發訊者壓力小，但正確性劣、回饋少。'},
+ {id:773,topic:'管理系統',q:'溝通程序由觀念、編碼、傳遞、噪音、接收、解碼、行動等元素構成。其中「接收者必須具備能力，將訊息重新解釋為傳送者所期望之意義」係指下列何項程序？',opts:['編碼（Encoding）','傳遞（Transmission）','解碼（Decoding）','行動（Action）'],ans:2,type:'single',explain:'解碼（Decoding）為接收者將收到之訊息重新解釋為傳送者期望意義之過程；因每人經驗、思維邏輯、文化與生活習慣不同，對同一句話常有不同解讀，故為溝通障礙之一。'},
+ {id:774,topic:'工作倫理',q:'勞動部於108年5月修正之「工作倫理與職業道德」職業倫理技能項目，相較105年版新增下列何者？',opts:['尊重智慧財產權','保守營業秘密','遵守性別工作平等、遵守菸害防制','避免利益衝突'],ans:2,type:'single',explain:'108年5月修正之職業倫理技能共10項，較105年版新增「遵守性別工作平等」與「遵守菸害防制」二項；其餘如個資保護、智財權、營業秘密、避免利益衝突、與政府機關互動規範、維繫公共利益、職業素養及敬業精神、維護工作環境整潔安全等多沿用。'},
+ {id:775,topic:'工作倫理',q:'依勞動基準法第70條規定，雇主僱用勞工人數達多少人以上者，應依其事業性質訂立工作規則，報請主管機關核備後公開揭示之？',opts:['10人','30人','50人','100人'],ans:1,type:'single',explain:'勞基法第70條規定僱用勞工30人以上者，應就工時、休假、工資、獎懲、考勤、請假、退休、災害補償等事項訂立工作規則，報請主管機關核備後公開揭示；勞工遵守工作規則正是實踐職業倫理之具體展現。'},
+ {id:776,topic:'工作倫理',q:'依專利法，「發明專利權」之專利期限自申請日起算為多少年？',opts:['10年','12年','15年','20年'],ans:3,type:'single',explain:'發明專利權期限自申請日起20年（新型專利10年、設計專利15年）；尊重智慧財產權（著作權、商標權、專利權、營業秘密等）為職業倫理之重要內涵，而著作權不需申請即可享有。'},
+ {id:777,topic:'工作倫理',q:'關於職業倫理中「保守營業秘密」之敘述，下列何者正確？（複選）',opts:['受僱者因承辦業務而知悉之營業秘密，離職後仍不得洩漏','受僱人於職務上研究開發之營業秘密，契約未約定時歸雇主所有','行為人以不正當方法取得營業秘密，構成犯罪','只要離職即可自由使用原雇主之營業秘密'],ans:[0,1,2],type:'multi',explain:'營業秘密應予保守，受僱者離職後仍負保密義務；職務上研發之營業秘密契約未約定時歸雇主所有；以不正當方法取得營業秘密構成犯罪；雇主並得與員工簽訂競業禁止條款。'},
+ {id:778,topic:'化學品',q:'毒性指標「半數致死濃度（LC50）」之敘述，下列何者正確？',opts:['LC50數值越高代表毒性越大','係以注射或餵食一定劑量（毫克/公斤）測定','使一群試驗動物暴露於一定濃度氣體、蒸氣或塵霧1至4小時，觀察14天後造成半數死亡之濃度','LC50在2500ppm以上者即屬毒性氣體'],ans:2,type:'single',explain:'LC50（半數致死濃度）係使動物暴露於一定濃度之氣體、蒸氣或塵霧1至4小時、觀察14天後造成半數死亡之濃度，數值越低毒性越大，LC50在2500ppm以下者屬毒性氣體；以注射或餵食劑量（mg/kg）測定者為LD50（半數致死量）。'},
+ {id:779,topic:'物理危害',q:'依高溫作業環境評估，評估溫度對人體影響之「溫濕四要素」，不包括下列何者？',opts:['氣溫（空氣溫度）','相對濕度','風速（氣動）','大氣壓力'],ans:3,type:'single',explain:'溫濕四要素為氣溫、相對濕度、風速及輻射熱，此四項綜合決定人體之冷熱感覺與熱蓄積。大氣壓力非屬溫濕四要素，而屬異常氣壓危害之範疇。'},
+ {id:780,topic:'物理危害',q:'綜合溫度熱指數（WBGT）測定中，黑球溫度計主要用以測定下列何者之效應？',opts:['空氣溫度','空氣濕度','輻射熱','空氣流動'],ans:2,type:'single',explain:'黑球溫度計採直徑15公分之中空黑色銅球、中央插入溫度計，用以測定輻射熱之效應；乾球溫度代表空氣溫度，自然濕球溫度則綜合反映氣溫、濕度與風速之效應。'},
+ {id:781,topic:'物理危害',q:'熱危害中因皮下血管擴張致大腦皮質血液供應不足而造成之虛脫狀態，屬下列何種熱疾病？',opts:['熱衰竭','失水','熱痙攣','熱中暑'],ans:0,type:'single',explain:'熱衰竭係因大量出汗致血量減少、皮下血管擴張，使大腦皮質血液供應不足而虛脫，症狀為疲倦、暈眩、蒼白，體溫正常或略低；處置為移至陰涼通風處休息並使頭部略低於腳部。'},
+ {id:782,topic:'化學品',q:'依有機溶劑中毒預防規則，二硫化碳屬於第幾種有機溶劑？',opts:['第一種有機溶劑','第二種有機溶劑','第三種有機溶劑','非屬有機溶劑'],ans:0,type:'single',explain:'二硫化碳屬第一種有機溶劑，危害性高；第一種有機溶劑之作業場所應設置密閉設備或局部排氣裝置，並至少每6個月實施一次作業環境監測。'},
+ {id:783,topic:'物理危害',q:'勞工於高溫作業因大量排汗致體內氯化鈉等電解質流失而發生肌肉痙攣（熱痙攣）時，下列處置何者最適當？',opts:['僅給予大量清水','給予適量食鹽水或運動飲料','給予退燒藥','以冰水浸泡全身'],ans:1,type:'single',explain:'熱痙攣係排汗過多致水分與鹽分（電解質）流失所致；僅補充清水會稀釋體內鹽分而無法改善，應給予適量食鹽水或運動飲料以補充電解質。'},
+ {id:784,topic:'物理危害',q:'高溫作業環境中，當相對濕度高且無風時，人體特別感到悶熱之主要原因為下列何者？',opts:['汗水及體表熱量不易經由蒸發與對流散熱','此時輻射熱最強','空氣中氧氣濃度下降','氣溫必然高於體溫'],ans:0,type:'single',explain:'濕度高時汗水不易蒸發、無風時體表熱量不易經對流帶走，散熱受阻故感悶熱；反之濕度低或有風時汗水易蒸發散熱而感涼爽。'},
+ {id:785,topic:'物理危害',q:'依高溫作業勞工作息時間標準，勞工接近黑球溫度達攝氏多少度以上之高溫灼熱物體時，雇主應供給勞工身體熱防護設備並使其確實使用？',opts:['攝氏40度','攝氏45度','攝氏50度','攝氏60度'],ans:2,type:'single',explain:'依規定作業場所之黑球溫度高於攝氏50度時，雇主應供應勞工身體熱防護設備（如防輻射熱衣具）並使其確實使用，以避免輻射熱危害。'},
+// ===== 2026 課程PDF補充（危險性機械設備管理｜學科）=====
+ {id:786,topic:'危險機械',q:'依起重升降機具安全規則，為防止吊鉤或吊具與吊架、捲揚胴接觸碰撞，「直動式（重錘式）過捲預防裝置」之作動間隔應保持多少距離以上，並於鋼索上作顯著標示或設警報裝置？',opts:['0.05公尺','0.15公尺','0.25公尺','0.5公尺'],ans:0,type:'single',explain:'過捲預防裝置分兩型：直動式（重錘式）作動間隔應保持0.05公尺以上，並於鋼索上作顯著標示或設警報裝置；非直動式（間接式）則應保持0.25公尺以上。兩者均應具自動遮斷動力及制動之機能。'},
+ {id:787,topic:'危險機械',q:'依鍋爐及壓力容器安全規則與教育訓練規則，傳熱面積（HS）在500平方公尺以上之鍋爐，應由何種等級之鍋爐操作人員操作？',opts:['甲級鍋爐操作人員','乙級鍋爐操作人員','丙級鍋爐操作人員','無等級限制'],ans:0,type:'single',explain:'鍋爐操作人員依傳熱面積分級：HS≧500平方公尺須甲級；50平方公尺≦HS＜500平方公尺須乙級；HS＜50平方公尺須丙級。同一鍋爐房有二座以上鍋爐時，另應指派鍋爐作業主管指揮監督。'},
+ {id:788,topic:'危險機械',q:'依職業安全衛生設施規則，設置於室外之走行起重機，當瞬間風速有超過每秒多少公尺之虞時，應採取使防止逸走裝置（軌夾等）作用之措施？',opts:['每秒16公尺','每秒20公尺','每秒30公尺','每秒40公尺'],ans:2,type:'single',explain:'室外走行起重機之原動機馬力應能在風速每秒16公尺時仍安全駛至防逸走裝置處；而瞬間風速有超過每秒30公尺之虞時，應採取使防止逸走裝置作用之措施，以防強風吹動起重機滑走（逸走）肇災。'},
+ {id:789,topic:'危險機械',q:'依高壓氣體勞工安全規則，下列何者符合「壓縮氣體」（不含壓縮乙炔氣）之高壓氣體判定條件？',opts:['常用溫度下表壓力達每平方公分2公斤以上','常用溫度下表壓力達每平方公分10公斤以上，或溫度35℃時壓力可達每平方公分10公斤以上','溫度15℃時壓力可達每平方公分2公斤以上','內容積在500公升以上'],ans:1,type:'single',explain:'壓縮氣體（乙炔除外）：常用溫度下表壓力達10公斤以上，或溫度在35℃時壓力可達10公斤以上者。壓縮乙炔氣則為2公斤（15℃可達2）；液化氣體亦為2公斤。'},
+ {id:790,topic:'危險機械',q:'依起重升降機具安全規則，以起重機之搭乘設備乘載人員時，其懸吊用鋼索或鋼線之安全係數應在多少以上？',opts:['5以上','6以上','8以上','10以上'],ans:3,type:'single',explain:'搭乘設備之懸吊用鋼索或鋼線安全係數應在10以上，吊鏈、吊帶及其支點之安全係數應在5以上；搭乘設備周圍並應設置90公分以上之扶手、中欄杆及腳趾板。此標準較一般吊掛用鋼索（安全係數6以上）更嚴格。'},
+ {id:791,topic:'危險機械',q:'某新設固定式起重機之額定荷重為180公噸。依危險性機械及設備安全檢查規則，其竣工檢查之荷重試驗應以多少公噸之荷重實施？',opts:['180公噸','200公噸','225公噸','230公噸'],ans:2,type:'calc',explain:'固定式起重機荷重試驗：額定荷重（W）在200公噸以下者以1.25W實施；超過200公噸者以W＋50公噸實施。本題W＝180≦200，故荷重試驗＝1.25×180＝225公噸。（安定性試驗則為1.27W）'},
+ {id:792,topic:'危險機械',q:'依高壓氣體勞工安全規則，所稱「冷凍機器」係指專供冷凍設備使用之機械，且一日之冷凍能力在多少公噸以上者？',opts:['1公噸','3公噸','5公噸','10公噸'],ans:1,type:'single',explain:'冷凍機器指一日冷凍能力在3公噸以上者。冷凍能力換算：使用離心式壓縮機者，以原動機額定輸出1.2瓩為一日冷凍能力1公噸；使用吸引式冷凍設備者，以一小時加熱於發生器之入熱量6640仟卡為一日冷凍能力1公噸。'},
+ {id:793,topic:'危險機械',q:'依高壓氣體勞工安全規則，高壓氣體設備（高壓氣體容器除外）應以常用壓力多少倍以上之壓力實施耐壓試驗合格？',opts:['1.2倍','1.5倍','2倍','3倍'],ans:1,type:'single',explain:'高壓氣體設備應以常用壓力1.5倍以上之壓力實施耐壓試驗，並以常用壓力以上之壓力實施氣密試驗；且應具有以常用壓力2倍以上加壓時不致引起降伏變形之厚度。'},
+ {id:794,topic:'機械安全',q:'依職業安全衛生設施規則第44條，關於機械之動力遮斷裝置（包括開關、離合器、移帶裝置）之設置，下列敘述何者正確？',opts:['數具機械共用一個總開關即可，以節省成本','每一具機械應分開設置動力遮斷裝置，並置於勞工無須離開工作崗位即可操作之場所','動力遮斷裝置應設於遠離作業區之集中控制室','僅高危害機械需設置，一般機械得免設'],ans:1,type:'single',explain:'動力遮斷裝置（開關、離合器、移帶裝置）應每一具機械分開設置、不得共用，並置於勞工無須離開工作崗位即可操作之處，且應具易於操作、不因意外接觸或振動致機械驟然開動之性能（如採埋入型按鈕）。'},
+ {id:795,topic:'機械安全',q:'依職業安全衛生設施規則，離地多少公尺以內之傳動帶，或附近有勞工工作、通行而有接觸危險者，應裝置適當之圍柵或護網？',opts:['1公尺','2公尺','3公尺','5公尺'],ans:1,type:'single',explain:'離地2公尺以內之傳動帶（或附近有接觸危險者）應設圍柵或護網；另幅寬20公分以上、速度每分鐘550公尺以上、兩軸間距離3公尺以上之架空傳動帶週邊下方有勞工工作或通行者，亦應裝設堅固之圍柵或護網。'},
+ {id:796,topic:'機械安全',q:'依機械設備器具安全標準，衝剪機械之「雙手操作式安全裝置」應符合下列哪些規定？（複選）',opts:['左右手動作時間差非在0.5秒以內時，滑塊等無法動作','按鈕外側與其他按鈕外側至少距離300毫米（30公分）以上','按鈕採用按鈕盒者，該按鈕不得凸出按鈕盒表面','雙手未離開一行程操作部即可再次起動，以提升效率'],ans:[0,1,2],type:'multi',explain:'雙手操作式安全裝置須具同時性（左右手動作時間差在0.5秒以內方能動作）、兩按鈕外側距離300毫米以上、按鈕不得凸出按鈕盒（或機械）表面，並具「雙手未離開操作部時無法再起動」之構造；選項④敘述相反，應為雙手均離開後同時再按方能起動。'},
+ {id:797,topic:'機械安全',q:'依工業用機器人危害預防標準，為防止人員於機器人運轉中進入其可動範圍而遭撞擊、夾捲，雇主應於機器人可動範圍之外側設置何種防護？',opts:['僅張貼警告標示即可','設置圍柵或護圍','塗覆黃黑警戒漆','加裝照明設備'],ans:1,type:'single',explain:'工業用機器人可動範圍之外側應依規定設置圍柵或護圍（危害預防標準第21條）；機器人並應具發生異常時可立即停止動作之緊急停止裝置（第4條），教導或維修作業時應使用「服役開關」（Dead man switch）等安全措施。'},
+ {id:798,topic:'機械安全',q:'依職業安全衛生設施規則，對於離心機械之迴轉試驗，當周速度超過每秒多少公尺時，應在專用建築物內或以堅固隔牆隔離之場所實施？',opts:['每秒10公尺','每秒25公尺','每秒50公尺','每秒100公尺'],ans:1,type:'single',explain:'高速迴轉體因離心力可能碎裂飛擊肇災，故規定不得超越機械最高使用回轉數；周速度超過每秒25公尺之迴轉試驗，應在專用建築物內或有堅固隔牆隔離之場所實施（設84）。'},
+ {id:799,topic:'化學品',q:'依危害性化學品標示及通識規則，符合國家標準CNS15030分類、具有「物理性危害」者，稱為下列何者？',opts:['危險物','有害物','製成品','環境危害物'],ans:0,type:'single',explain:'依規則用辭定義，「危險物」指符合CNS15030分類具有物理性危害者（如易燃、爆炸、氧化等）；「有害物」則指具有健康危害者（如毒性、致癌、腐蝕等）。'},
+ {id:800,topic:'化學品',q:'下列何者「不適用」危害性化學品標示及通識規則之標示規定？（複選）',opts:['事業廢棄物','滅火器','食品、飲料、藥物、化粧品','工廠製程中使用之工業用甲苯'],ans:[0,1,2],type:'multi',explain:'不適用本規則者包括：事業廢棄物、菸草或菸草製品、食品飲料藥物化粧品、製成品、非工業用途之一般民生消費商品、滅火器、反應槽或製程中正進行化學反應之中間產物等；工業用甲苯屬危害性化學品，仍應依規則標示。'},
+ {id:801,topic:'化學品',q:'依危害性化學品標示及通識規則，製造者、輸入者、供應者或雇主應檢討安全資料表（SDS）內容之正確性並適時更新，至少每幾年檢討一次？',opts:['每1年','每2年','每3年','每5年'],ans:2,type:'single',explain:'SDS應依實際狀況檢討內容正確性、適時更新，並至少每3年檢討一次；其更新之內容、日期、版次等更新紀錄應保存3年。'},
+ {id:802,topic:'化學品',q:'全球調和制度（GHS）之化學品分類與標示，主要係由下列哪些國際組織共同研擬完成？',opts:['世界衛生組織（WHO）與世界貿易組織（WTO）','國際勞工組織（ILO）、經濟合作發展組織（OECD）與聯合國危險物品運輸專家委員會（UNCETDG）','國際標準組織（ISO）單獨制定','聯合國環境規劃署（UNEP）單獨制定'],ans:1,type:'single',explain:'GHS由國際勞工組織（ILO）、經濟合作發展組織（OECD）及聯合國危險物品運輸專家委員會（UNCETDG）共同研擬，2003年正式國際公告，用以調和各國化學品之分類、標示及安全資料表。'},
+ {id:803,topic:'機械安全',q:'依職業安全衛生法第7條，製造者或輸入者對於中央主管機關「指定」之機械、設備或器具，認其構造、性能及防護符合安全標準者，應如何辦理，始得產製運出廠場或輸入？',opts:['向勞動檢查機構申請實地檢查合格','於中央主管機關指定之資訊申報網站登錄，並於產品明顯處張貼安全標示（自我宣告）','僅需保存符合安全標準之自主檢測報告備查','經地方主管機關核准後即可'],ans:1,type:'single',explain:'職安法第7條指定之機械設備器具採「自我宣告符合安全標準」制：製造者或輸入者應於指定資訊申報網站登錄並張貼安全標示；至於第8條公告列入型式驗證者，另須經認可驗證機構型式驗證合格並張貼合格標章。'},
+
+// ===== v8.0 新增：承攬安全（804-813）依115.7.1施行修正職安法 =====
+{id:804,topic:'承攬安全',q:'依115年7月1日施行之修正職業安全衛生法，事業單位以其事業之全部或一部分交付承攬時，對承攬人之危害告知應如何辦理？',opts:['作業開始後一週內告知即可','應實施風險評估，並依評估結果於事前告知','僅以口頭提醒注意安全','由承攬人自行查明危害'],ans:1,type:'single',explain:'修法要求事業單位交付承攬時，應「實施風險評估」並據以於事前告知承攬人其事業工作環境、危害因素暨依本法及有關安全衛生規定應採取之措施。',ref:'職業安全衛生法第26條（115.7.1施行修正）'},
+{id:805,topic:'承攬安全',q:'依修正職安法，事業單位（工程業主）將其「一定規模以上」營造工程交付規劃、設計及施工時，應依工程特性分析潛在危害並編製下列何者？',opts:['營運獲利計畫書','安全衛生圖說、規範及經費','工程進度甘特圖','勞工薪資結構表'],ans:1,type:'single',explain:'為強化營造工程「源頭防災」，修法增列工程業主應依工程特性分析潛在危害，編製安全衛生圖說、規範及經費，並使施工者採取預防作為。',ref:'職業安全衛生法（115.7.1施行修正）營造工程源頭管理'},
+{id:806,topic:'承攬安全',q:'依修正職安法擴大共同作業之防災管理，新增哪些事項？（複選）',opts:['施工現場機械、設備、器具及人員之進場管制','各級承攬人應比照原事業單位辦理防災事項','工程業主交付二個以上施工者時應指定統合管理者','原事業單位應代承攬人勞工投保勞工保險'],ans:[0,1,2],type:'multi',explain:'修法新增：進場管制、各級承攬人比照原事業單位辦理防災事項並配合承攬管理義務、二個以上施工者應指定其一負整體統合管理責任；投保勞保非本次修法內容。',ref:'職業安全衛生法（115.7.1施行修正）'},
+{id:807,topic:'承攬安全',q:'依修正職安法，工程業主將工程交付「二個以上」施工者共同施工時，應如何辦理？',opts:['各施工者各自管理互不隸屬','指定其中一施工者負整體工程安全衛生統合管理責任','由監造單位負全部安全責任','抽籤決定管理者'],ans:1,type:'single',explain:'為避免多工程界面管理真空，修法明定工程業主應指定其中一施工者，負整體工程之安全衛生統合管理責任。',ref:'職業安全衛生法（115.7.1施行修正）'},
+{id:808,topic:'承攬安全',q:'事業單位與承攬人分別僱用勞工於同一期間、同一工作場所「共同作業」時，防止職業災害之協議組織應由何者設置？',opts:['承攬人','原事業單位','勞動檢查機構','工程監造單位'],ans:1,type:'single',explain:'共同作業時，原事業單位應設置協議組織並擔任指揮、監督及協調角色，其成員包括原事業單位及全體承攬人、再承攬人。',ref:'職業安全衛生法第27條'},
+{id:809,topic:'承攬安全',q:'依職安法第27條，原事業單位與承攬人共同作業時應採取之必要措施包括？（複選）',opts:['設置協議組織並指定工作場所負責人','工作之連繫與調整','工作場所之巡視','相關承攬事業間安全衛生教育之指導及協助'],ans:[0,1,2,3],type:'multi',explain:'第27條明定四大必要措施：協議組織、連繫調整、場所巡視、安全衛生教育之指導協助，另含其他為防止職業災害之必要事項。',ref:'職業安全衛生法第27條'},
+{id:810,topic:'承攬安全',q:'承攬人以其承攬之全部或一部分「再交付承攬」時，危害告知義務應如何處理？',opts:['再承攬人自行負責，毋須告知','承攬人應比照原事業單位之告知規定，告知再承攬人','僅原事業單位須告知再承攬人','再承攬免除一切告知義務'],ans:1,type:'single',explain:'職安法規定承攬人再交付承攬時，承攬人亦應依同一規定告知再承攬人，使危害資訊逐層傳遞不中斷。',ref:'職業安全衛生法第26條第2項'},
+{id:811,topic:'承攬安全',q:'依修正職安法，事業單位將工作場所或機械、設備出租、出借予他人使用時，應於何時完成危害告知？',opts:['事後補告知即可','收取租金時','事前','發生事故後'],ans:2,type:'single',explain:'修法增列場所或設備出租（借）者之危害告知責任，應於「事前」完成危害告知，填補以往管理缺口。',ref:'職業安全衛生法（115.7.1施行修正）'},
+{id:812,topic:'承攬安全',q:'原事業單位違反職安法有關承攬管理規定，致承攬人所僱勞工發生職業災害時，應負何種責任？',opts:['與承攬人負連帶賠償責任','僅負道義責任','由承攬人單獨負責','僅負行政罰鍰責任'],ans:0,type:'single',explain:'原事業單位違反本法或有關安全衛生規定，致承攬人所僱勞工發生職業災害時，與承攬人負連帶賠償責任；再承攬者亦同。',ref:'職業安全衛生法第25條第2項'},
+{id:813,topic:'承攬安全',q:'事業單位以其事業招人承攬時，承攬人就其「承攬部分」對所僱勞工應負何種責任？',opts:['無須負責','負職安法所定雇主之責任','僅負一半責任','由原事業單位全部承擔'],ans:1,type:'single',explain:'承攬人就承攬部分負職安法所定「雇主之責任」；原事業單位就職業災害補償仍與承攬人負連帶責任。',ref:'職業安全衛生法第25條第1項'},
+
+// ===== v8.0 新增：風險評估（814-821） =====
+{id:814,topic:'風險評估',q:'依風險評估技術指引，「風險」之定義為下列何者之組合？',opts:['危害嚴重度與發生可能性','成本與效益','危害數量與勞工人數','檢查頻率與違規次數'],ans:0,type:'single',explain:'風險（Risk）＝危害事件之嚴重度（Severity）×發生可能性（Likelihood/Probability）之組合，常以風險矩陣呈現。',ref:'風險評估技術指引'},
+{id:815,topic:'風險評估',q:'風險控制措施之優先順序，最優先者為下列何者？',opts:['使用個人防護具','行政管理（輪班、標示）','消除危害','工程控制'],ans:2,type:'single',explain:'控制層級（Hierarchy of Controls）由高至低：消除→取代→工程控制→行政管理→個人防護具（PPE），應優先考慮從源頭消除危害。',ref:'風險評估技術指引／ISO 45001'},
+{id:816,topic:'風險評估',q:'下列哪些屬於「工程控制」措施？（複選）',opts:['製程密閉化','局部排氣裝置','危害源與勞工隔離','實施安全教育訓練'],ans:[0,1,2],type:'multi',explain:'工程控制係以設備、設施改善降低暴露，如密閉、局部排氣、隔離、自動化；教育訓練屬行政管理措施。'},
+{id:817,topic:'風險評估',q:'風險管理之「ALARP」原則意指為何？',opts:['所有風險必須降為零','使風險降至合理可行之最低程度','風險高低與管理無關','只處理已發生之事故'],ans:1,type:'single',explain:'ALARP（As Low As Reasonably Practicable）：在技術可行與成本合理之範圍內，將風險降至最低可接受程度。'},
+{id:818,topic:'風險評估',q:'風險評估結果落於「不可接受之高風險」區時，正確作法為何？',opts:['照常作業並加強觀察','立即採取降低風險之控制措施，風險未降低前不得作業','僅記錄備查','待年度檢討再處理'],ans:1,type:'single',explain:'高風險（不可接受風險）應立即採取消除或降低風險之措施，並於風險降至可接受水準前停止或不得進行該作業。'},
+{id:819,topic:'風險評估',q:'實施危害辨識時，應涵蓋之範圍包括哪些？（複選）',opts:['例行性作業','非例行性作業（如維修、異常處理）','承攬人及訪客之活動','僅涵蓋新購設備即可'],ans:[0,1,2],type:'multi',explain:'危害辨識應涵蓋例行與非例行作業、所有進入工作場所人員（含承攬人、訪客）之活動，以及作業場所之設施、機械與物料等。',ref:'風險評估技術指引'},
+{id:820,topic:'風險評估',q:'實施作業安全分析（JSA）之第一個步驟為何？',opts:['決定控制措施','將工作分解成基本步驟','計算風險值','填寫事故報告'],ans:1,type:'single',explain:'JSA步驟：選定作業→將作業分解為基本步驟→辨識各步驟之潛在危害→決定安全工作方法（控制措施）。'},
+{id:821,topic:'風險評估',q:'「殘餘風險（Residual Risk）」係指下列何者？',opts:['尚未辨識出之風險','採取控制措施後仍存在之風險','已完全消除之風險','僅承攬人承受之風險'],ans:1,type:'single',explain:'殘餘風險為實施風險控制措施後仍殘存之風險，須確認其已降至可接受水準，否則應再增加控制措施。'},
+
+// ===== v8.0 新增：個人防護（822-829） =====
+{id:822,topic:'個人防護',q:'依職安署指引，雇主使勞工使用呼吸防護具從事作業時，應訂定何種計畫據以執行？',opts:['生產效率計畫','呼吸防護計畫','員工旅遊計畫','薪資獎勵計畫'],ans:1,type:'single',explain:'事業單位勞工使用呼吸防護具時，雇主應依「呼吸防護計畫及採行措施指引」訂定呼吸防護計畫，內容含危害辨識、暴露評估、防護具選擇、密合度測試、訓練與維護等。',ref:'呼吸防護計畫及採行措施指引'},
+{id:823,topic:'個人防護',q:'某半面體呼吸防護具之指定防護係數（APF）為10，表示其適用於空氣中污染物濃度不超過容許濃度幾倍之環境？',opts:['5倍','10倍','50倍','100倍'],ans:1,type:'single',explain:'APF（Assigned Protection Factor）＝面體外濃度／面體內濃度之保護倍數；APF 10 表示可用於不超過容許暴露濃度10倍之環境。'},
+{id:824,topic:'個人防護',q:'緊密貼合式呼吸防護具之「密合度測試（Fit Test）」應於何時實施？',opts:['僅於防護具破損時','首次選用時實施，之後至少每年一次','每十年一次','無須實施'],ans:1,type:'single',explain:'密合度測試應於首次或重新選用呼吸防護具時實施，其後至少每年執行一次；佩戴者臉型改變（如體重明顯增減）時亦應重測。',ref:'呼吸防護計畫及採行措施指引'},
+{id:825,topic:'個人防護',q:'高處作業使用之墜落制動（防墜）個人防護系統，應採用下列何種安全帶？',opts:['腰帶式安全帶','全身背負式安全帶','單肩背帶','彈性腰帶'],ans:1,type:'single',explain:'墜落制動用途應使用「全身背負式安全帶」，使墜落衝擊力分散於大腿、骨盆、胸肩等部位；腰帶式僅適用於工作定位，不得作墜落制動使用。',ref:'職業安全衛生設施規則第281條'},
+{id:826,topic:'個人防護',q:'勞工於工作日八小時日時量平均音壓級超過85分貝之場所作業，雇主應採取下列何項措施？',opts:['僅張貼標語','採取聽力保護措施（訂定聽力保護計畫）','發給獎金補償','縮短午休時間'],ans:1,type:'single',explain:'暴露音壓級≥85dBA（TWA）時，雇主應採取聽力保護措施；勞工人數達100人以上者，應訂定聽力保護計畫據以執行。',ref:'職業安全衛生設施規則第300-1條'},
+{id:827,topic:'個人防護',q:'從事電銲作業時，眼部及臉部之防護應使用下列何者？',opts:['一般太陽眼鏡','具適當遮光度號數之銲接用防護面罩（濾光鏡片）','普通近視眼鏡','透明塑膠面罩即可'],ans:1,type:'single',explain:'銲接產生強烈可見光、紫外線及紅外線，應依銲接電流大小選用適當遮光度號數之濾光鏡片與防護面罩，防止電光性眼炎。'},
+{id:828,topic:'個人防護',q:'關於防護手套之選用，下列何者正確？（複選）',opts:['處置化學品應依SDS建議選用耐該化學品之材質','電氣活線作業應使用經檢驗合格之絕緣手套','操作刀具或銳利物件宜選用防切割手套','任何作業均戴棉紗手套即可'],ans:[0,1,2],type:'multi',explain:'手套須依危害類型選擇：耐化學（依SDS）、絕緣（電氣）、防切割等；棉紗手套不耐化學品滲透與電擊，且操作旋轉機械時反而有捲入危險。'},
+{id:829,topic:'個人防護',q:'在危害控制層級中，個人防護具（PPE）之定位為何？',opts:['最優先採用之措施','工程控制之替代品，可長期取代','控制層級中之最後一道防線','與消除危害同等優先'],ans:2,type:'single',explain:'PPE位於控制層級最低順位，應在消除、取代、工程控制、行政管理均無法充分降低風險時，作為最後防線或輔助使用。'},
+
+// ===== v8.0 新增：環保節能（830-837） =====
+{id:830,topic:'環保節能',q:'我國「氣候變遷因應法」明定國家溫室氣體長期減量目標為西元哪一年達成淨零排放？',opts:['2030年','2040年','2050年','2060年'],ans:2,type:'single',explain:'氣候變遷因應法（112年公布施行）第4條明定：國家溫室氣體長期減量目標為2050年溫室氣體淨零排放。',ref:'氣候變遷因應法第4條'},
+{id:831,topic:'環保節能',q:'我國碳費制度首波徵收對象為全廠（場）年溫室氣體排放量達多少公噸CO₂e以上之電力業及製造業？',opts:['1千公噸','5千公噸','2.5萬公噸','100萬公噸'],ans:2,type:'single',explain:'碳費徵收對象為直接與間接排放量合計達2.5萬公噸CO₂e以上之電力、燃氣供應及製造業，自114年起計費。',ref:'碳費收費辦法'},
+{id:832,topic:'環保節能',q:'ISO 14001 為下列何種管理系統之國際標準？',opts:['品質管理','環境管理','能源管理','資訊安全管理'],ans:1,type:'single',explain:'ISO 14001為環境管理系統（EMS）標準；ISO 9001品質、ISO 50001能源、ISO 45001職安衛。'},
+{id:833,topic:'環保節能',q:'ISO 50001 為下列何種管理系統之國際標準？',opts:['能源管理','食品安全','職業安全衛生','溫室氣體盤查'],ans:0,type:'single',explain:'ISO 50001為能源管理系統標準，協助組織建立能源基線、提升能源績效；溫室氣體盤查則為ISO 14064系列。'},
+{id:834,topic:'環保節能',q:'下列哪些屬於「溫室氣體」？（複選）',opts:['二氧化碳（CO₂）','甲烷（CH₄）','氧化亞氮（N₂O）','氮氣（N₂）'],ans:[0,1,2],type:'multi',explain:'氣候變遷因應法所列溫室氣體：CO₂、CH₄、N₂O、HFCs、PFCs、SF₆、NF₃；氮氣為大氣主要成分，非溫室氣體。'},
+{id:835,topic:'環保節能',q:'購買貼有「節能標章」之電器產品，代表該產品具有下列何種特性？',opts:['價格最便宜','能源效率較高、較省電','保固期最長','外觀較美觀'],ans:1,type:'single',explain:'節能標章代表產品能源效率優於國家認證標準，選購可減少用電與碳排放。'},
+{id:836,topic:'環保節能',q:'廢棄物管理之優先順序，最優先者為下列何者？',opts:['焚化處理','衛生掩埋','源頭減量','境外輸出'],ans:2,type:'single',explain:'廢棄物管理優先序：源頭減量→再使用→再生利用（回收）→能源回收→妥善處理（焚化、掩埋），以減量為最優先。'},
+{id:837,topic:'環保節能',q:'「碳足跡（Carbon Footprint）」係指下列何者？',opts:['工廠煙囪排放黑煙之面積','產品或服務於生命週期中直接與間接產生之溫室氣體排放總量','企業年度用電度數','汽車輪胎接地面積'],ans:1,type:'single',explain:'碳足跡以CO₂當量（CO₂e）表示產品／服務從原料取得、製造、運輸、使用到廢棄全生命週期之溫室氣體總排放量。'},
+
+// ===== v8.0 新增：工作倫理（838-843） =====
+{id:838,topic:'工作倫理',q:'依營業秘密法，受保護之「營業秘密」須符合哪些要件？（複選）',opts:['非一般涉及該類資訊之人所知悉（秘密性）','因其秘密性而具有實際或潛在之經濟價值','所有人已採行合理之保密措施','已對外公開發表之技術'],ans:[0,1,2],type:'multi',explain:'營業秘密三要件：秘密性、經濟價值性、合理保密措施；已公開資訊不具秘密性，不受營業秘密法保護。',ref:'營業秘密法第2條'},
+{id:839,topic:'工作倫理',q:'採購人員向廠商索取或收受回扣，下列敘述何者正確？',opts:['屬正常商業往來','違反職業倫理並可能構成背信等刑責','金額小就沒關係','只要主管同意即可'],ans:1,type:'single',explain:'收受回扣違反誠信與利益迴避原則，可能構成刑法背信罪、貪污治罪條例（公務員）等，亦違反公司治理規範。'},
+{id:840,topic:'工作倫理',q:'勞工向主管機關或勞動檢查機構申訴事業單位違反職安法後，雇主之下列何種行為是被禁止的？',opts:['改善工作環境','對申訴勞工解僱、調職或為其他不利之處分','公告檢查結果','加強教育訓練'],ans:1,type:'single',explain:'職安法第39條明定雇主不得對申訴勞工予以解僱、調職或其他不利處分，保障勞工申訴權（吹哨者保護）。',ref:'職業安全衛生法第39條'},
+{id:841,topic:'工作倫理',q:'受雇人於「職務上」完成之著作，如契約未特別約定，其著作財產權歸屬於何者？',opts:['受雇人（員工）','雇用人（公司）','雙方共有','國家'],ans:1,type:'single',explain:'著作權法第11條：職務上完成之著作以受雇人為著作人，但著作財產權歸雇用人享有（契約另有約定者從其約定）。',ref:'著作權法第11條'},
+{id:842,topic:'工作倫理',q:'公司採購案之供應商為承辦人員之近親時，承辦人員正確之做法為何？',opts:['隱瞞關係照常辦理','主動向主管揭露利益關係並迴避該案','私下給予親屬報價優惠','要求親屬提高報價分享利潤'],ans:1,type:'single',explain:'利益衝突應主動揭露並迴避，避免以職務之便圖利自己或關係人，維護程序公正與公司利益。'},
+{id:843,topic:'工作倫理',q:'利用公司之電腦、網路及上班時間經營個人網拍生意，下列敘述何者正確？',opts:['只要業績達標即可','屬不當使用公司資源、違反工作倫理','是員工福利之一','下班前一小時做就合法'],ans:1,type:'single',explain:'公司資源（設備、網路、工時）應用於職務；擅自挪作私人營利屬不當使用公司資源，違反忠誠義務與工作倫理。'},
+
+// ===== v8.0 新增：高氣溫熱危害（844-849）依114.6.20指引第三版 =====
+{id:844,topic:'作業環境',q:'依114年6月修正之「高氣溫作業熱危害預防指引（第三版）」，其適用對象為何？',opts:['僅營造業勞工','僅室內作業勞工','事業單位所有工作者，包括勞工、自營作業者及派遣勞工','僅外籍移工'],ans:2,type:'single',explain:'第三版指引（原名「高氣溫戶外作業勞工熱危害預防指引」）明確適用於事業單位所有工作者，包括勞工、自營作業者、派遣勞工。',ref:'高氣溫作業熱危害預防指引第三版（114.6.20）'},
+{id:845,topic:'作業環境',q:'依職業安全衛生設施規則第303-1條，雇主使勞工從事戶外作業，遇高氣溫致熱危害風險等級達第幾級以上時，應設置遮陽設施並提供風扇、水霧等降溫設備？',opts:['第一級','第二級','第三級','第四級'],ans:3,type:'single',explain:'熱危害風險等級達「第四級」以上者，應於作業場所設置遮陽設施，並提供風扇、水霧或其他具降低作業環境溫度效果之設備。',ref:'職業安全衛生設施規則第303-1條'},
+{id:846,topic:'作業環境',q:'「高氣溫作業熱危害預防指引（第三版）」針對特殊作業樣態增訂降溫措施，包括哪些情形？（複選）',opts:['作業環境受限制者（如高空電塔維修）','作業範圍不定點或不定時移動者（如道路施工）','增訂休息場所之設置方式','僅限於冷凍庫內作業'],ans:[0,1,2],type:'multi',explain:'第三版新增特殊作業樣態（環境受限、不定點移動作業）之降溫措施及休息場所設置方式；冷凍庫為低溫危害，非本指引範疇。',ref:'高氣溫作業熱危害預防指引第三版（114.6.20）'},
+{id:847,topic:'物理危害',q:'戶外有日曬情形時，綜合溫度熱指數（WBGT）之計算公式為何？',opts:['0.7×自然濕球溫度＋0.2×黑球溫度＋0.1×乾球溫度','0.7×自然濕球溫度＋0.3×黑球溫度','0.5×乾球溫度＋0.5×黑球溫度','乾球溫度與濕球溫度之平均值'],ans:0,type:'single',explain:'戶外有日曬：WBGT＝0.7Tnwb＋0.2Tg＋0.1Tdb；戶內或戶外無日曬：WBGT＝0.7Tnwb＋0.3Tg。',ref:'高溫作業勞工作息時間標準'},
+{id:848,topic:'物理危害',q:'對於新僱或久未從事高氣溫作業之勞工，預防熱危害之正確管理方式為何？',opts:['第一天即全時數作業以測試耐熱度','採漸進式熱適應，逐日增加熱暴露時間','完全禁止其飲水以訓練耐熱','安排於正午時段作業'],ans:1,type:'single',explain:'熱適應（Acclimatization）應漸進建立：新僱或久未暴露勞工宜由較低暴露時間開始，逐日增加，通常需1至2週建立適應能力。',ref:'高氣溫作業熱危害預防指引第三版'},
+{id:849,topic:'物理危害',q:'下列哪些屬於高溫環境引起之「熱疾病」？（複選）',opts:['熱中暑（Heat Stroke）','熱衰竭（Heat Exhaustion）','熱痙攣（Heat Cramps）','失溫症（Hypothermia）'],ans:[0,1,2],type:'multi',explain:'熱疾病包括熱中暑（最危險，核心體溫>40°C、意識障礙）、熱衰竭、熱痙攣、熱暈厥等；失溫症為低溫危害。'},
+
+// ===== v8.0 新增：職安法規—115.7.1施行修法（850-855） =====
+{id:850,topic:'職安法規',q:'114年12月立法院三讀通過之職業安全衛生法部分條文修正案，共計修正幾條條文？',opts:['10條','25條（其中新增6條）','50條','全文修正'],ans:1,type:'single',explain:'本次修法共修正25條文（新增6條文），為102年職安法全文修正以來最大幅度調整，於115年7月1日施行。',ref:'勞動部114.12.2新聞稿'},
+{id:851,topic:'職安法規',q:'依修正職安法之「擴大違法公布」規定，事業單位發生職業災害經處罰者，新增應公布之事項為何？',opts:['負責人學歷','發生日期、發生地及罹災人數','公司股價','員工名冊'],ans:1,type:'single',explain:'修法擴大公布事項：違反者增列處分期日、違反條文及罰鍰金額；發生職業災害者，並增加公布發生日期、發生地及罹災人數。',ref:'職業安全衛生法（115.7.1施行修正）'},
+{id:852,topic:'職安法規',q:'115年7月1日施行之職安法修正案，其兩大核心為何？',opts:['降低企業成本、簡化申報','工安預防全面化、職場霸凌法制化','外勞引進鬆綁、工時彈性化','提高基本工資、增加國定假日'],ans:1,type:'single',explain:'勞動部說明本次修法主要核心為「工安預防全面化」（營造源頭防災、承攬管理）及「職場霸凌法制化」（防治專章）。',ref:'勞動部114.12.2新聞稿'},
+{id:853,topic:'職安法規',q:'為督促雇主積極預防職業災害，修正職安法在罰則方面之調整為何？',opts:['全面廢除罰則改採勸導','適度提高刑事罰刑期、罰金及行政罰鍰額度','罰則減半以減輕企業負擔','僅處罰勞工個人'],ans:1,type:'single',explain:'修法適度提高刑事罰刑期與罰金及行政罰鍰額度，以發揮遏止不法效果，符合社會期待。',ref:'職業安全衛生法（115.7.1施行修正）'},
+{id:854,topic:'職安法規',q:'依修正職安法職場霸凌防治專章，雇主應將霸凌申訴案件及處理結果登錄至何處？',opts:['公司內部公佈欄即可','中央主管機關指定之網站','地方報紙','無須登錄'],ans:1,type:'single',explain:'修法定明雇主應將職場霸凌申訴案件及處理結果，登錄至中央主管機關（勞動部）指定之網站，強化外部監督。',ref:'職業安全衛生法（115.7.1施行修正）職場霸凌防治專章'},
+{id:855,topic:'職安法規',q:'依修正職安法，職場霸凌之被申訴人為事業單位「最高負責人」時，勞工得如何尋求救濟？',opts:['僅能向該負責人本人申訴','向地方主管機關提起外部申訴','忍耐或離職','向警察機關報案處理霸凌申訴'],ans:1,type:'single',explain:'為避免球員兼裁判，修法建立被申訴人為最高負責人時之「外部申訴」機制，勞工得依程序及期限向地方主管機關申訴，地方主管機關並得請專業人士或民間團體協助調查。',ref:'職業安全衛生法（115.7.1施行修正）職場霸凌防治專章'}
 ];
 
 // ==================== QUIZ LOGIC ====================
 let sessionQ=[],qi=0,score=0,correctCount=0,results=[],multiSelected=[];
 let history=[],weakTopics={},totalCorrect=0,totalAttempted=0;
+let topicStats={}; // 累計各主題作答統計（跨場次），供弱點診斷
 let curMode='adaptive',curTopics=[],examChoice='academic';
+let qAnswers=[],navMode=false;
+// 僅模擬考試（學科）啟用前後跳題／可留空再回填；其餘（練習、錯題複習）維持逐題即時作答
+function isExam(){return navMode;}
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -1438,8 +1556,15 @@ function toggleTopic(k){
 function reviewMistakes(){
   const wrongs=JSON.parse(localStorage.getItem('quiz_wrongs')||'[]');
   if(!wrongs.length){alert('沒有錯題紀錄！');return;}
-  sessionQ=Q.filter(q=>wrongs.includes(q.id)).sort(()=>Math.random()-.5).slice(0,40);
-  qi=0;score=0;correctCount=0;results=[];
+  let srs={};try{srs=JSON.parse(localStorage.getItem('quiz_srs')||'{}');}catch(e){}
+  const now=Date.now();
+  // 間隔重練：已到期錯題優先，其次為尚未到期者
+  const due=wrongs.filter(id=>!srs[id]||srs[id].d<=now).sort(()=>Math.random()-.5);
+  const later=wrongs.filter(id=>srs[id]&&srs[id].d>now).sort(()=>Math.random()-.5);
+  const pick=[...due,...later].slice(0,40);
+  sessionQ=Q.filter(q=>pick.includes(q.id)).sort(()=>Math.random()-.5);
+  qi=0;score=0;correctCount=0;results=[];multiSelected=[];qAnswers=new Array(sessionQ.length);navMode=false;
+  stopExamTimer();
   showScreen('screen-quiz');renderQ();
 }
 
@@ -1450,7 +1575,10 @@ function startQuiz(){
     if(!curTopics.length){alert('請選擇至少一個主題！');return;}
     pool=Q.filter(q=>curTopics.includes(q.topic));
   }else if(curMode==='exam'){
-    pool=[...Q].sort(()=>Math.random()-.5).slice(0,80);
+    // 比照乙級學科正式測驗：單選60題(每題1分)＋複選20題(每題2分)，共100分
+    const singles=Q.filter(x=>!x.type||x.type==='single').sort(()=>Math.random()-.5).slice(0,60);
+    const multis=Q.filter(x=>x.type==='multi').sort(()=>Math.random()-.5).slice(0,20);
+    pool=[...singles,...multis];
   }else{
     const wt=Object.keys(weakTopics);
     if(wt.length&&history.length){
@@ -1461,10 +1589,39 @@ function startQuiz(){
       pool=[...Q].sort(()=>Math.random()-.5).slice(0,40);
     }
   }
-  const n=curMode==='exam'?80:40;
-  sessionQ=pool.sort(()=>Math.random()-.5).slice(0,Math.min(n,pool.length));
+  if(curMode==='exam'){
+    sessionQ=pool; // 維持單選在前（第1-60題）、複選在後（第61-80題），比照正式測驗題序
+  }else{
+    sessionQ=pool.sort(()=>Math.random()-.5).slice(0,Math.min(40,pool.length));
+  }
   qi=0;score=0;correctCount=0;results=[];multiSelected=[];
+  qAnswers=new Array(sessionQ.length);
+  navMode=(curMode==='exam');
+  if(navMode)startExamTimer();else stopExamTimer();
   showScreen('screen-quiz');renderQ();
+}
+
+// ==================== 模擬考倒數計時（100分鐘，比照正式學科測驗） ====================
+let examTimerIv=null,examEndTs=0;
+function startExamTimer(){
+  stopExamTimer();
+  examEndTs=Date.now()+100*60*1000;
+  const el=document.getElementById('q-timer');
+  if(el){el.style.display='inline';el.style.color='';}
+  tickExamTimer();
+  examTimerIv=setInterval(tickExamTimer,1000);
+}
+function stopExamTimer(){
+  if(examTimerIv){clearInterval(examTimerIv);examTimerIv=null;}
+  const el=document.getElementById('q-timer');if(el)el.style.display='none';
+}
+function tickExamTimer(){
+  const el=document.getElementById('q-timer');if(!el)return;
+  const s=Math.max(0,Math.round((examEndTs-Date.now())/1000));
+  const m=Math.floor(s/60),ss=s%60;
+  el.textContent='⏱ '+m+':'+(ss<10?'0':'')+ss;
+  if(s<=600)el.style.color='var(--err)'; // 剩10分鐘轉紅提醒
+  if(s<=0){stopExamTimer();alert('考試時間到（100分鐘），系統自動交卷！');submitExam(true);}
 }
 
 function renderQ(){
@@ -1484,6 +1641,8 @@ function renderQ(){
   const matchC=document.getElementById('match-confirm');
   fb.style.display='none';fb.className='fb';
   nextBtn.style.display='none';nextBtn.textContent='下一題 →';
+  var prevBtn=document.getElementById('prev-btn');if(prevBtn)prevBtn.style.display='none';
+  var subBtn=document.getElementById('submit-exam-btn');if(subBtn)subBtn.style.display='none';
   opts.innerHTML='';matchArea.innerHTML='';matchArea.style.display='none';
   multiC.style.display='none';matchC.style.display='none';
   opts.style.display='flex';
@@ -1522,7 +1681,47 @@ function renderQ(){
       const li=document.createElement('li');li.appendChild(b);opts.appendChild(li);
     });
   }
+  if(isExam()){
+    if(qAnswers[qi])renderAnswered(q);
+    updateExamNav();
+  }
 }
+
+// 重新呈現已作答題目之鎖定狀態（唯讀回顧）
+function renderAnswered(q){
+  const a=qAnswers[qi];
+  if(q.type==='multi'){
+    const btns=document.querySelectorAll('#opts .ob');
+    btns.forEach((b,i)=>{b.disabled=true;b.classList.remove('selected-multi');
+      if(q.ans.includes(i))b.classList.add('show-correct');
+      else if(a.sel.includes(i))b.classList.add('wrong');});
+    document.getElementById('multi-confirm').style.display='none';
+  }else if(q.type==='match'){
+    const sels=document.querySelectorAll('#match-area .match-sel');
+    sels.forEach((s,idx)=>{s.value=encodeURIComponent(a.sel[idx]);s.disabled=true;
+      if(a.sel[idx]===q.pairs[idx][1])s.classList.add('correct');else s.classList.add('wrong');});
+    document.getElementById('match-confirm').style.display='none';
+  }else{
+    const btns=document.querySelectorAll('#opts .ob');
+    btns.forEach(b=>b.disabled=true);
+    btns[a.sel].classList.add(a.isCorrect?'correct':'wrong');
+    if(!a.isCorrect)btns[q.ans].classList.add('show-correct');
+  }
+  showFeedback(q,a.isCorrect);
+}
+
+function updateExamNav(){
+  if(!isExam())return;
+  const prev=document.getElementById('prev-btn');
+  const next=document.getElementById('next-btn');
+  const sub=document.getElementById('submit-exam-btn');
+  prev.style.display=qi>0?'inline-block':'none';
+  next.style.display=qi<sessionQ.length-1?'inline-block':'none';
+  next.textContent=qAnswers[qi]?'下一題 →':'跳過 / 下一題 →';
+  sub.style.display='inline-block';
+}
+
+function prevQ(){if(qi>0){qi--;renderQ();}}
 
 function toggleMulti(i,btn){
   const idx=multiSelected.indexOf(i);
@@ -1538,7 +1737,7 @@ function selectSingle(i){
   const isCorrect=(i===correct);
   btns[i].classList.add(isCorrect?'correct':'wrong');
   if(!isCorrect)btns[correct].classList.add('show-correct');
-  recordAnswer(q,isCorrect);
+  recordAnswer(q,isCorrect,i);
   showFeedback(q,isCorrect);
 }
 
@@ -1555,7 +1754,7 @@ function confirmMulti(){
     else if(multiSelected.includes(i))b.classList.add('wrong');
   });
   document.getElementById('multi-confirm').style.display='none';
-  recordAnswer(q,isCorrect);
+  recordAnswer(q,isCorrect,[...multiSelected]);
   showFeedback(q,isCorrect);
 }
 
@@ -1565,16 +1764,16 @@ function confirmMatch(){
   let allFilled=true;
   sels.forEach(s=>{if(!s.value)allFilled=false;});
   if(!allFilled){alert('請完成所有配對！');return;}
-  let isCorrect=true;
+  let isCorrect=true;const chosenArr=[];
   sels.forEach((s,idx)=>{
     s.disabled=true;
-    const chosen=decodeURIComponent(s.value);
+    const chosen=decodeURIComponent(s.value);chosenArr.push(chosen);
     const right=q.pairs[idx][1];
     if(chosen===right){s.classList.add('correct');}
     else{s.classList.add('wrong');isCorrect=false;}
   });
   document.getElementById('match-confirm').style.display='none';
-  recordAnswer(q,isCorrect);
+  recordAnswer(q,isCorrect,chosenArr);
   showFeedback(q,isCorrect);
 }
 
@@ -1586,49 +1785,102 @@ function showFeedback(q,isCorrect){
   if(q.type==='multi')ansText='正確答案：'+q.ans.map(i=>String.fromCharCode(65+i)).join('、');
   else if(q.type==='match')ansText='正確配對：'+q.pairs.map((p,i)=>(i+1)+'→'+p[1]).join('；');
   else ansText='正確答案：'+String.fromCharCode(65+q.ans);
-  fb.innerHTML='<strong>'+(isCorrect?'✓ 答對了！':'✗ 答錯了')+'</strong><br>'+ansText+'<br>'+(q.explain||'');
+  fb.innerHTML='<strong>'+(isCorrect?'✓ 答對了！':'✗ 答錯了')+'</strong><br>'+ansText+'<br>'+(q.explain||'')+(q.ref?'<br><span style="opacity:.75">📖 出處：'+q.ref+'</span>':'');
   const nb=document.getElementById('next-btn');
-  if(qi>=sessionQ.length-1)nb.textContent='看成績 →';
-  nb.style.display='inline-block';
+  if(isExam()){
+    updateExamNav();
+  }else{
+    if(qi>=sessionQ.length-1)nb.textContent='看成績 →';
+    nb.style.display='inline-block';
+  }
   document.getElementById('q-score').textContent='✓ '+correctCount+' 題';
   document.getElementById('pb').style.width=((qi+1)/sessionQ.length*100)+'%';
 }
 
-function recordAnswer(q,isCorrect){
-  results.push({id:q.id,topic:q.topic,correct:isCorrect});
-  if(isCorrect)correctCount++;
+function recordAnswer(q,isCorrect,sel){
+  // 錯題間隔重練（SRS）：答錯歸零立即到期；答對後依 1/3/7/14 天間隔重考，連對4次自動移除
   let wrongs=JSON.parse(localStorage.getItem('quiz_wrongs')||'[]');
-  if(!isCorrect){if(!wrongs.includes(q.id))wrongs.push(q.id);}
-  else{wrongs=wrongs.filter(id=>id!==q.id);}
+  let srs={};try{srs=JSON.parse(localStorage.getItem('quiz_srs')||'{}');}catch(e){}
+  const DAY=86400000,STEP=[1,3,7,14];
+  if(!isCorrect){
+    if(!wrongs.includes(q.id))wrongs.push(q.id);
+    srs[q.id]={b:0,d:Date.now()};
+  }else if(srs[q.id]!=null||wrongs.includes(q.id)){
+    const e=srs[q.id]||{b:0,d:0};
+    e.b=(e.b||0)+1;
+    if(e.b>=4){delete srs[q.id];wrongs=wrongs.filter(id=>id!==q.id);}
+    else{e.d=Date.now()+STEP[Math.min(e.b-1,3)]*DAY;srs[q.id]=e;}
+  }
   localStorage.setItem('quiz_wrongs',JSON.stringify(wrongs));
+  try{localStorage.setItem('quiz_srs',JSON.stringify(srs));}catch(e){}
+  if(isExam()){
+    qAnswers[qi]={sel:sel,isCorrect:isCorrect};
+    correctCount=qAnswers.filter(a=>a&&a.isCorrect).length;
+  }else{
+    results.push({id:q.id,topic:q.topic,correct:isCorrect});
+    if(isCorrect)correctCount++;
+  }
 }
 
 function nextQ(){
+  if(isExam()){if(qi<sessionQ.length-1){qi++;renderQ();}return;}
   if(qi<sessionQ.length-1){qi++;renderQ();}
   else finishQuiz();
 }
 
+// 模擬考試交卷：未作答題以答錯計分，組出 results 後結算
+function submitExam(force){
+  let un=0;for(let k=0;k<sessionQ.length;k++){if(!qAnswers[k])un++;}
+  if(!force&&un>0&&!confirm('尚有 '+un+' 題未作答，未作答將以答錯計分。確定要交卷嗎？'))return;
+  results=[];
+  for(let k=0;k<sessionQ.length;k++){
+    const q=sessionQ[k],a=qAnswers[k];
+    results.push({id:q.id,topic:q.topic,correct:a?a.isCorrect:false});
+  }
+  finishQuiz();
+}
+
 function endEarly(){
+  if(isExam()){
+    if(qAnswers.some(a=>a)){submitExam();}
+    else if(confirm('確定要結束本次測驗嗎？')){stopExamTimer();showScreen('screen-home');}
+    return;
+  }
   if(confirm('確定要結束本次練習嗎？')){
     if(results.length)finishQuiz();else showScreen('screen-home');
   }
 }
 
 function finishQuiz(){
+  stopExamTimer();
   const total=results.length;
   const correct=results.filter(r=>r.correct).length;
-  const pct=total?Math.round(correct/total*100):0;
+  let pct;
+  if(isExam()){
+    // 比照正式配分：單選1分、複選2分，滿分100，60分及格
+    let sc=0;
+    results.forEach(r=>{if(r.correct){const q=Q.find(x=>x.id===r.id);sc+=(q&&q.type==='multi')?2:1;}});
+    pct=sc;
+  }else{
+    pct=total?Math.round(correct/total*100):0;
+  }
   totalCorrect+=correct;totalAttempted+=total;
   const tStats={};
   results.forEach(r=>{
     if(!tStats[r.topic])tStats[r.topic]={c:0,t:0};
     tStats[r.topic].t++;if(r.correct)tStats[r.topic].c++;
+    if(!topicStats[r.topic])topicStats[r.topic]={c:0,t:0};
+    topicStats[r.topic].t++;if(r.correct)topicStats[r.topic].c++;
   });
+  // 弱點診斷：以累計統計為主（樣本≥5且正確率<60%），本次表現特別弱者亦納入
   weakTopics={};
-  Object.keys(tStats).forEach(t=>{
-    const s=tStats[t];if(s.t>=2&&s.c/s.t<0.6)weakTopics[t]=Math.round(s.c/s.t*100);
+  Object.keys(topicStats).forEach(t=>{
+    const s=topicStats[t];if(s.t>=5&&s.c/s.t<0.6)weakTopics[t]=Math.round(s.c/s.t*100);
   });
-  history.unshift({date:new Date().toLocaleString('zh-TW'),total:total,correct:correct,pct:pct,mode:curMode});
+  Object.keys(tStats).forEach(t=>{
+    const s=tStats[t];if(s.t>=2&&s.c/s.t<0.6&&weakTopics[t]==null)weakTopics[t]=Math.round(s.c/s.t*100);
+  });
+  history.unshift({date:new Date().toLocaleString('zh-TW'),total:total,correct:correct,pct:pct,mode:curMode,exam:isExam()});
   if(history.length>50)history=history.slice(0,50);
   saveState();
   showResult(pct,correct,total,tStats);
@@ -1636,11 +1888,13 @@ function finishQuiz(){
 }
 
 function showResult(pct,correct,total,tStats){
-  const pass=pct>=60;
+  const pass=pct>=60,ex=isExam();
   document.getElementById('sc-wrap').innerHTML=
-    '<div class="sc-circle '+(pass?'pass':'fail')+'"><span class="sn">'+pct+'%</span><span class="sl">'+(pass?'及格':'不及格')+'</span></div>';
+    '<div class="sc-circle '+(pass?'pass':'fail')+'"><span class="sn">'+pct+(ex?'分':'%')+'</span><span class="sl">'+(pass?'及格':'不及格')+'</span></div>';
   document.getElementById('r-title').textContent=pass?'🎉 表現優異！':'💪 繼續加油！';
-  document.getElementById('r-sub').textContent='本次答對 '+correct+' / '+total+' 題';
+  document.getElementById('r-sub').textContent=ex
+    ?'得分 '+pct+' / 100 分（答對 '+correct+' / '+total+' 題，及格標準 60 分）'
+    :'本次答對 '+correct+' / '+total+' 題';
   const trl=document.getElementById('tr-list');trl.innerHTML='';
   Object.keys(tStats).sort((a,b)=>tStats[b].t-tStats[a].t).forEach(t=>{
     const s=tStats[t];const p=Math.round(s.c/s.t*100);
@@ -1670,7 +1924,7 @@ function showReview(){
     const item=document.createElement('div');item.className='rev-item wrong';
     item.innerHTML='<div class="rev-q"><strong>['+(TOPICS[q.topic]||q.topic)+']</strong> '+q.q+'</div>'+
       '<div class="rev-ans"><span class="rt">正解：'+rt+'</span></div>'+
-      '<div class="rev-ex">'+(q.explain||'')+'</div>';
+      '<div class="rev-ex">'+(q.explain||'')+(q.ref?'<div style="opacity:.75;margin-top:4px">📖 出處：'+q.ref+'</div>':'')+'</div>';
     rl.appendChild(item);
   });
   showScreen('screen-review');
@@ -1685,7 +1939,7 @@ function renderHistory(){
     const item=document.createElement('div');item.className='hitem';
     item.innerHTML='<div class="hi-l"><div class="hi-mode">'+(modeNames[h.mode]||h.mode||'練習')+'</div>'+
       '<div class="hi-date text-muted">'+h.date+'</div></div>'+
-      '<div class="hi-r"><span class="hi-pct '+(pass?'pass':'fail')+'">'+h.pct+'%</span>'+
+      '<div class="hi-r"><span class="hi-pct '+(pass?'pass':'fail')+'">'+h.pct+(h.exam?'分':'%')+'</span>'+
       '<span class="hi-sc text-muted">'+h.correct+'/'+h.total+'</span></div>';
     hl.appendChild(item);
   });
@@ -1703,8 +1957,24 @@ function renderStats(){
   html+='<div class="sec-title mt12">弱點主題</div>';
   html+='<div class="text-muted">'+(wt.length?wt.map(t=>(TOPICS[t]||t)+'（'+weakTopics[t]+'%）').join('、'):'尚無足夠資料或表現平均 👍')+'</div>';
   const wrongs=JSON.parse(localStorage.getItem('quiz_wrongs')||'[]');
-  html+='<div class="sec-title mt12">待複習錯題</div>';
-  html+='<div class="text-muted">目前累積 '+wrongs.length+' 題待複習。</div>';
+  let srs={};try{srs=JSON.parse(localStorage.getItem('quiz_srs')||'{}');}catch(e){}
+  const nowTs=Date.now();
+  const dueN=wrongs.filter(id=>!srs[id]||srs[id].d<=nowTs).length;
+  html+='<div class="sec-title mt12">待複習錯題（間隔重練）</div>';
+  html+='<div class="text-muted">累積 '+wrongs.length+' 題，其中 <strong>'+dueN+' 題已到期</strong>。答對後依 1、3、7、14 天間隔重考，連續答對 4 次自動移除。</div>';
+  // 累計主題正確率（跨場次，弱→強）
+  const tsk=Object.keys(topicStats).filter(t=>topicStats[t].t>=3);
+  if(tsk.length){
+    html+='<div class="sec-title mt12">累計主題正確率（弱 → 強）</div><div class="trlist">';
+    tsk.sort((a,b)=>(topicStats[a].c/topicStats[a].t)-(topicStats[b].c/topicStats[b].t)).forEach(t=>{
+      const s=topicStats[t],p=Math.round(s.c/s.t*100);
+      const color=p>=60?'var(--ok)':p>=40?'var(--warn)':'var(--err)';
+      html+='<div class="trrow"><span class="tname">'+(TOPICS[t]||t)+'</span>'+
+        '<span class="tbarw"><span class="tbar" style="width:'+p+'%;background:'+color+'"></span></span>'+
+        '<span class="tpct">'+p+'%（'+s.c+'/'+s.t+'）</span></div>';
+    });
+    html+='</div>';
+  }
   // topic coverage of question bank
   const tc={};Q.forEach(q=>{tc[q.topic]=(tc[q.topic]||0)+1;});
   html+='<div class="sec-title mt12">題庫主題分佈（共 '+Q.length+' 題）</div><div class="trlist">';
@@ -1719,7 +1989,7 @@ function renderStats(){
 function saveState(){
   try{
     localStorage.setItem('quiz_state',JSON.stringify({
-      history:history,weakTopics:weakTopics,
+      history:history,weakTopics:weakTopics,topicStats:topicStats,
       totalCorrect:totalCorrect,totalAttempted:totalAttempted
     }));
   }catch(e){}
@@ -1731,6 +2001,7 @@ function loadState(){
     if(st){
       history=st.history||[];
       weakTopics=st.weakTopics||{};
+      topicStats=st.topicStats||{};
       totalCorrect=st.totalCorrect||0;
       totalAttempted=st.totalAttempted||0;
     }
@@ -1740,7 +2011,8 @@ function loadState(){
 function clearData(){
   localStorage.removeItem('quiz_state');
   localStorage.removeItem('quiz_wrongs');
-  history=[];weakTopics={};totalCorrect=0;totalAttempted=0;
+  localStorage.removeItem('quiz_srs');
+  history=[];weakTopics={};topicStats={};totalCorrect=0;totalAttempted=0;
   initHome();
   alert('已清除所有學習紀錄。');
 }
@@ -2837,10 +3109,424 @@ const SQ=[
  {id:117,cat:'職業衛生',type:'match',q:'請將下列職業病與其主要致病之化學物質或機制配對。',
   pairs:[['錳（Mn）中毒','巴金森氏症（面具臉、四肢無力）'],['鉻酸（鍍鉻作業）','鼻中膈穿孔'],['正己烷','多發性週邊神經炎'],['一氧化碳（CO）','與血紅素結合致組織缺氧']],
   model:'錳中毒→巴金森氏症；鉻酸→鼻中膈穿孔；正己烷→多發性週邊神經炎；一氧化碳→與血紅素結合（親和力約為氧之200至300倍）致組織缺氧（化學性窒息）。',
-  explain:'不同化學物質具特定標的器官：錳侵犯中樞神經錐體外系統、鉻酸腐蝕鼻中膈、正己烷傷害周邊神經、一氧化碳則阻礙氧之輸送。'}
+  explain:'不同化學物質具特定標的器官：錳侵犯中樞神經錐體外系統、鉻酸腐蝕鼻中膈、正己烷傷害周邊神經、一氧化碳則阻礙氧之輸送。'},
+// ===== 2026 課程PDF補充（物理性危害、化學性危害｜術科）=====
+ {id:118,cat:'職業衛生',type:'calc',q:'某營建工地勞工於戶外有日曬處作業，測得乾球溫度34℃、黑球溫度37℃、自然濕球溫度28℃，其工作為推舉一般建材（中度工作）。試計算該作業位置之綜合溫度熱指數WBGT（℃，取小數第1位）。',
+  formula:'戶外有日曬WBGT＝0.7×自然濕球溫度＋0.2×黑球溫度＋0.1×乾球溫度',
+  inputs:[{label:'WBGT(℃)',num:30.4,tol:0.1,kw:['30.4'],show:'30.4℃'}],
+  model:'WBGT＝0.7×28＋0.2×37＋0.1×34＝19.6＋7.4＋3.4＝30.4℃。推舉建材屬中度工作，惟營造作業非屬高溫作業勞工作息時間標準所列之法定高溫作業類型，故雖WBGT偏高仍不認定為高溫作業。',
+  explain:'戶外有日曬須三球溫度（公式含乾球，係數0.7／0.2／0.1）；室內或無日曬則僅需自然濕球與黑球（0.7／0.3）。自然濕球溫度權重最高，對WBGT影響最大。'},
+ {id:119,cat:'職業衛生',type:'calc',q:'某作業場所有兩部機械，單獨運轉時音壓級分別為100分貝與90分貝。試計算兩部機械同時運轉時該場所之合成音壓級（分貝，取小數第1位）。',
+  formula:'合成音壓級 Lp＝10×log（10的(L1÷10)次方＋10的(L2÷10)次方）',
+  inputs:[{label:'合成音壓級(dB)',num:100.4,tol:0.2,kw:['100.4','100'],show:'約100.4分貝'}],
+  model:'Lp＝10×log（10的10次方＋10的9次方）＝10×log（1.1×10的10次方）＝10×10.041≒100.4分貝。',
+  explain:'分貝為對數單位，不可直接相加。兩音源相差10分貝時，合成值僅較大者增約0.4分貝；若兩音源相同（相差0分貝），合成值約增3分貝。'},
+ {id:120,cat:'職業衛生',type:'qa',q:'請列舉有害物質進入人體之主要途徑（至少列舉三項）。',need:3,
+  points:[
+    {kw:['呼吸道','吸入','口鼻','鼻'],label:'呼吸道吸入（約佔中毒事故九成，最主要途徑）'},
+    {kw:['皮膚','接觸','經皮'],label:'皮膚接觸（有機溶劑等脂溶性物質可經皮吸收）'},
+    {kw:['食入','口服','嚥','誤食'],label:'食入（經不潔的手或受污染之食物、飲水）'},
+    {kw:['眼睛','眼'],label:'眼睛接觸（濺及霧滴、蒸氣或氣體）'}
+  ],
+  model:'有害物質進入人體之主要途徑：一、呼吸道吸入（最主要，約佔職業中毒事故九成）；二、皮膚接觸（有機溶劑等脂溶性物質可經皮吸收）；三、食入（經不潔之手或受污染之食物、飲水）；四、眼睛接觸（濺及霧滴、蒸氣或氣體）。',
+  explain:'四途徑中以呼吸道吸入最重要，故控制以通風換氣與呼吸防護為主；皮膚接觸次之，須配戴防護手套衣物；食入可藉飲食管理與洗手漱口防範。'},
+ {id:121,cat:'法規應用',type:'fill',q:'依高溫作業勞工作息時間標準及WBGT測定相關規定填空：（一）作業場所黑球溫度達攝氏【　】度以上之高溫灼熱物體時，雇主應供給勞工身體熱防護設備；（二）為避免溫差過大，休息區之綜合溫度熱指數不得低於攝氏【　】度；（三）新僱勞工應實施熱適應，第一日高溫環境工作量以佔正常工作量之百分之【　】為原則，其後逐日遞增。',
+  inputs:[
+    {label:'黑球溫度供熱防護(度)',num:50,tol:0,kw:['50'],show:'50度'},
+    {label:'休息區WBGT下限(度)',num:24,tol:0,kw:['24'],show:'24度'},
+    {label:'第一日熱適應工作量(%)',num:20,tol:0,kw:['20'],show:'20%'}
+  ],
+  model:'（一）黑球溫度達50℃以上應供給身體熱防護設備；（二）休息區WBGT不得低於24℃；（三）新僱勞工第一日工作量佔20%，其後每日遞增20%，約一週完成熱適應。',
+  explain:'高溫作業控制兼採工程（隔熱遮蔽、通風換氣）與行政管理（作息調配、供應飲水食鹽、熱適應、選配適任勞工、教育訓練）；上列數字為常考重點。'},
+ {id:122,cat:'職業衛生',type:'match',q:'請將下列空氣中有害物之類別與其定義（生成方式）配對。',
+  pairs:[
+    ['粉塵','固體經機械力（如研磨、粉碎）作用而懸浮於空氣中之固體微粒'],
+    ['燻煙','金屬經高溫昇華揮發後於空氣中氧化凝結而成之固體微粒'],
+    ['霧滴','液體經噴霧等機械力分散、或由蒸氣凝結而懸浮於空氣中之微小液滴'],
+    ['蒸氣','常溫常壓下為液體或固體，經昇華或蒸發而呈氣態者']
+  ],
+  model:'粉塵＝機械力作用之固體微粒（如礦砂、石綿、鉛塵）；燻煙＝金屬高溫蒸發後氧化凝結之固體微粒（如氧化鋅、氧化鐵燻煙）；霧滴＝噴霧或蒸氣凝結之微小液滴（如電鍍酸霧、農藥霧滴）；蒸氣＝常溫常壓下由液固昇華蒸發為氣態者（如有機溶劑蒸氣）。',
+  explain:'空氣中有害物分粒狀（粉塵、燻煙、煙塵、霧滴、纖維、霧）與氣狀（氣體、蒸氣）；判別關鍵在生成方式：機械力生粉塵與霧滴、高溫氧化凝結生燻煙、蒸發昇華生蒸氣。'},
+ {id:123,cat:'管理計畫',type:'qa',q:'為預防高溫（熱暴露）危害，除工程改善外，事業單位於行政管理面可採行哪些控制方法？請至少列舉四項。',need:4,
+  points:[
+    {kw:['作息','工作時間','分配','休息時間'],label:'依規定調配勞工作息時間'},
+    {kw:['熱適應','適應'],label:'實施勞工熱適應'},
+    {kw:['飲水','食鹽','冷飲','鹽'],label:'供應飲水、食鹽（冷飲）'},
+    {kw:['體格檢查','健康檢查','選配','適任'],label:'實施體格（健康）檢查以選配適任勞工'},
+    {kw:['教育訓練','訓練'],label:'實施熱危害教育訓練'},
+    {kw:['防護衣','熱防護','防護具'],label:'提供熱防護衣具'},
+    {kw:['減少','工作負荷','負荷量'],label:'減少工作負荷量'}
+  ],
+  model:'熱暴露危害之一般行政管理控制方法（任列四項）：一、減少工作負荷量；二、依規定調配勞工作息時間；三、實施職業（特殊）體格及健康檢查以選配適任勞工；四、實施勞工熱適應；五、辦理熱危害作業教育訓練；六、供應冷飲及食鹽；七、提供熱防護衣具。',
+  explain:'熱危害控制依序為工程改善（降低熱源、隔熱遮蔽、通風換氣）優先，行政管理（作息、熱適應、飲水食鹽、健檢選工、教育訓練）次之，個人防護具（熱防護衣具）為輔。'},
+// ===== 2026 課程PDF補充（組織協調與溝通、危害通識｜術科）=====
+ {id:124,cat:'管理計畫',type:'qa',q:'有效溝通之程序通常由七個元素（程序）所構成，請依序列出此七個溝通程序元素。',
+  need:5,
+  points:[
+    {kw:['觀念','想法','idea'],label:'觀念（Idea，發訊者之訊息或想法）'},
+    {kw:['編碼','譯碼','encoding'],label:'編碼（Encoding，將觀念轉為可傳遞之符號）'},
+    {kw:['傳遞','傳送','transmission'],label:'傳遞（Transmission，以口頭、文字或行為傳送）'},
+    {kw:['噪音','干擾','noise'],label:'噪音（Noise，溝通環境之干擾）'},
+    {kw:['接收','收訊','receiving'],label:'接收（Receiving，接收者接收訊息）'},
+    {kw:['解碼','decoding'],label:'解碼（Decoding，將訊息解釋為期望意義）'},
+    {kw:['行動','回應','action'],label:'行動（Action，受訊者回應、儲存或採取行動）'}
+  ],
+  model:'溝通程序七元素依序為：觀念→編碼（譯碼）→傳遞→噪音→接收→解碼→行動。發訊者將觀念編碼後傳遞，過程中受噪音干擾，接收者接收後解碼並採取行動（回饋）。',
+  explain:'七元素中任一環節出問題均會造成溝通不良；噪音（如冷氣、機具及旁人交談聲）會干擾訊息之準確傳送，解碼則因個人經驗文化差異而易產生不同解讀。'},
+ {id:125,cat:'管理計畫',type:'qa',q:'相較於一般溝通，安全衛生之協調與溝通具有其特色。請列舉安全衛生協調與溝通之特色至少四項。',
+  need:4,
+  points:[
+    {kw:['強制性','強制','法令','依法'],label:'強制性（依法令規定，員工應依法行事）'},
+    {kw:['權威性','權威','勞檢','處分'],label:'權威性（勞動檢查機構檢查結果具權威性）'},
+    {kw:['專業性','專業'],label:'專業性（安全衛生屬統合性科學，具專業知識技能）'},
+    {kw:['一致性','一致','齊一','統一'],label:'一致性（規章統一、作業方式一致）'},
+    {kw:['支持性','支持','參與'],label:'支持性（取得全體員工支持與參與）'}
+  ],
+  model:'安全衛生協調與溝通之特色（任列四項）：一、強制性（本於法令規定，員工應依法行事以防止職災）；二、權威性（勞檢機構檢查後得限期改善、停工或行政處分，具權威性）；三、專業性（安全衛生為統合性科學，須運用專業才能做好協調溝通）；四、一致性（規章統一、安全作業方式一致，方能建立工安文化）；五、支持性（藉充分協調溝通獲得全體員工支持與參與，達災害歸零）。',
+  explain:'安全衛生協調溝通兼具法令強制與專業權威，且須上下一致並獲員工支持；推動安全衛生常面臨「一推一動、不推不動」之惰性與抗拒，宜軟硬兼施、獎懲並用並爭取員工理解。'},
+ {id:126,cat:'管理計畫',type:'match',q:'周哈里窗（Johari Window）將人際認知分為四個區域，請將下列各區域與其定義配合。',
+  pairs:[
+    ['公開區','自己知道且他人也知道的部分'],
+    ['盲目區','自己不知道而他人卻知道的部分（不自覺之缺點）'],
+    ['隱私區','自己知道而他人不知道的部分（內心秘密）'],
+    ['未知區','自己與他人均不知道的部分（未發掘之潛能）']
+  ],
+  model:'公開區＝自己與他人皆知；盲目區＝己不知而人知（透過互相回饋縮小）；隱私區＝己知而人不知（透過表露縮小）；未知區＝彼此皆不知（透過嘗試與澄清縮小）。公開區愈大，自我實現程度愈高。',
+  explain:'周哈里窗由Joseph Luft與Harry Ingham於1955年提出，用以了解自我認知與他人認知之差異；調整四區域之相對大小可改善人際互動、提升工作效率。'},
+ {id:127,cat:'管理計畫',type:'match',q:'有效協調溝通之基礎為「雙贏理論」，依自己與對方利益之好壞可分為四個區域。請將下列各情境與其所屬區域配合。',
+  pairs:[
+    ['利人利己（我好你也好）','成功區'],
+    ['捨己為人（我不好你好）','傻瓜區'],
+    ['損人利己（你不好我好）','自私區'],
+    ['害人害己（你不好我不好）','壞蛋區']
+  ],
+  model:'利人利己＝成功區（雙方均能接受，最易達成溝通協調目的）；捨己為人＝傻瓜區；損人利己＝自私區；害人害己＝壞蛋區。如何創造雙贏條件或找到雙贏論點，為溝通協調能否成功之第一要件。',
+  explain:'溝通協調成功與否，技巧其次，最重要在目的與立論基礎能否為雙方接受；若只求己利而不顧對方，技巧再好亦難獲認同。'},
+ {id:128,cat:'職業衛生',type:'qa',q:'試說明毒性指標「半數致死濃度（LC50）」與「半數致死量（LD50）」之意義及其差別。',
+  need:2,
+  points:[
+    {kw:['LC50','半數致死濃度','濃度'],label:'LC50為半數致死濃度（暴露於一定濃度氣體蒸氣塵霧）'},
+    {kw:['LD50','半數致死量','劑量','毫克','mg'],label:'LD50為半數致死量（注射或餵食一定劑量mg/kg）'},
+    {kw:['越低','愈低','越小','值越低'],label:'數值越低毒性越大'},
+    {kw:['2500','毒性氣體'],label:'LC50在2500ppm以下為毒性氣體'}
+  ],
+  model:'LC50（半數致死濃度）：使一群試驗動物暴露於一定濃度之氣體、蒸氣或塵霧1至4小時，觀察14天後造成半數死亡之濃度（以ppm或mg/m³表示），LC50在2500ppm以下屬毒性氣體。LD50（半數致死量）：給予動物注射或餵食一定劑量（毫克/公斤），經14天造成半數死亡之劑量。二者數值越低，代表毒性越大；差別在LC50以吸入之「濃度」表示、LD50以攝入之「劑量」表示。',
+  explain:'LC50用於評估氣體、蒸氣、塵霧等吸入性毒性，LD50用於評估經口或注射之毒性；二者皆為急毒性指標，數值越低毒性越強。'},
+ {id:129,cat:'法規應用',type:'qa',q:'依危害性化學品標示及通識規則，雇主為防止勞工未確實知悉危害性化學品之危害資訊致引起職業災害，應採取哪些必要之通識措施？請至少列舉四項。',
+  need:4,
+  points:[
+    {kw:['危害通識計畫','通識計畫','計畫'],label:'訂定危害通識計畫並確實執行（執行紀錄保存3年）'},
+    {kw:['清單','化學品清單'],label:'製作危害性化學品清單'},
+    {kw:['安全資料表','SDS','易取得'],label:'將安全資料表置於工作場所易取得之處'},
+    {kw:['教育訓練','訓練'],label:'使勞工接受製造處置或使用危害性化學品之教育訓練'},
+    {kw:['其他','必要措施','知悉'],label:'其他使勞工確實知悉危害性化學品資訊之必要措施'}
+  ],
+  model:'雇主應採取之通識措施（任列四項）：一、依實際狀況訂定危害通識計畫，適時檢討更新並確實執行，執行紀錄保存3年；二、製作危害性化學品清單（內容格式參照附表）；三、將危害性化學品之安全資料表（SDS）置於工作場所易取得之處；四、使勞工接受製造、處置或使用危害性化學品之教育訓練；五、其他使勞工確實知悉危害性化學品資訊之必要措施。',
+  explain:'危害通識計畫應含危害性化學品清單、安全資料表、標示、危害通識教育訓練等必要項目之擬訂、執行、紀錄及修正；SDS應至少每3年檢討更新一次，更新紀錄保存3年。'},
+
+ {id:130,cat:'法規應用',type:'qa',q:'依高溫作業勞工作息時間標準第5條，所稱應依規定調配作息之「高溫作業」，係指從事哪些作業種類？請至少列舉三項。',
+  need:3,
+  points:[
+    {kw:['鍋爐','鍋爐房','鍋爐間'],label:'於鍋爐房或鍋爐間從事之作業'},
+    {kw:['壓軋','鍛造','灼熱鋼鐵'],label:'灼熱鋼鐵或其他金屬塊壓軋及鍛造之作業'},
+    {kw:['鑄造','熔融'],label:'於鑄造間處理熔融鋼鐵或其他金屬之作業'},
+    {kw:['加熱','熔煉'],label:'鋼鐵或其他金屬類物料加熱或熔煉之作業'},
+    {kw:['搪瓷','玻璃','電石','熔爐'],label:'處理搪瓷、玻璃、電石及熔爐高溫熔料之作業'},
+    {kw:['蒸汽','燒窯','輪船機房','火車'],label:'蒸汽操作、燒窯或於蒸汽火車、輪船機房從事之作業'}
+  ],
+  model:'高溫作業種類（任列三項）：一、於鍋爐房或鍋爐間之作業；二、灼熱鋼鐵或其他金屬塊壓軋及鍛造之作業；三、於鑄造間處理熔融鋼鐵或其他金屬之作業；四、鋼鐵或其他金屬類物料加熱或熔煉之作業；五、處理搪瓷、玻璃、電石及熔爐高溫熔料之作業；六、於蒸汽火車、輪船機房或從事蒸汽操作、燒窯等之作業。',
+  explain:'上述法定高溫作業種類須依作業之時量平均WBGT調配作息；營造等作業縱WBGT偏高，因非屬本標準所列種類，仍不認定為高溫作業。'},
+
+ {id:131,cat:'職業衛生',type:'match',q:'綜合溫度熱指數（WBGT）之量測需使用不同溫度計，請將下列項目與其所代表之效應或計算式配合。',
+  pairs:[
+    ['乾球溫度','單純空氣溫度之效應'],
+    ['自然濕球溫度','綜合空氣溫度、濕度及風速之效應'],
+    ['黑球溫度','輻射熱之效應'],
+    ['室內或無日曬WBGT','0.7×自然濕球＋0.3×黑球'],
+    ['戶外有日曬WBGT','0.7×自然濕球＋0.2×黑球＋0.1×乾球']
+  ],
+  model:'乾球溫度→空氣溫度效應；自然濕球溫度→氣溫、濕度及風速綜合效應；黑球溫度→輻射熱效應；室內WBGT＝0.7×自然濕球＋0.3×黑球；戶外有日曬WBGT＝0.7×自然濕球＋0.2×黑球＋0.1×乾球。',
+  explain:'WBGT以自然濕球溫度權重最高（0.7），因其綜合反映氣溫、濕度與風速，對熱危害之影響最大。'},
+
+ {id:132,cat:'職業衛生',type:'qa',q:'評估高溫（熱）環境對人體之影響時，須綜合考量之「溫濕四要素」為何？請列出此四項要素。',
+  need:4,
+  points:[
+    {kw:['氣溫','空氣溫度','溫度'],label:'氣溫（空氣溫度）'},
+    {kw:['濕度','相對濕度'],label:'相對濕度'},
+    {kw:['風速','氣動','空氣流動'],label:'風速（氣動）'},
+    {kw:['輻射熱','輻射'],label:'輻射熱'}
+  ],
+  model:'溫濕四要素為：一、氣溫（空氣溫度）；二、相對濕度；三、風速（氣動）；四、輻射熱。此四項共同決定人體之冷熱感覺與熱蓄積程度。',
+  explain:'人體冷熱感覺非僅由氣溫決定，尚需考量排汗蒸發、風速對流及輻射熱等；此四要素亦為WBGT等熱指標量測之基礎。'},
+
+ {id:133,cat:'法規應用',type:'fill',q:'依勞工健康保護規則，事業單位勞工人數在50人以上者應僱用或特約從事勞工健康服務之醫護人員，並依規模分階段施行：勞工人數200至299人者自民國【　】年7月1日施行、100至199人者自民國【　】年1月1日施行、50至99人者自民國【　】年1月1日施行。',
+  inputs:[
+    {label:'200至299人施行年（民國）',num:107,tol:0,kw:['107'],show:'107年'},
+    {label:'100至199人施行年（民國）',num:109,tol:0,kw:['109'],show:'109年'},
+    {label:'50至99人施行年（民國）',num:111,tol:0,kw:['111'],show:'111年'}
+  ],
+  model:'200至299人自107年7月1日、100至199人自109年1月1日、50至99人自111年1月1日起，應僱用或特約從事勞工健康服務之醫護人員。',
+  explain:'職業安全衛生法第22條規定50人以上應設醫護人員，惟依勞工健康保護規則採分階段（由大規模至小規模）施行，最終111年1月1日全面適用至50人以上。'},
+
+ {id:134,cat:'災害調查',type:'qa',q:'某戶外營建工地於盛夏發生勞工熱中暑致死之職業災害。試從安全衛生管理面，列舉雇主於高溫環境作業應採取而可能未落實、致釀成災害之管理缺失至少三項。',
+  need:3,
+  points:[
+    {kw:['飲水','食鹽','電解質','補充水分'],label:'未充分供應飲用水及食鹽（電解質）'},
+    {kw:['作息','休息','工時','輪替'],label:'未依高溫作息調配作業與休息時間（缺乏適當休息）'},
+    {kw:['熱適應','適應'],label:'新僱或久未作業勞工未實施熱適應'},
+    {kw:['健康檢查','選配','體格','慢性病'],label:'未依健檢結果選配適任勞工（未排除不適高溫作業之疾病者）'},
+    {kw:['教育訓練','訓練','危害告知'],label:'未實施高溫危害及急救之教育訓練'},
+    {kw:['監測','WBGT','遮蔽','通風','工程改善'],label:'未實施WBGT監測或工程改善（遮蔽、通風降溫）'}
+  ],
+  model:'可能之管理缺失（任列三項）：一、未充分供應飲用水及食鹽；二、未依規定調配作息時間、缺乏適當休息；三、未對勞工實施熱適應；四、未依健康檢查結果選配適任勞工；五、未辦理高溫危害及急救教育訓練；六、未實施WBGT監測及工程改善（遮蔽、通風、降低熱源）。',
+  explain:'熱疾病之預防採工程改善優先、行政管理次之；災害調查時應檢視上述管理措施之落實情形，並確認緊急應變（迅速降溫送醫）是否到位。'}
+,
+// ===== 2026 課程PDF補充（危險性機械設備管理｜術科）=====
+ {id:135,cat:'法規應用',type:'calc',q:'車架固定有一內容積10立方公尺容器之槽車，灌裝比重0.67之液氨2500公斤。依高壓氣體勞工安全規則，液化氣體之儲存能力 W＝0.9×比重×內容積（公升）。試求：（一）該容器之儲存能力（公斤）；（二）該容器若要在管理分類上屬「灌氣容器」（灌裝質量須達儲存能力之二分之一以上），至少應再灌裝多少公斤？',
+  formula:'儲存能力 W＝0.9×比重×V（內容積，公升）；灌氣容器：灌裝質量≧儲存能力×1/2',
+  inputs:[
+    {label:'儲存能力(公斤)',num:6030,tol:1,kw:['6030'],show:'6030 公斤'},
+    {label:'至少再灌裝(公斤)',num:515,tol:1,kw:['515'],show:'515 公斤'}
+  ],
+  model:'內容積10立方公尺＝10000公升。儲存能力 W＝0.9×0.67×10000＝6030公斤。灌氣容器須灌裝質量達儲存能力之二分之一，即6030÷2＝3015公斤；現已灌裝2500公斤，尚須再灌裝3015－2500＝515公斤。',
+  explain:'儲存能力（液化氣體）W＝0.9×比重×內容積（公升）；灌氣容器指灌裝質量達滿灌質量二分之一以上者，未滿二分之一者為殘氣容器。'},
+ {id:136,cat:'法規應用',type:'calc',q:'某廠新設吊運車架空移動式起重機一座，其吊升荷重為270公噸，吊掛用具（吊具）重30公噸。依危險性機械及設備安全檢查規則，試求：（一）該起重機之額定荷重（公噸）；（二）竣工檢查實施荷重試驗時應施加之荷重（公噸）。',
+  formula:'額定荷重＝吊升荷重－吊具重；荷重試驗：額定荷重W≦200公噸者為1.25W，W＞200公噸者為W＋50公噸',
+  inputs:[
+    {label:'額定荷重(公噸)',num:240,tol:0,kw:['240'],show:'240 公噸'},
+    {label:'荷重試驗荷重(公噸)',num:290,tol:0,kw:['290'],show:'290 公噸'}
+  ],
+  model:'額定荷重＝吊升荷重270－吊具重30＝240公噸。額定荷重240＞200公噸，故荷重試驗荷重＝額定荷重＋50＝240＋50＝290公噸。（若額定荷重在200公噸以下則以1.25倍額定荷重實施）',
+  explain:'額定荷重為扣除吊具重後之最大吊升荷重；荷重試驗以確認結構強度，200公噸為「1.25倍」與「加50公噸」兩公式之分界；安定性試驗則為額定荷重之1.27倍。'},
+ {id:137,cat:'災害調查',type:'qa',q:'起重機（吊掛）作業為職業災害重大來源。試列舉起重機作業常見之災害類型至少四種。',
+  need:4,
+  points:[
+    {kw:['物體飛落','飛落','掉落','墜落物'],label:'物體飛落（吊掛物掉落，發生頻率最高）'},
+    {kw:['人員墜落','墜落'],label:'人員墜落（自桁架或搭乘設備墜落）'},
+    {kw:['擠壓','被夾','被撞','夾'],label:'擠壓、被夾或被撞'},
+    {kw:['機體','結構','折損','破壞'],label:'機體結構折損（破壞）'},
+    {kw:['倒塌','崩塌','翻倒','傾倒'],label:'倒塌、崩塌（塔吊、吊車翻倒）'},
+    {kw:['感電','觸電'],label:'感電（未與高壓線路保持安全距離）'}
+  ],
+  model:'起重機作業常見災害類型（任列四種）：一、物體飛落（吊掛物掉落，為發生頻率最高者）；二、人員墜落；三、擠壓、被夾或被撞；四、機體結構折損（破壞）；五、倒塌、崩塌（塔式起重機或吊車翻倒）；六、感電。',
+  explain:'物體飛落多因吊具強度不足、吊掛不當、吊鉤無防脫裝置或過捲預防裝置失效；倒崩塌多因超載、外伸撐座未定位、地盤鬆軟或強風；感電則因未與高壓線路保持安全距離。'},
+ {id:138,cat:'管理計畫',type:'qa',q:'依鍋爐及壓力容器安全規則，雇主使勞工進入鍋爐或其燃燒室、煙道之內部從事清掃、修繕、保養等作業時，應辦理哪些事項？請至少列舉四項。',
+  need:4,
+  points:[
+    {kw:['冷卻','適當冷卻'],label:'將鍋爐、燃燒室或煙道適當冷卻'},
+    {kw:['通風','換氣'],label:'實施內部之通風換氣'},
+    {kw:['雙重絕緣','可撓性','移動電線','電纜','護罩'],label:'移動電線採可撓性雙重絕緣電纜，移動電燈裝設適當護罩'},
+    {kw:['隔斷','阻斷','盲板','連通'],label:'與其他使用中之鍋爐或壓力容器連通者，確實隔斷或阻斷'},
+    {kw:['監視','連絡','監視人員'],label:'置監視人員隨時保持連絡並採緊急應變搶救措施'}
+  ],
+  model:'進入鍋爐或燃燒室、煙道內部作業應辦理事項（任列四項）：一、將鍋爐、燃燒室或煙道適當冷卻；二、實施內部之通風換氣；三、內部使用之移動電線應為可撓性雙重絕緣電纜，移動電燈應裝設適當護罩；四、與其他使用中之鍋爐或壓力容器有管連通者，應確實隔斷或阻斷（以盲板隔離為優先）；五、置監視人員隨時保持連絡，遇有災害之虞時立即採取危害防止、通報、緊急應變及搶救等必要措施。',
+  explain:'鍋爐內部屬局限空間，兼有高溫、缺氧、感電及有害氣體危害，故須冷卻、通風換氣、電氣安全防護、隔斷連通管並設監視人員，與局限空間作業管制精神一致。'},
+ {id:139,cat:'法規應用',type:'match',q:'請將下列危險性機械之種類與其列管容量（判定條件）配對。',
+  pairs:[
+    ['固定式起重機','吊升荷重在3公噸以上（斯達卡式起重機為1公噸以上）'],
+    ['移動式起重機','吊升荷重在3公噸以上，能自行移動於非特定場所'],
+    ['人字臂起重桿','吊升荷重在3公噸以上，具主柱及吊桿'],
+    ['營建用提升機','導軌或升降路之高度在20公尺以上'],
+    ['吊籠','懸吊式施工架構成、專供勞工升降施工之設備']
+  ],
+  model:'固定式起重機→吊升荷重3公噸以上（斯達卡式1公噸以上）；移動式起重機→吊升荷重3公噸以上（自行移動於非特定場所）；人字臂起重桿→吊升荷重3公噸以上；營建用提升機→導軌或升降路高度20公尺以上；吊籠→懸吊式施工架構成、專供勞工升降施工之設備。',
+  explain:'六種危險性機械尚含營建用升降機（供營造施工用）。列管容量為認定是否適用起重升降機具安全規則及安全檢查規則之門檻；吊升荷重未滿0.5公噸之起重機則僅適用職業安全衛生設施規則。'},
+ {id:140,cat:'法規應用',type:'fill',q:'依高壓氣體勞工安全規則，填入下列高壓氣體之判定壓力（均為表壓力，單位每平方公分公斤）：（1）常用溫度下壓力達【　】公斤以上，或溫度35℃時壓力可達【　】公斤以上之壓縮氣體（不含壓縮乙炔氣）；（2）常用溫度下壓力達【　】公斤以上之壓縮乙炔氣；（3）常用溫度下壓力達【　】公斤以上之液化氣體。',
+  inputs:[
+    {label:'壓縮氣體常用溫度壓力(公斤)',num:10,tol:0,kw:['10'],show:'10 公斤'},
+    {label:'壓縮氣體35℃可達壓力(公斤)',num:10,tol:0,kw:['10'],show:'10 公斤'},
+    {label:'壓縮乙炔氣壓力(公斤)',num:2,tol:0,kw:['2'],show:'2 公斤'},
+    {label:'液化氣體壓力(公斤)',num:2,tol:0,kw:['2'],show:'2 公斤'}
+  ],
+  model:'（1）壓縮氣體（乙炔除外）：常用溫度下壓力達10公斤以上，或35℃時壓力可達10公斤以上；（2）壓縮乙炔氣：常用溫度下壓力達2公斤以上（或15℃時可達2公斤以上）；（3）液化氣體：常用溫度下壓力達2公斤以上。',
+  explain:'高壓氣體判定以壓力為核心：壓縮氣體門檻10公斤、壓縮乙炔氣與液化氣體門檻2公斤；另有溫度35℃時壓力超過0之特殊列舉液化氣體（如液化氰化氫、溴甲烷、環氧乙烷）。'},
+// ===== v7.7 課程PDF補充（機械安全防護、危害性化學品標示及通識規則｜術科）=====
+ {id:141,cat:'災害調查',type:'qa',q:'機械設備因其運動或動作型態不同而產生不同之危害。試列舉機械常見之危害源（危害性運動或動作）之類型至少四種。',
+  need:4,
+  points:[
+    {kw:['轉動','往復','直線運動','旋轉'],label:'轉動、往復及直線運動（撞擊、擠壓）'},
+    {kw:['捲入','捲夾','嚙合點','咬入'],label:'動作捲入點（兩機件相對運動之咬入處）'},
+    {kw:['切割','切削'],label:'切割動作（於工作點切除物料）'},
+    {kw:['擠夾','衝擊','夾傷'],label:'擠夾、衝擊'},
+    {kw:['衝截彎','沖壓','撞鎚','刃片'],label:'衝、截、彎等動作（撞鎚、刃片）'},
+    {kw:['高速迴轉','飛擊','離心','碎裂'],label:'高速迴轉體碎裂飛擊'}
+  ],
+  model:'機械常見危害源包括：（1）轉動、往復及直線運動，如皮帶、鏈條、轉軸之撞擊擠壓；（2）動作捲入點，兩相對運動機件之咬入處；（3）切割動作，於切削工作點發生；（4）擠夾、衝擊；（5）衝、截、彎等動作，由動力撞鎚或刃片形成；（6）高速迴轉體因離心力碎裂飛擊。',
+  explain:'辨識機械危害源類型有助於選擇適當防護（護罩護圍、安全裝置、改善進退料）；機械製造修配業之死亡與失能職災以捲夾佔比最高。'},
+
+ {id:142,cat:'法規應用',type:'calc',q:'某動力衝剪機械裝設「一般光電式（感應式）安全裝置」。已知手指介入感應域至快速停止機構開始動作之時間Tl為120毫秒、快速停止機構開始動作至滑塊等停止之時間Ts為150毫秒，連續遮光幅為40毫米。依規定公式D＝1.6（Tl＋Ts）＋C計算：（一）追加距離C（毫米）；（二）安全距離D（毫米）。',
+  formula:'D＝1.6（Tl＋Ts）＋C；C由連續遮光幅查表（超過35、45以下者為300）',
+  inputs:[
+    {label:'追加距離C(mm)',num:300,tol:0,kw:['300'],show:'300 mm'},
+    {label:'安全距離D(mm)',num:732,tol:1,kw:['732'],show:'732 mm'}
+  ],
+  model:'連續遮光幅40毫米（超過35、45以下），查表追加距離C＝300毫米。\nD＝1.6×（120＋150）＋300＝1.6×270＋300＝432＋300＝732毫米。',
+  explain:'感應式（光電式）安全裝置除以1.6（Tl＋Ts）計算手移動距離外，須再加因光柵解析度（連續遮光幅）之追加距離C；連續遮光幅越大C越大，安全距離亦越長。'},
+
+ {id:143,cat:'法規應用',type:'fill',q:'依職業安全衛生設施規則，填入傳動帶防護之法定數值：（1）離地【　】公尺以內之傳動帶，附近有勞工工作或通行而有接觸危險者，應裝置適當之圍柵或護網；（2）幅寬【　】公分以上、速度每分鐘【　】公尺以上、兩軸間距離【　】公尺以上之架空傳動帶週邊下方，有勞工工作或通行者，應裝設堅固之圍柵或護網。',
+  inputs:[
+    {label:'離地(公尺)',num:2,tol:0,kw:['2'],show:'2 公尺'},
+    {label:'幅寬(公分)',num:20,tol:0,kw:['20'],show:'20 公分'},
+    {label:'速度(公尺/分)',num:550,tol:0,kw:['550'],show:'550 公尺/分'},
+    {label:'兩軸間距離(公尺)',num:3,tol:0,kw:['3'],show:'3 公尺'}
+  ],
+  model:'（1）離地2公尺以內之傳動帶應設圍柵或護網；（2）幅寬20公分以上、速度每分鐘550公尺以上、兩軸間距離3公尺以上之架空傳動帶週邊下方，應裝設圍柵或護網。',
+  explain:'傳動帶捲夾為機械常見災害；除上述架空傳動帶周邊下方防護外，穿過樓層之傳動帶於穿越洞口亦應設圍柵或護網。'},
+
+ {id:144,cat:'管理計畫',type:'qa',q:'依危害性化學品標示及通識規則，雇主為防止勞工未確實知悉危害性化學品之危害資訊致引起職業災害，應採取之必要（通識）措施為何？請至少列舉四項。',
+  need:4,
+  points:[
+    {kw:['危害通識計畫','通識計畫','計畫'],label:'訂定危害通識計畫並確實執行，執行紀錄保存3年'},
+    {kw:['清單'],label:'製作危害性化學品清單'},
+    {kw:['安全資料表','SDS','置於','易取得'],label:'將安全資料表置於工作場所易取得之處'},
+    {kw:['教育訓練','訓練'],label:'使勞工接受危害通識教育訓練'},
+    {kw:['標示'],label:'於容器依規定標示危害圖式及內容'}
+  ],
+  model:'（1）訂定危害通識計畫並適時檢討更新、確實執行，執行紀錄保存3年；（2）製作危害性化學品清單；（3）將安全資料表（SDS）置於工作場所易取得之處；（4）使勞工接受製造、處置或使用危害性化學品之教育訓練；（5）於容器依規定標示，及其他使勞工確實知悉危害資訊之必要措施。',
+  explain:'危害通識計畫應涵蓋清單、SDS、標示、教育訓練等項目之擬訂、執行、紀錄及修正，為化學品危害溝通之核心管理工具。'},
+
+ {id:145,cat:'職業衛生',type:'match',q:'依危害性化學品標示及通識規則（CNS15030），請將「易燃液體」之危害分級與其閃火點及起始沸點之判定條件配對。',
+  pairs:[
+    ['易燃液體第1級','閃火點小於23℃，且起始沸點小於等於35℃'],
+    ['易燃液體第2級','閃火點小於23℃，且起始沸點大於35℃'],
+    ['易燃液體第3級','閃火點大於等於23℃，且小於等於60℃'],
+    ['易燃液體第4級','閃火點大於60℃，且小於等於90℃']
+  ],
+  model:'第1級：閃火點＜23℃且起始沸點≦35℃；第2級：閃火點＜23℃且起始沸點＞35℃；第3級：閃火點≧23℃且≦60℃；第4級：閃火點＞60℃且≦90℃。',
+  explain:'易燃液體以閃火點為主要分級依據，第1、2級再以起始沸點區分；閃火點越低、沸點越低者危害性越高。第1至3級之危害圖式為火焰，第4級無象徵符號。'},
+
+ {id:146,cat:'災害調查',type:'qa',q:'某食品工廠批式生產之輸送帶發生異常，廠務課長擬派員前往檢查及修理，經評估該作業有捲夾之風險。試從「設備面」說明應如何控制此捲夾風險，以避免職業災害發生（至少三項）。',
+  need:3,
+  points:[
+    {kw:['停止','停機','切斷動力','遮斷'],label:'停止機械運轉並切斷（遮斷）動力後再作業'},
+    {kw:['上鎖','標示','LOTO','掛牌'],label:'採上鎖及設置標示，防止他人誤起動或誤送料'},
+    {kw:['殘壓','釋壓','關斷','阻隔','蓄能'],label:'釋放液壓、氣壓或真空等殘壓（釋壓、關斷或阻隔）'},
+    {kw:['護罩','護圍','足夠長度','作業用具'],label:'必須運轉中施行者，設護罩護圍或使用足夠長度之作業用具'}
+  ],
+  model:'（1）作業前應停止機械運轉及送料；（2）為防止他人誤起動或誤送料，應採上鎖及設置標示（LOTO），並設防止落下物之安全設施；（3）停機後有液壓、氣壓或真空蓄能等殘壓危險者，應以釋壓、關斷或阻隔等措施消除殘壓；（4）若必須於運轉中施行檢修而無法停機，應設護罩、護圍或使用足夠長度之作業用具，並指派現場主管在場監督。',
+  explain:'依設施規則第57條，機械之掃除、上油、檢查、修理或調整有危害之虞者，基本原則為停機＋上鎖＋標示（LOTO）並釋放殘壓；捲夾為機械修配常見致死災害類型。'},
+
+ {id:147,cat:'法規應用',type:'qa',q:'職業安全衛生法對機械、設備或器具建立多層次之源頭管理機制。試就職安法第7條、第8條及第16條，分別說明對機械設備器具之管制方式。',
+  need:3,
+  points:[
+    {kw:['第7條','7條','指定','自我宣告','登錄','安全標示'],label:'第7條：指定之機械設備器具採自我宣告符合安全標準、網站登錄並張貼安全標示'},
+    {kw:['第8條','8條','型式驗證','合格標章'],label:'第8條：公告列入型式驗證者，須型式驗證合格並張貼合格標章'},
+    {kw:['第16條','16條','危險性','檢查合格','代行檢查'],label:'第16條：具危險性之機械或設備，須經檢查機構或代行檢查機構檢查合格始得使用'}
+  ],
+  model:'（1）職安法第7條：對中央主管機關指定之機械設備器具（如動力衝剪機械、研磨機等），製造者或輸入者應自我宣告其構造、性能及防護符合安全標準，於指定網站登錄並張貼安全標示，方得產製運出廠場或輸入；（2）第8條：對公告列入型式驗證者（如交流電焊機用自動電擊防止裝置），須經認可之驗證機構型式驗證合格並張貼合格標章；（3）第16條：對指定具有危險性之機械或設備，非經勞動檢查機構或代行檢查機構檢查合格，不得使用，逾期須再檢查合格。',
+  explain:'源頭管理由寬至嚴分為：指定（自我宣告，第7條）→公告型式驗證（第三者驗證，第8條）→危險性機械設備（政府公權力檢查，第16條），風險越高管制越嚴。'},
+
+// ===== v8.0 新增術科（148-157）：新法規＋熱危害＋計算 =====
+ {id:148,cat:'法規應用',type:'qa',q:'115年7月1日施行之職業安全衛生法部分條文修正案（共修正25條文），為102年以來最大幅度修法。試列舉本次修法之五大重點。',
+  need:4,
+  points:[
+    {kw:['營造','源頭','圖說','規劃','設計'],label:'強化營造工程源頭防災：工程業主交付一定規模以上營造工程時，應分析潛在危害並編製安全衛生圖說、規範及經費'},
+    {kw:['承攬','風險評估','告知','出租','出借','進場管制','統合'],label:'加強承攬安全管理：交付承攬應實施風險評估並危害告知、出租(借)場所設備事前告知、進場管制、指定統合管理施工者'},
+    {kw:['霸凌','專章','申訴'],label:'完善職場霸凌防治：新增職場霸凌防治專章（定義、申訴管道、調查處理、外部申訴機制）'},
+    {kw:['罰','提高','刑期','罰金','罰鍰'],label:'提高處罰額度：適度提高刑事罰刑期、罰金及行政罰鍰'},
+    {kw:['公布','違反條文','處分期日','罹災'],label:'擴大違法公布事項：增列處分期日、違反條文、罰鍰金額；職災案件並公布發生日期、地點及罹災人數'}
+  ],
+  model:'（1）強化營造工程源頭防災：工程業主將一定規模以上營造工程交付規劃、設計及施工時，應依工程特性分析潛在危害，編製安全衛生圖說、規範及經費；（2）加強承攬安全管理：交付承攬應實施風險評估並據以事前危害告知、出租出借場所設備應事前告知、增列施工現場進場管制、各級承攬人比照原事業單位辦理防災、二個以上施工者應指定統合管理者；（3）完善職場霸凌防治：新增防治專章，定明霸凌定義、申訴管道、調查處理及最高負責人之外部申訴機制；（4）提高處罰額度：提高刑事罰刑期與罰金及行政罰鍰；（5）擴大違法公布：增列處分期日、違反條文、罰鍰金額，職災案件並公布發生日期、發生地及罹災人數。',
+  explain:'本次修法兩大核心為「工安預防全面化」與「職場霸凌法制化」，於115年7月1日施行。'},
+
+ {id:149,cat:'法規應用',type:'qa',q:'依115年7月1日施行職安法「職場霸凌防治專章」，試說明雇主於職場霸凌防治應辦理之事項。',
+  need:4,
+  points:[
+    {kw:['申訴管道','規範','規模','公開','揭示'],label:'依事業單位規模訂定申訴管道及規範，並公開揭示'},
+    {kw:['調查','處理','利益迴避'],label:'建立內部申訴之調查、處理機制，調查人員應遵守利益迴避'},
+    {kw:['協助','保護','報復'],label:'提供申訴人必要之協助及保護措施（防止遭受不利對待）'},
+    {kw:['登錄','網站','中央'],label:'將申訴案件及處理結果登錄至中央主管機關指定之網站'},
+    {kw:['最高負責人','外部','地方'],label:'被申訴人為最高負責人時，勞工得向地方主管機關提起外部申訴'}
+  ],
+  model:'（1）依事業單位規模訂定職場霸凌申訴管道及規範，並公開揭示；（2）建立內部申訴之調查與處理機制，調查人員應遵守利益迴避事項；（3）提供申訴人必要之協助及保護措施；（4）將申訴案件及處理結果登錄至中央主管機關指定之網站；（5）被申訴人為事業單位最高負責人時，勞工得依程序向地方主管機關提起外部申訴，地方主管機關並得請專業人士或民間團體協助調查。',
+  explain:'職場霸凌防治法制化後，雇主未依規定辦理者將受行政處罰，管理人員應熟悉申訴、調查、保護、登錄之完整流程。'},
+
+ {id:150,cat:'管理計畫',type:'qa',q:'依「高氣溫作業熱危害預防指引（第三版）」（114年6月修正），試述雇主使勞工從事高氣溫戶外作業時，應採取之熱危害預防措施。',
+  need:5,
+  points:[
+    {kw:['遮陽','遮陽網','遮陽棚'],label:'設置遮陽設施（遮陽網、遮陽棚、傘等）'},
+    {kw:['風扇','水霧','降溫'],label:'提供風扇、水霧等降低作業環境溫度之設備'},
+    {kw:['飲水','水分','電解質'],label:'提供充足飲用水或電解質飲料，提醒定時補充水分'},
+    {kw:['休息','輪班','調整作業時間','陰涼'],label:'設置陰涼休息場所，調整作業時間與休息頻率（避開高溫時段、輪班）'},
+    {kw:['熱適應','漸進'],label:'新僱或久未暴露勞工採漸進式熱適應'},
+    {kw:['健康','高風險','慢性病','管理'],label:'實施健康管理，注意高風險族群（慢性病、服藥、高齡）勞工'},
+    {kw:['應變','急救','症狀','通報'],label:'訂定緊急應變程序，教育勞工辨識熱疾病症狀並實施急救、通報'}
+  ],
+  model:'（1）設置遮陽設施（遮陽網、棚、傘）；（2）提供風扇、水霧或其他降溫設備（熱危害風險等級達第四級以上為法定義務）；（3）提供充足飲水及電解質補充；（4）設置陰涼休息場所，調整作業與休息時間，避開最高溫時段；（5）新僱或久未暴露者實施漸進式熱適應；（6）健康管理：辨識高風險勞工（慢性病、高齡、服藥者）並調整工作；（7）訂定熱疾病緊急應變及急救程序，教育勞工辨識熱中暑、熱衰竭等症狀。',
+  explain:'第三版指引適用所有工作者（含自營作業者、派遣勞工），並增訂特殊作業樣態（環境受限、不定點移動）之降溫措施與休息場所設置方式。'},
+
+ {id:151,cat:'法規應用',type:'qa',q:'依職業安全衛生法及115年7月1日施行之修正條文，試說明事業單位以其事業之全部或一部分交付承攬時，應辦理之安全衛生事項。',
+  need:4,
+  points:[
+    {kw:['風險評估','事前','告知','危害因素'],label:'交付承攬時應實施風險評估，並據以於事前告知承攬人工作環境、危害因素及應採取之措施'},
+    {kw:['協議組織','負責人','指揮'],label:'共同作業時設置協議組織並指定工作場所負責人擔任指揮協調'},
+    {kw:['連繫','調整'],label:'工作之連繫與調整'},
+    {kw:['巡視'],label:'工作場所之巡視'},
+    {kw:['教育','指導','協助'],label:'相關承攬事業間安全衛生教育之指導及協助'},
+    {kw:['進場管制','機械','人員'],label:'施工現場機械、設備、器具及人員之進場管制（修法新增）'}
+  ],
+  model:'（1）交付承攬時實施風險評估，並依評估結果於事前告知承攬人有關工作環境、危害因素暨依職安法應採取之措施（承攬人再交付承攬時亦應告知再承攬人）；（2）共同作業時應設置協議組織並指定工作場所負責人；（3）工作之連繫與調整；（4）工作場所之巡視；（5）相關承攬事業間安全衛生教育之指導及協助；（6）修法新增：施工現場機械、設備、器具及人員之進場管制，各級承攬人並應比照原事業單位辦理防災事項。',
+  explain:'原事業單位違反承攬管理規定致承攬人勞工發生職災時，與承攬人負連帶賠償責任（職安法第25條）。'},
+
+ {id:152,cat:'災害調查',type:'calc',q:'某事業單位年平均勞工人數500人，該年度發生失能傷害計8人次。試計算該單位之年失能傷害「千人率」。',
+  formula:'千人率＝年間失能傷害人次×1000÷年平均勞工人數',
+  inputs:[
+    {label:'千人率',num:16,tol:0.1,kw:['16','16.0','16.00'],show:'16.00'}
+  ],
+  model:'千人率＝8×1000÷500＝16.00。',
+  explain:'千人率以「每千名勞工」發生失能傷害之人次表示，不考慮工時；與以百萬工時為基準之FR（頻率）不同。'},
+
+ {id:153,cat:'職業衛生',type:'calc',q:'某戶外有日曬之工地，實測自然濕球溫度27°C、黑球溫度40°C、乾球溫度33°C。試計算其綜合溫度熱指數WBGT，並判斷從事「輕工作」連續作業（容許WBGT為30.6°C）是否符合規定。',
+  formula:'戶外有日曬：WBGT＝0.7×自然濕球＋0.2×黑球＋0.1×乾球',
+  inputs:[
+    {label:'WBGT(°C)',num:30.2,tol:0.1,kw:['30.2'],show:'30.2°C'},
+    {label:'可否連續作業',kw:['符合','可以','可連續','未超過','合格'],show:'符合（30.2<30.6，可連續作業）'}
+  ],
+  model:'WBGT＝0.7×27＋0.2×40＋0.1×33＝18.9＋8.0＋3.3＝30.2°C。\n輕工作連續作業容許值30.6°C，實測30.2°C未超過，故符合規定、可連續作業。',
+  explain:'戶外有日曬採三溫度加權（0.7／0.2／0.1）；戶內或無日曬為0.7×自然濕球＋0.3×黑球。判定時將實測WBGT與「高溫作業勞工作息時間標準」之作業別容許值比較。'},
+
+ {id:154,cat:'職業衛生',type:'calc',q:'某勞工一工作日內暴露於穩定性噪音：90dBA暴露2小時（容許時間8小時）、95dBA暴露2小時（容許時間4小時），其餘時間低於80dBA不計。試計算其噪音暴露劑量（%），並判斷是否符合規定。',
+  formula:'劑量D＝Σ(實際暴露時間÷該音壓級容許暴露時間)×100%；D≤100%符合',
+  inputs:[
+    {label:'暴露劑量(%)',num:75,tol:1,kw:['75','0.75'],show:'75%'},
+    {label:'是否符合規定',kw:['符合','未超過','合格','小於100'],show:'符合（75%<100%）'}
+  ],
+  model:'D＝(2/8＋2/4)×100%＝(0.25＋0.5)×100%＝75%。\n75%＜100%，符合規定。',
+  explain:'我國噪音容許標準以90dBA/8小時為基準、5dB減半率（95dBA→4小時、100dBA→2小時）；各時段劑量相加超過100%（相當8小時TWA 90dBA）即屬超標，且任何時間不得暴露於超過140dBA之衝擊性噪音。'},
+
+ {id:155,cat:'災害調查',type:'calc',q:'某公司全年總經歷工時2,400,000小時，年內發生失能傷害3次、總損失日數1,800日。試計算失能傷害頻率（FR）及失能傷害嚴重率（SR）。',
+  formula:'FR＝失能傷害次數×10⁶÷總經歷工時；SR＝總損失日數×10⁶÷總經歷工時',
+  inputs:[
+    {label:'FR(頻率)',num:1.25,tol:0.02,kw:['1.25'],show:'1.25'},
+    {label:'SR(嚴重率)',num:750,tol:5,kw:['750'],show:'750'}
+  ],
+  model:'FR＝3×10⁶÷2,400,000＝1.25。\nSR＝1,800×10⁶÷2,400,000＝750。',
+  explain:'FR計「次數」、SR計「損失日數」，均以百萬工時為基準；FR取至小數2位、SR取整數為慣例。'},
+
+ {id:156,cat:'管理計畫',type:'qa',q:'依風險評估技術指引，試依序說明實施風險評估之作業流程（步驟）。',
+  need:4,
+  points:[
+    {kw:['辨識','危害','作業清查','製程'],label:'辨識出所有作業或工程，鑑別危害及其後果'},
+    {kw:['現有','防護','控制措施','確認'],label:'確認現有可有效預防或降低危害之防護設施（控制措施）'},
+    {kw:['嚴重度','可能性','風險等級','評估'],label:'評估危害之嚴重度及發生可能性，據以估算風險等級'},
+    {kw:['降低','控制','採取措施','消除','工程控制'],label:'依風險等級決定並採取消除或降低風險之控制措施（依控制層級優先順序）'},
+    {kw:['殘餘','確認風險','可接受'],label:'確認採取措施後之殘餘風險已降至可接受程度，並持續檢討更新'}
+  ],
+  model:'（1）辨識出所有的作業或工程，鑑別各作業之危害及可能後果；（2）確認現有可有效預防或降低危害之防護設施；（3）評估危害之嚴重度與發生可能性，估算風險等級；（4）依風險等級決定降低風險之控制措施（優先順序：消除→取代→工程控制→行政管理→個人防護具）；（5）確認採取控制措施後之殘餘風險是否可接受，並於製程、法規或作業變更時檢討更新。',
+  explain:'風險評估為職安衛管理系統（PDCA）中「規劃」階段之核心，亦為承攬交付前危害告知之依據（115.7.1修法新增）。'},
+
+ {id:157,cat:'法規應用',type:'match',q:'請將115年7月1日施行之職安法修正重點與其內容配對：',
+  pairs:[
+    ['營造工程源頭防災','工程業主應分析潛在危害，編製安全衛生圖說、規範及經費'],
+    ['承攬安全管理','交付承攬應實施風險評估並事前危害告知'],
+    ['職場霸凌防治專章','雇主應訂定申訴管道及規範並公開揭示'],
+    ['擴大違法公布','增列處分期日、違反條文及罰鍰金額'],
+    ['統合管理責任','工程交付二個以上施工者時，指定其一負整體安全衛生統合管理']
+  ],
+  explain:'五大修正重點：營造源頭防災、承攬管理強化、霸凌防治專章、提高罰則、擴大公布，核心為「工安預防全面化」與「職場霸凌法制化」。'}
 ];
 
-let skSession=[],ski=0,skResults=[],skCat='all';
+let skSession=[],ski=0,skResults=[],skCat='all',skAnswers=[];
 
 function skNorm(s){return (s==null?'':''+s).toLowerCase().replace(/\s+/g,'').replace(/，/g,',').replace(/．/g,'.');}
 function skToNum(s){if(s==null)return NaN;var m=(''+s).replace(/[，,]/g,'').replace(/[^0-9.\-]/g,'');return m===''?NaN:parseFloat(m);}
@@ -2869,7 +3555,7 @@ function skStart(cat){
   var pool=(cat==='all')?SQ.slice():SQ.filter(function(q){return q.cat===cat;});
   if(!pool.length){alert('此範疇暫無題目');return;}
   skSession=pool.sort(function(){return Math.random()-.5;});
-  ski=0;skResults=[];
+  ski=0;skResults=[];skAnswers=new Array(skSession.length);
   showScreen('screen-skill');skRender();
 }
 
@@ -2885,6 +3571,8 @@ function skRender(){
   var body=document.getElementById('sk-body');body.innerHTML='';
   var fb=document.getElementById('sk-fb');fb.style.display='none';fb.className='fb';
   document.getElementById('sk-next').style.display='none';
+  document.getElementById('sk-prev').style.display='none';
+  document.getElementById('sk-submit-exam').style.display='none';
   document.getElementById('sk-submit-wrap').style.display='block';
   if(q.type==='qa'){
     body.innerHTML='<textarea class="sk-ta" id="sk-ta" placeholder="請依題意作答，列出核心名詞／措施（建議每項一行）"></textarea>'+
@@ -2908,13 +3596,56 @@ function skRender(){
     if(q.formula)html+='<div class="text-muted" style="margin-top:6px">參考公式：'+q.formula+'</div>';
     body.innerHTML=html;
   }
+  if(skAnswers[ski])renderSkAnswered(q);
+  updateSkNav();
+}
+
+// 重新呈現已作答術科題之鎖定狀態（唯讀回顧）
+function renderSkAnswered(q){
+  var a=skAnswers[ski];
+  if(q.type==='qa'){
+    var ta=document.getElementById('sk-ta');if(ta){ta.value=a.text||'';ta.disabled=true;}
+  }else if(q.type==='match'){
+    var sels=document.querySelectorAll('#sk-match .match-sel');
+    sels.forEach(function(s,idx){s.value=encodeURIComponent(a.chosen[idx]);s.disabled=true;
+      if(a.chosen[idx]===q.pairs[idx][1])s.classList.add('correct');else s.classList.add('wrong');});
+  }else{
+    var inps=document.querySelectorAll('#sk-body .sk-input');
+    inps.forEach(function(el,idx){el.value=a.vals[idx];el.disabled=true;
+      el.style.borderColor=a.oks[idx]?'var(--ok)':'var(--err)';});
+  }
+  document.getElementById('sk-submit-wrap').style.display='none';
+  var fb=document.getElementById('sk-fb');fb.style.display='block';fb.className='fb '+a.fbClass;
+  fb.innerHTML=a.fbHtml;
+  var ansd=skAnswers.filter(function(x){return x;});
+  var avg=Math.round(ansd.reduce(function(s,x){return s+x.score;},0)/ansd.length*100);
+  document.getElementById('sk-score').textContent='平均 '+avg+'%';
+  document.getElementById('sk-pb').style.width=((ski+1)/skSession.length*100)+'%';
+}
+
+function updateSkNav(){
+  document.getElementById('sk-prev').style.display=ski>0?'inline-block':'none';
+  var nx=document.getElementById('sk-next');
+  nx.style.display=ski<skSession.length-1?'inline-block':'none';
+  nx.textContent=skAnswers[ski]?'下一題 →':'跳過 / 下一題 →';
+  document.getElementById('sk-submit-exam').style.display='inline-block';
+}
+
+function skPrev(){if(ski>0){ski--;skRender();}}
+
+function skSubmitExam(){
+  var un=0;for(var k=0;k<skSession.length;k++){if(!skAnswers[k])un++;}
+  if(un>0&&!confirm('尚有 '+un+' 題未作答，未作答將以 0 分計分。確定要交卷嗎？'))return;
+  skFinish();
 }
 
 function skSubmit(){
   var q=skSession[ski];var score=0,detail='';
+  var savedText='',savedChosen=[],savedVals=[],savedOks=[];
   if(q.type==='qa'){
     var ta=document.getElementById('sk-ta');var val=ta.value;
     if(!val.trim()){alert('請先作答！');return;}
+    savedText=val;
     ta.disabled=true;var hit=0,chips='';
     q.points.forEach(function(pt){
       var ok=false,v=skNorm(val);
@@ -2930,6 +3661,7 @@ function skSubmit(){
     if(!allFilled){alert('請完成所有配對！');return;}
     var corr=0;
     sels.forEach(function(s,idx){s.disabled=true;var chosen=decodeURIComponent(s.value);var right=q.pairs[idx][1];
+      savedChosen.push(chosen);
       if(chosen===right){s.classList.add('correct');corr++;}else{s.classList.add('wrong');}});
     score=corr/q.pairs.length;
     detail='<div style="margin:6px 0">配對正確 '+corr+'／'+q.pairs.length+'</div>';
@@ -2939,29 +3671,38 @@ function skSubmit(){
     if(!anyFilled){alert('請先作答！');return;}
     var corr=0,rows='';
     inps.forEach(function(el,idx){var inp=q.inputs[idx];var ok=skMatchInput(inp,el.value);
+      savedVals.push(el.value);savedOks.push(ok);
       el.disabled=true;el.style.borderColor=ok?'var(--ok)':'var(--err)';if(ok)corr++;
       rows+='<span class="kp '+(ok?'hit':'miss')+'">'+(ok?'✓':'✗')+' '+inp.label+'：'+(inp.show||(inp.kw&&inp.kw[0])||'')+'</span>';});
     score=corr/q.inputs.length;
     detail='<div style="margin:6px 0">答對 '+corr+'／'+q.inputs.length+' 格</div><div>'+rows+'</div>';
   }
-  skResults.push({id:q.id,cat:q.cat,type:q.type,score:score});
   document.getElementById('sk-submit-wrap').style.display='none';
   var pct=Math.round(score*100);
   var cls=pct>=100?'correct':(pct>=60?'partial':'wrong');
-  var fb=document.getElementById('sk-fb');fb.style.display='block';fb.className='fb '+cls;
-  fb.innerHTML='<strong>本題得分：'+pct+' 分</strong>'+detail+
+  var fbHtml='<strong>本題得分：'+pct+' 分</strong>'+detail+
     '<div class="sk-model"><strong>標準答案／解析</strong>\n'+(q.model||'')+(q.explain?('\n\n💡 '+q.explain):'')+'</div>';
-  var avg=Math.round(skResults.reduce(function(a,r){return a+r.score;},0)/skResults.length*100);
+  var fb=document.getElementById('sk-fb');fb.style.display='block';fb.className='fb '+cls;
+  fb.innerHTML=fbHtml;
+  skAnswers[ski]={id:q.id,cat:q.cat,type:q.type,score:score,fbHtml:fbHtml,fbClass:cls,
+    text:savedText,chosen:savedChosen,vals:savedVals,oks:savedOks};
+  var ansd=skAnswers.filter(function(x){return x;});
+  var avg=Math.round(ansd.reduce(function(a,x){return a+x.score;},0)/ansd.length*100);
   document.getElementById('sk-score').textContent='平均 '+avg+'%';
   document.getElementById('sk-pb').style.width=((ski+1)/skSession.length*100)+'%';
-  var nb=document.getElementById('sk-next');nb.style.display='inline-block';
-  nb.textContent=(ski>=skSession.length-1)?'看成績 →':'下一題 →';
+  updateSkNav();
 }
 
-function skNext(){if(ski<skSession.length-1){ski++;skRender();}else skFinish();}
-function skEnd(){if(confirm('確定要結束本次術科練習嗎？')){if(skResults.length)skFinish();else showScreen('screen-skill-home');}}
+function skNext(){if(ski<skSession.length-1){ski++;skRender();}}
+function skEnd(){
+  if(skAnswers.some(function(a){return a;})){skSubmitExam();}
+  else if(confirm('確定要結束本次術科練習嗎？'))showScreen('screen-skill-home');
+}
 
 function skFinish(){
+  skResults=[];
+  for(var k=0;k<skSession.length;k++){var sa=skAnswers[k],sq=skSession[k];
+    skResults.push({id:sq.id,cat:sq.cat,type:sq.type,score:sa?sa.score:0});}
   var total=skResults.length;
   var avg=total?Math.round(skResults.reduce(function(a,r){return a+r.score;},0)/total*100):0;
   var pass=avg>=60;
@@ -2980,6 +3721,32 @@ function skFinish(){
   });
   showScreen('screen-skill-result');
 }
+
+// ==================== 鍵盤快捷鍵：1-4 / A-D 選答，Enter 確認或下一題，← → 模擬考換題 ====================
+document.addEventListener('keydown',function(ev){
+  const scr=document.getElementById('screen-quiz');
+  if(!scr||!scr.classList.contains('active'))return;
+  const tg=(ev.target&&ev.target.tagName)||'';
+  if(/INPUT|SELECT|TEXTAREA/.test(tg))return;
+  const k=ev.key;
+  let idx=-1;
+  if(k>='1'&&k<='9')idx=k.charCodeAt(0)-49;
+  else if(/^[a-iA-I]$/.test(k))idx=k.toUpperCase().charCodeAt(0)-65;
+  if(idx>=0){
+    const btns=document.querySelectorAll('#opts .ob');
+    if(btns[idx]&&!btns[idx].disabled){btns[idx].click();ev.preventDefault();}
+    return;
+  }
+  if(k==='Enter'){
+    const mc=document.getElementById('multi-confirm');
+    const nb=document.getElementById('next-btn');
+    if(mc&&mc.style.display!=='none'&&multiSelected.length){confirmMulti();ev.preventDefault();}
+    else if(nb&&nb.style.display!=='none'){nb.click();ev.preventDefault();}
+    return;
+  }
+  if(k==='ArrowLeft'&&isExam()){prevQ();ev.preventDefault();}
+  if(k==='ArrowRight'&&isExam()){nextQ();ev.preventDefault();}
+});
 
 // ==================== INIT (restore progress & render home on load) ====================
 try{ loadState(); }catch(e){}
