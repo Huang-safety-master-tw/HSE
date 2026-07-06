@@ -9243,14 +9243,50 @@ function checkGame10() {
             });
         }
 
+        function collectSyncLocalStorageSnapshot() {
+            const snapshot = {};
+            const directKeys = [
+                LS_KEY,
+                'safetyMasterG14Mastery',
+                'safetyMasterG29Answers',
+                'safetyMasterG29Mastery',
+                'g25_correct_ids',
+                'oshaBookmarks',
+                'oshaProgress'
+            ];
+            directKeys.forEach(key => {
+                const value = localStorage.getItem(key);
+                if (value !== null) snapshot[key] = value;
+            });
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (!key) continue;
+                if (/^safetyMaster.*Mastery$/i.test(key) || /^safetyMasterG29Note_q\d+_s\d+$/.test(key)) {
+                    const value = localStorage.getItem(key);
+                    if (value !== null) snapshot[key] = value;
+                }
+            }
+            return snapshot;
+        }
+
+        function restoreSyncLocalStorageSnapshot(snapshot) {
+            if (!snapshot || typeof snapshot !== 'object') return;
+            Object.entries(snapshot).forEach(([key, value]) => {
+                if (!/^safetyMaster/i.test(key) && ![LS_KEY, 'g25_correct_ids', 'oshaBookmarks', 'oshaProgress'].includes(key)) return;
+                if (value == null) return;
+                localStorage.setItem(key, String(value));
+            });
+        }
+
         function collectFullSyncPackage() {
             lsSave();
             return {
                 app: '職安大師',
                 type: FULL_SYNC_TYPE,
-                schemaVersion: 1,
+                schemaVersion: 2,
                 exportedAt: new Date().toISOString(),
                 exportedAtText: new Date().toLocaleString('zh-TW'),
+                localStorageSnapshot: collectSyncLocalStorageSnapshot(),
                 main: {
                     [LS_KEY]: safeJsonParse(localStorage.getItem(LS_KEY), {})
                 },
@@ -9290,6 +9326,8 @@ function checkGame10() {
             if (!pkg || typeof pkg !== 'object') throw new Error('格式錯誤');
 
             if (pkg.type === FULL_SYNC_TYPE || pkg.schemaVersion) {
+                restoreSyncLocalStorageSnapshot(pkg.localStorageSnapshot);
+
                 const mainState = pkg.main && pkg.main[LS_KEY] ? pkg.main[LS_KEY] : pkg.mainSave;
                 if (mainState) localStorage.setItem(LS_KEY, JSON.stringify(mainState));
 
