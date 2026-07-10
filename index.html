@@ -6214,6 +6214,7 @@ function checkGame10() {
         function g14SaveMastery() {
             try {
                 localStorage.setItem(g14MasteryStorageKey(), JSON.stringify(g14Mastery));
+                if (typeof lsSave === 'function') lsSave();
                 scheduleCloudAutoSave('g14-mastery');
             } catch (e) {
                 console.warn('第14關熟練度儲存失敗:', e);
@@ -7518,6 +7519,7 @@ function checkGame10() {
         function g20SaveMastery() {
             try {
                 localStorage.setItem(g20MasteryStorageKey(), JSON.stringify(g20Mastery));
+                if (typeof lsSave === 'function') lsSave();
                 scheduleCloudAutoSave('g20-mastery');
             } catch (e) {
                 console.warn('第20關熟練度儲存失敗:', e);
@@ -9709,8 +9711,18 @@ function checkGame10() {
             localStorage.setItem(key, JSON.stringify(Object.assign({}, current || {}, incoming)));
         }
 
+        function readObjectSaveKey(key, fallbackObj) {
+            const stored = safeJsonParse(localStorage.getItem(key), null);
+            if (stored && typeof stored === 'object') return stored;
+            return (fallbackObj && typeof fallbackObj === 'object') ? fallbackObj : {};
+        }
+
         function collectFullSyncPackage() {
             lsSave();
+            const mainState = safeJsonParse(localStorage.getItem(LS_KEY), {});
+            const g14MasteryData = readObjectSaveKey('safetyMasterG14Mastery', typeof g14Mastery !== 'undefined' ? g14Mastery : {});
+            const g20MasteryData = readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {});
+            const g29MasteryData = readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {});
             return {
                 app: '職安大師',
                 type: FULL_SYNC_TYPE,
@@ -9719,23 +9731,26 @@ function checkGame10() {
                 exportedAtText: new Date().toLocaleString('zh-TW'),
                 localStorageSnapshot: collectSyncLocalStorageSnapshot(),
                 main: {
-                    [LS_KEY]: safeJsonParse(localStorage.getItem(LS_KEY), {})
+                    [LS_KEY]: mainState
                 },
                 g25: {
                     correctIds: safeJsonParse(localStorage.getItem('g25_correct_ids'), [])
                 },
                 mastery: {
-                    games: safeJsonParse(localStorage.getItem(LS_KEY), {}).gameMastery || {}
+                    games: mainState.gameMastery || {},
+                    g14: g14MasteryData,
+                    g20: g20MasteryData,
+                    g29: g29MasteryData
                 },
                 g14: {
-                    mastery: safeJsonParse(localStorage.getItem('safetyMasterG14Mastery'), {})
+                    mastery: g14MasteryData
                 },
                 g20: {
-                    mastery: safeJsonParse(localStorage.getItem('safetyMasterG20Mastery'), {})
+                    mastery: g20MasteryData
                 },
                 g29: {
                     answers: safeJsonParse(localStorage.getItem('safetyMasterG29Answers'), {}),
-                    mastery: safeJsonParse(localStorage.getItem('safetyMasterG29Mastery'), {}),
+                    mastery: g29MasteryData,
                     notes: collectG29NotesForSync()
                 },
                 examSimulator: {
@@ -9772,6 +9787,9 @@ function checkGame10() {
                         mainState.gameMastery || {}
                     );
                     localStorage.setItem(LS_KEY, JSON.stringify(mergedMainState));
+                    if (mainState.g14Mastery) mergeObjectSaveKey('safetyMasterG14Mastery', mainState.g14Mastery);
+                    if (mainState.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', mainState.g20Mastery);
+                    if (mainState.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', mainState.g29Mastery);
                 }
 
                 if (pkg.g25 && Array.isArray(pkg.g25.correctIds)) {
@@ -9782,6 +9800,15 @@ function checkGame10() {
                     const currentMain = safeJsonParse(localStorage.getItem(LS_KEY), {});
                     currentMain.gameMastery = Object.assign({}, currentMain.gameMastery || {}, pkg.mastery.games);
                     localStorage.setItem(LS_KEY, JSON.stringify(currentMain));
+                }
+                if (pkg.mastery && pkg.mastery.g14) {
+                    mergeObjectSaveKey('safetyMasterG14Mastery', pkg.mastery.g14);
+                }
+                if (pkg.mastery && pkg.mastery.g20) {
+                    mergeObjectSaveKey('safetyMasterG20Mastery', pkg.mastery.g20);
+                }
+                if (pkg.mastery && pkg.mastery.g29) {
+                    mergeObjectSaveKey('safetyMasterG29Mastery', pkg.mastery.g29);
                 }
 
                 if (pkg.g14 && pkg.g14.mastery) {
@@ -9812,6 +9839,9 @@ function checkGame10() {
 
             // 相容舊版 safety-master-save-YYYY-MM-DD.json：整份就是主存檔 state。
             localStorage.setItem(LS_KEY, JSON.stringify(pkg));
+            if (pkg.g14Mastery) mergeObjectSaveKey('safetyMasterG14Mastery', pkg.g14Mastery);
+            if (pkg.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', pkg.g20Mastery);
+            if (pkg.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', pkg.g29Mastery);
             reloadAllMasteryFromStorage();
             return '舊版主存檔';
         }
@@ -10014,6 +10044,9 @@ function checkGame10() {
                 // 1. completedGames
                 state.completedGames = JSON.parse(JSON.stringify(completedGames));
                 state.gameMastery = JSON.parse(JSON.stringify(gameMastery));
+                state.g14Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG14Mastery', typeof g14Mastery !== 'undefined' ? g14Mastery : {})));
+                state.g20Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {})));
+                state.g29Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {})));
 
                 // 2. 各關卡 DOM 狀態
                 // Pattern A: data-placedId slots (games 1,2,4,5,10,13)
@@ -10189,6 +10222,15 @@ function checkGame10() {
                 }
                 if (state.gameMastery) {
                     Object.assign(gameMastery, state.gameMastery);
+                }
+                if (state.g14Mastery) {
+                    mergeObjectSaveKey('safetyMasterG14Mastery', state.g14Mastery);
+                }
+                if (state.g20Mastery) {
+                    mergeObjectSaveKey('safetyMasterG20Mastery', state.g20Mastery);
+                }
+                if (state.g29Mastery) {
+                    mergeObjectSaveKey('safetyMasterG29Mastery', state.g29Mastery);
                 }
                 if (state.bestTimes) {
                     Object.assign(bestTimes, state.bestTimes);
@@ -13688,6 +13730,7 @@ function exportSave() {
         function g29SaveMastery() {
             try {
                 localStorage.setItem(g29MasteryStorageKey(), JSON.stringify(g29Mastery));
+                if (typeof lsSave === 'function') lsSave();
                 scheduleCloudAutoSave('g29-mastery');
             } catch (e) {
                 console.warn('第29關熟練度儲存失敗:', e);
