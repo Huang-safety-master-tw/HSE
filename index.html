@@ -641,8 +641,10 @@
                     <p class="text-sm text-slate-400 mt-1">請依 1931 年 Heinrich 骨牌理論，將職業災害發生原因由前因到後果排序。直接拖曳字卡調整順序。</p>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xs font-bold text-slate-400 mb-3">排序清單（由前因到後果）</h3>
-                    <div class="space-y-3" id="g37-slots"></div>
+                    <h3 class="text-xs font-bold text-slate-400 mb-3">排序清單（由左至右：前因 → 後果）</h3>
+                    <div class="overflow-x-auto pb-2">
+                        <div class="min-w-[760px] grid grid-cols-5 gap-3" id="g37-slots"></div>
+                    </div>
                 </div>
                 <div id="g37-reveal" class="hidden mt-5 bg-violet-950/40 border border-violet-700 rounded-xl p-4">
                     <p class="text-violet-300 font-bold text-sm mb-2">正確順序：</p>
@@ -1850,18 +1852,42 @@
                 <div class="bg-slate-950/60 border border-fuchsia-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group12">
                   <div class="flex items-center gap-2 mb-3 pb-2 border-b border-fuchsia-800/40">
                     <span class="bg-fuchsia-900/60 text-fuchsia-300 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-700">第十二組</span>
-                    <span class="text-xs text-slate-400">2026.06.27 測驗卷配合新增題（空格 1201–1213）</span>
+                    <span class="text-xs text-slate-400">2026.06.27 測驗卷配合新增題（空格 1201–1214）</span>
                   </div>
                   <p class="font-bold text-fuchsia-300 text-xs">（1）自動電擊防止裝置圖中名稱：</p>
                   <div class="overflow-x-auto">
-                    <div class="relative mx-auto w-full max-w-[760px] min-w-[520px] rounded-xl border border-fuchsia-800/40 bg-slate-900/80 p-3">
-                      <img src="assets/g14-auto-shock-voltage.jpg" alt="自動電擊防止裝置電壓時間圖" class="block w-full rounded-lg opacity-80 mix-blend-screen">
-                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:43%; top:60%; width:16%; min-height:2rem;" data-blank-id="1201" data-correct="G12T3" onclick="fillBlank14(this)">＿</span>
-                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:8%; top:58%; width:15%; min-height:2rem;" data-blank-id="1202" data-correct="G12T2" onclick="fillBlank14(this)">＿</span>
-                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:77%; top:58%; width:15%; min-height:2rem;" data-blank-id="1203" data-correct="G12T2" onclick="fillBlank14(this)">＿</span>
-                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:16%; top:79%; width:15%; min-height:2rem;" data-blank-id="1204" data-correct="G12T1" onclick="fillBlank14(this)">＿</span>
-                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:61%; top:79%; width:16%; min-height:2rem;" data-blank-id="1205" data-correct="G12T4" onclick="fillBlank14(this)">＿</span>
-                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:66%; top:25%; width:17%; min-height:2.5rem;" data-blank-id="1213" data-correct="G12T5" onclick="fillBlank14(this)">＿</span>
+                    <div class="relative mx-auto w-full max-w-[820px] min-w-[620px] rounded-xl border border-fuchsia-800/40 bg-slate-950 p-4">
+                      <svg viewBox="0 0 820 420" class="block w-full h-auto rounded-lg bg-slate-100" role="img" aria-label="自動電擊防止裝置電壓時間圖">
+                        <defs>
+                          <marker id="g14g12Arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L6,3 z" fill="#111827"></path>
+                          </marker>
+                        </defs>
+                        <rect x="0" y="0" width="820" height="420" fill="#f8fafc"></rect>
+                        <line x1="70" y1="360" x2="760" y2="360" stroke="#111827" stroke-width="3" marker-end="url(#g14g12Arrow)"></line>
+                        <line x1="70" y1="360" x2="70" y2="35" stroke="#111827" stroke-width="3" marker-end="url(#g14g12Arrow)"></line>
+                        <text x="36" y="74" fill="#111827" font-size="20" font-weight="700" writing-mode="tb">電壓</text>
+                        <text x="730" y="392" fill="#111827" font-size="20" font-weight="700">時間</text>
+                        <line x1="70" y1="270" x2="755" y2="270" stroke="#111827" stroke-width="2"></line>
+                        <path d="M70 270 H190 V135 H235 V258 C236 128 246 78 254 112 C268 170 272 225 278 252 C294 266 410 267 555 267 H590 V82 H722 V270 H755" fill="none" stroke="#111827" stroke-width="4" stroke-linejoin="round"></path>
+                        <line x1="192" y1="270" x2="192" y2="360" stroke="#111827" stroke-width="2"></line>
+                        <line x1="230" y1="270" x2="230" y2="360" stroke="#111827" stroke-width="2"></line>
+                        <line x1="590" y1="270" x2="590" y2="360" stroke="#111827" stroke-width="2" stroke-dasharray="6 5"></line>
+                        <line x1="722" y1="270" x2="722" y2="360" stroke="#111827" stroke-width="2" stroke-dasharray="6 5"></line>
+                        <line x1="198" y1="350" x2="224" y2="350" stroke="#111827" stroke-width="2" marker-start="url(#g14g12Arrow)" marker-end="url(#g14g12Arrow)"></line>
+                        <line x1="598" y1="350" x2="714" y2="350" stroke="#111827" stroke-width="2" marker-start="url(#g14g12Arrow)" marker-end="url(#g14g12Arrow)"></line>
+                        <line x1="375" y1="270" x2="375" y2="360" stroke="#111827" stroke-width="2" marker-start="url(#g14g12Arrow)" marker-end="url(#g14g12Arrow)"></line>
+                        <line x1="652" y1="84" x2="652" y2="360" stroke="#111827" stroke-width="2" marker-start="url(#g14g12Arrow)" marker-end="url(#g14g12Arrow)"></line>
+                        <line x1="130" y1="270" x2="130" y2="360" stroke="#111827" stroke-width="2" marker-start="url(#g14g12Arrow)" marker-end="url(#g14g12Arrow)"></line>
+                        <line x1="238" y1="248" x2="238" y2="360" stroke="#111827" stroke-width="2" marker-start="url(#g14g12Arrow)" marker-end="url(#g14g12Arrow)"></line>
+                      </svg>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:41%; top:60%; width:16%; min-height:2rem;" data-blank-id="1201" data-correct="G12T3" onclick="fillBlank14(this)">＿</span>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:10%; top:62%; width:14%; min-height:2rem;" data-blank-id="1202" data-correct="G12T2" onclick="fillBlank14(this)">＿</span>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:77%; top:62%; width:14%; min-height:2rem;" data-blank-id="1203" data-correct="G12T2" onclick="fillBlank14(this)">＿</span>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:21%; top:84%; width:13%; min-height:2rem;" data-blank-id="1204" data-correct="G12T1" onclick="fillBlank14(this)">＿</span>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:66%; top:84%; width:15%; min-height:2rem;" data-blank-id="1205" data-correct="G12T4" onclick="fillBlank14(this)">＿</span>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:66%; top:24%; width:18%; min-height:2.5rem;" data-blank-id="1213" data-correct="G12T5" onclick="fillBlank14(this)">＿</span>
+                      <span class="g14-blank g14-diagram-blank text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40" style="position:absolute; left:15%; top:31%; width:15%; min-height:2rem;" data-blank-id="1214" data-correct="G12T6" onclick="fillBlank14(this)">＿</span>
                     </div>
                   </div>
                   <div class="space-y-3">
@@ -6099,6 +6125,7 @@ function checkGame10() {
             { key: 'G12T3', label: '電弧電壓' },
             { key: 'G12T4', label: '運動時間' },
             { key: 'G12T5', label: '電擊機無載電壓' },
+            { key: 'G12T6', label: '銲條接觸' },
             { key: 'G12A', label: '型式驗證' },
             { key: 'G12B', label: '型式檢定' },
             { key: 'G12C', label: '低密度脂蛋白膽固醇' },
@@ -6287,7 +6314,7 @@ function checkGame10() {
             8: ['G8A','G8B','G8C','G8D','G8E','G8F','G8G','G8H'],
             9: ['G9A','G9B','G9C','G9D','G9E','G9F','G9G','G9H'],
             10: ['G10A','G10B','G10C','G10D','G10E','G10F','G10G','G10H','G10I','G10J'],
-            12: ['G12T1','G12T2','G12T3','G12T4','G12T5','G12A','G12B','G12C','G12D','G12E','G12F','G12G','G12H','G12I','G12J'],
+            12: ['G12T1','G12T2','G12T3','G12T4','G12T5','G12T6','G12A','G12B','G12C','G12D','G12E','G12F','G12G','G12H','G12I','G12J'],
             13: ['G13A','G13B','G13C','G13D','G13E','G13F','G13G','G13H'],
             14: ['G14A','G14B','G14C','G14D','G14E','G14F','G14G','G14H','G14I','G14J','G14K','G14L','G14M','G14N','G14O','G14P','G14Q','G14R','G14S','G14T','G14U','G14V','G14W','G14X','G14Y','G14Z','G14AA'],
             15: ['G15A','G15B','G15C','G15D','G15E','G15F'],
@@ -6320,7 +6347,7 @@ function checkGame10() {
             8: ['801','802','803','804','805','806','807','808','809'],
             9: ['901','902','903','904','905','906','907','908'],
             10: ['1001','1002','1003','1004','1005','1006','1007','1008','1009','1010'],
-            12: ['1201','1202','1203','1204','1205','1206','1207','1208','1209','1210','1211','1212','1213'],
+            12: ['1201','1202','1203','1204','1205','1206','1207','1208','1209','1210','1211','1212','1213','1214'],
             13: ['1301','1302','1303','1304','1305','1306','1307','1308'],
             14: ['1401','1402','1403','1404','1405','1406','1407','1408','1409','1410','1411','1412','1413','1414','1415','1416','1417','1418','1419','1420','1421','1422','1423','1424','1425','1426','1427'],
             15: ['1501','1502','1503','1504','1505','1506']
@@ -7732,11 +7759,14 @@ function checkGame10() {
             if (shouldSave) setTimeout(lsSave, 150);
         }
 
-        function gSortMoveItem(source, target, clientY) {
+        function gSortMoveItem(source, target, clientX, clientY) {
             if (!source || !target || source === target || source.parentNode !== target.parentNode) return;
             const parent = target.parentNode;
             const rect = target.getBoundingClientRect();
-            const insertAfter = clientY > rect.top + rect.height / 2;
+            const isHorizontal = parent.id === 'g37-slots';
+            const insertAfter = isHorizontal
+                ? clientX > rect.left + rect.width / 2
+                : clientY > rect.top + rect.height / 2;
             if (insertAfter) parent.insertBefore(source, target.nextSibling);
             else parent.insertBefore(source, target);
         }
@@ -7778,7 +7808,7 @@ function checkGame10() {
                 const target = e.target.closest('.g-sort-card');
                 if (!target || !dragSrc || target === dragSrc) return;
                 e.preventDefault();
-                gSortMoveItem(dragSrc, target, e.clientY);
+                gSortMoveItem(dragSrc, target, e.clientX, e.clientY);
             });
             container.addEventListener('drop', e => {
                 if (!dragSrc) return;
@@ -7803,7 +7833,7 @@ function checkGame10() {
                 const el = document.elementFromPoint(e.clientX, e.clientY);
                 const target = el && el.closest ? el.closest('.g-sort-card') : null;
                 if (target && target !== pointerDrag && target.parentNode === container) {
-                    gSortMoveItem(pointerDrag, target, e.clientY);
+                    gSortMoveItem(pointerDrag, target, e.clientX, e.clientY);
                 }
                 e.preventDefault();
             }, { passive: false });
