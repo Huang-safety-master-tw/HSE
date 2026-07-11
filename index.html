@@ -2368,6 +2368,7 @@
                     <h2 class="text-2xl font-black mt-2">有害物連連看</h2>
                     <p class="text-sm text-slate-400 mt-1">請將左欄「有害物」與右欄「對應危害」正確配對。可拖曳連線，或點選左欄後再點右欄完成配對。</p>
                 </div>
+                <div id="g19-mastery-main" class="mb-4"></div>
                 <!-- 三等份連連看佈局 -->
                 <div class="mt-4" style="max-width:480px;">
                     <div class="relative" id="g19-board">
@@ -2406,6 +2407,7 @@
                         <h3 class="text-sm font-bold text-orange-300 mb-1 flex items-center gap-2">
                             <i data-lucide="link" class="w-4 h-4"></i> 延伸小題①：職業病與致病原配對
                         </h3>
+                        <div id="g19-mastery-e1" class="mb-3"></div>
                         <p class="text-xs text-slate-400 mb-3">請將左欄「職業病」與右欄「致病原」正確配對。可拖曳連線，或點選左欄後再點右欄完成配對。</p>
                         <!-- 三等份連連看 -->
                         <div style="max-width:480px;">
@@ -2446,6 +2448,7 @@
                         <h3 class="text-sm font-bold text-orange-300 mb-1 flex items-center gap-2">
                             <i data-lucide="briefcase" class="w-4 h-4"></i> 延伸小題②：職業代號與職業病配對
                         </h3>
+                        <div id="g19-mastery-e2" class="mb-3"></div>
                         <p class="text-xs text-slate-400 mb-3">請將左欄「職業代號」與右欄「職業病」正確配對。可拖曳連線，或點選左欄後再點右欄完成配對。</p>
                         <!-- 三等份連連看 -->
                         <div style="max-width:480px;">
@@ -5470,7 +5473,7 @@ function checkGame10() {
         function renderCurrentGameMastery() {
             const el = document.getElementById('game-mastery-control');
             if (!el || !currentGameNum) return;
-            if (currentGameNum === 29) {
+            if (currentGameNum === 19 || currentGameNum === 29) {
                 el.classList.add('hidden');
                 el.innerHTML = '';
                 return;
@@ -7390,8 +7393,76 @@ function checkGame10() {
             { id: 6, left: '四烷基鉛', right: '中樞神經中毒' }
         ];
         let g19LeftSel = null, g19Matched = {};
+        let g19Mastery = {};
+
+        function g19MasteryStorageKey() {
+            return 'safetyMasterG19Mastery';
+        }
+
+        function g19LoadMastery() {
+            try {
+                g19Mastery = JSON.parse(localStorage.getItem(g19MasteryStorageKey()) || '{}') || {};
+            } catch (e) {
+                g19Mastery = {};
+            }
+        }
+
+        function g19SaveMastery() {
+            try {
+                localStorage.setItem(g19MasteryStorageKey(), JSON.stringify(g19Mastery));
+                if (typeof lsSave === 'function') lsSave();
+                scheduleCloudAutoSave('g19-mastery');
+            } catch (e) {
+                console.warn('第19關熟練度儲存失敗:', e);
+            }
+        }
+
+        function g19MasteryLabel(value) {
+            return ['未評分', '極不熟', '不熟', '普通', '熟練', '非常熟練'][value] || '未評分';
+        }
+
+        function g19GetMastery(key) {
+            const value = Number(g19Mastery[key] || 0);
+            return Number.isFinite(value) ? Math.max(0, Math.min(5, value)) : 0;
+        }
+
+        function g19RenderMasteryControl(key, label) {
+            const rating = g19GetMastery(key);
+            const stars = [1, 2, 3, 4, 5].map(star => `
+                <button type="button" onclick="g19SetMastery('${key}', ${star})" class="text-lg leading-none transition ${star <= rating ? 'text-yellow-300' : 'text-slate-500 hover:text-yellow-200'}" aria-label="${label} ${star} 星">${star <= rating ? '★' : '☆'}</button>
+            `).join('');
+            return `
+                <div class="rounded-lg border border-slate-700 bg-slate-900/35 px-3 py-2 flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                        <div class="text-xs text-slate-400">${label}</div>
+                        <div class="text-sm font-bold text-yellow-200">${g19MasteryLabel(rating)}</div>
+                    </div>
+                    <div class="flex items-center gap-1" aria-label="${label}評分">${stars}</div>
+                </div>
+            `;
+        }
+
+        function g19RenderMasteryControls() {
+            g19LoadMastery();
+            [
+                ['main', '主題目熟練度'],
+                ['e1', '延伸小題①熟練度'],
+                ['e2', '延伸小題②熟練度']
+            ].forEach(([key, label]) => {
+                const el = document.getElementById('g19-mastery-' + key);
+                if (el) el.innerHTML = g19RenderMasteryControl(key, label);
+            });
+        }
+
+        function g19SetMastery(key, rating) {
+            g19Mastery[key] = rating;
+            g19SaveMastery();
+            g19RenderMasteryControls();
+            showToast(`已標記：${g19MasteryLabel(rating)}`, 'success');
+        }
 
         function initGame19() {
+            g19RenderMasteryControls();
             g19LeftSel = null; g19Matched = {};
             if (typeof g19SubDone !== 'undefined') g19SubDone = { main: false, e1: false, e2: false };
             const svg = document.getElementById('g19-svg'); if (svg) svg.innerHTML = '';
@@ -7707,6 +7778,21 @@ function checkGame10() {
             return arr;
         }
 
+        function gSortIsSolvedOrder(items) {
+            return items.every((item, idx) => Number(item.correctSlot) === idx + 1);
+        }
+
+        function gSortShufflePractice(items) {
+            if (!items || items.length < 2) return [...items];
+            for (let tries = 0; tries < 12; tries++) {
+                const shuffled = gSortShuffle(items);
+                if (!gSortIsSolvedOrder(shuffled)) return shuffled;
+            }
+            const fallback = [...items];
+            [fallback[0], fallback[1]] = [fallback[1], fallback[0]];
+            return fallback;
+        }
+
         function gSortToneClass(tone, suffix) {
             const safeTone = ['amber', 'violet', 'cyan'].includes(tone) ? tone : 'cyan';
             return `${suffix}-${safeTone}-400`;
@@ -7940,7 +8026,16 @@ function checkGame10() {
 
         function initGame37() {
             g37SelCard = null;
-            gSortInit('g37-slots', g37Items, g37SlotData, 'violet', 'g37-reveal');
+            const container = document.getElementById('g37-slots');
+            const reveal = document.getElementById('g37-reveal');
+            if (!container) return;
+            if (reveal) reveal.classList.add('hidden');
+            Object.keys(g37SlotData).forEach(i => { g37SlotData[i] = null; });
+            container.innerHTML = '';
+            gSortShufflePractice(g37Items).forEach(item => container.appendChild(gSortRenderCard('g37', item, 'violet')));
+            gSortBind('g37-slots', g37SlotData, 'violet');
+            gSortClearResult('g37-slots', 'violet');
+            gSortSyncData('g37-slots', g37SlotData, false);
         }
 
         function checkGame37() {
@@ -9457,10 +9552,12 @@ function checkGame10() {
                 gameMastery = {};
             }
             if (typeof g14LoadMastery === 'function') g14LoadMastery();
+            if (typeof g19LoadMastery === 'function') g19LoadMastery();
             if (typeof g20LoadMastery === 'function') g20LoadMastery();
             if (typeof g29LoadMastery === 'function') g29LoadMastery();
             if (typeof renderCurrentGameMastery === 'function') renderCurrentGameMastery();
             if (typeof renderG14MasteryStars === 'function') renderG14MasteryStars();
+            if (typeof g19RenderMasteryControls === 'function') g19RenderMasteryControls();
             if (typeof g20RenderMasteryControls === 'function') g20RenderMasteryControls();
             if (currentGameNum === 29 && typeof g29Render === 'function') g29Render();
             if (typeof buildMenu === 'function') buildMenu();
@@ -9704,6 +9801,7 @@ function checkGame10() {
             const directKeys = [
                 LS_KEY,
                 'safetyMasterG14Mastery',
+                'safetyMasterG19Mastery',
                 'safetyMasterG20Mastery',
                 'safetyMasterG29Answers',
                 'safetyMasterG29Mastery',
@@ -9751,6 +9849,7 @@ function checkGame10() {
             lsSave();
             const mainState = safeJsonParse(localStorage.getItem(LS_KEY), {});
             const g14MasteryData = readObjectSaveKey('safetyMasterG14Mastery', typeof g14Mastery !== 'undefined' ? g14Mastery : {});
+            const g19MasteryData = readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {});
             const g20MasteryData = readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {});
             const g29MasteryData = readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {});
             return {
@@ -9769,11 +9868,15 @@ function checkGame10() {
                 mastery: {
                     games: mainState.gameMastery || {},
                     g14: g14MasteryData,
+                    g19: g19MasteryData,
                     g20: g20MasteryData,
                     g29: g29MasteryData
                 },
                 g14: {
                     mastery: g14MasteryData
+                },
+                g19: {
+                    mastery: g19MasteryData
                 },
                 g20: {
                     mastery: g20MasteryData
@@ -9818,6 +9921,7 @@ function checkGame10() {
                     );
                     localStorage.setItem(LS_KEY, JSON.stringify(mergedMainState));
                     if (mainState.g14Mastery) mergeObjectSaveKey('safetyMasterG14Mastery', mainState.g14Mastery);
+                    if (mainState.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', mainState.g19Mastery);
                     if (mainState.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', mainState.g20Mastery);
                     if (mainState.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', mainState.g29Mastery);
                 }
@@ -9834,6 +9938,9 @@ function checkGame10() {
                 if (pkg.mastery && pkg.mastery.g14) {
                     mergeObjectSaveKey('safetyMasterG14Mastery', pkg.mastery.g14);
                 }
+                if (pkg.mastery && pkg.mastery.g19) {
+                    mergeObjectSaveKey('safetyMasterG19Mastery', pkg.mastery.g19);
+                }
                 if (pkg.mastery && pkg.mastery.g20) {
                     mergeObjectSaveKey('safetyMasterG20Mastery', pkg.mastery.g20);
                 }
@@ -9843,6 +9950,10 @@ function checkGame10() {
 
                 if (pkg.g14 && pkg.g14.mastery) {
                     mergeObjectSaveKey('safetyMasterG14Mastery', pkg.g14.mastery);
+                }
+
+                if (pkg.g19 && pkg.g19.mastery) {
+                    mergeObjectSaveKey('safetyMasterG19Mastery', pkg.g19.mastery);
                 }
 
                 if (pkg.g20 && pkg.g20.mastery) {
@@ -9870,6 +9981,7 @@ function checkGame10() {
             // 相容舊版 safety-master-save-YYYY-MM-DD.json：整份就是主存檔 state。
             localStorage.setItem(LS_KEY, JSON.stringify(pkg));
             if (pkg.g14Mastery) mergeObjectSaveKey('safetyMasterG14Mastery', pkg.g14Mastery);
+            if (pkg.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', pkg.g19Mastery);
             if (pkg.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', pkg.g20Mastery);
             if (pkg.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', pkg.g29Mastery);
             reloadAllMasteryFromStorage();
@@ -10075,6 +10187,7 @@ function checkGame10() {
                 state.completedGames = JSON.parse(JSON.stringify(completedGames));
                 state.gameMastery = JSON.parse(JSON.stringify(gameMastery));
                 state.g14Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG14Mastery', typeof g14Mastery !== 'undefined' ? g14Mastery : {})));
+                state.g19Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {})));
                 state.g20Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {})));
                 state.g29Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {})));
 
@@ -10256,6 +10369,9 @@ function checkGame10() {
                 if (state.g14Mastery) {
                     mergeObjectSaveKey('safetyMasterG14Mastery', state.g14Mastery);
                 }
+                if (state.g19Mastery) {
+                    mergeObjectSaveKey('safetyMasterG19Mastery', state.g19Mastery);
+                }
                 if (state.g20Mastery) {
                     mergeObjectSaveKey('safetyMasterG20Mastery', state.g20Mastery);
                 }
@@ -10288,6 +10404,7 @@ function checkGame10() {
         function lsClear() {
             localStorage.removeItem(LS_KEY);
             localStorage.removeItem('safetyMasterG14Mastery');
+            localStorage.removeItem('safetyMasterG19Mastery');
             localStorage.removeItem('safetyMasterG20Mastery');
             localStorage.removeItem('safetyMasterG29Answers');
             localStorage.removeItem('safetyMasterG29Mastery');
@@ -10404,7 +10521,7 @@ function exportSave() {
                     case 20: _lsRestoreBlanks('.g20-blank', state.g20, 'filled'); break;
                     case 21: _lsRestoreSortableOrder('g21-slots', g21Items, g21SlotData, state.g21SlotData, 'cyan'); break;
                     case 22: _lsRestoreSortableOrder('g22-slots', g22Items, g22SlotData, state.g22SlotData, 'amber'); break;
-                    case 37: _lsRestoreSortableOrder('g37-slots', g37Items, g37SlotData, state.g37SlotData, 'violet'); break;
+                    case 37: break;
                     case 38: restoreGame38(state.g38Selected); break;
                     case 23: _lsRestoreBlanks('.g23-blank', state.g23, 'blank'); break;
                     case 24: _lsRestoreG24(state.g24); break;
