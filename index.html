@@ -632,16 +632,16 @@
             </div>
         </section>
 
-        <!-- ===== 第 37 關：Heinrich 骨牌理論排序 ===== -->
+        <!-- ===== 第 37 關：Heinrich / Bird 骨牌理論 ===== -->
         <section id="tab-heinrich-domino" class="game-section hidden w-full">
             <div class="glass-panel p-6 rounded-2xl">
                 <div class="mb-4">
-                    <span class="bg-violet-500/20 text-violet-300 text-xs px-3 py-1 rounded-full font-bold">考點三十七：Heinrich 骨牌理論</span>
-                    <h2 class="text-2xl font-black mt-2">Heinrich 骨牌理論排序題</h2>
-                    <p class="text-sm text-slate-400 mt-1">請依 1931 年 Heinrich 骨牌理論，將職業災害發生原因由前因到後果排序。直接拖曳字卡調整順序。</p>
+                    <span class="bg-violet-500/20 text-violet-300 text-xs px-3 py-1 rounded-full font-bold">考點三十七：骨牌理論</span>
+                    <h2 class="text-2xl font-black mt-2">骨牌理論排序與配對</h2>
+                    <p class="text-sm text-slate-400 mt-1">第一小題依 Heinrich 骨牌理論排序；第二小題依 Bird 事故因果連鎖模型配對。</p>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xs font-bold text-slate-400 mb-3">排序清單（由左至右：前因 → 後果）</h3>
+                    <h3 class="text-xs font-bold text-violet-300 mb-3">（一）Heinrich 骨牌理論排序（由左至右：前因 → 後果）</h3>
                     <div class="overflow-x-auto pb-2">
                         <div class="min-w-[760px] grid grid-cols-5 gap-3" id="g37-slots"></div>
                     </div>
@@ -649,6 +649,21 @@
                 <div id="g37-reveal" class="hidden mt-5 bg-violet-950/40 border border-violet-700 rounded-xl p-4">
                     <p class="text-violet-300 font-bold text-sm mb-2">正確順序：</p>
                     <p class="text-slate-200 text-sm leading-loose">血統與社會環境 → 個人的缺失 → 不安全的行為或機械物質的危害 → 意外事故 → 傷害</p>
+                </div>
+                <div class="mt-6 border-t border-slate-700 pt-5">
+                    <h3 class="text-xs font-bold text-violet-300 mb-1">（二）Bird 事故因果連鎖模型配對</h3>
+                    <p class="text-xs text-slate-400 mb-3">請將右側原因字卡放入左側對應骨牌。左側題目每次載入會打亂。</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                        <div class="lg:col-span-2 space-y-2" id="g37b-questions"></div>
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-400 mb-2">原因字卡</h4>
+                            <div id="g37b-card-pool" class="flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="g37b-reveal" class="hidden mt-4 bg-violet-950/40 border border-violet-700 rounded-xl p-4">
+                    <p class="text-violet-300 font-bold text-sm mb-2">Bird 模型正確配對：</p>
+                    <div id="g37b-answer-list" class="space-y-1 text-sm text-slate-200"></div>
                 </div>
                 <div class="mt-5 flex justify-end gap-3">
                     <button onclick="resetSingleGame(37)" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-4 py-2.5 rounded-lg border border-slate-700 font-bold">
@@ -666,10 +681,14 @@
                 <div class="mb-4">
                     <span class="bg-orange-500/20 text-orange-300 text-xs px-3 py-1 rounded-full font-bold">考點三十八：油槽上動火作業</span>
                     <h2 class="text-2xl font-black mt-2">油槽動火危害辨識</h2>
-                    <p class="text-sm text-slate-400 mt-1">請依圖中情境判斷潛在危害。12 張字卡中只有 6 張是正確答案，請放入下方空格。</p>
+                    <p class="text-sm text-slate-400 mt-1">請依圖中情境判斷潛在危害。字卡每次會打亂，答案順序不限。</p>
                 </div>
 
                 <div class="bg-slate-950/70 border border-orange-800/40 rounded-2xl p-4 md:p-6">
+                    <div class="mb-4">
+                        <span class="bg-orange-900/60 text-orange-300 text-xs font-bold px-3 py-1 rounded-full border border-orange-700">第一小題</span>
+                        <span class="text-xs text-slate-400 ml-2">油槽上動火作業潛在危害（6 項）</span>
+                    </div>
                     <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-900">
                         <svg viewBox="0 0 920 430" class="block w-full h-auto" role="img" aria-label="油槽與密閉空間動火作業危害示意圖">
                             <defs>
@@ -745,6 +764,63 @@
                     </div>
                 </div>
 
+                <div class="mt-6 bg-slate-950/70 border border-amber-800/40 rounded-2xl p-4 md:p-6">
+                    <div class="mb-4">
+                        <span class="bg-amber-900/60 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-700">第二小題</span>
+                        <span class="text-xs text-slate-400 ml-2">鋼材吊運與開口作業潛在危害（5 項）</span>
+                    </div>
+                    <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-900">
+                        <svg viewBox="0 0 920 430" class="block w-full h-auto" role="img" aria-label="吊運鋼材與樓板開口作業潛在危害示意圖">
+                            <defs>
+                                <linearGradient id="g38bBg" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#1e293b"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                                <linearGradient id="g38bDeck" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#334155"/>
+                                    <stop offset="100%" stop-color="#111827"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="920" height="430" fill="url(#g38bBg)"/>
+                            <path d="M130 305L355 168H790L565 305Z" fill="url(#g38bDeck)" stroke="#94a3b8" stroke-width="3"/>
+                            <path d="M338 205L456 190L610 255L482 276Z" fill="#020617" stroke="#f97316" stroke-width="4"/>
+                            <text x="486" y="238" text-anchor="middle" fill="#fdba74" font-size="18" font-weight="900">樓板開口</text>
+                            <path d="M338 205L220 198M456 190L420 148M610 255L720 255M482 276L405 326" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M610 255L482 276" stroke="#fb7185" stroke-width="8" stroke-linecap="round" stroke-dasharray="20 13"/>
+                            <text x="665" y="245" fill="#fecdd3" font-size="16" font-weight="900">護欄拆除</text>
+                            <path d="M120 314H615" stroke="#475569" stroke-width="7"/>
+                            <path d="M150 325L272 283M178 336L300 294M206 347L328 305" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+                            <text x="218" y="377" fill="#cbd5e1" font-size="16" font-weight="900">開口 2 公尺內堆置鋼材</text>
+                            <path d="M445 25V152" stroke="#cbd5e1" stroke-width="5"/>
+                            <path d="M445 152C426 170 424 190 447 202C472 189 468 168 445 152Z" fill="none" stroke="#f8fafc" stroke-width="5"/>
+                            <path d="M414 200L552 174" stroke="#f59e0b" stroke-width="12" stroke-linecap="round"/>
+                            <path d="M414 200L552 174" stroke="#fde68a" stroke-width="3" stroke-linecap="round"/>
+                            <text x="560" y="162" fill="#fde68a" font-size="16" font-weight="900">吊鉤無防脫</text>
+                            <circle cx="655" cy="205" r="13" fill="#facc15"/>
+                            <path d="M655 219L650 260M652 238L625 253M651 239L681 229M650 260L625 294M650 260L675 296" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M625 253L545 188" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
+                            <text x="712" y="214" fill="#bfdbfe" font-size="16" font-weight="900">手碰觸吊運鋼材</text>
+                            <circle cx="498" cy="286" r="13" fill="#facc15"/>
+                            <path d="M498 300L494 340M495 318L470 333M496 319L522 332M494 340L474 374M494 340L516 374" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+                            <text x="535" y="365" fill="#fca5a5" font-size="16" font-weight="900">吊掛物下方有人</text>
+                            <path d="M690 270L806 270M690 270L690 220M806 270L806 220" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" stroke-dasharray="16 10"/>
+                            <text x="750" y="305" text-anchor="middle" fill="#bae6fd" font-size="16" font-weight="900">臨時防護不足</text>
+                            <text x="460" y="405" text-anchor="middle" fill="#94a3b8" font-size="18">依圖判斷真正存在的 5 項潛在危害，放入下方空格</text>
+                        </svg>
+                    </div>
+
+                    <div class="mt-5">
+                        <h3 class="text-sm font-bold text-amber-300 mb-3">答案空格</h3>
+                        <div id="g38b-answer-slots" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3"></div>
+                    </div>
+
+                    <div class="mt-5">
+                        <h3 class="text-sm font-bold text-amber-300 mb-3">危害字卡牌池</h3>
+                        <div id="g38b-card-pool" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3"></div>
+                        <div id="g38b-status" class="mt-4 text-sm font-bold text-slate-300 bg-slate-900/70 border border-slate-700 rounded-xl px-4 py-3">已選取 0 / 5 張</div>
+                    </div>
+                </div>
+
                 <div class="mt-5 flex flex-wrap justify-end gap-3">
                     <button onclick="resetSingleGame(38)" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-4 py-2.5 rounded-lg border border-slate-700 font-bold">
                         <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重玩本關
@@ -762,36 +838,36 @@
                 <div class="mb-4">
                     <span class="bg-amber-500/20 text-amber-400 text-xs px-3 py-1 rounded-full font-bold">考點二：變更管理技術指引</span>
                     <h2 class="text-2xl font-black mt-2">變更管理流程圖填空</h2>
-                    <p class="text-sm text-slate-400 mt-1">變更管理流程包含了關鍵的分支。請把適當的字卡配對到正確的編號插槽中。</p>
+                    <p class="text-sm text-slate-400 mt-1">變更管理流程改為全空格練習。請把所有流程字卡放回正確的編號位置。</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
                     <div class="lg:col-span-2 bg-slate-950 p-6 rounded-xl border border-slate-800 relative overflow-x-auto min-w-[320px]">
                         <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
                             <div class="flex flex-col gap-4 items-center">
-                                <div class="bg-slate-800 p-2.5 rounded-lg text-xs w-48 text-center border border-slate-700">界定變更管制範圍 (一)</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-1" data-step="1">點此放置：(一)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="bg-slate-800 p-2.5 rounded-lg text-xs w-48 text-center border border-slate-700">研訂變更管理制度/程序/計畫 (二)</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-2" data-step="2">點此放置：(二)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-3" data-step="3">點此放置：(三) 諮商分支</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-3" data-step="3">點此放置：(三)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="bg-slate-800 p-2.5 rounded-lg text-xs w-48 text-center border border-slate-700">變更之申請 (四)</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-4" data-step="4">點此放置：(四)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-5" data-step="5">點此放置：(五) 安全把關</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-5" data-step="5">點此放置：(五)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="bg-slate-800 p-2.5 rounded-lg text-xs w-48 text-center border border-slate-700">會簽及審核 (六)</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-6" data-step="6">點此放置：(六)</div>
                             </div>
                             <div class="hidden md:block text-slate-500 text-2xl font-bold">➔</div>
                             <div class="flex flex-col gap-4 items-center">
-                                <div class="flex gap-2">
-                                    <div class="bg-slate-800 p-2 rounded-lg text-xs w-24 text-center border border-slate-700">相關文件之檢討更新 (七)</div>
-                                    <div class="change-slot text-xs w-28 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-8" data-step="8">點此放置：(八) 資訊</div>
+                                <div class="flex flex-col sm:flex-row gap-2">
+                                    <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-7" data-step="7">點此放置：(七)</div>
+                                    <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-8" data-step="8">點此放置：(八)</div>
                                 </div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="bg-slate-800 p-2.5 rounded-lg text-xs w-48 text-center border border-slate-700">啟用前之安全檢查 (九)</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-9" data-step="9">點此放置：(九)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-10" data-step="10">點此放置：(十) 暫時性變更</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-10" data-step="10">點此放置：(十)</div>
                                 <div class="text-slate-600">↓</div>
-                                <div class="bg-slate-800 p-2.5 rounded-lg text-xs w-48 text-center border border-slate-700">結案及紀錄管理 (十一)</div>
+                                <div class="change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60" id="change-slot-11" data-step="11">點此放置：(十一)</div>
                             </div>
                         </div>
                     </div>
@@ -1127,14 +1203,14 @@
                 <!-- ===== 化學品文字字卡配對區 ===== -->
                 <div class="mt-8 border-t border-slate-700 pt-6">
                     <h3 class="text-base font-black text-white mb-1 flex items-center gap-2">
-                        <i data-lucide="flask-conical" class="w-5 h-5 text-rose-400"></i> 化學品歸類（共 35 張字卡）
+                        <i data-lucide="flask-conical" class="w-5 h-5 text-rose-400"></i> 化學品歸類（共 37 張字卡）
                     </h3>
                     <p class="text-xs text-slate-400 mb-4">請將下方化學品字卡放入正確的 GHS 危害分類框中。</p>
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col">
                             <div class="flex justify-between items-center mb-3">
                                 <h4 class="text-xs font-bold text-slate-400">化學品字卡庫</h4>
-                                <span id="ghs-pool-count" class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full">35</span>
+                                <span id="ghs-pool-count" class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full">37</span>
                             </div>
                             <div class="flex flex-wrap gap-1.5 overflow-y-auto max-h-[400px] pr-1" id="ghs-item-pool"></div>
                         </div>
@@ -1290,7 +1366,7 @@
                     <div class="w-32 h-2 bg-slate-800 rounded-full overflow-hidden">
                         <div id="chemicals-bar" class="h-full bg-cyan-500 transition-all duration-500" style="width: 0%"></div>
                     </div>
-                    <span id="chemicals-progress" class="text-xs font-bold text-cyan-400">0 / 12 項</span>
+                    <span id="chemicals-progress" class="text-xs font-bold text-cyan-400">0 / 15 項</span>
                 </div>
             </div>
         </div>
@@ -1323,7 +1399,7 @@
             </div>
             <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                 <h3 class="text-sm font-bold text-slate-400 mb-3 flex items-center gap-1.5">
-                    <i data-lucide="package" class="w-4 h-4 text-cyan-400"></i> 字卡庫 (<span id="chem-pool-count">12</span>)
+                    <i data-lucide="package" class="w-4 h-4 text-cyan-400"></i> 字卡庫 (<span id="chem-pool-count">15</span>)
                 </h3>
                 <div class="flex flex-wrap gap-2" id="chem-pool"></div>
             </div>
@@ -2064,6 +2140,36 @@
                       <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十五組
                     </button>
                     <button onclick="showAnswer14Group(15)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
+                  </div>
+                </div>
+                <!-- 第十六組 -->
+                <div class="bg-slate-950/60 border border-lime-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group16">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-lime-800/40">
+                    <span class="bg-lime-900/60 text-lime-300 text-xs font-bold px-3 py-1 rounded-full border border-lime-700">第十六組</span>
+                    <span class="text-xs text-slate-400">營造安全防護措施（空格 1601–1612）</span>
+                  </div>
+                  <div class="space-y-3">
+                    <p>一、雇主對於高度在 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1601" data-correct="G16A" onclick="fillBlank14(this)">＿</span> 公尺以上之工作場所 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1602" data-correct="G16B" onclick="fillBlank14(this)">＿</span> 及 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1603" data-correct="G16C" onclick="fillBlank14(this)">＿</span> 部分，勞工有遭受墜落危險之虞者，應設有適當強度之 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1604" data-correct="G16D" onclick="fillBlank14(this)">＿</span>、<span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1605" data-correct="G16E" onclick="fillBlank14(this)">＿</span> 等防護措施。</p>
+                    <p>二、雇主對勞工於高差超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1606" data-correct="G16F" onclick="fillBlank14(this)">＿</span> 公尺以上之場所作業時，應設置能使勞工 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1607" data-correct="G16G" onclick="fillBlank14(this)">＿</span> 之設備。</p>
+                    <p>三、合梯兩梯腳間有金屬等硬質 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1608" data-correct="G16H" onclick="fillBlank14(this)">＿</span>，並應禁止勞工站立於頂板作業。</p>
+                    <p>四、雇主對於工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者，應採取 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1609" data-correct="G16I" onclick="fillBlank14(this)">＿</span>、<span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1610" data-correct="G16J" onclick="fillBlank14(this)">＿</span> 或 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1611" data-correct="G16K" onclick="fillBlank14(this)">＿</span> 等防護設施。</p>
+                    <p>五、雇主對於進入營繕工程工作場所作業人員，應提供適當 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1612" data-correct="G16L" onclick="fillBlank14(this)">＿</span>，並使其正確戴用。</p>
+                  </div>
+                </div>
+                <!-- 第十六組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-lime-800/30 rounded-xl p-4" id="g14-group16-opts-wrap">
+                  <h3 class="text-xs font-bold text-lime-300 mb-2 flex items-center gap-2">
+                    <i data-lucide="table" class="w-4 h-4"></i> 第十六組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-16"></div>
+                  <div id="g14-selected-indicator-16" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-16"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(16)" class="bg-lime-700 hover:bg-lime-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1.5">
+                      <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十六組
+                    </button>
+                    <button onclick="showAnswer14Group(16)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
                   </div>
                 </div>
                 <!-- 舊選項表（隱藏，保留相容性） -->
@@ -3888,16 +3994,27 @@
 
         // --- 關卡 2 資料與邏輯 ---
         const g2Data = [
-            { id: 3, placeholder: "諮商分支 (三)", answer: "工作者之諮商及參與", label: "工作者之諮商及參與 (三)" },
-            { id: 5, placeholder: "危害辨識及風險評估 (五)", answer: "變更之危害辨識及風險評估", label: "危害辨識及風險評估 (五)" },
-            { id: 8, placeholder: "人員之告知或訓練 (八)", answer: "人員之告知或訓練", label: "人員之告知或訓練 (八)" },
-            { id: 10, placeholder: "暫時性變更？ (十)", answer: "暫時性變更？", label: "暫時性變更？ (十)" }
+            { id: 1, answer: "界定變更管制範圍", label: "界定變更管制範圍 (一)" },
+            { id: 2, answer: "研訂變更管理制度/程序/計畫", label: "研訂變更管理制度/程序/計畫 (二)" },
+            { id: 3, answer: "工作者之諮商及參與", label: "工作者之諮商及參與 (三)" },
+            { id: 4, answer: "變更之申請", label: "變更之申請 (四)" },
+            { id: 5, answer: "變更之危害辨識及風險評估", label: "變更之危害辨識及風險評估 (五)" },
+            { id: 6, answer: "會簽及審核", label: "會簽及審核 (六)" },
+            { id: 7, answer: "相關文件之檢討更新", label: "相關文件之檢討更新 (七)" },
+            { id: 8, answer: "人員之告知或訓練", label: "人員之告知或訓練 (八)" },
+            { id: 9, answer: "啟用前之安全檢查", label: "啟用前之安全檢查 (九)" },
+            { id: 10, answer: "暫時性變更", label: "暫時性變更 (十)" },
+            { id: 11, answer: "結案及紀錄管理", label: "結案及紀錄管理 (十一)" }
         ];
+        const g2StepNums = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一'];
+        function g2EmptyText(id) {
+            return `點此放置：(${g2StepNums[id] || id})`;
+        }
         function initGame2() {
             const pool = document.getElementById('change-pool'); pool.innerHTML = '';
             g2Data.forEach(item => {
                 const slot = document.getElementById(`change-slot-${item.id}`);
-                slot.innerText = `點此放置關鍵環節`; slot.className = "change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60 text-amber-300 cursor-pointer p-2";
+                slot.innerText = g2EmptyText(item.id); slot.className = "change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60 text-amber-300 cursor-pointer p-2";
                 delete slot.dataset.placedId;
             });
             [...g2Data].sort(() => Math.random() - 0.5).forEach(item => {
@@ -3930,7 +4047,8 @@
                     } else if (!activeSelection && slot.dataset.placedId) {
                         soundClick();
                         document.querySelectorAll('#change-pool div').forEach(c => { if (c.dataset.id === slot.dataset.placedId) c.style.display = 'block'; });
-                        slot.innerText = '點此放置關鍵環節'; slot.className = "change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60 text-amber-300 cursor-pointer p-2"; delete slot.dataset.placedId;
+                        const item = g2Data.find(d => String(d.id) === String(slot.dataset.step));
+                        slot.innerText = item ? g2EmptyText(item.id) : '點此放置關鍵環節'; slot.className = "change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-dashed border-amber-500 bg-slate-900/60 text-amber-300 cursor-pointer p-2"; delete slot.dataset.placedId;
                     }
                 }
             });
@@ -4397,24 +4515,26 @@
         // g6ValidMap: 每個 zone 的合法文字清單（文字比對用）
         const g6Data = [
             { text: "過氧化丁酮", parent: 1 },
+            { text: "自反應物質型", parent: 1 },
+            { text: "有機過氧化物型", parent: 1 },
             { text: "氧化性氣體、氣膠、液體或固體", parent: 2 }, { text: "雙氧水", parent: 2 },
             { text: "呼吸道過敏物質", parent: 3 }, { text: "生殖細胞致突變生物質", parent: 3 }, { text: "致癌物質", parent: 3 }, { text: "生殖毒性毒物", parent: 3 }, { text: "特定標的器官系統毒性物－暴露", parent: 3 }, { text: "特定標的器官系統毒性物－重複暴露", parent: 3 }, { text: "吸入性危害物質", parent: 3 }, { text: "雙氧水", parent: 3 }, { text: "汽油", parent: 3 },
             { text: "易燃氣體、氣膠、液體或固體", parent: 4 }, { text: "發火性液體或固體", parent: 4 }, { text: "自熱物質", parent: 4 }, { text: "禁水性物質", parent: 4 }, { text: "甲烷", parent: 4 }, { text: "乙炔", parent: 4 }, { text: "汽油", parent: 4 },
             { text: "氨", parent: 5 }, { text: "硫酸", parent: 5 },
             { text: "氨", parent: 6 }, { text: "硫酸", parent: 6 },
             { text: "腐蝕/刺激皮膚物質", parent: 7 }, { text: "嚴重損傷/刺激眼睛物質", parent: 7 }, { text: "氨", parent: 7 }, { text: "硫酸", parent: 7 }, { text: "雙氧水", parent: 7 },
-            { text: "急毒性物質第四級", parent: 8 }, { text: "腐蝕/刺激皮膚物質第2級", parent: 8 }, { text: "嚴重損傷/刺激眼睛物質第2質", parent: 8 }, { text: "特定標的器官系統毒性物－單一 暴露第2級", parent: 8 }, { text: "皮膚過敏物質", parent: 8 }, { text: "雙氧水", parent: 8 }, { text: "汽油", parent: 8 },
+            { text: "急毒性物質第四級", parent: 8 }, { text: "腐蝕/刺激皮膚物質第2級", parent: 8 }, { text: "嚴重損傷/刺激眼睛物質第2級", parent: 8 }, { text: "特定標的器官系統毒性物－單一 暴露第2級", parent: 8 }, { text: "皮膚過敏物質", parent: 8 }, { text: "雙氧水", parent: 8 }, { text: "汽油", parent: 8 },
         ];
         // 每個 zone 的合法文字清單（文字比對用，支援重複字卡互換）
         const g6ValidMap = {
-            1: ["過氧化丁酮"],
+            1: ["過氧化丁酮", "自反應物質型", "有機過氧化物型"],
             2: ["氧化性氣體、氣膠、液體或固體", "雙氧水"],
             3: ["呼吸道過敏物質", "生殖細胞致突變生物質", "致癌物質", "生殖毒性毒物", "特定標的器官系統毒性物－暴露", "特定標的器官系統毒性物－重複暴露", "吸入性危害物質", "雙氧水", "汽油"],
             4: ["易燃氣體、氣膠、液體或固體", "發火性液體或固體", "自熱物質", "禁水性物質", "甲烷", "乙炔", "汽油"],
             5: ["氨", "硫酸"],
             6: ["氨", "硫酸"],
             7: ["腐蝕/刺激皮膚物質", "嚴重損傷/刺激眼睛物質", "氨", "硫酸", "雙氧水"],
-            8: ["急毒性物質第四級", "腐蝕/刺激皮膚物質第2級", "嚴重損傷/刺激眼睛物質第2質", "特定標的器官系統毒性物－單一 暴露第2級", "皮膚過敏物質", "雙氧水", "汽油"],
+            8: ["急毒性物質第四級", "腐蝕/刺激皮膚物質第2級", "嚴重損傷/刺激眼睛物質第2級", "特定標的器官系統毒性物－單一 暴露第2級", "皮膚過敏物質", "雙氧水", "汽油"],
         };
         let g6ChemActiveSelection = null;
         function initGame6Chemical() {
@@ -4481,7 +4601,7 @@
         function updateGhsChemProgress() {
             const placed = document.querySelectorAll('.ghs-dropzone > div').length;
             const poolCount = document.getElementById('ghs-pool-count');
-            if (poolCount) poolCount.innerText = 38 - placed;
+            if (poolCount) poolCount.innerText = g6Data.length - placed;
             for (let i = 1; i <= 8; i++) {
                 const countElem = document.getElementById(`ghs-count-${i}`);
                 if (countElem) countElem.innerText = `(${document.querySelectorAll(`#ghs-zone-${i} > div`).length})`;
@@ -4700,13 +4820,14 @@
 // --- 關卡 9 資料與邏輯 ---
 const g9Data = [
     { text: "三氯甲烷", parent: 1 },
+    { text: "二氧化碳", parent: 1 },
     { text: "鈹及其無機化合物", parent: 2 }, { text: "鈹及其無機化合物", parent: 3 }, { text: "黃磷火柴", parent: 2 }, { text: "黃磷火柴", parent: 3 }, { text: "青石綿 褐石綿", parent: 2 },{ text: "青石綿 褐石綿", parent: 3 },
     { text: "鉛及其無機化合物", parent: 4 }, { text: "汞及其無機化合物", parent: 2 }, { text: "汞及其無機化合物", parent: 4 }, { text: "硝酸", parent: 2 },
     { text: "甲苯", parent: 5 }, { text: "丙酮", parent: 5 }, { text: "汽油", parent: 6 }
 ];
 // g9ValidMap: zone -> set of valid text labels (text-based matching)
 const g9ValidMap = {
-    1: new Set(["三氯甲烷"]),
+    1: new Set(["三氯甲烷", "二氧化碳"]),
     2: new Set(["鈹及其無機化合物", "黃磷火柴", "青石綿 褐石綿", "汞及其無機化合物", "硝酸"]),
     3: new Set(["鈹及其無機化合物", "黃磷火柴", "青石綿 褐石綿"]),
     4: new Set(["鉛及其無機化合物", "汞及其無機化合物"]),
@@ -4775,9 +4896,9 @@ function initGame9() {
         }
 function updateChemProgress() {
     const placed = document.querySelectorAll('.chem-dropzone > div').length;
-    document.getElementById('chemicals-progress').innerText = `${placed} / 12 項`;
-    document.getElementById('chemicals-bar').style.width = `${(placed / 12) * 100}%`;
-    document.getElementById('chem-pool-count').innerText = 12 - placed;
+    document.getElementById('chemicals-progress').innerText = `${placed} / ${g9Data.length} 項`;
+    document.getElementById('chemicals-bar').style.width = `${(placed / g9Data.length) * 100}%`;
+    document.getElementById('chem-pool-count').innerText = g9Data.length - placed;
 }
 function checkGame9() {
     let correct = 0;
@@ -6203,7 +6324,20 @@ function checkGame10() {
             { key: 'G15C', label: '火災爆炸' },
             { key: 'G15D', label: '高溫' },
             { key: 'G15E', label: '物體飛落' },
-            { key: 'G15F', label: '中毒（柴油/汽油槽）' }
+            { key: 'G15F', label: '中毒（柴油/汽油槽）' },
+            // ===== 第十六組：營造安全防護措施 =====
+            { key: 'G16A', label: '2' },
+            { key: 'G16B', label: '邊緣' },
+            { key: 'G16C', label: '開口' },
+            { key: 'G16D', label: '護欄' },
+            { key: 'G16E', label: '護蓋' },
+            { key: 'G16F', label: '1.5' },
+            { key: 'G16G', label: '安全上下' },
+            { key: 'G16H', label: '繫材扣牢' },
+            { key: 'G16I', label: '彎曲尖端' },
+            { key: 'G16J', label: '加蓋' },
+            { key: 'G16K', label: '加裝護套' },
+            { key: 'G16L', label: '安全帽' }
         ];
 
         const g14DistractorOptions = [
@@ -6224,7 +6358,11 @@ function checkGame10() {
             { key: 'G14D14A', label: '缺氧' }, { key: 'G14D14B', label: '高壓電' }, { key: 'G14D14C', label: '密閉空間' },
             { key: 'G14D14D', label: '安全文化' }, { key: 'G14D14E', label: '工作許可' }, { key: 'G14D14F', label: '急救設備' },
             { key: 'G14D15A', label: '噪音' }, { key: 'G14D15B', label: '振動' }, { key: 'G14D15C', label: '粉塵' },
-            { key: 'G14D15D', label: '照明不足' }, { key: 'G14D15E', label: '機械夾捲' }
+            { key: 'G14D15D', label: '照明不足' }, { key: 'G14D15E', label: '機械夾捲' },
+            { key: 'G14D16A', label: '1' }, { key: 'G14D16B', label: '1.8' }, { key: 'G14D16C', label: '3.5' },
+            { key: 'G14D16D', label: '中欄杆' }, { key: 'G14D16E', label: '腳趾板' }, { key: 'G14D16F', label: '安全網' },
+            { key: 'G14D16G', label: '安全帶' }, { key: 'G14D16H', label: '上下設備' }, { key: 'G14D16I', label: '防墜措施' },
+            { key: 'G14D16J', label: '固定扣件' }, { key: 'G14D16K', label: '警示標誌' }, { key: 'G14D16L', label: '反光背心' }
         ];
 
         function g14FindOption(key) {
@@ -6342,6 +6480,7 @@ function checkGame10() {
             13: ['G13A','G13B','G13C','G13D','G13E','G13F','G13G','G13H'],
             14: ['G14A','G14B','G14C','G14D','G14E','G14F','G14G','G14H','G14I','G14J','G14K','G14L','G14M','G14N','G14O','G14P','G14Q','G14R','G14S','G14T','G14U','G14V','G14W','G14X','G14Y','G14Z','G14AA'],
             15: ['G15A','G15B','G15C','G15D','G15E','G15F'],
+            16: ['G16A','G16B','G16C','G16D','G16E','G16F','G16G','G16H','G16I','G16J','G16K','G16L'],
             distractors: {
                 1: ['G14D1A','G14D1B','G14D1C'],
                 2: ['G14D2A','G14D2B','G14D2C'],
@@ -6356,7 +6495,8 @@ function checkGame10() {
                 12: ['G14D12A','G14D12B','G14D12C'],
                 13: ['G14D13A','G14D13B','G14D13C','G14D13D','G14D13E','G14D13F','G14D13G','G14D13H','G14D13I','G14D13J'],
                 14: ['G14D14A','G14D14B','G14D14C','G14D14D','G14D14E','G14D14F'],
-                15: ['G14D15A','G14D15B','G14D15C','G14D15D','G14D15E']
+                15: ['G14D15A','G14D15B','G14D15C','G14D15D','G14D15E'],
+                16: ['G14D16A','G14D16B','G14D16C','G14D16D','G14D16E','G14D16F','G14D16G','G14D16H','G14D16I','G14D16J','G14D16K','G14D16L']
             }
         };
         // 各組空格 blank-id 清單
@@ -6374,7 +6514,8 @@ function checkGame10() {
             12: ['1201','1202','1203','1204','1205','1206','1207','1208','1209','1210','1211','1212','1213','1214'],
             13: ['1301','1302','1303','1304','1305','1306','1307','1308'],
             14: ['1401','1402','1403','1404','1405','1406','1407','1408','1409','1410','1411','1412','1413','1414','1415','1416','1417','1418','1419','1420','1421','1422','1423','1424','1425','1426','1427'],
-            15: ['1501','1502','1503','1504','1505','1506']
+            15: ['1501','1502','1503','1504','1505','1506'],
+            16: ['1601','1602','1603','1604','1605','1606','1607','1608','1609','1610','1611','1612']
         };
 
         function g14GroupNumbers() {
@@ -6391,7 +6532,7 @@ function checkGame10() {
                 4:'hover:bg-teal-900/40',   5:'hover:bg-sky-900/40',   6:'hover:bg-orange-900/40',
                 7:'hover:bg-indigo-900/40', 8:'hover:bg-rose-900/40',  9:'hover:bg-lime-900/40',
                 10:'hover:bg-cyan-900/40', 12:'hover:bg-fuchsia-900/40', 13:'hover:bg-emerald-900/40',
-                14:'hover:bg-sky-900/40', 15:'hover:bg-orange-900/40'
+                14:'hover:bg-sky-900/40', 15:'hover:bg-orange-900/40', 16:'hover:bg-lime-900/40'
             };
             keys.forEach(key => {
                 const opt = g14FindOption(key);
@@ -7789,6 +7930,22 @@ function checkGame10() {
             { id: 5, label: '傷害', correctSlot: 5 }
         ];
         let g37SelCard = null, g37SlotData = { 1: null, 2: null, 3: null, 4: null, 5: null };
+        const g37bData = [
+            { id: 1, prompt: '第一張骨牌：管理失誤', answer: '基本原因' },
+            { id: 2, prompt: '第二張骨牌：個人原因或工作條件', answer: '基本原因' },
+            { id: 3, prompt: '第三張骨牌：不安全行為或狀態', answer: '直接原因' },
+            { id: 4, prompt: '第四張骨牌：意外事故', answer: '接觸能量或有害物質' },
+            { id: 5, prompt: '第五張骨牌：傷亡', answer: '損失' }
+        ];
+        const g37bCards = [
+            { id: 'basic-1', label: '基本原因' },
+            { id: 'basic-2', label: '基本原因' },
+            { id: 'direct', label: '直接原因' },
+            { id: 'contact', label: '接觸能量或有害物質' },
+            { id: 'loss', label: '損失' }
+        ];
+        let g37bSelectedCard = null;
+        let g37bSlotData = {};
 
         function gSortShuffle(items) {
             const arr = [...items];
@@ -8045,6 +8202,169 @@ function checkGame10() {
             gSortCheck('g22-slots', g22SlotData, 22, 'g22-reveal', '🎉 排序完全正確！閃火點數值已公布。');
         }
 
+        function g37SortCheckOnly() {
+            let correct = 0;
+            const cards = Array.from(document.querySelectorAll('#g37-slots .g-sort-card'));
+            cards.forEach((card, idx) => {
+                const expected = parseInt(card.dataset.correctSlot);
+                if (expected === idx + 1) {
+                    card.className = gSortCardClass('violet') + ' bg-emerald-900/60 border-emerald-500 text-emerald-200';
+                    correct++;
+                } else {
+                    card.className = gSortCardClass('violet') + ' bg-rose-900/60 border-rose-500 text-rose-200';
+                }
+            });
+            gSortSyncData('g37-slots', g37SlotData);
+            if (correct === cards.length && cards.length === g37Items.length) {
+                const reveal = document.getElementById('g37-reveal');
+                if (reveal) reveal.classList.remove('hidden');
+                return true;
+            }
+            return false;
+        }
+
+        function g37bCardClass() {
+            return 'g37b-card bg-slate-800 hover:bg-violet-900/40 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-sm font-bold cursor-pointer cursor-grab transition select-none touch-none';
+        }
+
+        function g37bSlotClass(state) {
+            const base = 'g37b-slot min-h-[44px] rounded-lg border px-3 py-2 flex items-center justify-center text-sm font-bold transition cursor-pointer';
+            if (state === 'correct') return base + ' border-emerald-500 bg-emerald-900/30 text-emerald-200';
+            if (state === 'wrong') return base + ' border-rose-500 bg-rose-900/30 text-rose-200';
+            if (state === 'filled') return base + ' border-violet-500 bg-violet-900/25 text-violet-100';
+            return base + ' border-dashed border-slate-600 bg-slate-950/40 text-slate-500';
+        }
+
+        function initGame37b() {
+            const questions = document.getElementById('g37b-questions');
+            const pool = document.getElementById('g37b-card-pool');
+            const reveal = document.getElementById('g37b-reveal');
+            const answerList = document.getElementById('g37b-answer-list');
+            if (!questions || !pool) return;
+            g37bSelectedCard = null;
+            g37bSlotData = {};
+            if (reveal) reveal.classList.add('hidden');
+            if (answerList) answerList.innerHTML = '';
+            questions.innerHTML = '';
+            pool.innerHTML = '';
+
+            gSortShuffle(g37bData).forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'grid grid-cols-1 md:grid-cols-[1fr_220px] gap-2 items-stretch bg-slate-900/45 border border-slate-800 rounded-xl p-3';
+                row.innerHTML = `
+                    <div class="text-slate-200 text-sm font-bold flex items-center">${item.prompt}</div>
+                    <div class="${g37bSlotClass('empty')}" data-slot-id="${item.id}" data-answer="${item.answer}">點選或拖曳字卡</div>
+                `;
+                questions.appendChild(row);
+            });
+
+            gSortShuffle(g37bCards).forEach(cardData => {
+                const card = document.createElement('div');
+                card.className = g37bCardClass();
+                card.dataset.id = cardData.id;
+                card.dataset.label = cardData.label;
+                card.textContent = cardData.label;
+                card.onclick = () => selectG37bCard(card);
+                _makeDraggable(card, 'g37b');
+                pool.appendChild(card);
+            });
+
+            document.querySelectorAll('.g37b-slot').forEach(slot => {
+                slot.onclick = () => {
+                    if (g37bSelectedCard) placeG37bCard(g37bSelectedCard, slot);
+                    else if (slot.dataset.cardId) clearG37bSlot(slot);
+                };
+                _makeDropTarget(slot, (target, drag) => {
+                    if (drag.type !== 'g37b') return;
+                    placeG37bCard(drag.elem, target);
+                });
+            });
+            safeCreateIcons();
+        }
+
+        function selectG37bCard(card) {
+            if (!card || card.style.display === 'none') return;
+            triggerTimer();
+            soundClick();
+            document.querySelectorAll('.g37b-card').forEach(c => c.classList.remove('ring-2', 'ring-violet-400', 'scale-105'));
+            card.classList.add('ring-2', 'ring-violet-400', 'scale-105');
+            g37bSelectedCard = card;
+        }
+
+        function placeG37bCard(card, slot) {
+            if (!card || !slot) return;
+            triggerTimer();
+            soundClick();
+            if (slot.dataset.cardId) {
+                const prev = document.querySelector(`.g37b-card[data-id="${slot.dataset.cardId}"]`);
+                if (prev) prev.style.display = '';
+            }
+            slot.textContent = card.dataset.label;
+            slot.dataset.cardId = card.dataset.id;
+            slot.dataset.filledLabel = card.dataset.label;
+            slot.className = g37bSlotClass('filled');
+            card.style.display = 'none';
+            card.classList.remove('ring-2', 'ring-violet-400', 'scale-105');
+            g37bSelectedCard = null;
+            g37bSlotData[slot.dataset.slotId] = { cardId: card.dataset.id, label: card.dataset.label };
+            setTimeout(lsSave, 150);
+        }
+
+        function clearG37bSlot(slot) {
+            if (!slot || !slot.dataset.cardId) return;
+            const card = document.querySelector(`.g37b-card[data-id="${slot.dataset.cardId}"]`);
+            if (card) card.style.display = '';
+            delete g37bSlotData[slot.dataset.slotId];
+            delete slot.dataset.cardId;
+            delete slot.dataset.filledLabel;
+            slot.textContent = '點選或拖曳字卡';
+            slot.className = g37bSlotClass('empty');
+            setTimeout(lsSave, 150);
+        }
+
+        function checkGame37b() {
+            let correct = 0;
+            const slots = Array.from(document.querySelectorAll('.g37b-slot'));
+            slots.forEach(slot => {
+                const ok = slot.dataset.filledLabel === slot.dataset.answer;
+                slot.className = g37bSlotClass(ok ? 'correct' : 'wrong');
+                if (ok) correct++;
+            });
+            if (correct === slots.length && slots.length === g37bData.length) {
+                const reveal = document.getElementById('g37b-reveal');
+                const answerList = document.getElementById('g37b-answer-list');
+                if (answerList) {
+                    answerList.innerHTML = g37bData.map(item => `<div>${item.prompt} → <strong class="text-violet-200">${item.answer}</strong></div>`).join('');
+                }
+                if (reveal) reveal.classList.remove('hidden');
+                return true;
+            }
+            return false;
+        }
+
+        function showAnswer37b() {
+            const available = [...g37bCards];
+            document.querySelectorAll('.g37b-slot').forEach(slot => {
+                const idx = available.findIndex(card => card.label === slot.dataset.answer);
+                const cardData = idx >= 0 ? available.splice(idx, 1)[0] : null;
+                if (!cardData) return;
+                const card = document.querySelector(`.g37b-card[data-id="${cardData.id}"]`);
+                if (card) card.style.display = 'none';
+                slot.textContent = cardData.label;
+                slot.dataset.cardId = cardData.id;
+                slot.dataset.filledLabel = cardData.label;
+                slot.className = g37bSlotClass('correct');
+                g37bSlotData[slot.dataset.slotId] = { cardId: cardData.id, label: cardData.label };
+            });
+            const reveal = document.getElementById('g37b-reveal');
+            const answerList = document.getElementById('g37b-answer-list');
+            if (answerList) {
+                answerList.innerHTML = g37bData.map(item => `<div>${item.prompt} → <strong class="text-violet-200">${item.answer}</strong></div>`).join('');
+            }
+            if (reveal) reveal.classList.remove('hidden');
+            setTimeout(lsSave, 150);
+        }
+
         function initGame37() {
             g37SelCard = null;
             const container = document.getElementById('g37-slots');
@@ -8057,10 +8377,23 @@ function checkGame10() {
             gSortBind('g37-slots', g37SlotData, 'violet');
             gSortClearResult('g37-slots', 'violet');
             gSortSyncData('g37-slots', g37SlotData, false);
+            initGame37b();
         }
 
         function checkGame37() {
-            gSortCheck('g37-slots', g37SlotData, 37, 'g37-reveal', '🎉 Heinrich 骨牌理論排序完全正確！');
+            const firstOk = g37SortCheckOnly();
+            const secondOk = checkGame37b();
+            if (firstOk && secondOk) {
+                completedGames.game37 = true;
+                recordTime(37);
+                soundSuccess();
+                showConfetti();
+                showToast('🎉 第37關兩小題都正確！', 'success');
+            } else {
+                soundError();
+                showToast('❌ 第37關仍有錯誤，請檢查紅色位置。', 'error');
+            }
+            updateTrophyCount();
         }
 
 
@@ -8630,14 +8963,17 @@ function checkGame10() {
         }
 
         function showAnswer2() {
-            _showAnswerPanel('第2關：變更管理流程（關鍵環節）', `
-                <p class="text-amber-300 font-bold mb-2">四個關鍵環節（依流程位置）：</p>
-                <ul class="space-y-1">
-                    <li>③ <strong class="text-amber-300">工作者之諮商及參與</strong></li>
-                    <li>⑤ <strong class="text-amber-300">變更之危害辨識及風險評估</strong></li>
-                    <li>⑧ <strong class="text-amber-300">人員之告知或訓練</strong></li>
-                    <li>⑩ <strong class="text-amber-300">暫時性變更？</strong></li>
-                </ul>`, 'amber');
+            g2Data.forEach(item => {
+                const slot = document.getElementById(`change-slot-${item.id}`);
+                if (!slot) return;
+                slot.innerText = item.label;
+                slot.dataset.placedId = String(item.id);
+                slot.className = "change-slot text-xs w-48 text-center min-h-[50px] flex items-center justify-center rounded-lg border-2 border-solid border-emerald-500 bg-emerald-950/40 text-emerald-300 p-2 font-medium";
+                const card = document.querySelector(`#change-pool div[data-id="${item.id}"]`);
+                if (card) card.style.display = 'none';
+            });
+            setTimeout(lsSave, 150);
+            showToast('📖 第2關解答已直接填入流程空格！', 'info');
         }
 
         function showAnswer3() {
@@ -8843,15 +9179,25 @@ function checkGame10() {
         }
 
         function showAnswer9() {
-            _showAnswerPanel('第9關：化學品分類', `
-                <div class="space-y-1 text-xs">
-                    <div><strong class="text-cyan-400">第一種有機溶劑：</strong>三氯甲烷</div>
-                    <div><strong class="text-purple-400">特定化學物質：</strong>鈹及其無機化合物、黃磷火柴、青石綿褐石綿、汞及其無機化合物、硝酸</div>
-                    <div><strong class="text-rose-400">管制性化學品：</strong>鈹及其無機化合物、黃磷火柴、青石綿褐石綿</div>
-                    <div><strong class="text-orange-400">優先管理化學品：</strong>鉛及其無機化合物、汞及其無機化合物</div>
-                    <div><strong class="text-blue-400">第二種有機溶劑：</strong>甲苯、丙酮</div>
-                    <div><strong class="text-slate-400">第三種有機溶劑：</strong>汽油</div>
-                </div>`, 'cyan');
+            document.querySelectorAll('.chem-dropzone').forEach(zone => zone.innerHTML = '');
+            document.querySelectorAll('#chem-pool div').forEach(card => {
+                card.style.display = 'none';
+                card.classList.remove('ring-4', 'ring-cyan-500');
+            });
+            g9Data.forEach((item, idx) => {
+                const zone = document.getElementById('chem-zone-' + item.parent);
+                if (!zone) return;
+                const innerCard = document.createElement('div');
+                innerCard.className = "bg-emerald-950/60 text-[11px] p-1.5 rounded border border-emerald-600 flex justify-between items-center text-emerald-300";
+                innerCard.innerHTML = `<span>${item.text}</span>`;
+                innerCard.dataset.parent = String(item.parent);
+                innerCard.dataset.origId = 'answer-' + idx;
+                zone.appendChild(innerCard);
+            });
+            activeSelection = null;
+            updateChemProgress();
+            setTimeout(lsSave, 150);
+            showToast('📖 第9關解答已直接填入分類框！', 'info');
         }
 
         function showAnswer10() {
@@ -9301,6 +9647,8 @@ function checkGame10() {
 
         function showAnswer37() {
             gSortShowAnswer('g37-slots', g37Items, g37SlotData, 'violet', 'g37-reveal', '📖 第37關解答已直接排入排序清單！');
+            showAnswer37b();
+            showToast('📖 第37關兩小題解答已直接填入！', 'info');
         }
 
 
@@ -10269,6 +10617,7 @@ function checkGame10() {
                 state.g37SlotData = JSON.parse(JSON.stringify(g37SlotData));
                 state.g20bSlotData = JSON.parse(JSON.stringify(g20bSlotData));
                 state.g38Selected = Object.keys(g38Selected || {});
+                state.g38bSelected = Object.keys(g38bSelected || {});
 
                 // Pattern D: Zone-based card order (games 3,7,9)
                 // Game 3: cns-dropzone zones 4-10
@@ -10543,7 +10892,7 @@ function exportSave() {
                     case 21: _lsRestoreSortableOrder('g21-slots', g21Items, g21SlotData, state.g21SlotData, 'cyan'); break;
                     case 22: _lsRestoreSortableOrder('g22-slots', g22Items, g22SlotData, state.g22SlotData, 'amber'); break;
                     case 37: break;
-                    case 38: restoreGame38(state.g38Selected); break;
+                    case 38: restoreGame38(state.g38Selected, state.g38bSelected); break;
                     case 23: _lsRestoreBlanks('.g23-blank', state.g23, 'blank'); break;
                     case 24: _lsRestoreG24(state.g24); break;
                 }
@@ -15546,10 +15895,27 @@ window.addEventListener('resize', () => {
             { id: 'lighting', text: '採光不足', correct: false }
         ];
         let g38Selected = {};
+        const g38bCards = [
+            { id: 'hook_no_latch', text: '吊鉤或吊具未有防止吊舉中所吊物體脫落之裝置', correct: true },
+            { id: 'under_load', text: '未防止吊掛物通過人員上方或人員進入吊掛物下方', correct: true },
+            { id: 'near_opening_materials', text: '距離開口 2 公尺內堆放鋼材等物料', correct: true },
+            { id: 'touch_moving_load', text: '鋼材吊運移動過程中，勞工以手碰觸吊運之鋼材', correct: true },
+            { id: 'guardrail_removed_no_fall_protection', text: '開口臨時拆除護欄，未採安全帶等防止墜落措施', correct: true },
+            { id: 'no_signal_person', text: '吊運作業未設置信號指揮聯絡人員', correct: false },
+            { id: 'no_safety_helmet', text: '作業人員未配戴安全帽', correct: false },
+            { id: 'no_safety_shoes', text: '作業人員未著安全鞋', correct: false },
+            { id: 'electric_shock', text: '電氣設備感電危害', correct: false },
+            { id: 'hot_work_fire', text: '動火作業引起火災爆炸', correct: false },
+            { id: 'oxygen_deficiency', text: '局限空間缺氧危害', correct: false },
+            { id: 'noise', text: '噪音危害', correct: false }
+        ];
+        let g38bSelected = {};
 
         function initGame38() {
             g38Selected = {};
+            g38bSelected = {};
             renderGame38();
+            renderGame38b();
         }
 
         function renderGame38() {
@@ -15563,13 +15929,33 @@ window.addEventListener('resize', () => {
             updateG38Cards();
         }
 
+        function renderGame38b() {
+            const pool = document.getElementById('g38b-card-pool');
+            if (!pool) return;
+            renderG38bSlots();
+            const cards = [...g38bCards].sort(() => Math.random() - 0.5);
+            pool.innerHTML = cards.map(card => (
+                `<button type="button" draggable="true" data-id="${escapeHtml(card.id)}" onclick="toggleG38bCard(this)" ondragstart="dragG38bCard(event, this)" class="g38b-card bg-slate-800 hover:bg-amber-900/40 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 text-sm font-bold text-left transition min-h-[3.2rem] cursor-grab">${escapeHtml(card.text)}</button>`
+            )).join('');
+            updateG38bCards();
+        }
+
         function g38CardLabel(id) {
             const card = g38Cards.find(c => c.id === id);
             return card ? card.text : '';
         }
 
+        function g38bCardLabel(id) {
+            const card = g38bCards.find(c => c.id === id);
+            return card ? card.text : '';
+        }
+
         function g38SelectedIds() {
             return Object.keys(g38Selected || {});
+        }
+
+        function g38bSelectedIds() {
+            return Object.keys(g38bSelected || {});
         }
 
         function renderG38Slots() {
@@ -15596,9 +15982,40 @@ window.addEventListener('resize', () => {
             }).join('');
         }
 
+        function renderG38bSlots() {
+            const slots = document.getElementById('g38b-answer-slots');
+            if (!slots) return;
+            slots.innerHTML = Array.from({ length: 5 }, (_, idx) => {
+                const id = g38bSelectedIds().find(cardId => Number(g38bSelected[cardId]) === idx);
+                const label = id ? g38bCardLabel(id) : '放入字卡';
+                const filledClass = id
+                    ? 'bg-amber-950/45 border-amber-500 text-amber-100 font-black'
+                    : 'bg-slate-900/60 border-slate-600 text-slate-500';
+                return `
+                    <button type="button"
+                        class="g38b-slot min-h-[3.5rem] rounded-xl border-2 border-dashed px-3 py-2 text-sm transition ${filledClass}"
+                        data-slot-index="${idx}"
+                        data-id="${escapeHtml(id || '')}"
+                        onclick="clearG38bSlot(${idx})"
+                        ondragover="event.preventDefault()"
+                        ondrop="dropG38bCard(event, ${idx})">
+                        <span class="block text-[10px] text-slate-400 mb-1">空格 ${idx + 1}</span>
+                        <span>${escapeHtml(label)}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
         function g38FirstEmptySlot() {
             for (let i = 0; i < 6; i++) {
                 if (!g38SelectedIds().some(id => Number(g38Selected[id]) === i)) return i;
+            }
+            return -1;
+        }
+
+        function g38bFirstEmptySlot() {
+            for (let i = 0; i < 5; i++) {
+                if (!g38bSelectedIds().some(id => Number(g38bSelected[id]) === i)) return i;
             }
             return -1;
         }
@@ -15613,6 +16030,16 @@ window.addEventListener('resize', () => {
             setTimeout(lsSave, 150);
         }
 
+        function placeG38bCard(id, slotIndex) {
+            if (!id) return;
+            Object.keys(g38bSelected).forEach(cardId => {
+                if (cardId === id || Number(g38bSelected[cardId]) === slotIndex) delete g38bSelected[cardId];
+            });
+            g38bSelected[id] = slotIndex;
+            updateG38bCards();
+            setTimeout(lsSave, 150);
+        }
+
         function clearG38Slot(slotIndex) {
             const id = g38SelectedIds().find(cardId => Number(g38Selected[cardId]) === slotIndex);
             if (!id) return;
@@ -15622,7 +16049,22 @@ window.addEventListener('resize', () => {
             setTimeout(lsSave, 150);
         }
 
+        function clearG38bSlot(slotIndex) {
+            const id = g38bSelectedIds().find(cardId => Number(g38bSelected[cardId]) === slotIndex);
+            if (!id) return;
+            soundClick();
+            delete g38bSelected[id];
+            updateG38bCards();
+            setTimeout(lsSave, 150);
+        }
+
         function dragG38Card(event, btn) {
+            if (!event || !event.dataTransfer || !btn) return;
+            event.dataTransfer.setData('text/plain', btn.dataset.id || '');
+            event.dataTransfer.effectAllowed = 'move';
+        }
+
+        function dragG38bCard(event, btn) {
             if (!event || !event.dataTransfer || !btn) return;
             event.dataTransfer.setData('text/plain', btn.dataset.id || '');
             event.dataTransfer.effectAllowed = 'move';
@@ -15635,6 +16077,15 @@ window.addEventListener('resize', () => {
             triggerTimer();
             soundClick();
             placeG38Card(id, slotIndex);
+        }
+
+        function dropG38bCard(event, slotIndex) {
+            event.preventDefault();
+            const id = event.dataTransfer ? event.dataTransfer.getData('text/plain') : '';
+            if (!id) return;
+            triggerTimer();
+            soundClick();
+            placeG38bCard(id, slotIndex);
         }
 
         function toggleG38Card(btn) {
@@ -15655,6 +16106,24 @@ window.addEventListener('resize', () => {
             placeG38Card(id, slotIndex);
         }
 
+        function toggleG38bCard(btn) {
+            triggerTimer();
+            soundClick();
+            const id = btn.dataset.id;
+            if (Object.prototype.hasOwnProperty.call(g38bSelected, id)) {
+                delete g38bSelected[id];
+                updateG38bCards();
+                setTimeout(lsSave, 150);
+                return;
+            }
+            const slotIndex = g38bFirstEmptySlot();
+            if (slotIndex < 0) {
+                showToast('第二小題 5 個空格已放滿，請先點空格清除一張字卡。', 'info');
+                return;
+            }
+            placeG38bCard(id, slotIndex);
+        }
+
         function updateG38Cards() {
             const selectedCount = g38SelectedIds().length;
             renderG38Slots();
@@ -15673,30 +16142,54 @@ window.addEventListener('resize', () => {
             }
         }
 
-        function checkGame38() {
+        function updateG38bCards() {
+            const selectedCount = g38bSelectedIds().length;
+            renderG38bSlots();
+            document.querySelectorAll('.g38b-card').forEach(btn => {
+                const selected = Object.prototype.hasOwnProperty.call(g38bSelected, btn.dataset.id);
+                btn.className = selected
+                    ? 'g38b-card bg-amber-900/70 border-2 border-amber-400 text-amber-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] shadow-lg shadow-amber-950/40 cursor-grab'
+                    : 'g38b-card bg-slate-800 hover:bg-amber-900/40 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 text-sm font-bold text-left transition min-h-[3.2rem] cursor-grab';
+            });
+            const status = document.getElementById('g38b-status');
+            if (status) {
+                status.textContent = `已選取 ${selectedCount} / 5 張`;
+                status.className = 'mt-4 text-sm font-bold rounded-xl px-4 py-3 border ' + (selectedCount === 5
+                    ? 'text-amber-100 bg-amber-950/50 border-amber-700'
+                    : 'text-slate-300 bg-slate-900/70 border-slate-700');
+            }
+        }
+
+        function checkG38Set(cards, selectedObj, cardSelector, selectedTotal, cardClass, tone) {
             let correct = 0;
             let wrong = 0;
-            g38Cards.forEach(card => {
-                const selected = Object.prototype.hasOwnProperty.call(g38Selected, card.id);
-                const btn = document.querySelector(`.g38-card[data-id="${card.id}"]`);
+            cards.forEach(card => {
+                const selected = Object.prototype.hasOwnProperty.call(selectedObj, card.id);
+                const btn = document.querySelector(`${cardSelector}[data-id="${card.id}"]`);
                 const ok = selected === card.correct;
                 if (card.correct && selected) correct++;
                 if (!ok) wrong++;
                 if (btn) {
                     btn.className = ok
-                        ? 'g38-card bg-emerald-900/70 border-2 border-emerald-400 text-emerald-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] cursor-grab'
-                        : 'g38-card bg-rose-900/70 border-2 border-rose-400 text-rose-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] cursor-grab';
+                        ? `${cardClass} bg-emerald-900/70 border-2 border-emerald-400 text-emerald-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] cursor-grab`
+                        : `${cardClass} bg-rose-900/70 border-2 border-rose-400 text-rose-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] cursor-grab`;
                 }
             });
-            if (wrong === 0) {
+            return { ok: wrong === 0, correct, total: selectedTotal };
+        }
+
+        function checkGame38() {
+            const first = checkG38Set(g38Cards, g38Selected, '.g38-card', 6, 'g38-card', 'orange');
+            const second = checkG38Set(g38bCards, g38bSelected, '.g38b-card', 5, 'g38b-card', 'amber');
+            if (first.ok && second.ok) {
                 completedGames.game38 = true;
                 recordTime(38);
                 soundSuccess();
                 showConfetti();
-                showToast('🎉 油槽動火危害辨識全部正確！', 'success');
+                showToast('🎉 第38關兩小題潛在危害辨識全部正確！', 'success');
             } else {
                 soundError();
-                showToast(`❌ 已選對 ${correct}/6 張正確危害，請修正紅框字卡。`, 'error');
+                showToast(`❌ 第一小題 ${first.correct}/6，第二小題 ${second.correct}/5，請修正紅框字卡。`, 'error');
             }
             updateTrophyCount();
             setTimeout(lsSave, 150);
@@ -15707,7 +16200,12 @@ window.addEventListener('resize', () => {
             g38Cards.filter(card => card.correct).forEach((card, idx) => {
                 g38Selected[card.id] = idx;
             });
+            g38bSelected = {};
+            g38bCards.filter(card => card.correct).forEach((card, idx) => {
+                g38bSelected[card.id] = idx;
+            });
             updateG38Cards();
+            updateG38bCards();
             document.querySelectorAll('.g38-card').forEach(btn => {
                 const card = g38Cards.find(c => c.id === btn.dataset.id);
                 if (!card) return;
@@ -15715,16 +16213,28 @@ window.addEventListener('resize', () => {
                     ? 'g38-card bg-emerald-900/70 border-2 border-emerald-400 text-emerald-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] cursor-grab'
                     : 'g38-card bg-slate-800 border border-slate-700 text-slate-400 rounded-xl px-4 py-3 text-sm font-bold text-left transition min-h-[3.2rem] opacity-70 cursor-grab';
             });
-            showToast('📖 第38關解答已放入空格！', 'info');
+            document.querySelectorAll('.g38b-card').forEach(btn => {
+                const card = g38bCards.find(c => c.id === btn.dataset.id);
+                if (!card) return;
+                btn.className = card.correct
+                    ? 'g38b-card bg-emerald-900/70 border-2 border-emerald-400 text-emerald-100 rounded-xl px-4 py-3 text-sm font-black text-left transition min-h-[3.2rem] cursor-grab'
+                    : 'g38b-card bg-slate-800 border border-slate-700 text-slate-400 rounded-xl px-4 py-3 text-sm font-bold text-left transition min-h-[3.2rem] opacity-70 cursor-grab';
+            });
+            showToast('📖 第38關兩小題解答已放入空格！', 'info');
             setTimeout(lsSave, 150);
         }
 
-        function restoreGame38(selected) {
+        function restoreGame38(selected, selectedB) {
             g38Selected = {};
             (selected || []).forEach((id, idx) => {
                 if (idx < 6) g38Selected[id] = idx;
             });
+            g38bSelected = {};
+            (selectedB || []).forEach((id, idx) => {
+                if (idx < 5) g38bSelected[id] = idx;
+            });
             updateG38Cards();
+            updateG38bCards();
         }
 
         function escapeHtml(value) {
