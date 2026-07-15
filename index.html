@@ -335,6 +335,26 @@
                 text-align: left;
             }
         }
+    
+        .g40-group { background: rgba(15, 23, 42, .38); }
+        .g40-head { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+        .g40-head h3 { font-size: 1.2rem; font-weight: 900; color: #a5f3fc; }
+        .g40-head p { margin-top: .25rem; color: #94a3b8; font-size: .9rem; }
+        .g40-blank { display: inline-flex; min-width: 6.5rem; justify-content: center; align-items: center; margin: 0 .25rem; padding: .35rem .75rem; border-radius: .75rem; border: 1px solid rgba(148,163,184,.45); background: rgba(15,23,42,.85); color: #e2e8f0; font-weight: 900; vertical-align: middle; }
+        .g40-card { border: 1px solid rgba(34,211,238,.55); background: rgba(8,145,178,.18); color: #cffafe; border-radius: .85rem; padding: .65rem 1.25rem; font-weight: 900; cursor: grab; }
+        .g40-card:hover { background: rgba(8,145,178,.32); }
+        .g40-pool { margin-top: 1.25rem; border-top: 1px solid rgba(51,65,85,.8); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+        .g40-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+        .g40-actions button { background: rgba(30,41,59,.95); color: #e2e8f0; border: 1px solid rgba(100,116,139,.8); border-radius: .75rem; padding: .55rem 1rem; font-weight: 900; }
+        .g40-actions button:last-child { background: #0891b2; border-color: #06b6d4; color: white; }
+        .g40-result { margin-top: 1rem; font-weight: 900; font-size: .9rem; }
+        .g40-input { width: 7rem; max-width: 100%; background: rgba(15,23,42,.9); border: 1px solid rgba(100,116,139,.8); border-radius: .75rem; padding: .55rem .75rem; color: #e2e8f0; font-weight: 900; text-align: center; margin: 0 .25rem; }
+        .g40-text-input { width: 10rem; }
+        .g40-table { width: 100%; min-width: 760px; border-collapse: collapse; }
+        .g40-table th, .g40-table td { border: 1px solid rgba(51,65,85,.9); padding: .75rem; }
+        .g40-table th { background: rgba(30,41,59,.9); color: #cbd5e1; }
+        @media (max-width: 768px) { .g40-head { flex-direction: column; } }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col overflow-x-hidden">
@@ -359,7 +379,7 @@
             <div class="flex items-center gap-4 text-sm">
                 <div class="bg-slate-800/80 px-4 py-2 rounded-lg border border-slate-700 flex items-center gap-2">
                     <i data-lucide="trophy" class="text-yellow-500 w-4 h-4"></i>
-                    <span>完美過關：<strong id="completed-count" class="text-yellow-400">0</strong>/38</span>
+                    <span>完美過關：<strong id="completed-count" class="text-yellow-400">0</strong>/40</span>
                 </div>
                 <button onclick="resetAllGames()" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg">
                     <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置全部
@@ -457,7 +477,7 @@
                                 <span>乙級職安衛管理員考試模擬器</span>
                                 <span class="text-[11px] font-bold text-emerald-200/90 tracking-wide">by jack yao</span>
                             </h3>
-                            <p class="text-xs text-slate-400 mt-1">單選 60 題＋複選 20 題，100 分鐘，含錯題回顧、收藏與統計。</p>
+                            <p class="text-xs text-slate-400 mt-1">學科模擬 53 題，含錯題回顧、收藏與統計。</p>
                         </div>
                     </div>
                     <span class="text-sm font-bold text-emerald-300 group-hover:text-emerald-200">開啟模擬考 →</span>
@@ -513,7 +533,7 @@
             <div class="flex items-center gap-3">
                 <div class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 text-xs">
                     <i data-lucide="trophy" class="text-yellow-500 w-3.5 h-3.5"></i>
-                    <span>過關 <strong id="completed-count-game" class="text-yellow-400">0</strong>/38</span>
+                    <span>過關 <strong id="completed-count-game" class="text-yellow-400">0</strong>/40</span>
                 </div>
                 <div id="game-timer-display" class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 text-xs font-mono cursor-pointer select-none hover:bg-slate-700/80 transition" onclick="toggleTimerPause()" title="點擊暫停計時">
                     <i data-lucide="timer" class="text-sky-400 w-3.5 h-3.5"></i>
@@ -583,7 +603,24 @@
                         <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（10）急救藥品與器材，應每 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="6"> 個月定期檢查。</label>
                         <label class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 leading-loose">（11）良導體機器設備內檢修之手提式照明燈，使用電壓不得超過 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="24"> 伏特。</label>
                     </div>
-                </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <label class="bg-slate-900/50 border border-emerald-800/40 rounded-xl p-4 leading-loose">申訴結果通知：勞動檢查機構受理勞工申訴後，應於 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="14"> 日內將檢查結果通知申訴人。</label>
+                        <label class="bg-slate-900/50 border border-emerald-800/40 rounded-xl p-4 leading-loose">重大職災通報：事業單位發生死亡災害或 3 人以上罹災等重大職災時，雇主應於 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="8"> 小時內通報勞動檢查機構。</label>
+                        <label class="bg-slate-900/50 border border-emerald-800/40 rounded-xl p-4 leading-loose">檢查結果公告：事業單位對於勞動檢查結果，應於違規場所顯明易見處公告 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="13"> 日以上。</label>
+                        <label class="bg-slate-900/50 border border-emerald-800/40 rounded-xl p-4 leading-loose">受領補償權時效：受領補償權自得受領之日起，因 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="2"> 年間不行使而消滅。</label>
+                        <label class="bg-slate-900/50 border border-emerald-800/40 rounded-xl p-4 leading-loose md:col-span-2">退休金給付：雇主應於勞工退休之日起 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="30"> 日內給付退休金。</label>
+                    </div>
+
+                    <div class="rounded-xl border border-sky-800/40 bg-slate-900/50 p-4 leading-loose">
+                        <p class="font-bold text-sky-300 mb-2">第二部分：管理制度與文書門檻</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="block rounded-lg border border-slate-700 bg-slate-950/40 p-3">【管理規章與計畫】勞工人數在 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="100"> 人以上者，應另訂定「職業安全衛生管理規章」。</label>
+                            <label class="block rounded-lg border border-slate-700 bg-slate-950/40 p-3">【管理規章與計畫】勞工人數在 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="30"> 人以下者，得以「安全衛生管理執行紀錄」代替「管理計畫」。</label>
+                            <label class="block rounded-lg border border-slate-700 bg-slate-950/40 p-3">【職安管理系統 ISO 45001】第一類事業，勞工人數在 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="200"> 人以上者應建置。</label>
+                            <label class="block rounded-lg border border-slate-700 bg-slate-950/40 p-3">【職安管理系統 ISO 45001】第二類事業，勞工人數在 <input class="g35-input mx-2 bg-slate-950 border border-slate-600 rounded-lg px-3 py-1.5 w-24 text-center text-white" data-answer="500"> 人以上者應建置。</label>
+                        </div>
+                    </div>                </div>
                 <div class="mt-5 flex justify-end gap-3">
                     <button onclick="resetSingleGame(35)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-4 py-2.5 rounded-lg border border-slate-700 font-bold">重玩本關</button>
                     <button onclick="showAnswer35()" class="bg-slate-700 hover:bg-slate-600 text-white font-bold px-5 py-2.5 rounded-lg">公布解答</button>
@@ -652,7 +689,7 @@
                 </div>
                 <div class="mt-6 border-t border-slate-700 pt-5">
                     <h3 class="text-xs font-bold text-violet-300 mb-1">（二）Bird 事故因果連鎖模型配對</h3>
-                    <p class="text-xs text-slate-400 mb-3">請將右側原因字卡放入左側對應骨牌。左側題目每次載入會打亂。</p>
+                    <p class="text-xs text-slate-400 mb-3">請將右側原因字卡放入左側對應項目。左側題目每次載入會打亂。</p>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <div class="lg:col-span-2 space-y-2" id="g37b-questions"></div>
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
@@ -2057,10 +2094,10 @@
                 <div class="bg-slate-950/60 border border-sky-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group14">
                   <div class="flex items-center gap-2 mb-3 pb-2 border-b border-sky-800/40">
                     <span class="bg-sky-900/60 text-sky-300 text-xs font-bold px-3 py-1 rounded-full border border-sky-700">第十四組</span>
-                    <span class="text-xs text-slate-400">勞工衛生危害因子分類（空格 1401–1427）</span>
+                    <span class="text-xs text-slate-400">勞工衛生危害因子分類（空格 1402–1427，答案順序不限）</span>
                   </div>
                   <div class="space-y-3">
-                    <p>一、<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1401" data-correct="G14A" onclick="fillBlank14(this)">＿</span> 危害：
+                    <p>一、<span class="font-black text-sky-300">物理性</span> 危害：
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1402" data-correct="G14B" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1403" data-correct="G14C" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1404" data-correct="G14D" onclick="fillBlank14(this)">＿</span>、
@@ -2070,26 +2107,26 @@
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1408" data-correct="G14H" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1409" data-correct="G14I" onclick="fillBlank14(this)">＿</span>。
                     </p>
-                    <p>二、<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1410" data-correct="G14J" onclick="fillBlank14(this)">＿</span> 危害：
+                    <p>二、<span class="font-black text-sky-300">化學性</span> 危害：
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1411" data-correct="G14K" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1412" data-correct="G14L" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1413" data-correct="G14M" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1414" data-correct="G14N" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1415" data-correct="G14O" onclick="fillBlank14(this)">＿</span>。
                     </p>
-                    <p>三、<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1416" data-correct="G14P" onclick="fillBlank14(this)">＿</span> 危害：
+                    <p>三、<span class="font-black text-sky-300">生物性</span> 危害：
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1417" data-correct="G14Q" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1418" data-correct="G14R" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1419" data-correct="G14S" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1420" data-correct="G14T" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1421" data-correct="G14U" onclick="fillBlank14(this)">＿</span>。
                     </p>
-                    <p>四、<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1422" data-correct="G14V" onclick="fillBlank14(this)">＿</span> 危害：工具等
+                    <p>四、<span class="font-black text-sky-300">人因工程</span> 危害：工具等
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1423" data-correct="G14W" onclick="fillBlank14(this)">＿</span>、 
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1424" data-correct="G14X" onclick="fillBlank14(this)">＿</span>、
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1425" data-correct="G14Y" onclick="fillBlank14(this)">＿</span>。
                     </p>
-                    <p>五、<span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1426" data-correct="G14Z" onclick="fillBlank14(this)">＿</span> 危害：
+                    <p>五、<span class="font-black text-sky-300">社會心理性</span> 危害：
                       <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1427" data-correct="G14AA" onclick="fillBlank14(this)">＿</span>。
                     </p>
                   </div>
@@ -2172,8 +2209,160 @@
                     <button onclick="showAnswer14Group(16)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
                   </div>
                 </div>
+
+                <!-- 第十七組 -->
+                <div class="bg-slate-950/60 border border-emerald-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group17">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-emerald-800/40">
+                    <span class="bg-emerald-900/60 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-700">第十七組</span>
+                    <span class="text-xs text-slate-400">危險性工作場所分類與審查期限（空格 1701–1717）</span>
+                  </div>
+                  <div class="space-y-4">
+                    <p class="text-emerald-200 font-bold">根據《危險性工作場所審查及檢查辦法》，請完成各類場所之定義與審查程序。</p>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-emerald-300 mb-1">甲類場所</p>
+                      <p>包含 <span class="g14-blank inline-block min-w-[9rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1701" data-correct="G17A" onclick="fillBlank14(this)">＿</span>、<span class="g14-blank inline-block min-w-[11rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1702" data-correct="G17B" onclick="fillBlank14(this)">＿</span> 等。</p>
+                      <p>要求：應設置 <span class="g14-blank inline-block min-w-[8rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1703" data-correct="G17C" onclick="fillBlank14(this)">＿</span>；書面審查期限為 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1704" data-correct="G17D" onclick="fillBlank14(this)">＿</span> 日。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-emerald-300 mb-1">乙類場所</p>
+                      <p>包含 <span class="g14-blank inline-block min-w-[8rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1705" data-correct="G17E" onclick="fillBlank14(this)">＿</span>、<span class="g14-blank inline-block min-w-[8rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1706" data-correct="G17F" onclick="fillBlank14(this)">＿</span> 場所。</p>
+                      <p>要求：審查與檢查期限為 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1707" data-correct="G17G" onclick="fillBlank14(this)">＿</span> 日。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-emerald-300 mb-1">丙類場所</p>
+                      <p>1 日冷凍能力在 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1708" data-correct="G17H" onclick="fillBlank14(this)">＿</span> 公噸以上或 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1709" data-correct="G17I" onclick="fillBlank14(this)">＿</span> 立方公尺以上之 <span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1710" data-correct="G17J" onclick="fillBlank14(this)">＿</span>。</p>
+                      <p>要求：審查與檢查期限為 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1711" data-correct="G17K" onclick="fillBlank14(this)">＿</span> 日。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-emerald-300 mb-1">丁類場所</p>
+                      <p><span class="g14-blank inline-block min-w-[6rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1712" data-correct="G17L" onclick="fillBlank14(this)">＿</span>：開挖深度達 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1713" data-correct="G17M" onclick="fillBlank14(this)">＿</span> 以上且面積達 <span class="g14-blank inline-block min-w-[5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1714" data-correct="G17N" onclick="fillBlank14(this)">＿</span> 平方公尺以上之工程，或採用 <span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1715" data-correct="G17O" onclick="fillBlank14(this)">＿</span> 之工程。</p>
+                      <p>要求：應設置 <span class="g14-blank inline-block min-w-[8rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1716" data-correct="G17P" onclick="fillBlank14(this)">＿</span>；書面審查期限為 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1717" data-correct="G17Q" onclick="fillBlank14(this)">＿</span> 日。</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 第十七組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-emerald-800/30 rounded-xl p-4" id="g14-group17-opts-wrap">
+                  <h3 class="text-xs font-bold text-emerald-300 mb-2 flex items-center gap-2">
+                    <i data-lucide="table" class="w-4 h-4"></i> 第十七組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-17"></div>
+                  <div id="g14-selected-indicator-17" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-17"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(17)" class="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1.5">
+                      <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十七組
+                    </button>
+                    <button onclick="showAnswer14Group(17)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
+                  </div>
+                </div>
+
                 <!-- 舊選項表（隱藏，保留相容性） -->
-                <div class="hidden"><div id="g14-options"></div></div>
+                <div class="bg-slate-950/60 border border-cyan-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group18">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-cyan-800/40">
+                    <span class="bg-cyan-900/60 text-cyan-300 text-xs font-bold px-3 py-1 rounded-full border border-cyan-700">第十八組</span>
+                    <span class="text-xs text-slate-400">職業安全衛生委員會組成配對（空格 1801–1805）</span>
+                  </div>
+                  <div class="space-y-3">
+                    <p class="text-cyan-200 font-bold">請依職業安全衛生委員會組成規定，完成下列內容。</p>
+                    <p>委員人數：設置 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1801" data-correct="G18A" onclick="fillBlank14(this)">＿</span> 人以上。</p>
+                    <p>當然委員：<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1802" data-correct="G18B" onclick="fillBlank14(this)">＿</span> 為當然委員並擔任主席。</p>
+                    <p>勞工代表比例：應佔委員人數 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1803" data-correct="G18C" onclick="fillBlank14(this)">＿</span> 以上。</p>
+                    <p>會議頻率：每 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1804" data-correct="G18D" onclick="fillBlank14(this)">＿</span> 個月至少開會一次。</p>
+                    <p>紀錄保存：相關建議與審議紀錄應保存 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1805" data-correct="G18E" onclick="fillBlank14(this)">＿</span> 年。</p>
+                  </div>
+                </div>
+                <!-- 第十八組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-cyan-800/30 rounded-xl p-4" id="g14-group18-opts-wrap">
+                  <h3 class="text-xs font-bold text-cyan-300 mb-2 flex items-center gap-2">
+                    <i data-lucide="users" class="w-4 h-4"></i> 第十八組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-18"></div>
+                  <div id="g14-selected-indicator-18" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-18"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(18)" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg font-bold text-sm"><i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i>確認第十八組</button>
+                    <button onclick="showAnswer14Group(18)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-2 rounded-lg font-bold text-sm">公布解答</button>
+                  </div>
+                </div>                <div class="bg-slate-950/60 border border-amber-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group19">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-amber-800/40">
+                    <span class="bg-amber-900/60 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-700">第十九組</span>
+                    <span class="text-xs text-slate-400">鍋爐、高壓氣體容器與起重機判定配對（空格 1901–1910）</span>
+                  </div>
+                  <div class="space-y-4">
+                    <p class="text-amber-200 font-bold">請依各類設備之判定標準，完成下列數值。</p>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-amber-300 mb-1">蒸汽鍋爐</p>
+                      <p>最高使用壓力超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1901" data-correct="G19A" onclick="fillBlank14(this)">＿</span> kg/cm²。</p>
+                      <p>或傳熱面積超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1902" data-correct="G19B" onclick="fillBlank14(this)">＿</span> m²。</p>
+                      <p>或胴體內徑超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1903" data-correct="G19C" onclick="fillBlank14(this)">＿</span> mm 且長度超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1904" data-correct="G19D" onclick="fillBlank14(this)">＿</span> mm。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-amber-300 mb-1">熱水鍋爐</p>
+                      <p>水頭壓力超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1905" data-correct="G19E" onclick="fillBlank14(this)">＿</span> 公尺。</p>
+                      <p>或傳熱面積超過 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1906" data-correct="G19F" onclick="fillBlank14(this)">＿</span> m² 且液體使用溫度超過其在大氣壓下之沸點。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-amber-300 mb-1">高壓氣體容器判定</p>
+                      <p>溫度在攝氏 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1907" data-correct="G19G" onclick="fillBlank14(this)">＿</span> 度時，壓力可達每平方公分 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1908" data-correct="G19H" onclick="fillBlank14(this)">＿</span> 公斤以上之壓縮氣體。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-amber-300 mb-1">起重機</p>
+                      <p>固定式／移動式起重機：吊升荷重在 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1909" data-correct="G19I" onclick="fillBlank14(this)">＿</span> 公噸以上者。</p>
+                      <p>斯達卡式起重機：吊升荷重在 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1910" data-correct="G19J" onclick="fillBlank14(this)">＿</span> 公噸以上者。</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 第十九組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-amber-800/30 rounded-xl p-4" id="g14-group19-opts-wrap">
+                  <h3 class="text-xs font-bold text-amber-300 mb-2 flex items-center gap-2">
+                    <i data-lucide="gauge" class="w-4 h-4"></i> 第十九組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-19"></div>
+                  <div id="g14-selected-indicator-19" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-19"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(19)" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-bold text-sm"><i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i>確認第十九組</button>
+                    <button onclick="showAnswer14Group(19)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-2 rounded-lg font-bold text-sm">公布解答</button>
+                  </div>
+                </div>                <div class="bg-slate-950/60 border border-sky-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-4 text-left" id="g14-group20">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-sky-800/40">
+                    <span class="bg-sky-900/60 text-sky-300 text-xs font-bold px-3 py-1 rounded-full border border-sky-700">第二十組</span>
+                    <span class="text-xs text-slate-400">營建用升降機、提升機與斯達卡式起重機對比（空格 2001–2007）</span>
+                  </div>
+                  <div class="space-y-4">
+                    <p class="text-sky-200 font-bold">請區分營建用升降機、營建用提升機與斯達卡式起重機之高度及功能。</p>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-sky-300 mb-1">營建用提升機</p>
+                      <p>導軌或升降路之高度在 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2001" data-correct="G20A" onclick="fillBlank14(this)">＿</span> 公尺以上者。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-sky-300 mb-1">斯達卡式起重機（中型營建用提升機）</p>
+                      <p>導軌或升降路之高度在 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2002" data-correct="G20B" onclick="fillBlank14(this)">＿</span> 公尺以上，且未滿 <span class="g14-blank inline-block min-w-[4rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2003" data-correct="G20C" onclick="fillBlank14(this)">＿</span> 公尺者。</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/45 p-4">
+                      <p class="font-black text-sky-300 mb-1">主要功能區別</p>
+                      <p>升降機：專供 <span class="g14-blank inline-block min-w-[6rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2004" data-correct="G20D" onclick="fillBlank14(this)">＿</span> 或 <span class="g14-blank inline-block min-w-[6rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2005" data-correct="G20E" onclick="fillBlank14(this)">＿</span> 用。</p>
+                      <p>提升機：僅以 <span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2006" data-correct="G20F" onclick="fillBlank14(this)">＿</span> 為目的，不得 <span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="2007" data-correct="G20G" onclick="fillBlank14(this)">＿</span>。</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 第二十組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-sky-800/30 rounded-xl p-4" id="g14-group20-opts-wrap">
+                  <h3 class="text-xs font-bold text-sky-300 mb-2 flex items-center gap-2">
+                    <i data-lucide="arrow-up-down" class="w-4 h-4"></i> 第二十組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-20"></div>
+                  <div id="g14-selected-indicator-20" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-20"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(20)" class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-lg font-bold text-sm"><i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i>確認第二十組</button>
+                    <button onclick="showAnswer14Group(20)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-2 rounded-lg font-bold text-sm">公布解答</button>
+                  </div>
+                </div>                <div class="hidden"><div id="g14-options"></div></div>
                 <div id="g14-selected-indicator" class="hidden"><span id="g14-selected-label"></span></div>
 
 <!-- 第十一組：是非題 -->
@@ -3333,7 +3522,7 @@
                   題庫共 <span id="g25-total-count" class="text-blue-300 font-bold"></span> 題・已答對 <span id="g25-correct-count" class="text-emerald-400 font-bold">0</span> 題
                 </span>
               </div>
-              <p class="text-slate-400 text-sm">每次隨機抽取 80 題（單選 60 題 × 1 分，複選 20 題 × 2 分），滿分 100 分，60 分及格。</p>
+              <p class="text-slate-400 text-sm">學科模擬題庫共 53 題，可練習作答、回顧錯題與統計學習狀況。</p>
             </div>
 
             <!-- Start Screen -->
@@ -3472,7 +3661,17 @@
                     <h2 class="text-2xl font-black mt-2">五欄式安全作業標準</h2>
                     <p class="text-sm text-slate-400 mt-1">下圖為一五欄式安全作業標準，請依欄位填入適合代碼（如 1.a）。點選選項後再點空格填入。</p>
                 </div>
-                <!-- 表格 -->
+                <div class="mb-5 rounded-2xl border border-cyan-800/40 bg-slate-950/50 p-4">
+                    <div class="mb-3">
+                        <h3 class="text-sm font-black text-cyan-300 mb-1">題組一：五欄式 SOP 欄位順序排序</h3>
+                        <p class="text-xs text-slate-400">請將五欄式安全作業標準欄位由左至右排序。直接拖曳模塊調整順序。</p>
+                    </div>
+                    <div id="g27-sort-list" class="space-y-2"></div>
+                </div>
+                <div class="mb-3">
+                    <h3 class="text-sm font-black text-cyan-300 mb-2">題組二：吊掛作業</h3>
+                    <p class="text-xs text-slate-400 mb-2">請依吊掛作業情境，將各項敘述配對至正確欄位代碼。</p>
+                </div>                <!-- 表格 -->
                 <div class="overflow-x-auto mb-4">
                     <table class="w-full text-sm border-collapse">
                         <thead>
@@ -3899,6 +4098,147 @@
             </div>
         </section>
 
+
+        <!-- ===== 第 39 關：勞基法第59條遺屬受領補償順位 ===== -->
+        <section id="tab-inheritance-order" class="game-section hidden w-full">
+            <div class="glass-panel p-6 rounded-2xl max-w-4xl mx-auto">
+                <div class="mb-4">
+                    <span class="bg-emerald-500/20 text-emerald-300 text-xs px-3 py-1 rounded-full font-bold">考點三十九：勞動基準法第59條</span>
+                    <h2 class="text-2xl font-black mt-2">遺屬受領補償順位排序</h2>
+                    <p class="text-sm text-slate-400 mt-1">勞工因職業災害死亡時，請依遺屬受領補償的優先順序由上而下排列。核心概念：先直系血親，再旁系血親。</p>
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-xs font-bold text-slate-400 mb-3">排序清單（優先順序由高至低）</h3>
+                    <div class="space-y-3" id="g39-slots"></div>
+                </div>
+                <div id="g39-reveal" class="hidden mt-5 bg-emerald-950/40 border border-emerald-700 rounded-xl p-4">
+                    <p class="text-emerald-300 font-bold text-sm mb-2">正確順位：</p>
+                    <p class="text-slate-200 text-sm leading-loose">配偶及子女 → 父母 → 祖父母 → 孫子女 → 兄弟姐妹</p>
+                    <p class="text-slate-400 text-xs mt-2">記憶方向：直系血親優先，最後才到旁系血親的兄弟姐妹。</p>
+                </div>
+                <div class="mt-5 flex flex-wrap justify-end gap-3">
+                    <button onclick="resetSingleGame(39)" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-4 py-2.5 rounded-lg border border-slate-700 font-bold">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重玩本關
+                    </button>
+                    <button onclick="showAnswer39()" class="bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white font-bold px-5 py-2.5 rounded-lg shadow-lg transition flex items-center gap-1.5"><i data-lucide="eye" class="w-4 h-4"></i> 公布解答</button>
+                    <button onclick="checkGame39()" class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold px-6 py-2.5 rounded-lg shadow-lg hover:brightness-110 transition">檢查答案</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== 第40關：產業分類與職安人員配置 ===== -->
+        <section id="tab-industry-staffing" class="game-section hidden w-full">
+            <div class="glass-panel p-6 rounded-2xl max-w-6xl mx-auto">
+                <div class="mb-6">
+                    <span class="bg-cyan-500/20 text-cyan-300 text-xs px-3 py-1 rounded-full font-bold">考點四十：事業分類、管理門檻與人員配置</span>
+                    <h2 class="text-2xl font-black mt-2">產業風險分類與職安人員配置</h2>
+                    <p class="text-sm text-slate-400 mt-1">請依事業種類、勞工人數與法規門檻完成填空或配對。</p>
+                </div>
+
+                <div id="g40-group1" class="g40-group border border-cyan-500/30 rounded-2xl p-5 mb-6" data-group="1">
+                    <div class="g40-head"><div><h3>1. 產業風險分類辨識</h3><p>請將「第一類」或「第二類」填入各事業單位空格。</p></div><div id="g40-mastery-1"></div></div>
+                    <div class="space-y-3 text-lg leading-relaxed">
+                        <div>營造業：<button class="g40-blank" data-group="1" data-answer="第一類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>醫院：<button class="g40-blank" data-group="1" data-answer="第二類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>藥品製造業：<button class="g40-blank" data-group="1" data-answer="第一類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>餐旅業：<button class="g40-blank" data-group="1" data-answer="第二類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>倉儲業：<button class="g40-blank" data-group="1" data-answer="第二類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>印刷製品製造業（勞工 200 人）：<button class="g40-blank" data-group="1" data-answer="第二類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>紡織業（勞工 200 人）：<button class="g40-blank" data-group="1" data-answer="第二類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>水泥製品製造業（勞工 120 人）：<button class="g40-blank" data-group="1" data-answer="第一類" onclick="g40FillBlank(this)">＿</button></div>
+                        <div>電子零組件製造業（勞工 520 人）：<button class="g40-blank" data-group="1" data-answer="第二類" onclick="g40FillBlank(this)">＿</button></div>
+                    </div>
+                    <div class="g40-pool"><button class="g40-card" draggable="true" data-value="第一類" onclick="g40SelectCard(this)">第一類</button><button class="g40-card" draggable="true" data-value="第二類" onclick="g40SelectCard(this)">第二類</button></div>
+                    <div id="g40-result-1" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(1)">重置本題組</button><button onclick="showAnswerG40Group(1)">公布解答</button><button onclick="checkG40Group(1)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group2" class="g40-group border border-indigo-500/30 rounded-2xl p-5 mb-6" data-group="2">
+                    <div class="g40-head"><div><h3>2. 同人數不同產業之配置對比</h3><p>以下公司勞工人數皆為 520 人，請填入應設置之職安人員數。</p></div><div id="g40-mastery-2"></div></div>
+                    <div class="overflow-x-auto"><table class="g40-table"><thead><tr><th>事業單位</th><th>甲種業務主管</th><th>管理師</th><th>管理員</th></tr></thead><tbody>
+                    <tr><td>公司 A：電子零組件製造業（第二類）</td><td><input class="g40-input" data-group="2" data-answer="1"></td><td><input class="g40-input" data-group="2" data-answer="1"></td><td><input class="g40-input" data-group="2" data-answer="2"></td></tr>
+                    <tr><td>公司 B：成衣製造業（第二類）</td><td><input class="g40-input" data-group="2" data-answer="1"></td><td><input class="g40-input" data-group="2" data-answer="1"></td><td><input class="g40-input" data-group="2" data-answer="1"></td></tr>
+                    </tbody></table></div>
+                    <div class="mt-4 text-sm text-amber-200 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3">關鍵思考：同為第二類且人數相同，法規仍可能依細分產業設定不同管理員人數。</div>
+                    <div id="g40-result-2" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(2)">重置本題組</button><button onclick="showAnswerG40Group(2)">公布解答</button><button onclick="checkG40Group(2)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group3" class="g40-group border border-emerald-500/30 rounded-2xl p-5 mb-6" data-group="3">
+                    <div class="g40-head"><div><h3>3. 第一類特殊案例配置</h3><p>藥品製造業（第一類事業）勞工 650 人，依規定需設置：</p></div><div id="g40-mastery-3"></div></div>
+                    <div class="space-y-4 text-lg"><label>甲種職業安全衛生業務主管：<input class="g40-input" data-group="3" data-answer="1"> 人</label><label>職業安全（衛生）師：<input class="g40-input" data-group="3" data-answer="1"> 人</label><label>職業安全衛生管理員：<input class="g40-input" data-group="3" data-answer="1"> 人</label></div>
+                    <div id="g40-result-3" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(3)">重置本題組</button><button onclick="showAnswerG40Group(3)">公布解答</button><button onclick="checkG40Group(3)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group4" class="g40-group border border-sky-500/30 rounded-2xl p-5 mb-6" data-group="4">
+                    <div class="g40-head"><div><h3>4. 管理系統建置門檻</h3><p>依據 CNS 45001，下列何者「應」建置職安管理系統？</p></div><div id="g40-mastery-4"></div></div>
+                    <div class="space-y-4 text-lg"><label>第一類事業，勞工 <input class="g40-input" data-group="4" data-answer="200"> 人以上。</label><label>第二類事業，勞工 <input class="g40-input" data-group="4" data-answer="500"> 人以上。</label><label>有從事 <input class="g40-input g40-text-input" data-group="4" data-answer="石油裂解"> 之石化工業工作場所者。</label></div>
+                    <div id="g40-result-4" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(4)">重置本題組</button><button onclick="showAnswerG40Group(4)">公布解答</button><button onclick="checkG40Group(4)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group5" class="g40-group border border-amber-500/30 rounded-2xl p-5 mb-6" data-group="5">
+                    <div class="g40-head"><div><h3>5. 管理規章與計畫之門檻</h3><p>請填入正確人數門檻。</p></div><div id="g40-mastery-5"></div></div>
+                    <div class="space-y-4 text-lg"><label>勞工人數在 <input class="g40-input" data-group="5" data-answer="100"> 人以上之事業單位，應另訂定「職業安全衛生管理規章」。</label><label>勞工人數在 <input class="g40-input" data-group="5" data-answer="30"> 人以下之事業單位，得以「安全衛生管理執行紀錄或文件」代替管理計畫。</label></div>
+                    <div id="g40-result-5" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(5)">重置本題組</button><button onclick="showAnswerG40Group(5)">公布解答</button><button onclick="checkG40Group(5)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group6" class="g40-group border border-purple-500/30 rounded-2xl p-5 mb-6" data-group="6">
+                    <div class="g40-head"><div><h3>6. 危險性工作場所分類</h3><p>請將下列場所與其類別配對。</p></div><div id="g40-mastery-6"></div></div>
+                    <div class="space-y-3 text-lg"><div>石油裂解之石化工業：<button class="g40-blank" data-group="6" data-answer="甲類" onclick="g40FillBlank(this)">＿</button></div><div>從事農藥原體合成、火藥類製造：<button class="g40-blank" data-group="6" data-answer="乙類" onclick="g40FillBlank(this)">＿</button></div><div>1 日冷凍能力 150 公噸以上之高壓氣體容器：<button class="g40-blank" data-group="6" data-answer="丙類" onclick="g40FillBlank(this)">＿</button></div><div>開挖深度 18m 以上且面積 500 平方公尺以上：<button class="g40-blank" data-group="6" data-answer="丁類" onclick="g40FillBlank(this)">＿</button></div></div>
+                    <div class="g40-pool"><button class="g40-card" draggable="true" data-value="甲類" onclick="g40SelectCard(this)">A. 甲類</button><button class="g40-card" draggable="true" data-value="乙類" onclick="g40SelectCard(this)">B. 乙類</button><button class="g40-card" draggable="true" data-value="丙類" onclick="g40SelectCard(this)">C. 丙類</button><button class="g40-card" draggable="true" data-value="丁類" onclick="g40SelectCard(this)">D. 丁類</button></div>
+                    <div id="g40-result-6" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(6)">重置本題組</button><button onclick="showAnswerG40Group(6)">公布解答</button><button onclick="checkG40Group(6)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group7" class="g40-group border border-rose-500/30 rounded-2xl p-5 mb-6" data-group="7">
+                    <div class="g40-head"><div><h3>7. 急救人員綜合計畫</h3><p>真賺錢公司採三班制：早班 153 人、晚班 105 人、夜班 10 人。</p></div><div id="g40-mastery-7"></div></div>
+                    <div class="space-y-4 text-lg"><label>全廠總共應設置幾位急救人員？<input class="g40-input" data-group="7" data-answer="6"> 人。</label><label>急救藥品與器材應每隔幾個月定期檢查一次？<input class="g40-input" data-group="7" data-answer="6"> 個月。</label></div>
+                    <div class="mt-4 text-sm text-slate-300 bg-slate-900/70 border border-slate-700 rounded-xl p-3">提示：急救人員依各班人數分別計算，早班 153 人、晚班 105 人、夜班 10 人。</div>
+                    <div id="g40-result-7" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(7)">重置本題組</button><button onclick="showAnswerG40Group(7)">公布解答</button><button onclick="checkG40Group(7)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group8" class="g40-group border border-lime-500/30 rounded-2xl p-5 mb-6" data-group="8">
+                    <div class="g40-head"><div><h3>8. 人員配置案例總整理</h3><p>請依不同產業與人數，填入甲種業務主管、管理師、管理員人數。</p></div><div id="g40-mastery-8"></div></div>
+                    <div class="overflow-x-auto"><table class="g40-table"><thead><tr><th>事業單位</th><th>甲種業務主管</th><th>管理師</th><th>管理員</th></tr></thead><tbody>
+                    <tr><td>藥品製造業（650人）</td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="1"></td></tr>
+                    <tr><td>電子零組件製造業（520人）</td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="2"></td></tr>
+                    <tr><td>成衣製造業（520人）</td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="1"></td></tr>
+                    <tr><td>營造業／道路工程（305人）</td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="1"></td><td><input class="g40-input" data-group="8" data-answer="2"></td></tr>
+                    </tbody></table></div>
+                    <div id="g40-result-8" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(8)">重置本題組</button><button onclick="showAnswerG40Group(8)">公布解答</button><button onclick="checkG40Group(8)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group9" class="g40-group border border-fuchsia-500/30 rounded-2xl p-5 mb-6" data-group="9">
+                    <div class="g40-head"><div><h3>9. 法規門檻與文件定義</h3><p>請填入管理文件或人數門檻。</p></div><div id="g40-mastery-9"></div></div>
+                    <div class="space-y-4 text-lg">
+                        <label>勞工人數 <input class="g40-input" data-group="9" data-answer="30"> 人以上，雇主應依規模、性質訂定 <input class="g40-input g40-text-input" data-group="9" data-answer="職業安全衛生管理計畫">。</label>
+                        <label>勞工人數 <input class="g40-input" data-group="9" data-answer="100"> 人以上，除管理計畫外，應另訂定 <input class="g40-input g40-text-input" data-group="9" data-answer="職業安全衛生管理規章">。</label>
+                        <label>勞工人數 <input class="g40-input" data-group="9" data-answer="30"> 人以下，得以安全衛生管理執行紀錄或文件代替管理計畫。</label>
+                        <label>第一類事業勞工 <input class="g40-input" data-group="9" data-answer="100"> 人以上，應設置 <input class="g40-input g40-text-input" data-group="9" data-answer="專責一級管理單位">。</label>
+                    </div>
+                    <div id="g40-result-9" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(9)">重置本題組</button><button onclick="showAnswerG40Group(9)">公布解答</button><button onclick="checkG40Group(9)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group10" class="g40-group border border-orange-500/30 rounded-2xl p-5 mb-6" data-group="10">
+                    <div class="g40-head"><div><h3>10. 特殊配置規定</h3><p>請填入道路工程、急救與醫護配置的關鍵門檻。</p></div><div id="g40-mastery-10"></div></div>
+                    <div class="space-y-4 text-lg">
+                        <label>道路、隧道等較長工程，每 <input class="g40-input" data-group="10" data-answer="10"> 公里需增設丙種業務主管 <input class="g40-input" data-group="10" data-answer="1"> 人。</label>
+                        <label>急救人員原則上依各班別分開計算，每 <input class="g40-input" data-group="10" data-answer="50"> 人設 <input class="g40-input" data-group="10" data-answer="1"> 人，不滿 50 人以 50 人計。</label>
+                        <label>勞工人數在 <input class="g40-input" data-group="10" data-answer="300"> 人以上，或從事特別危害健康作業勞工 <input class="g40-input" data-group="10" data-answer="50"> 人以上者，應視規模僱用或特約醫護人員。</label>
+                    </div>
+                    <div id="g40-result-10" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(10)">重置本題組</button><button onclick="showAnswerG40Group(10)">公布解答</button><button onclick="checkG40Group(10)">檢查答案</button></div>
+                </div>
+
+                <div id="g40-group11" class="g40-group border border-teal-500/30 rounded-2xl p-5" data-group="11">
+                    <div class="g40-head"><div><h3>11. 急救人員分班計算</h3><p>某公司日班 142 人、中班 15 人、晚班 37 人，請依來源題示判斷至少需設置幾位急救人員。</p></div><div id="g40-mastery-11"></div></div>
+                    <div class="space-y-4 text-lg">
+                        <label>全公司至少應設置急救人員：<input class="g40-input" data-group="11" data-answer="4"> 人。</label>
+                    </div>
+                    <div class="mt-4 text-sm text-amber-200 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3">核對提醒：你提供的來源答案為 4 人；若單純依「各班別分開計算、每 50 人設 1 人、不滿 50 人以 50 人計」推算，142、15、37 會得到 5 人，建議之後再核對原題是否另有條件。</div>
+                    <div id="g40-result-11" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(11)">重置本題組</button><button onclick="showAnswerG40Group(11)">公布解答</button><button onclick="checkG40Group(11)">檢查答案</button></div>
+                </div>
+
+            </div>
+        </section>
+
         </main><!-- end game-content-area -->
         <footer class="text-center py-4 text-xs text-slate-600">職安大師 &copy; 2026 — 互動複習遊樂室</footer>
     </div><!-- end screen-game -->
@@ -3910,7 +4250,7 @@
 
     <script>
         let activeSelection = null;
-        let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false};
+        let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false, game39: false, game40: false};
         let gameMastery = {};
 
         // --- 音效 ---
@@ -5532,7 +5872,6 @@ function checkGame10() {
         }
         // ===== 選單與導覽邏輯 =====
         const gameList = [
-            { num: 25, tabId: 'tab-mock-exam', icon: 'clipboard-list', title: '學科模擬考試', desc: '考點二十五：隨機抽題模擬考（單選60題＋複選20題）' },
             { num: 14, tabId: 'tab-matching',     icon: 'file-text',    title: '職安法配合題',      desc: '考點十四：職業安全衛生法相關規定配合題' },
             { num: 35, tabId: 'tab-key-fill',     icon: 'keyboard',     title: '考前重點填空題',    desc: '2026.06.27 測驗卷：鍵盤輸入填空練習' },
             { num: 29, tabId: 'tab-game29', icon: 'calculator', title: '計算題練習', desc: '考點二十九：職安計算題（WBGT等）' },
@@ -5570,6 +5909,8 @@ function checkGame10() {
             { num: 36, tabId: 'tab-quick-link',   icon: 'git-merge',    title: '考前重點連連看',    desc: '2026.06.27 測驗卷：名詞定義與委員會召開判斷' },
             { num: 37, tabId: 'tab-heinrich-domino', icon: 'list-ordered', title: 'Heinrich 骨牌理論', desc: '考點三十七：職業災害發生原因排序' },
             { num: 38, tabId: 'tab-hotwork-hazard', icon: 'flame', title: '油槽動火危害辨識', desc: '考點三十八：依圖判斷油槽上動火作業潛在危害' },
+            { num: 39, tabId: 'tab-inheritance-order', icon: 'list-ordered', title: '遺屬補償順位排序', desc: '考點三十九：勞基法第59條遺屬受領補償順位' },
+            { num: 40, tabId: 'tab-industry-staffing', icon: 'building-2', title: '產業分類與職安人員配置', desc: '考點四十：事業分類、管理門檻與職安人員配置' },
         ];
         let currentGameNum = 1;
 
@@ -5698,6 +6039,8 @@ function checkGame10() {
             else if (gameNum === 36 && typeof initGame36 === 'function') initGame36();
             else if (gameNum === 37 && typeof initGame37 === 'function') initGame37();
             else if (gameNum === 38 && typeof initGame38 === 'function') initGame38();
+            else if (gameNum === 39 && typeof initGame39 === 'function') initGame39();
+            else if (gameNum === 40 && typeof initGame40 === 'function') initGame40();
         }
 
         function goToGame(num) {
@@ -5835,6 +6178,8 @@ function checkGame10() {
             else if (gameNum === 36) initGame36();
             else if (gameNum === 37) initGame37();
             else if (gameNum === 38) initGame38();
+            else if (gameNum === 39 && typeof initGame39 === 'function') initGame39();
+            else if (gameNum === 40) initGame40();
             else if (gameNum === 25) { g25Questions=[]; g25Answers={}; g25Current=0; if(g25TimerInterval){clearInterval(g25TimerInterval);g25TimerInterval=null;} document.getElementById("g25-start").classList.remove("hidden"); document.getElementById("g25-exam").classList.add("hidden"); document.getElementById("g25-result").classList.add("hidden"); }
             updateTrophyCount();
             showToast(`🔄 第 ${gameNum} 關已重置！`, "info");
@@ -5847,7 +6192,7 @@ function checkGame10() {
             g29Answers = {};
             window._lsPendingState = null; _lsHideIndicator();
             soundClick(); 
-            completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false, game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false };
+            completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false, game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false, game39: false, game40: false };
             bestTimes = {};
             if (currentGameNum) initGameByNumber(currentGameNum);
             updateTrophyCount(); showToast("🔄 所有關卡已重新配置！", "info");
@@ -6337,7 +6682,47 @@ function checkGame10() {
             { key: 'G16I', label: '彎曲尖端' },
             { key: 'G16J', label: '加蓋' },
             { key: 'G16K', label: '加裝護套' },
-            { key: 'G16L', label: '安全帽' }
+            { key: 'G16L', label: '安全帽' },
+
+            { key: 'G17A', label: '石油裂解之石化工業' },
+            { key: 'G17B', label: '從事特定危害物質之製造或處置' },
+            { key: 'G17C', label: '製程安全評估人員' },
+            { key: 'G17D', label: '30' },
+            { key: 'G17E', label: '農藥原體合成' },
+            { key: 'G17F', label: '火藥類製造工作' },
+            { key: 'G17G', label: '45' },
+            { key: 'G17H', label: '150' },
+            { key: 'G17I', label: '5000' },
+            { key: 'G17J', label: '高壓氣體設備' },
+            { key: 'G17K', label: '45' },
+            { key: 'G17L', label: '營造工程' },
+            { key: 'G17M', label: '18m' },
+            { key: 'G17N', label: '500' },
+            { key: 'G17O', label: '壓氣施工作業' },
+            { key: 'G17P', label: '施工安全評估人員' },
+            { key: 'G17Q', label: '30' },
+            { key: 'G18A', label: '7' },
+            { key: 'G18B', label: '雇主' },
+            { key: 'G18C', label: '1/3' },
+            { key: 'G18D', label: '3' },
+            { key: 'G18E', label: '3' },
+            { key: 'G19A', label: '1' },
+            { key: 'G19B', label: '1' },
+            { key: 'G19C', label: '300' },
+            { key: 'G19D', label: '600' },
+            { key: 'G19E', label: '10' },
+            { key: 'G19F', label: '8' },
+            { key: 'G19G', label: '35' },
+            { key: 'G19H', label: '10' },
+            { key: 'G19I', label: '3' },
+            { key: 'G19J', label: '1' },
+            { key: 'G20A', label: '20' },
+            { key: 'G20B', label: '10' },
+            { key: 'G20C', label: '20' },
+            { key: 'G20D', label: '載人' },
+            { key: 'G20E', label: '載貨' },
+            { key: 'G20F', label: '搬運貨物' },
+            { key: 'G20G', label: '承載人員' },
         ];
 
         const g14DistractorOptions = [
@@ -6362,7 +6747,24 @@ function checkGame10() {
             { key: 'G14D16A', label: '1' }, { key: 'G14D16B', label: '1.8' }, { key: 'G14D16C', label: '3.5' },
             { key: 'G14D16D', label: '中欄杆' }, { key: 'G14D16E', label: '腳趾板' }, { key: 'G14D16F', label: '安全網' },
             { key: 'G14D16G', label: '安全帶' }, { key: 'G14D16H', label: '上下設備' }, { key: 'G14D16I', label: '防墜措施' },
-            { key: 'G14D16J', label: '固定扣件' }, { key: 'G14D16K', label: '警示標誌' }, { key: 'G14D16L', label: '反光背心' }
+            { key: 'G14D16J', label: '固定扣件' }, { key: 'G14D16K', label: '警示標誌' }, { key: 'G14D16L', label: '反光背心' },
+
+            { key: 'G14D17A', label: '一般營造工程' }, { key: 'G14D17B', label: '機械設備' }, { key: 'G14D17C', label: '鍋爐設備' },
+            { key: 'G14D17D', label: '60' }, { key: 'G14D17E', label: '90' }, { key: 'G14D17F', label: '15' },
+            { key: 'G14D17G', label: '安全衛生管理人員' }, { key: 'G14D17H', label: '職業安全衛生管理員' }, { key: 'G14D17I', label: '製造安全評估人員' },
+            { key: 'G14D17J', label: '有機溶劑作業' }, { key: 'G14D17K', label: '特定化學物質作業' }, { key: 'G14D17L', label: '冷凍能力 100 公噸' },
+            { key: 'G14D18A', label: '5' }, { key: 'G14D18B', label: '9' }, { key: 'G14D18C', label: '10' },
+            { key: 'G14D18D', label: '勞工代表' }, { key: 'G14D18E', label: '主任委員' }, { key: 'G14D18F', label: '職業安全衛生人員' },
+            { key: 'G14D18G', label: '1/2' }, { key: 'G14D18H', label: '1/4' }, { key: 'G14D18I', label: '2/3' },
+            { key: 'G14D18J', label: '1' }, { key: 'G14D18K', label: '6' }, { key: 'G14D18L', label: '5年' },
+            { key: 'G14D19A', label: '0.5' }, { key: 'G14D19B', label: '2' }, { key: 'G14D19C', label: '5' },
+            { key: 'G14D19D', label: '12' }, { key: 'G14D19E', label: '100' }, { key: 'G14D19F', label: '200' },
+            { key: 'G14D19G', label: '400' }, { key: 'G14D19H', label: '500' }, { key: 'G14D19I', label: '1000' },
+            { key: 'G14D19J', label: '2.5' }, { key: 'G14D19K', label: '5公噸' }, { key: 'G14D19L', label: '0.5公噸' },
+            { key: 'G14D20A', label: '5' }, { key: 'G14D20B', label: '15' }, { key: 'G14D20C', label: '25' },
+            { key: 'G14D20D', label: '30' }, { key: 'G14D20E', label: '載客' }, { key: 'G14D20F', label: '載物' },
+            { key: 'G14D20G', label: '搬運人員' }, { key: 'G14D20H', label: '吊掛貨物' }, { key: 'G14D20I', label: '運送材料' },
+            { key: 'G14D20J', label: '承載貨物' }, { key: 'G14D20K', label: '吊升人員' }, { key: 'G14D20L', label: '維修人員' }
         ];
 
         function g14FindOption(key) {
@@ -6464,6 +6866,58 @@ function checkGame10() {
             showToast(`第${group}組已標記：${g14MasteryLabel(rating)}`, 'success');
         }
 
+
+        function resetGame14Group(grp) {
+            soundClick();
+            if (grp === 11) {
+                Object.keys(g14TFAnswers).forEach(k => delete g14TFAnswers[k]);
+                document.querySelectorAll('.g14-tf-btn').forEach(btn => {
+                    btn.classList.remove('border-emerald-400','bg-emerald-900/50','text-emerald-200','border-rose-400','bg-rose-900/50','text-rose-200');
+                });
+            } else {
+                (g14GroupBlanks[grp] || []).forEach(bid => {
+                    const blank = document.querySelector('.g14-blank[data-blank-id="' + bid + '"]');
+                    if (!blank) return;
+                    blank.innerText = '＿';
+                    blank.dataset.filled = '';
+                    const isDiagramBlank = blank.classList.contains('g14-diagram-blank');
+                    blank.className = isDiagramBlank
+                        ? 'g14-blank g14-diagram-blank inline-flex items-center justify-center text-[11px] sm:text-xs leading-tight text-center font-black text-yellow-300 border border-yellow-400 cursor-pointer rounded bg-slate-950/95 shadow-lg shadow-fuchsia-950/40 px-1'
+                        : 'g14-blank inline-block min-w-[2.5rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded';
+                    blank.style.outline = '';
+                });
+                _g14RenderGroupOpts(grp);
+            }
+            const indicator = document.getElementById('g14-selected-indicator-' + grp);
+            if (indicator) indicator.classList.add('hidden');
+            if (g14ActiveGroup === grp) {
+                g14Selected = null;
+                g14ActiveGroup = 0;
+            }
+            safeCreateIcons();
+            setTimeout(lsSave, 100);
+            showToast('已重置第' + grp + '組', 'success');
+        }
+
+        function ensureG14GroupResetButtons() {
+            document.querySelectorAll('button[onclick^="checkGame14Group("]').forEach(checkBtn => {
+                const onclick = checkBtn.getAttribute('onclick') || '';
+                const m = onclick.match(/checkGame14Group\((\d+)\)/);
+                if (!m) return;
+                const grp = Number(m[1]);
+                const wrap = checkBtn.parentElement;
+                if (!wrap || wrap.querySelector('.g14-reset-group-btn[data-group="' + grp + '"]')) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.dataset.group = String(grp);
+                btn.className = 'g14-reset-group-btn text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm flex items-center gap-1.5';
+                btn.innerHTML = '<i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置本題組';
+                btn.addEventListener('click', () => resetGame14Group(grp));
+                wrap.insertBefore(btn, checkBtn);
+            });
+            safeCreateIcons();
+        }
+
         // 各組選項 key 清單
         const g14GroupOpts = {
             1: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'],
@@ -6478,9 +6932,13 @@ function checkGame10() {
             10: ['G10A','G10B','G10C','G10D','G10E','G10F','G10G','G10H','G10I','G10J'],
             12: ['G12T1','G12T2','G12T3','G12T4','G12T5','G12T6','G12A','G12B','G12C','G12D','G12E','G12F','G12G','G12H','G12I','G12J'],
             13: ['G13A','G13B','G13C','G13D','G13E','G13F','G13G','G13H'],
-            14: ['G14A','G14B','G14C','G14D','G14E','G14F','G14G','G14H','G14I','G14J','G14K','G14L','G14M','G14N','G14O','G14P','G14Q','G14R','G14S','G14T','G14U','G14V','G14W','G14X','G14Y','G14Z','G14AA'],
+            14: ['G14B','G14C','G14D','G14E','G14F','G14G','G14H','G14I','G14K','G14L','G14M','G14N','G14O','G14Q','G14R','G14S','G14T','G14U','G14W','G14X','G14Y','G14AA'],
             15: ['G15A','G15B','G15C','G15D','G15E','G15F'],
             16: ['G16A','G16B','G16C','G16D','G16E','G16F','G16G','G16H','G16I','G16J','G16K','G16L'],
+            17: ['G17A','G17B','G17C','G17D','G17E','G17F','G17G','G17H','G17I','G17J','G17K','G17L','G17M','G17N','G17O','G17P','G17Q'],
+            18: ['G18A','G18B','G18C','G18D','G18E'],
+            19: ['G19A','G19B','G19C','G19D','G19E','G19F','G19G','G19H','G19I','G19J'],
+            20: ['G20A','G20B','G20C','G20D','G20E','G20F','G20G'],
             distractors: {
                 1: ['G14D1A','G14D1B','G14D1C'],
                 2: ['G14D2A','G14D2B','G14D2C'],
@@ -6496,7 +6954,11 @@ function checkGame10() {
                 13: ['G14D13A','G14D13B','G14D13C','G14D13D','G14D13E','G14D13F','G14D13G','G14D13H','G14D13I','G14D13J'],
                 14: ['G14D14A','G14D14B','G14D14C','G14D14D','G14D14E','G14D14F'],
                 15: ['G14D15A','G14D15B','G14D15C','G14D15D','G14D15E'],
-                16: ['G14D16A','G14D16B','G14D16C','G14D16D','G14D16E','G14D16F','G14D16G','G14D16H','G14D16I','G14D16J','G14D16K','G14D16L']
+                16: ['G14D16A','G14D16B','G14D16C','G14D16D','G14D16E','G14D16F','G14D16G','G14D16H','G14D16I','G14D16J','G14D16K','G14D16L'],
+                17: ['G14D17A','G14D17B','G14D17C','G14D17D','G14D17E','G14D17F','G14D17G','G14D17H','G14D17I','G14D17J','G14D17K','G14D17L'],
+                18: ['G14D18A','G14D18B','G14D18C','G14D18D','G14D18E','G14D18F','G14D18G','G14D18H','G14D18I','G14D18J','G14D18K','G14D18L'],
+                19: ['G14D19A','G14D19B','G14D19C','G14D19D','G14D19E','G14D19F','G14D19G','G14D19H','G14D19I','G14D19J','G14D19K','G14D19L'],
+                20: ['G14D20A','G14D20B','G14D20C','G14D20D','G14D20E','G14D20F','G14D20G','G14D20H','G14D20I','G14D20J','G14D20K','G14D20L']
             }
         };
         // 各組空格 blank-id 清單
@@ -6513,9 +6975,13 @@ function checkGame10() {
             10: ['1001','1002','1003','1004','1005','1006','1007','1008','1009','1010'],
             12: ['1201','1202','1203','1204','1205','1206','1207','1208','1209','1210','1211','1212','1213','1214'],
             13: ['1301','1302','1303','1304','1305','1306','1307','1308'],
-            14: ['1401','1402','1403','1404','1405','1406','1407','1408','1409','1410','1411','1412','1413','1414','1415','1416','1417','1418','1419','1420','1421','1422','1423','1424','1425','1426','1427'],
+            14: ['1402','1403','1404','1405','1406','1407','1408','1409','1411','1412','1413','1414','1415','1417','1418','1419','1420','1421','1423','1424','1425','1427'],
             15: ['1501','1502','1503','1504','1505','1506'],
-            16: ['1601','1602','1603','1604','1605','1606','1607','1608','1609','1610','1611','1612']
+            16: ['1601','1602','1603','1604','1605','1606','1607','1608','1609','1610','1611','1612'],
+            17: ['1701','1702','1703','1704','1705','1706','1707','1708','1709','1710','1711','1712','1713','1714','1715','1716','1717'],
+            18: ['1801','1802','1803','1804','1805'],
+            19: ['1901','1902','1903','1904','1905','1906','1907','1908','1909','1910'],
+            20: ['2001','2002','2003','2004','2005','2006','2007']
         };
 
         function g14GroupNumbers() {
@@ -6532,7 +6998,7 @@ function checkGame10() {
                 4:'hover:bg-teal-900/40',   5:'hover:bg-sky-900/40',   6:'hover:bg-orange-900/40',
                 7:'hover:bg-indigo-900/40', 8:'hover:bg-rose-900/40',  9:'hover:bg-lime-900/40',
                 10:'hover:bg-cyan-900/40', 12:'hover:bg-fuchsia-900/40', 13:'hover:bg-emerald-900/40',
-                14:'hover:bg-sky-900/40', 15:'hover:bg-orange-900/40', 16:'hover:bg-lime-900/40'
+                14:'hover:bg-sky-900/40', 15:'hover:bg-orange-900/40', 16:'hover:bg-lime-900/40', 17:'hover:bg-emerald-900/40', 18:'hover:bg-cyan-900/40', 19:'hover:bg-amber-900/40', 20:'hover:bg-sky-900/40'
             };
             keys.forEach(key => {
                 const opt = g14FindOption(key);
@@ -6566,6 +7032,7 @@ function checkGame10() {
             g14DragKey = null;
             g14GroupNumbers().forEach(g => _g14RenderGroupOpts(g));
             ensureG14MasteryControls();
+            ensureG14GroupResetButtons();
             renderG14MasteryStars();
             // Reset blanks and bind drag events
             document.querySelectorAll('.g14-blank').forEach(blank => {
@@ -6688,7 +7155,17 @@ function checkGame10() {
             ['13', '14'],
             ['15', '16'],
             ['20', '21', '22'],
-            ['1501', '1502', '1503', '1504', '1505', '1506']
+            ['1402', '1403', '1404', '1405', '1406', '1407', '1408', '1409'],
+            ['1411', '1412', '1413', '1414', '1415'],
+            ['1417', '1418', '1419', '1420', '1421'],
+            ['1423', '1424', '1425'],
+            ['1501', '1502', '1503', '1504', '1505', '1506'],
+            ['1704', '1717'],
+            ['1707', '1711'],
+            ['1804', '1805'],
+            ['1901', '1902', '1910'],
+            ['1905', '1908'],
+            ['2001', '2003']
         ];
 
         function g14GetFlexibleGroup(blankId) {
@@ -7922,6 +8399,16 @@ function checkGame10() {
         ];
         let g22SelCard = null, g22SlotData = { 1: null, 2: null, 3: null, 4: null };
 
+
+        const g39Items = [
+            { id: 1, label: '配偶及子女', correctSlot: 1 },
+            { id: 2, label: '父母', correctSlot: 2 },
+            { id: 3, label: '祖父母', correctSlot: 3 },
+            { id: 4, label: '孫子女', correctSlot: 4 },
+            { id: 5, label: '兄弟姐妹', correctSlot: 5 }
+        ];
+        let g39SelCard = null, g39SlotData = { 1: null, 2: null, 3: null, 4: null, 5: null };
+
         const g37Items = [
             { id: 1, label: '血統與社會環境', correctSlot: 1 },
             { id: 2, label: '個人的缺失', correctSlot: 2 },
@@ -7931,11 +8418,11 @@ function checkGame10() {
         ];
         let g37SelCard = null, g37SlotData = { 1: null, 2: null, 3: null, 4: null, 5: null };
         const g37bData = [
-            { id: 1, prompt: '第一張骨牌：管理失誤', answer: '基本原因' },
-            { id: 2, prompt: '第二張骨牌：個人原因或工作條件', answer: '基本原因' },
-            { id: 3, prompt: '第三張骨牌：不安全行為或狀態', answer: '直接原因' },
-            { id: 4, prompt: '第四張骨牌：意外事故', answer: '接觸能量或有害物質' },
-            { id: 5, prompt: '第五張骨牌：傷亡', answer: '損失' }
+            { id: 1, prompt: '管理失誤', answer: '基本原因' },
+            { id: 2, prompt: '個人原因或工作條件', answer: '基本原因' },
+            { id: 3, prompt: '不安全行為或狀態', answer: '直接原因' },
+            { id: 4, prompt: '意外事故', answer: '接觸能量或有害物質' },
+            { id: 5, prompt: '傷亡', answer: '損失' }
         ];
         const g37bCards = [
             { id: 'basic-1', label: '基本原因' },
@@ -8186,11 +8673,68 @@ function checkGame10() {
 
         function initGame21() {
             g21SelCard = null;
-            gSortInit('g21-slots', g21Items, g21SlotData, 'cyan', 'g21-reveal');
+            const container = document.getElementById('g21-slots');
+            const reveal = document.getElementById('g21-reveal');
+            if (!container) return;
+            if (reveal) reveal.classList.add('hidden');
+            Object.keys(g21SlotData).forEach(k => delete g21SlotData[k]);
+            container.innerHTML = '';
+            gSortShufflePractice(g21Items).forEach(item => {
+                container.appendChild(gSortRenderCard('g21', item, 'cyan'));
+            });
+            gSortBind('g21-slots', 'g21', g21SlotData, 'cyan');
+            gSortClearResult('g21-slots');
+            gSortSyncData('g21-slots', g21SlotData, false);
         }
 
         function checkGame21() {
             gSortCheck('g21-slots', g21SlotData, 21, 'g21-reveal', '🎉 排序完全正確！溫度數值已公布。');
+        }
+
+
+
+        // ===== 第40關：產業分類與職安人員配置 =====
+        let g40SelectedValue = null;
+        let g40Mastery = {};
+        function g40MasteryStorageKey() { return 'safetyMasterG40Mastery'; }
+        function g40LoadMastery() { try { g40Mastery = JSON.parse(localStorage.getItem(g40MasteryStorageKey()) || '{}') || {}; } catch(e) { g40Mastery = {}; } }
+        function g40SaveMastery() { try { localStorage.setItem(g40MasteryStorageKey(), JSON.stringify(g40Mastery)); if (typeof lsSave === 'function') lsSave(); if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g40-mastery'); } catch(e) { console.warn('第40關熟練度儲存失敗:', e); } }
+        function g40MasteryLabel(v) { return ['未評分','極不熟','不熟','普通','熟練','非常熟練'][v] || '未評分'; }
+        function g40GetMastery(group) { const v = Number(g40Mastery['group-' + group] || 0); return Number.isFinite(v) ? Math.max(0, Math.min(5, v)) : 0; }
+        function g40RenderMastery(group) { const wrap = document.getElementById('g40-mastery-' + group); if (!wrap) return; const rating = g40GetMastery(group); let stars = ''; for (let i=1;i<=5;i++) stars += '<button type="button" onclick="g40SetMastery(' + group + ',' + i + ')" class="text-2xl leading-none ' + (i <= rating ? 'text-yellow-300' : 'text-slate-600 hover:text-yellow-200') + '">★</button>'; wrap.innerHTML = '<div class="bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 flex items-center gap-3"><span class="text-xs text-slate-400 whitespace-nowrap">熟練度</span><span class="flex gap-0.5">' + stars + '</span><span class="text-sm font-bold text-yellow-200 whitespace-nowrap">' + g40MasteryLabel(rating) + '</span></div>'; }
+        function g40RenderAllMastery() { [1,2,3,4,5,6,7,8,9,10,11].forEach(g40RenderMastery); }
+        function g40SetMastery(group, rating) { g40Mastery['group-' + group] = rating; g40SaveMastery(); g40RenderAllMastery(); showToast('第40關第' + group + '題組已標記：' + g40MasteryLabel(rating), 'success'); }
+        function initGame40() { g40SelectedValue = null; g40LoadMastery(); g40BindDragCards(); g40RenderAllMastery(); [1,2,3,4,5,6,7,8,9,10,11].forEach(g => { const r = document.getElementById('g40-result-' + g); if (r) r.textContent = ''; }); safeCreateIcons(); }
+        function g40BindDragCards() { document.querySelectorAll('.g40-card').forEach(card => { card.addEventListener('dragstart', e => { g40SelectedValue = card.dataset.value || ''; e.dataTransfer.setData('text/plain', g40SelectedValue); }); }); document.querySelectorAll('.g40-blank').forEach(blank => { blank.addEventListener('dragover', e => e.preventDefault()); blank.addEventListener('drop', e => { e.preventDefault(); const v = e.dataTransfer.getData('text/plain') || g40SelectedValue; if (v) g40SetBlankValue(blank, v); }); }); }
+        function g40SelectCard(card) { g40SelectedValue = card.dataset.value || ''; document.querySelectorAll('.g40-card').forEach(b => b.classList.remove('ring-2','ring-cyan-300')); card.classList.add('ring-2','ring-cyan-300'); }
+        function g40SetBlankValue(blank, value) { blank.textContent = value || '＿'; if (value) blank.dataset.filled = value; else delete blank.dataset.filled; blank.classList.remove('bg-rose-900/60','border-rose-400','text-rose-100','bg-emerald-900/60','border-emerald-400','text-emerald-100'); blank.classList.add('bg-cyan-900/40','border-cyan-400','text-cyan-100'); }
+        function g40FillBlank(blank) { if (g40SelectedValue) g40SetBlankValue(blank, g40SelectedValue); else if (blank.dataset.filled) g40SetBlankValue(blank, ''); else showToast('請先選擇下方字卡', 'info'); }
+        function g40Normalize(v) { return String(v || '').trim().replace(/\s+/g, '').replace(/人$/g, '').replace(/^A\.?/i,'').replace(/^B\.?/i,'').replace(/^C\.?/i,'').replace(/^D\.?/i,''); }
+        function resetG40Group(group) { const root = document.getElementById('g40-group' + group); if (!root) return; root.querySelectorAll('.g40-blank').forEach(b => { b.textContent = '＿'; delete b.dataset.filled; b.classList.remove('bg-cyan-900/40','border-cyan-400','text-cyan-100','bg-rose-900/60','border-rose-400','text-rose-100','bg-emerald-900/60','border-emerald-400','text-emerald-100'); }); root.querySelectorAll('.g40-input').forEach(i => { i.value = ''; i.classList.remove('border-emerald-400','bg-emerald-900/30','border-rose-400','bg-rose-900/30'); }); const r = document.getElementById('g40-result-' + group); if (r) r.textContent = ''; if (typeof lsSave === 'function') lsSave(); }
+        function showAnswerG40Group(group) { const root = document.getElementById('g40-group' + group); if (!root) return; root.querySelectorAll('.g40-blank').forEach(b => { g40SetBlankValue(b, b.dataset.answer || ''); b.classList.remove('bg-cyan-900/40','border-cyan-400','text-cyan-100','bg-rose-900/60','border-rose-400','text-rose-100'); b.classList.add('bg-emerald-900/60','border-emerald-400','text-emerald-100'); }); root.querySelectorAll('.g40-input').forEach(i => { i.value = i.dataset.answer || ''; i.classList.remove('border-rose-400','bg-rose-900/30'); i.classList.add('border-emerald-400','bg-emerald-900/30'); }); const r = document.getElementById('g40-result-' + group); if (r) { r.textContent = '已填入本題組解答。'; r.className = 'g40-result text-emerald-300'; } if (typeof lsSave === 'function') lsSave(); }
+        function checkG40Group(group) { const root = document.getElementById('g40-group' + group); if (!root) return false; let total = 0, correct = 0; root.querySelectorAll('.g40-blank').forEach(b => { total++; const ok = g40Normalize(b.dataset.filled) === g40Normalize(b.dataset.answer); b.classList.remove('bg-cyan-900/40','border-cyan-400','text-cyan-100','bg-rose-900/60','border-rose-400','text-rose-100','bg-emerald-900/60','border-emerald-400','text-emerald-100'); if (ok) { correct++; b.classList.add('bg-emerald-900/60','border-emerald-400','text-emerald-100'); } else b.classList.add('bg-rose-900/60','border-rose-400','text-rose-100'); }); root.querySelectorAll('.g40-input').forEach(i => { total++; const ok = g40Normalize(i.value) === g40Normalize(i.dataset.answer); i.classList.remove('border-emerald-400','bg-emerald-900/30','border-rose-400','bg-rose-900/30'); if (ok) { correct++; i.classList.add('border-emerald-400','bg-emerald-900/30'); } else i.classList.add('border-rose-400','bg-rose-900/30'); }); const passed = total > 0 && correct === total; const r = document.getElementById('g40-result-' + group); if (r) { r.textContent = passed ? '本題組正確！' : '目前 ' + correct + '/' + total + ' 正確，請修正紅色欄位。'; r.className = 'g40-result ' + (passed ? 'text-emerald-300' : 'text-rose-300'); } if (passed && g40AllGroupsCorrect()) { completedGames.game40 = true; recordTime(40); updateTrophyCount(); soundSuccess(); showConfetti(); showToast('🎉 第40關全部題組完成！', 'success'); } else if (passed) { soundSuccess(); showToast('第40關第' + group + '題組正確！', 'success'); } else soundError(); if (typeof lsSave === 'function') lsSave(); return passed; }
+        function g40AllGroupsCorrect() { let ok = true; document.querySelectorAll('#tab-industry-staffing .g40-blank').forEach(b => { if (g40Normalize(b.dataset.filled) !== g40Normalize(b.dataset.answer)) ok = false; }); document.querySelectorAll('#tab-industry-staffing .g40-input').forEach(i => { if (g40Normalize(i.value) !== g40Normalize(i.dataset.answer)) ok = false; }); return ok; }
+        function checkGame40() { return [1,2,3,4,5,6,7,8,9,10,11].map(checkG40Group).every(Boolean); }
+        function showAnswer40() { [1,2,3,4,5,6,7,8,9,10,11].forEach(showAnswerG40Group); }
+
+        function initGame39() {
+            g39SelCard = null;
+            const container = document.getElementById('g39-slots');
+            const reveal = document.getElementById('g39-reveal');
+            if (!container) return;
+            if (reveal) reveal.classList.add('hidden');
+            Object.keys(g39SlotData).forEach(k => { g39SlotData[k] = null; });
+            container.innerHTML = '';
+            gSortShufflePractice(g39Items).forEach(item => {
+                container.appendChild(gSortRenderCard('g39', item, 'emerald'));
+            });
+            gSortBind('g39-slots', g39SlotData, 'emerald');
+            gSortClearResult('g39-slots', 'emerald');
+            gSortSyncData('g39-slots', g39SlotData, false);
+        }
+
+        function checkGame39() {
+            gSortCheck('g39-slots', g39SlotData, 39, 'g39-reveal', '🎉 遺屬受領補償順位排序正確！');
         }
 
         function initGame22() {
@@ -9641,6 +10185,11 @@ function checkGame10() {
             gSortShowAnswer('g21-slots', g21Items, g21SlotData, 'cyan', 'g21-reveal', '📖 第21關解答已直接排入排序清單！');
         }
 
+
+        function showAnswer39() {
+            gSortShowAnswer('g39-slots', g39Items, g39SlotData, 'emerald', 'g39-reveal', '📖 第39關解答已直接排入排序清單！');
+        }
+
         function showAnswer22() {
             gSortShowAnswer('g22-slots', g22Items, g22SlotData, 'amber', 'g22-reveal', '📖 第22關解答已直接排入排序清單！');
         }
@@ -9803,7 +10352,47 @@ function checkGame10() {
         }
 
         // ===== 第24關：化學方程式係數填空 =====
+
+        let g24Mastery = {};
+        const G24_MASTERY_KEY = 'safetyMasterG24Mastery';
+        function g24LoadMastery() { g24Mastery = safeJsonParse(localStorage.getItem(G24_MASTERY_KEY), {}); }
+        function g24SaveMastery() { localStorage.setItem(G24_MASTERY_KEY, JSON.stringify(g24Mastery)); }
+        function g24MasteryLabel(rating) {
+            return ({1:'極不熟',2:'不熟',3:'普通',4:'熟練',5:'非常熟練'}[rating]) || '未評分';
+        }
+        function g24SetMastery(eq, rating) {
+            g24Mastery[String(eq)] = rating;
+            g24SaveMastery();
+            renderG24MasteryStars();
+            setTimeout(lsSave, 100);
+        }
+        function ensureG24MasteryControls() {
+            document.querySelectorAll('.g24-eq').forEach((box, idx) => {
+                const input = box.querySelector('.g24-input');
+                const eq = input ? input.dataset.eq : String(idx + 1);
+                const title = box.querySelector('.text-xs.text-slate-400.mb-2.font-bold');
+                if (!title || document.getElementById('g24-mastery-' + eq)) return;
+                title.classList.add('flex','items-center','justify-between','gap-2');
+                const wrap = document.createElement('span');
+                wrap.id = 'g24-mastery-' + eq;
+                wrap.className = 'inline-flex items-center gap-1 text-[11px] text-slate-400';
+                title.appendChild(wrap);
+            });
+        }
+        function renderG24MasteryStars() {
+            document.querySelectorAll('[id^="g24-mastery-"]').forEach(wrap => {
+                const eq = wrap.id.replace('g24-mastery-', '');
+                const rating = Number(g24Mastery[String(eq)] || 0);
+                wrap.innerHTML = '<span class="hidden sm:inline">熟練度</span>' + [1,2,3,4,5].map(n =>
+                    `<button type="button" onclick="event.stopPropagation();g24SetMastery('${eq}',${n})" class="text-lg leading-none ${n <= rating ? 'text-yellow-300' : 'text-slate-600 hover:text-yellow-200'}" title="${g24MasteryLabel(n)}">★</button>`
+                ).join('');
+            });
+        }
+
         function initGame24() {
+            g24LoadMastery();
+            ensureG24MasteryControls();
+            renderG24MasteryStars();
             document.querySelectorAll('.g24-input').forEach(inp => {
                 inp.value = '';
                 inp.classList.remove(
@@ -9929,6 +10518,7 @@ function checkGame10() {
             if (typeof g19RenderMasteryControls === 'function') g19RenderMasteryControls();
             if (typeof g20RenderMasteryControls === 'function') g20RenderMasteryControls();
             if (currentGameNum === 29 && typeof g29Render === 'function') g29Render();
+            if (typeof g40RenderAllMastery === 'function') g40RenderAllMastery();
             if (typeof buildMenu === 'function') buildMenu();
         }
 
@@ -10174,6 +10764,7 @@ function checkGame10() {
                 'safetyMasterG20Mastery',
                 'safetyMasterG29Answers',
                 'safetyMasterG29Mastery',
+                'safetyMasterG40Mastery',
                 'g25_correct_ids',
                 'oshaBookmarks',
                 'oshaProgress'
@@ -10221,6 +10812,9 @@ function checkGame10() {
             const g19MasteryData = readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {});
             const g20MasteryData = readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {});
             const g29MasteryData = readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {});
+            const g40MasteryData = readObjectSaveKey('safetyMasterG40Mastery', typeof g40Mastery !== 'undefined' ? g40Mastery : {});
+            const g24MasteryData = readObjectSaveKey('safetyMasterG24Mastery', typeof g24Mastery !== 'undefined' ? g24Mastery : {});
+            const g26MasteryData = readObjectSaveKey('safetyMasterG26Mastery', typeof g26Mastery !== 'undefined' ? g26Mastery : {});
             return {
                 app: '職安大師',
                 type: FULL_SYNC_TYPE,
@@ -10239,7 +10833,10 @@ function checkGame10() {
                     g14: g14MasteryData,
                     g19: g19MasteryData,
                     g20: g20MasteryData,
-                    g29: g29MasteryData
+                    g29: g29MasteryData,
+                    g40: g40MasteryData,
+                    g24: g24MasteryData,
+                    g26: g26MasteryData
                 },
                 g14: {
                     mastery: g14MasteryData
@@ -10293,6 +10890,7 @@ function checkGame10() {
                     if (mainState.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', mainState.g19Mastery);
                     if (mainState.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', mainState.g20Mastery);
                     if (mainState.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', mainState.g29Mastery);
+                    if (mainState.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', mainState.g40Mastery);
                 }
 
                 if (pkg.g25 && Array.isArray(pkg.g25.correctIds)) {
@@ -10316,6 +10914,7 @@ function checkGame10() {
                 if (pkg.mastery && pkg.mastery.g29) {
                     mergeObjectSaveKey('safetyMasterG29Mastery', pkg.mastery.g29);
                 }
+                if (pkg.mastery && pkg.mastery.g40) mergeObjectSaveKey('safetyMasterG40Mastery', pkg.mastery.g40);
 
                 if (pkg.g14 && pkg.g14.mastery) {
                     mergeObjectSaveKey('safetyMasterG14Mastery', pkg.g14.mastery);
@@ -10333,6 +10932,10 @@ function checkGame10() {
                     if (pkg.g29.answers) localStorage.setItem('safetyMasterG29Answers', JSON.stringify(pkg.g29.answers));
                     if (pkg.g29.mastery) mergeObjectSaveKey('safetyMasterG29Mastery', pkg.g29.mastery);
                     if (pkg.g29.notes) restoreG29NotesFromSync(pkg.g29.notes);
+                }
+
+                if (pkg.g40 && pkg.g40.mastery) {
+                    mergeObjectSaveKey('safetyMasterG40Mastery', pkg.g40.mastery);
                 }
 
                 if (pkg.examSimulator) {
@@ -10353,6 +10956,7 @@ function checkGame10() {
             if (pkg.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', pkg.g19Mastery);
             if (pkg.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', pkg.g20Mastery);
             if (pkg.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', pkg.g29Mastery);
+            if (pkg.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', pkg.g40Mastery);
             reloadAllMasteryFromStorage();
             return '舊版主存檔';
         }
@@ -10559,6 +11163,7 @@ function checkGame10() {
                 state.g19Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {})));
                 state.g20Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {})));
                 state.g29Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {})));
+                state.g40Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG40Mastery', typeof g40Mastery !== 'undefined' ? g40Mastery : {})));
 
                 // 2. 各關卡 DOM 狀態
                 // Pattern A: data-placedId slots (games 1,2,4,5,10,13)
@@ -10615,6 +11220,7 @@ function checkGame10() {
                 state.g21SlotData = JSON.parse(JSON.stringify(g21SlotData));
                 state.g22SlotData = JSON.parse(JSON.stringify(g22SlotData));
                 state.g37SlotData = JSON.parse(JSON.stringify(g37SlotData));
+                state.g39SlotData = JSON.parse(JSON.stringify(g39SlotData));
                 state.g20bSlotData = JSON.parse(JSON.stringify(g20bSlotData));
                 state.g38Selected = Object.keys(g38Selected || {});
                 state.g38bSelected = Object.keys(g38bSelected || {});
@@ -10748,6 +11354,7 @@ function checkGame10() {
                 if (state.g29Mastery) {
                     mergeObjectSaveKey('safetyMasterG29Mastery', state.g29Mastery);
                 }
+                if (state.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', state.g40Mastery);
                 if (state.bestTimes) {
                     Object.assign(bestTimes, state.bestTimes);
                 }
@@ -10759,6 +11366,7 @@ function checkGame10() {
                 if (state.g21SlotData) Object.assign(g21SlotData, state.g21SlotData);
                 if (state.g22SlotData) Object.assign(g22SlotData, state.g22SlotData);
                 if (state.g37SlotData) Object.assign(g37SlotData, state.g37SlotData);
+                if (state.g39SlotData) Object.assign(g39SlotData, state.g39SlotData);
                 if (state.g20bSlotData) Object.assign(g20bSlotData, state.g20bSlotData);
                 if (state.g11Matched) Object.assign(g11Matched, state.g11Matched);
 
@@ -10778,6 +11386,7 @@ function checkGame10() {
             localStorage.removeItem('safetyMasterG20Mastery');
             localStorage.removeItem('safetyMasterG29Answers');
             localStorage.removeItem('safetyMasterG29Mastery');
+            localStorage.removeItem('safetyMasterG40Mastery');
             localStorage.removeItem('g25_correct_ids');
             localStorage.removeItem('oshaBookmarks');
             localStorage.removeItem('oshaProgress');
@@ -10891,6 +11500,7 @@ function exportSave() {
                     case 20: _lsRestoreBlanks('.g20-blank', state.g20, 'filled'); break;
                     case 21: _lsRestoreSortableOrder('g21-slots', g21Items, g21SlotData, state.g21SlotData, 'cyan'); break;
                     case 22: _lsRestoreSortableOrder('g22-slots', g22Items, g22SlotData, state.g22SlotData, 'amber'); break;
+                    case 39: _lsRestoreSortableOrder('g39-slots', g39Items, g39SlotData, state.g39SlotData, 'emerald'); break;
                     case 37: break;
                     case 38: restoreGame38(state.g38Selected, state.g38bSelected); break;
                     case 23: _lsRestoreBlanks('.g23-blank', state.g23, 'blank'); break;
@@ -11768,6 +12378,41 @@ function exportSave() {
 
     
         // ===== 第 26 關：排序題（緊急應變 & CCB）=====
+
+        let g26Mastery = {};
+        const G26_MASTERY_KEY = 'safetyMasterG26Mastery';
+        function g26LoadMastery() { g26Mastery = safeJsonParse(localStorage.getItem(G26_MASTERY_KEY), {}); }
+        function g26SaveMastery() { localStorage.setItem(G26_MASTERY_KEY, JSON.stringify(g26Mastery)); }
+        function g26MasteryLabel(rating) { return ({1:'極不熟',2:'不熟',3:'普通',4:'熟練',5:'非常熟練'}[rating]) || '未評分'; }
+        function g26SetMastery(sub, rating) {
+            g26Mastery[String(sub)] = rating;
+            g26SaveMastery();
+            renderG26MasteryStars();
+            setTimeout(lsSave, 100);
+        }
+        function ensureG26MasteryControls() {
+            ['a','b'].forEach(sub => {
+                const slots = document.getElementById(`g26${sub}-slots`);
+                const block = slots ? slots.closest('.mb-8') : null;
+                const h3 = block ? block.querySelector('h3') : null;
+                if (!h3 || document.getElementById('g26-mastery-' + sub)) return;
+                h3.classList.add('flex','items-center','justify-between','gap-2','flex-wrap');
+                const wrap = document.createElement('span');
+                wrap.id = 'g26-mastery-' + sub;
+                wrap.className = 'inline-flex items-center gap-1 text-[11px] text-slate-400';
+                h3.appendChild(wrap);
+            });
+        }
+        function renderG26MasteryStars() {
+            document.querySelectorAll('[id^="g26-mastery-"]').forEach(wrap => {
+                const sub = wrap.id.replace('g26-mastery-', '');
+                const rating = Number(g26Mastery[String(sub)] || 0);
+                wrap.innerHTML = '<span class="hidden sm:inline">熟練度</span>' + [1,2,3,4,5].map(n =>
+                    `<button type="button" onclick="event.stopPropagation();g26SetMastery('${sub}',${n})" class="text-lg leading-none ${n <= rating ? 'text-yellow-300' : 'text-slate-600 hover:text-yellow-200'}" title="${g26MasteryLabel(n)}">★</button>`
+                ).join('');
+            });
+        }
+
         const g26aData = [
             { id: 4, text: '選擇參與計畫之成員' },
             { id: 2, text: '危害辨識及風險評估' },
@@ -11783,6 +12428,9 @@ function exportSave() {
             { id: 4, text: '參考暴露控制表單' }
         ];
         function initGame26() {
+            g26LoadMastery();
+            ensureG26MasteryControls();
+            renderG26MasteryStars();
             ['a','b'].forEach(sub => {
                 const data = sub === 'a' ? g26aData : g26bData;
                 const slots = document.getElementById(`g26${sub}-slots`);
@@ -11892,11 +12540,112 @@ function exportSave() {
 
         // ===== 第 27 關：五欄式安全作業標準配合題 =====
         let g27Selected = null;
-        function g27SelectedValue() {
+        const g27SortItems = [
+            { id: 'steps', label: '工作步驟', en: 'Work Steps' },
+            { id: 'methods', label: '工作方法', en: 'Work Methods' },
+            { id: 'unsafe', label: '不安全因素', en: 'Unsafe Factors' },
+            { id: 'measures', label: '安全措施', en: 'Safety Measures' },
+            { id: 'accident', label: '事故處理', en: 'Accident Handling' }
+        ];
+        const g27SortOrder = ['steps','methods','unsafe','measures','accident'];
+        function g27ShuffleSortItems(items) {
+            const arr = items.slice();
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            if (arr.every((item, idx) => item.id === g27SortOrder[idx])) return g27ShuffleSortItems(items);
+            return arr;
+        }
+        function renderG27Sort(shuffle = true) {
+            const list = document.getElementById('g27-sort-list');
+            if (!list) return;
+            const items = shuffle ? g27ShuffleSortItems(g27SortItems) : g27SortItems.slice();
+            list.innerHTML = items.map((item, idx) => `
+                <div class="g27-sort-item flex items-center justify-between gap-3 rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-left text-sm font-bold text-slate-100 cursor-grab select-none transition" draggable="true" data-id="${item.id}">
+                    <span class="flex items-center gap-3"><span class="g27-sort-no inline-flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-200">${idx + 1}</span><span>${item.label}</span></span>
+                    <span class="text-xs text-slate-400">${item.en}</span>
+                </div>
+            `).join('');
+            bindG27SortDrag();
+        }
+        function refreshG27SortNumbers() {
+            document.querySelectorAll('#g27-sort-list .g27-sort-item').forEach((item, idx) => {
+                const no = item.querySelector('.g27-sort-no');
+                if (no) no.textContent = String(idx + 1);
+            });
+        }
+        function moveG27SortItem(source, target, clientY) {
+            if (!source || !target || source === target || source.parentNode !== target.parentNode) return;
+            const rect = target.getBoundingClientRect();
+            const after = clientY > rect.top + rect.height / 2;
+            target.parentNode.insertBefore(source, after ? target.nextSibling : target);
+            refreshG27SortNumbers();
+        }
+        function bindG27SortDrag() {
+            let dragItem = null;
+            let pointerItem = null;
+            let pointerId = null;
+            const cleanup = () => {
+                if (pointerItem) pointerItem.classList.remove('ring-2','ring-cyan-400','opacity-70');
+                document.querySelectorAll('#g27-sort-list .g27-sort-item').forEach(item => item.classList.remove('border-cyan-400'));
+                pointerItem = null;
+                pointerId = null;
+            };
+            document.querySelectorAll('#g27-sort-list .g27-sort-item').forEach(item => {
+                item.addEventListener('dragstart', e => {
+                    triggerTimer();
+                    dragItem = item;
+                    item.classList.add('opacity-70');
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', item.dataset.id || '');
+                });
+                item.addEventListener('dragend', () => { item.classList.remove('opacity-70'); dragItem = null; refreshG27SortNumbers(); });
+                item.addEventListener('dragover', e => { if (dragItem && dragItem !== item) { e.preventDefault(); item.classList.add('border-cyan-400'); } });
+                item.addEventListener('dragleave', () => item.classList.remove('border-cyan-400'));
+                item.addEventListener('drop', e => {
+                    if (!dragItem || dragItem === item) return;
+                    e.preventDefault();
+                    item.classList.remove('border-cyan-400');
+                    moveG27SortItem(dragItem, item, e.clientY);
+                });
+                item.addEventListener('pointerdown', e => {
+                    pointerItem = item;
+                    pointerId = e.pointerId;
+                    triggerTimer();
+                    item.classList.add('ring-2','ring-cyan-400','opacity-70');
+                    item.style.touchAction = 'none';
+                    if (item.setPointerCapture) item.setPointerCapture(e.pointerId);
+                });
+                item.addEventListener('pointermove', e => {
+                    if (!pointerItem || e.pointerId !== pointerId) return;
+                    const el = document.elementFromPoint(e.clientX, e.clientY);
+                    const target = el && el.closest ? el.closest('#g27-sort-list .g27-sort-item') : null;
+                    if (target && target !== pointerItem) moveG27SortItem(pointerItem, target, e.clientY);
+                    e.preventDefault();
+                }, { passive: false });
+                item.addEventListener('pointerup', e => { if (pointerItem && e.pointerId === pointerId) cleanup(); });
+                item.addEventListener('pointercancel', cleanup);
+            });
+        }
+        function g27SortIsCorrect(mark = false) {
+            let correct = 0;
+            const items = Array.from(document.querySelectorAll('#g27-sort-list .g27-sort-item'));
+            items.forEach((item, idx) => {
+                const ok = item.dataset.id === g27SortOrder[idx];
+                if (ok) correct++;
+                if (mark) {
+                    item.classList.remove('border-slate-700','border-emerald-500','border-rose-500','bg-emerald-950/30','bg-rose-950/30');
+                    item.classList.add(ok ? 'border-emerald-500' : 'border-rose-500', ok ? 'bg-emerald-950/30' : 'bg-rose-950/30');
+                }
+            });
+            return { correct, total: g27SortOrder.length };
+        }        function g27SelectedValue() {
             return g27Selected && g27Selected.val ? g27Selected.val : null;
         }
         function initGame27() {
             g27Selected = null;
+            renderG27Sort(true);
             document.querySelectorAll('.g27-slot').forEach(s => {
                 const num = s.dataset.slot;
                 s.innerText = `${num}.___`;
@@ -11962,6 +12711,9 @@ function exportSave() {
         }
         function checkGame27() {
             let correct = 0, total = 0;
+            const sortResult = g27SortIsCorrect(true);
+            correct += sortResult.correct;
+            total += sortResult.total;
             document.querySelectorAll('.g27-slot').forEach(s => {
                 total++;
                 if (s.dataset.filled === s.dataset.correct) {
@@ -11975,6 +12727,8 @@ function exportSave() {
             updateTrophyCount();
         }
         function showAnswer27() {
+            renderG27Sort(false);
+            g27SortIsCorrect(true);
             // 直接填入所有空格
             const g27AnsMap = {
                 '1': 'a', '2': 'g', '3': 'e', '4': 'c',
@@ -14205,6 +14959,71 @@ function exportSave() {
                         }
                     ]
                 }
+        ,{
+            id: 'nurse-firstaid-calculation',
+            title: '醫護與急救人員計算',
+            subgroups: [
+                {
+                    subtitle: '（一）護理人員僱用比例',
+                    desc: '某事業單位勞工 400 人，其中從事特別危害健康作業勞工達 60 人，則其僱用護理人員之比例應達多少以上？',
+                    table: `<div class="grid sm:grid-cols-2 gap-2 text-sm text-slate-200 mb-3">
+                        <div class="rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2">A. 1/2</div>
+                        <div class="rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2">B. 1/3</div>
+                        <div class="rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2">C. 3/4</div>
+                        <div class="rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2">D. 2/3</div>
+                    </div>`,
+                    hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                        <p>300 人以上或特別危害健康作業勞工 50 人以上，即適用護理人員僱用比例 <strong class="text-yellow-300">3/4</strong>。</p>
+                    </div>`,
+                    blanks: [
+                        { label: '護理人員僱用比例（可填 3/4 或 0.75）', answer: '3/4', tolerance: 0 }
+                    ],
+                    solution: ''
+                },
+                {
+                    subtitle: '（二）急救人員分班計算',
+                    desc: '某工廠採三班制，人數分別為早班 153 人、中班 105 人、夜班 10 人。全廠共需設置幾位急救人員？',
+                    table: '',
+                    visualFormula: [
+                        { title: '急救人員分班估算', math: '每班人數 / 50，未滿或不足仍至少配置 1 人', note: '本題依題目提示：早班 153/50=3.06 取 3；中班 105/50=2.1 取 2；夜班 50 人以下取 1。' }
+                    ],
+                    hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                        <p>早班：153/50 = 3.06 → <strong class="text-yellow-300">3 人</strong></p>
+                        <p>中班：105/50 = 2.1 → <strong class="text-yellow-300">2 人</strong></p>
+                        <p>夜班：50 人以下 → <strong class="text-yellow-300">1 人</strong></p>
+                        <p>合計：3 + 2 + 1 = <strong class="text-yellow-300">6 人</strong></p>
+                    </div>`,
+                    blanks: [
+                        { label: '早班急救人員（人）', answer: 3, tolerance: 0 },
+                        { label: '中班急救人員（人）', answer: 2, tolerance: 0 },
+                        { label: '夜班急救人員（人）', answer: 1, tolerance: 0 },
+                        { label: '全廠共需急救人員（人）', answer: 6, tolerance: 0 }
+                    ],
+                    solution: ''
+                }
+            ]
+        }
+        ,{
+            id: 'death-compensation-random',
+            title: '職災死亡補償計算',
+            randomWageQuestion: true,
+            desc: '勞工阿明因職業災害不幸死亡，其發生事故前六個月之平均工資為 40000 元，請問雇主應給付的喪葬費、死亡補償及合計金額各為多少元？',
+            table: '',
+            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                <p>依勞動基準法第 59 條補償標準：</p>
+                <p>喪葬費 = 平均工資 × <strong class="text-yellow-300">5 個月</strong></p>
+                <p>死亡補償 = 平均工資 × <strong class="text-yellow-300">40 個月</strong></p>
+                <p>總計 = 平均工資 × <strong class="text-yellow-300">45 個月</strong></p>
+                <p class="mt-2 text-slate-300">補充：醫療期間屆滿 2 年仍未痊癒，雇主可一次給付 40 個月平均工資後，免除工資補償責任。</p>
+            </div>`,
+            blanks: [
+                { label: '喪葬費（元）', answer: 200000, tolerance: 0 },
+                { label: '死亡補償（元）', answer: 1600000, tolerance: 0 },
+                { label: '雇主應給付總額（元）', answer: 1800000, tolerance: 0 }
+            ],
+            solution: ''
+        }
+
         ];
         let g29Current = 0;
         let g29ShowHint = {};
@@ -14521,6 +15340,15 @@ function exportSave() {
                 ));
             }
 
+
+            if (text.includes('喪葬費') || text.includes('死亡補償') || text.includes('平均工資 × 45')) {
+                cards.push(g29FormulaCard(
+                    '職災死亡補償',
+                    `總額 = 平均工資 × (5 + 40) = 平均工資 × 45`,
+                    '喪葬費 5 個月，死亡補償 40 個月，合計 45 個月平均工資。'
+                ));
+            }
+
             if (cards.length === 0) return '';
             return `<div class="g29-visual-formulas">
                 <h5>📐 直觀公式</h5>
@@ -14528,7 +15356,42 @@ function exportSave() {
             </div>`;
         }
 
+
+        const G29_RANDOM_WAGE_KEY = 'safetyMasterG29RandomDeathCompWage';
+        function g29GenerateAverageWage() {
+            const steps = [];
+            for (let wage = 30000; wage <= 60000; wage += 1000) steps.push(wage);
+            return steps[Math.floor(Math.random() * steps.length)] || 40000;
+        }
+        function g29EnsureRandomWageQuestion() {
+            const q = g29Bank.find(item => item && item.randomWageQuestion);
+            if (!q) return;
+            let wage = Number(localStorage.getItem(G29_RANDOM_WAGE_KEY));
+            if (!Number.isFinite(wage) || wage <= 0) {
+                wage = g29GenerateAverageWage();
+                localStorage.setItem(G29_RANDOM_WAGE_KEY, String(wage));
+            }
+            const funeral = wage * 5;
+            const death = wage * 40;
+            const total = wage * 45;
+            const fmt = n => Number(n).toLocaleString('zh-TW');
+            q.desc = `勞工阿明因職業災害不幸死亡，其發生事故前六個月之平均工資為 ${fmt(wage)} 元，請問雇主應給付的喪葬費、死亡補償及合計金額各為多少元？`;
+            q.hint = `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                <p>依勞動基準法第 59 條補償標準：</p>
+                <p>喪葬費 = ${fmt(wage)} × 5 = <strong class="text-yellow-300">${fmt(funeral)} 元</strong></p>
+                <p>死亡補償 = ${fmt(wage)} × 40 = <strong class="text-yellow-300">${fmt(death)} 元</strong></p>
+                <p>總計 = ${fmt(wage)} × 45 = <strong class="text-yellow-300">${fmt(total)} 元</strong></p>
+                <p class="mt-2 text-slate-300">補充：醫療期間屆滿 2 年仍未痊癒，雇主可一次給付 40 個月平均工資後，免除工資補償責任。</p>
+            </div>`;
+            q.blanks = [
+                { label: '喪葬費（元）', answer: funeral, tolerance: 0 },
+                { label: '死亡補償（元）', answer: death, tolerance: 0 },
+                { label: '雇主應給付總額（元）', answer: total, tolerance: 0 }
+            ];
+        }
+
         function initGame29() {
+            g29EnsureRandomWageQuestion();
             g29LoadAnswers();
             g29LoadMastery();
             g29Current = 0;
@@ -16249,4 +17112,10 @@ window.addEventListener('resize', () => {
 </script>
 </body>
 </html>
+
+
+
+
+
+
 
