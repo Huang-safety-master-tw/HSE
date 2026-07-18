@@ -382,7 +382,7 @@
                     <span>完美過關：<strong id="completed-count" class="text-yellow-400">0</strong>/40</span>
                 </div>
                 <button onclick="resetAllGames()" class="text-slate-400 hover:text-white transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg">
-                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置全部
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置熟練度
                 </button>
                 <button onclick="openCloudSyncModal()" class="text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm">
                     <i data-lucide="cloud" class="w-4 h-4"></i> 雲端同步
@@ -4183,8 +4183,8 @@
 
                 <div id="g40-group6" class="g40-group border border-purple-500/30 rounded-2xl p-5 mb-6" data-group="6">
                     <div class="g40-head"><div><h3>6. 危險性工作場所分類</h3><p>請將下列場所與其類別配對。</p></div><div id="g40-mastery-6"></div></div>
-                    <div class="space-y-3 text-lg"><div>石油裂解之石化工業：<button class="g40-blank" data-group="6" data-answer="甲類" onclick="g40FillBlank(this)">＿</button></div><div>從事農藥原體合成、火藥類製造：<button class="g40-blank" data-group="6" data-answer="乙類" onclick="g40FillBlank(this)">＿</button></div><div>1 日冷凍能力 150 公噸以上之高壓氣體容器：<button class="g40-blank" data-group="6" data-answer="丙類" onclick="g40FillBlank(this)">＿</button></div><div>開挖深度 18m 以上且面積 500 平方公尺以上：<button class="g40-blank" data-group="6" data-answer="丁類" onclick="g40FillBlank(this)">＿</button></div></div>
-                    <div class="g40-pool"><button class="g40-card" draggable="true" data-value="甲類" onclick="g40SelectCard(this)">A. 甲類</button><button class="g40-card" draggable="true" data-value="乙類" onclick="g40SelectCard(this)">B. 乙類</button><button class="g40-card" draggable="true" data-value="丙類" onclick="g40SelectCard(this)">C. 丙類</button><button class="g40-card" draggable="true" data-value="丁類" onclick="g40SelectCard(this)">D. 丁類</button></div>
+                    <div class="space-y-3 text-lg"><div>甲類場所：<button class="g40-blank" data-group="6" data-answer="石油裂解之石化工業" onclick="g40FillBlank(this)">＿</button></div><div>乙類場所：<button class="g40-blank" data-group="6" data-answer="從事農藥原體合成、火藥類製造" onclick="g40FillBlank(this)">＿</button></div><div>丙類場所：<button class="g40-blank" data-group="6" data-answer="1 日冷凍能力 150 公噸以上之高壓氣體容器" onclick="g40FillBlank(this)">＿</button></div><div>丁類場所：<button class="g40-blank" data-group="6" data-answer="開挖深度 18m 以上且面積 500 平方公尺以上" onclick="g40FillBlank(this)">＿</button></div></div>
+                    <div class="g40-pool"><button class="g40-card" draggable="true" data-value="石油裂解之石化工業" onclick="g40SelectCard(this)">石油裂解之石化工業</button><button class="g40-card" draggable="true" data-value="從事農藥原體合成、火藥類製造" onclick="g40SelectCard(this)">從事農藥原體合成、火藥類製造</button><button class="g40-card" draggable="true" data-value="1 日冷凍能力 150 公噸以上之高壓氣體容器" onclick="g40SelectCard(this)">1 日冷凍能力 150 公噸以上之高壓氣體容器</button><button class="g40-card" draggable="true" data-value="開挖深度 18m 以上且面積 500 平方公尺以上" onclick="g40SelectCard(this)">開挖深度 18m 以上且面積 500 平方公尺以上</button></div>
                     <div id="g40-result-6" class="g40-result"></div><div class="g40-actions"><button onclick="resetG40Group(6)">重置本題組</button><button onclick="showAnswerG40Group(6)">公布解答</button><button onclick="checkG40Group(6)">檢查答案</button></div>
                 </div>
 
@@ -6187,15 +6187,46 @@ function checkGame10() {
         }
 
         function resetAllGames() {
-            localStorage.removeItem(LS_KEY);
-            localStorage.removeItem('safetyMasterG29Answers');
-            g29Answers = {};
-            window._lsPendingState = null; _lsHideIndicator();
-            soundClick(); 
-            completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false, game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false, game39: false, game40: false };
-            bestTimes = {};
-            if (currentGameNum) initGameByNumber(currentGameNum);
-            updateTrophyCount(); showToast("🔄 所有關卡已重新配置！", "info");
+            soundClick();
+            const masteryKeys = [
+                'safetyMasterG14Mastery', 'safetyMasterG19Mastery', 'safetyMasterG20Mastery',
+                'safetyMasterG24Mastery', 'safetyMasterG26Mastery', 'safetyMasterG29Mastery',
+                'safetyMasterG40Mastery'
+            ];
+            masteryKeys.forEach(key => localStorage.removeItem(key));
+            gameMastery = {};
+            if (typeof g14Mastery !== 'undefined') g14Mastery = {};
+            if (typeof g19Mastery !== 'undefined') g19Mastery = {};
+            if (typeof g20Mastery !== 'undefined') g20Mastery = {};
+            if (typeof g24Mastery !== 'undefined') g24Mastery = {};
+            if (typeof g26Mastery !== 'undefined') g26Mastery = {};
+            if (typeof g29Mastery !== 'undefined') g29Mastery = {};
+            if (typeof g40Mastery !== 'undefined') g40Mastery = {};
+            const state = safeJsonParse(localStorage.getItem(LS_KEY), {});
+            if (state && typeof state === 'object') {
+                state.gameMastery = {};
+                delete state.g14Mastery;
+                delete state.g19Mastery;
+                delete state.g20Mastery;
+                delete state.g24Mastery;
+                delete state.g26Mastery;
+                delete state.g29Mastery;
+                delete state.g40Mastery;
+                localStorage.setItem(LS_KEY, JSON.stringify(state));
+                window._lsPendingState = state;
+            }
+            if (typeof renderCurrentGameMastery === 'function') renderCurrentGameMastery();
+            if (typeof renderG14MasteryStars === 'function') renderG14MasteryStars();
+            if (typeof g19RenderMasteryControls === 'function') g19RenderMasteryControls();
+            if (typeof g20RenderMasteryControls === 'function') g20RenderMasteryControls();
+            if (typeof renderG24MasteryStars === 'function') renderG24MasteryStars();
+            if (typeof renderG26MasteryStars === 'function') renderG26MasteryStars();
+            if (typeof g29Render === 'function' && currentGameNum === 29) g29Render();
+            if (typeof g40RenderAllMastery === 'function') g40RenderAllMastery();
+            buildMenu();
+            lsSave();
+            scheduleCloudAutoSave('reset-mastery');
+            showToast("🔄 熟練度已重置，筆記與作答紀錄已保留", "info");
         }
 
         let _toastTimer = null;
@@ -6733,7 +6764,7 @@ function checkGame10() {
             { key: 'G14D5A', label: '20' }, { key: 'G14D5B', label: '3000' }, { key: 'G14D5C', label: '尼龍繩' },
             { key: 'G14D6A', label: '3' }, { key: 'G14D6B', label: '7.5' }, { key: 'G14D6C', label: '擋土支撐' },
             { key: 'G14D7A', label: '3.5' }, { key: 'G14D7B', label: '1.5' }, { key: 'G14D7C', label: '30' },
-            { key: 'G14D8A', label: '10' }, { key: 'G14D8B', label: '7.5' }, { key: 'G14D8C', label: '40' },
+            { key: 'G14D8A', label: '10' }, { key: 'G14D8B', label: '7.5' }, { key: 'G14D8C', label: '40' }, { key: 'G14D8D', label: '34' },
             { key: 'G14D9A', label: '1.5' }, { key: 'G14D9B', label: '7%' }, { key: 'G14D9C', label: '5.5' },
             { key: 'G14D10A', label: '40' }, { key: 'G14D10B', label: '70' }, { key: 'G14D10C', label: '100' },
             { key: 'G14D12A', label: '血糖' }, { key: 'G14D12B', label: '定期檢查' }, { key: 'G14D12C', label: '竣工檢查' },
@@ -6927,7 +6958,7 @@ function checkGame10() {
             5: ['G5A','G5B','G5C','G5D','G5E','G5F','G5G','G5H'],
             6: ['G6A','G6B','G6C','G6D','G6E','G6F','G6G','G6H'],
             7: ['G7A','G7B','G7C','G7D','G7E','G7F','G7G','G7H','G7I'],
-            8: ['G8A','G8B','G8C','G8D','G8E','G8F','G8G','G8H'],
+            8: ['G8A','G8B','G8C','G8D','G8E','G8F','G8G','G8H','G14D8D'],
             9: ['G9A','G9B','G9C','G9D','G9E','G9F','G9G','G9H'],
             10: ['G10A','G10B','G10C','G10D','G10E','G10F','G10G','G10H','G10I','G10J'],
             12: ['G12T1','G12T2','G12T3','G12T4','G12T5','G12T6','G12A','G12B','G12C','G12D','G12E','G12F','G12G','G12H','G12I','G12J'],
@@ -7160,6 +7191,9 @@ function checkGame10() {
             ['1417', '1418', '1419', '1420', '1421'],
             ['1423', '1424', '1425'],
             ['1501', '1502', '1503', '1504', '1505', '1506'],
+            ['1602', '1603'],
+            ['1604', '1605'],
+            ['1609', '1610', '1611'],
             ['1704', '1717'],
             ['1707', '1711'],
             ['1804', '1805'],
@@ -7302,13 +7336,14 @@ function checkGame10() {
                 if (!blank) return;
                 const correctKey = blank.dataset.correct;
                 const flexGroup = g14GetFlexibleGroup(blank.dataset.blankId);
-                const isCorrect = flexGroup
+                const keepCurrent = flexGroup
                     ? g14IsFlexibleBlankIndividuallyCorrect(blank, flexGroup)
                     : g14IsBlankCorrect(blank);
-                const displayKey = isCorrect && blank.dataset.filled ? blank.dataset.filled : correctKey;
+                const displayKey = keepCurrent && blank.dataset.filled ? blank.dataset.filled : correctKey;
+                blank.dataset.filled = displayKey;
                 const opt = g14FindOption(displayKey);
                 blank.innerText = opt ? g14DisplayLabel(opt) : displayKey;
-                g14MarkBlank(blank, isCorrect);
+                g14MarkBlank(blank, true);
             });
             showToast('📖 第' + grp + '組解答已公布！綠色=正確，紅色=未答或錯誤', 'info');
         }
@@ -10512,11 +10547,15 @@ function checkGame10() {
             if (typeof g14LoadMastery === 'function') g14LoadMastery();
             if (typeof g19LoadMastery === 'function') g19LoadMastery();
             if (typeof g20LoadMastery === 'function') g20LoadMastery();
+            if (typeof g24LoadMastery === 'function') g24LoadMastery();
+            if (typeof g26LoadMastery === 'function') g26LoadMastery();
             if (typeof g29LoadMastery === 'function') g29LoadMastery();
             if (typeof renderCurrentGameMastery === 'function') renderCurrentGameMastery();
             if (typeof renderG14MasteryStars === 'function') renderG14MasteryStars();
             if (typeof g19RenderMasteryControls === 'function') g19RenderMasteryControls();
             if (typeof g20RenderMasteryControls === 'function') g20RenderMasteryControls();
+            if (typeof renderG24MasteryStars === 'function') renderG24MasteryStars();
+            if (typeof renderG26MasteryStars === 'function') renderG26MasteryStars();
             if (currentGameNum === 29 && typeof g29Render === 'function') g29Render();
             if (typeof g40RenderAllMastery === 'function') g40RenderAllMastery();
             if (typeof buildMenu === 'function') buildMenu();
@@ -10889,6 +10928,8 @@ function checkGame10() {
                     if (mainState.g14Mastery) mergeObjectSaveKey('safetyMasterG14Mastery', mainState.g14Mastery);
                     if (mainState.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', mainState.g19Mastery);
                     if (mainState.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', mainState.g20Mastery);
+                    if (mainState.g24Mastery) mergeObjectSaveKey('safetyMasterG24Mastery', mainState.g24Mastery);
+                    if (mainState.g26Mastery) mergeObjectSaveKey('safetyMasterG26Mastery', mainState.g26Mastery);
                     if (mainState.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', mainState.g29Mastery);
                     if (mainState.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', mainState.g40Mastery);
                 }
@@ -10911,6 +10952,8 @@ function checkGame10() {
                 if (pkg.mastery && pkg.mastery.g20) {
                     mergeObjectSaveKey('safetyMasterG20Mastery', pkg.mastery.g20);
                 }
+                if (pkg.mastery && pkg.mastery.g24) mergeObjectSaveKey('safetyMasterG24Mastery', pkg.mastery.g24);
+                if (pkg.mastery && pkg.mastery.g26) mergeObjectSaveKey('safetyMasterG26Mastery', pkg.mastery.g26);
                 if (pkg.mastery && pkg.mastery.g29) {
                     mergeObjectSaveKey('safetyMasterG29Mastery', pkg.mastery.g29);
                 }
@@ -10955,6 +10998,8 @@ function checkGame10() {
             if (pkg.g14Mastery) mergeObjectSaveKey('safetyMasterG14Mastery', pkg.g14Mastery);
             if (pkg.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', pkg.g19Mastery);
             if (pkg.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', pkg.g20Mastery);
+            if (pkg.g24Mastery) mergeObjectSaveKey('safetyMasterG24Mastery', pkg.g24Mastery);
+            if (pkg.g26Mastery) mergeObjectSaveKey('safetyMasterG26Mastery', pkg.g26Mastery);
             if (pkg.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', pkg.g29Mastery);
             if (pkg.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', pkg.g40Mastery);
             reloadAllMasteryFromStorage();
@@ -11162,6 +11207,8 @@ function checkGame10() {
                 state.g14Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG14Mastery', typeof g14Mastery !== 'undefined' ? g14Mastery : {})));
                 state.g19Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {})));
                 state.g20Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {})));
+                state.g24Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG24Mastery', typeof g24Mastery !== 'undefined' ? g24Mastery : {})));
+                state.g26Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG26Mastery', typeof g26Mastery !== 'undefined' ? g26Mastery : {})));
                 state.g29Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {})));
                 state.g40Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG40Mastery', typeof g40Mastery !== 'undefined' ? g40Mastery : {})));
 
@@ -11351,6 +11398,8 @@ function checkGame10() {
                 if (state.g20Mastery) {
                     mergeObjectSaveKey('safetyMasterG20Mastery', state.g20Mastery);
                 }
+                if (state.g24Mastery) mergeObjectSaveKey('safetyMasterG24Mastery', state.g24Mastery);
+                if (state.g26Mastery) mergeObjectSaveKey('safetyMasterG26Mastery', state.g26Mastery);
                 if (state.g29Mastery) {
                     mergeObjectSaveKey('safetyMasterG29Mastery', state.g29Mastery);
                 }
@@ -11384,6 +11433,8 @@ function checkGame10() {
             localStorage.removeItem('safetyMasterG14Mastery');
             localStorage.removeItem('safetyMasterG19Mastery');
             localStorage.removeItem('safetyMasterG20Mastery');
+            localStorage.removeItem('safetyMasterG24Mastery');
+            localStorage.removeItem('safetyMasterG26Mastery');
             localStorage.removeItem('safetyMasterG29Answers');
             localStorage.removeItem('safetyMasterG29Mastery');
             localStorage.removeItem('safetyMasterG40Mastery');
@@ -12382,7 +12433,7 @@ function exportSave() {
         let g26Mastery = {};
         const G26_MASTERY_KEY = 'safetyMasterG26Mastery';
         function g26LoadMastery() { g26Mastery = safeJsonParse(localStorage.getItem(G26_MASTERY_KEY), {}); }
-        function g26SaveMastery() { localStorage.setItem(G26_MASTERY_KEY, JSON.stringify(g26Mastery)); }
+        function g26SaveMastery() { localStorage.setItem(G26_MASTERY_KEY, JSON.stringify(g26Mastery)); if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g26-mastery'); }
         function g26MasteryLabel(rating) { return ({1:'極不熟',2:'不熟',3:'普通',4:'熟練',5:'非常熟練'}[rating]) || '未評分'; }
         function g26SetMastery(sub, rating) {
             g26Mastery[String(sub)] = rating;
@@ -12393,7 +12444,7 @@ function exportSave() {
         function ensureG26MasteryControls() {
             ['a','b'].forEach(sub => {
                 const slots = document.getElementById(`g26${sub}-slots`);
-                const block = slots ? slots.closest('.mb-8') : null;
+                const block = slots ? slots.closest('.mb-8, .mb-6') : null;
                 const h3 = block ? block.querySelector('h3') : null;
                 if (!h3 || document.getElementById('g26-mastery-' + sub)) return;
                 h3.classList.add('flex','items-center','justify-between','gap-2','flex-wrap');
