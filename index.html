@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -1679,6 +1679,50 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mt-8 border-t border-slate-700 pt-6">
+                <div class="glass-panel p-6 rounded-2xl border border-cyan-900/40">
+                    <div class="mb-4">
+                        <span class="bg-cyan-500/20 text-cyan-300 text-xs px-3 py-1 rounded-full font-bold">危害通識英文</span>
+                        <h2 class="text-2xl font-black mt-2 text-white">危害通識英文名詞連連看</h2>
+                        <p class="text-sm text-slate-400 mt-2">請將左欄英文名詞與右欄中文意義正確配對。可拖曳連線，或點選左欄後再點右欄。</p>
+                        <div id="g6-mastery-terms" class="mt-2"></div>
+                    </div>
+                    <div class="mt-4" style="max-width:760px;">
+                        <div class="relative" id="g6-terms-board">
+                            <svg id="g6-terms-svg" class="absolute pointer-events-none overflow-visible" style="top:0;left:0;width:100%;height:100%;z-index:10;"></svg>
+                            <div class="grid gap-4" style="grid-template-columns:minmax(150px, 0.8fr) 96px minmax(240px, 1.4fr);">
+                                <div>
+                                    <h3 class="text-xs font-bold text-slate-400 mb-2 flex items-center gap-1.5">
+                                        <i data-lucide="type" class="w-3.5 h-3.5 text-cyan-400"></i> 英文名詞
+                                    </h3>
+                                    <div class="space-y-2" id="g6-terms-left"></div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <h3 class="text-xs font-bold text-slate-400 mb-2 flex items-center gap-1.5">
+                                        <i data-lucide="book-open-check" class="w-3.5 h-3.5 text-emerald-400"></i> 中文意義與說明
+                                    </h3>
+                                    <div class="space-y-2" id="g6-terms-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center gap-3 flex-wrap">
+                        <span class="text-xs text-slate-400">配對進度：<span id="g6-terms-progress">0</span> / 6</span>
+                        <div class="flex gap-2 flex-wrap">
+                            <button onclick="initGame6Terms()" class="text-slate-400 hover:text-white transition flex items-center gap-1 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-bold">
+                                <i data-lucide="rotate-ccw" class="w-3 h-3"></i> 重置本小題
+                            </button>
+                            <button onclick="showAnswer6Terms()" class="text-slate-400 hover:text-white transition flex items-center gap-1 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-bold">
+                                <i data-lucide="eye" class="w-3 h-3"></i> 公布解答
+                            </button>
+                            <button onclick="checkGame6Terms()" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-4 py-1.5 rounded-lg shadow-lg transition text-xs">驗證配對</button>
+                        </div>
+                    </div>
+                    <div id="g6-terms-result" class="mt-3 text-sm font-bold text-slate-300"></div>
+                </div>
+            </div>
         
                 </div>
 
@@ -3239,6 +3283,39 @@
                     <button onclick="showAnswer14Group(29)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-2 rounded-lg font-bold text-sm">公布解答</button>
                   </div>
                 </div>
+                <!-- 第三十組 -->
+                <div class="bg-slate-900/80 border border-teal-700/60 rounded-2xl p-6 mb-6" data-g14-group="30" id="g14-group30">
+                  <div class="flex items-center gap-3 mb-4 pb-3 border-b border-teal-700/50">
+                    <span class="px-3 py-1 rounded-full bg-teal-900/50 border border-teal-500 text-teal-300 font-bold text-sm">第三十組</span>
+                    <span class="text-slate-400 text-sm font-bold">氣狀與粒狀有害物常見名詞</span>
+                  </div>
+                  <p class="font-bold text-teal-300 text-xs">請將正確名詞填入對應敘述：</p>
+                  <div class="space-y-3 text-slate-200 leading-loose font-semibold mt-3">
+                    <p>（一）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3001" data-correct="G30A" onclick="fillBlank14(this)">＿</span>：常溫常壓（25°C、1 大氣壓）下為氣態者。</p>
+                    <p>（二）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3002" data-correct="G30B" onclick="fillBlank14(this)">＿</span>：常溫常壓（25°C、1 大氣壓）下為液態或固態，經蒸發或昇華為氣態者。</p>
+                    <p>（三）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3003" data-correct="G30C" onclick="fillBlank14(this)">＿</span>：懸浮空氣中之固態微粒，一般粒徑在 100μm 以下；10μm 以下者較易進入呼吸器官，約 0.1μm 者可能進入肺部沉著。</p>
+                    <p>（四）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3004" data-correct="G30D" onclick="fillBlank14(this)">＿</span>：錳等金屬元素或其氧化物之氣態或蒸氣凝結物，粒徑約 0.1～1μm。</p>
+                    <p>（五）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3005" data-correct="G30E" onclick="fillBlank14(this)">＿</span>：含碳物質燃燒不完全所產生之氣膠混合物，粒徑約 0.01～1μm。</p>
+                    <p>（六）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3006" data-correct="G30F" onclick="fillBlank14(this)">＿</span>：懸浮空氣中之液態小滴或潮濕之固態，粒徑約 5～100μm。</p>
+                    <p>（七）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3007" data-correct="G30G" onclick="fillBlank14(this)">＿</span>：懸浮空氣中之液態小滴，濃度高到使視線朦朧。</p>
+                    <p>（八）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3008" data-correct="G30H" onclick="fillBlank14(this)">＿</span>：由細絲組成的物質，如棉花、石綿等。</p>
+                    <p>（九）<span class="g14-blank inline-block min-w-[7rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="3009" data-correct="G30I" onclick="fillBlank14(this)">＿</span>：懸浮空氣中之生物微粒，如病毒、細菌等。</p>
+                  </div>
+                </div>
+                <div class="bg-slate-900/80 border border-teal-800/60 rounded-2xl p-5 mb-6" id="g14-group30-opts-wrap" data-g14-options-wrap="30">
+                  <h3 class="text-teal-300 font-bold mb-3 flex items-center gap-2">
+                    <i data-lucide="table" class="w-4 h-4"></i> 第三十組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2" id="g14-options-30"></div>
+                  <div id="g14-selected-indicator-30" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-30"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="flex flex-wrap gap-3 justify-end mt-4">
+                    <button onclick="checkGame14Group(30)" class="px-5 py-3 bg-teal-600 hover:bg-teal-500 rounded-lg font-bold text-white"><i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i>確認第三十組</button>
+                    <button onclick="showAnswer14Group(30)" class="px-5 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold text-slate-200">公布解答</button>
+                  </div>
+                  <div id="g14-result-30" class="hidden"></div>
+                </div>
                 <div class="hidden"><div id="g14-options"></div></div>
                 <div id="g14-selected-indicator" class="hidden"><span id="g14-selected-label"></span></div>
 
@@ -3557,14 +3634,27 @@
                 <section id="tab-reserved-19" class="game-section hidden w-full">
             <div class="glass-panel p-6 rounded-2xl">
                 <div class="mb-4">
-                    <span class="bg-slate-500/20 text-slate-300 text-xs px-3 py-1 rounded-full font-bold">預留關卡</span>
-                    <h2 class="text-2xl font-black mt-2">第19關預留</h2>
-                    <p class="text-sm text-slate-400 mt-1">原本的「有害物連連看」已併入第6關；此位置保留給未來新增內容。</p>
+                    <span class="bg-purple-500/20 text-purple-300 text-xs px-3 py-1 rounded-full font-bold">考點十九：管理名詞連連看</span>
+                    <h2 class="text-2xl font-black mt-2">變更、緊急應變、採購及承攬</h2>
+                    <p class="text-sm text-slate-400 mt-1">請將左側名詞與右側解釋連線配對。</p>
                 </div>
-                <div class="rounded-2xl border border-dashed border-slate-600 bg-slate-900/50 p-8 text-center text-slate-400">
-                    <i data-lucide="bookmark-plus" class="w-10 h-10 mx-auto mb-3 text-slate-500"></i>
-                    <p class="font-bold text-slate-300">此關目前不出題</p>
-                    <p class="text-sm mt-1">之後新增關卡時可以直接使用這個位置。</p>
+                <div id="g19m-board" class="relative rounded-2xl border border-purple-700/40 bg-slate-950/40 p-5 min-h-[360px]">
+                    <svg id="g19m-svg" class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"></svg>
+                    <div class="relative z-10 grid grid-cols-1 md:grid-cols-[minmax(10rem,0.85fr)_minmax(18rem,1.6fr)] gap-12 md:gap-24">
+                        <div>
+                            <h3 class="text-sm font-bold text-purple-300 mb-3">名詞</h3>
+                            <div id="g19m-left" class="space-y-3"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-rose-300 mb-3">解釋</h3>
+                            <div id="g19m-right" class="space-y-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4 justify-center">
+                    <button onclick="showAnswer19Management()" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-bold">公布答案</button>
+                    <button onclick="checkGame19Management()" class="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg font-bold">確認配對</button>
+                    <button onclick="initGame19Management()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg font-bold border border-slate-600">重新開始</button>
                 </div>
             </div>
         </section>
@@ -4116,16 +4206,42 @@
         </section>
 
         <section id="tab-flashpoint-sort" class="game-section hidden w-full">
-            <div class="glass-panel p-6 rounded-2xl">
-                <div class="mb-4">
-                    <span class="bg-slate-500/20 text-slate-300 text-xs px-3 py-1 rounded-full font-bold">預留關卡</span>
-                    <h2 class="text-2xl font-black mt-2">第22關預留</h2>
-                    <p class="text-sm text-slate-400 mt-1">原本的閃火點排序已併入第20關延伸小題⑦；此關保留給未來新增內容。</p>
+            <div class="glass-panel p-4 sm:p-6 rounded-2xl max-w-6xl mx-auto">
+                <div class="mb-5">
+                    <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">考點二十二：砂輪機安全構造</span>
+                    <h2 class="text-2xl font-black mt-2">砂輪機構造與安全間隙</h2>
+                    <p class="text-sm text-slate-400 mt-1">比照第30關：先將字卡拖曳至照片中的正確部位（也可先點字卡、再點空格），再完成安全間隙。</p>
                 </div>
-                <div class="rounded-2xl border border-dashed border-slate-600 bg-slate-900/50 p-8 text-center text-slate-400">
-                    <i data-lucide="bookmark-plus" class="w-10 h-10 mx-auto mb-3 text-slate-500"></i>
-                    <p class="font-bold text-slate-300">此關目前不出題</p>
-                    <p class="text-sm mt-1">之後新增關卡時可以直接使用這個位置。</p>
+                <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-5 items-start">
+                    <div>
+                        <div id="g22g-arena" class="relative rounded-2xl overflow-hidden border border-slate-600 bg-slate-950 shadow-xl">
+                            <img id="g22g-img" src="assets/bench-grinder-public-domain.jpg" alt="桌上型砂輪機正面照片" class="block w-full h-auto" draggable="false">
+                            <div id="g22g-slots" class="absolute inset-0"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">圖片：<a class="text-cyan-400 hover:underline" href="https://commons.wikimedia.org/wiki/File:Werkbank_slijpmachine.JPG" target="_blank" rel="noopener noreferrer">Martink／Wikimedia Commons</a>（Public Domain）。題目標示為本站另行製作。</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-4">
+                            <h3 class="font-bold text-cyan-300 mb-2">部位字卡</h3>
+                            <div id="g22g-pool" class="flex flex-wrap gap-2 min-h-[110px]"></div>
+                        </div>
+                        <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-4 space-y-4">
+                            <h3 class="font-bold text-amber-300">安全間隙填空</h3>
+                            <label class="block text-sm text-slate-200">① 舌板與研磨輪周邊間隙應調整在
+                                <span class="inline-flex items-center gap-1 ml-1"><input id="g22g-gap-tongue" type="number" inputmode="numeric" class="w-20 rounded-lg border border-slate-600 bg-slate-950 px-3 py-2 text-center font-black text-white" placeholder="?"> mm 以下</span>
+                            </label>
+                            <label class="block text-sm text-slate-200">② 工作物支架與研磨輪間隙應保持在
+                                <span class="inline-flex items-center gap-1 ml-1"><input id="g22g-gap-rest" type="number" inputmode="numeric" class="w-20 rounded-lg border border-slate-600 bg-slate-950 px-3 py-2 text-center font-black text-white" placeholder="?"> mm 以下</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="g22g-msg" class="mt-5 min-h-[28px] text-center font-bold"></div>
+                <div class="mt-3 flex flex-wrap justify-center gap-3">
+                    <button onclick="resetGame22Grinder()" class="px-4 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold">重置</button>
+                    <button onclick="showAnswerGame22Grinder()" class="px-4 py-2 rounded-xl bg-amber-700 hover:bg-amber-600 text-white font-bold">公布解答</button>
+                    <button onclick="checkGame22Grinder()" class="px-5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold">驗證答案</button>
+                    <button onclick="goToGame(23)" class="px-4 py-2 rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white font-bold">下一關</button>
                 </div>
             </div>
         </section>
@@ -5355,75 +5471,6 @@
             </div>
         </section>
 
-
-        <section id="tab-auto-inspection-form" class="game-section hidden w-full">
-            <div class="glass-panel p-6 rounded-2xl max-w-5xl mx-auto space-y-5">
-                <div>
-                    <span class="inline-flex items-center rounded-full bg-cyan-500/15 text-cyan-200 border border-cyan-400/30 px-3 py-1 text-sm font-bold mb-3">考點四十三：自動檢查表欄位辨識</span>
-                    <h2 class="text-3xl font-black text-white mb-2">自動檢查表欄位名稱配合題</h2>
-                    <p class="text-slate-300">請將 A、B、C、D 對應的欄位名稱放入表頭；「檢查方法」為固定欄位。</p>
-                </div>
-
-                <div id="g43-mastery" class="sub-mastery-box"></div>
-
-                <div class="overflow-x-auto rounded-2xl border border-cyan-800/50 bg-slate-950/60 p-3">
-                    <table class="w-full min-w-[680px] border-collapse text-center text-slate-100">
-                        <thead class="bg-slate-800/90 text-sm md:text-base">
-                            <tr>
-                                <th class="border border-slate-600 px-3 py-4 w-[9rem]">序號</th>
-                                <th class="border border-slate-600 px-3 py-4">
-                                    <div class="text-xs text-cyan-200 mb-2">A</div>
-                                    <div class="g43-blank matching-blank min-h-[3rem]" data-slot-id="A" data-answer="檢查項目">_</div>
-                                </th>
-                                <th class="border border-slate-600 px-3 py-4">
-                                    <div class="text-xs text-cyan-200 mb-2">B</div>
-                                    <div class="g43-blank matching-blank min-h-[3rem]" data-slot-id="B" data-answer="檢查重點">_</div>
-                                </th>
-                                <th class="border border-slate-600 px-3 py-4 text-yellow-200">檢查方法</th>
-                                <th class="border border-slate-600 px-3 py-4">
-                                    <div class="text-xs text-cyan-200 mb-2">C</div>
-                                    <div class="g43-blank matching-blank min-h-[3rem]" data-slot-id="C" data-answer="檢查結果">_</div>
-                                </th>
-                                <th class="border border-slate-600 px-3 py-4">
-                                    <div class="text-xs text-cyan-200 mb-2">D</div>
-                                    <div class="g43-blank matching-blank min-h-[3rem]" data-slot-id="D" data-answer="改善措施">_</div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-slate-300">
-                            <tr>
-                                <td class="border border-slate-700 px-3 py-5 font-bold">1</td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                            </tr>
-                            <tr>
-                                <td class="border border-slate-700 px-3 py-5 font-bold">2</td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                                <td class="border border-slate-700 px-3 py-5"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-bold text-cyan-200 mb-3">牌池</h3>
-                    <div id="g43-card-pool" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
-                </div>
-
-                <div id="g43-result" class="min-h-[2rem] text-lg font-bold"></div>
-                <div class="mt-4 flex flex-wrap justify-end gap-2">
-                    <button class="btn-secondary" onclick="resetGame43()">重置本題</button>
-                    <button class="btn-secondary" onclick="showAnswer43()">公布答案</button>
-                    <button class="btn-primary" onclick="checkGame43()">確認答案</button>
-                </div>
-            </div>
-        </section>
         </main><!-- end game-content-area -->
         <footer class="text-center py-4 text-xs text-slate-600">職安大師 &copy; 2026 — 互動複習遊樂室</footer>
     </div><!-- end screen-game -->
@@ -5435,7 +5482,7 @@
 
     <script>
         let activeSelection = null;
-        let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false, game39: false, game40: false, game41: false, game42: false, game43: false};
+        let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false, game39: false, game40: false, game41: false, game42: false};
         let gameMastery = {};
 
         // --- 音效 ---
@@ -5894,7 +5941,8 @@
                 ['icons', 'g6-mastery-icons'],
                 ['chem', 'g6-mastery-chem'],
                 ['prevention', 'g6-mastery-prevention'],
-                ['chemicals', 'g6-mastery-chemicals']
+                ['chemicals', 'g6-mastery-chemicals'],
+                ['terms', 'g6-mastery-terms']
             ].forEach(([sub, id]) => {
                 const wrap = document.getElementById(id);
                 if (!wrap) return;
@@ -5935,6 +5983,7 @@
             });
             updateGhsIconProgress();
             initGame6Chemical();
+            initGame6Terms();
             setTimeout(_initGhsDrag, 50);
         
         }
@@ -6191,6 +6240,197 @@
             }
             if (correct === total) { soundSuccess(); showConfetti(); showToast("🎉 化學品分類完全正確！", "success"); }
             else { soundError(); showToast(`❌ 答對 ${correct}/${total}，請修正紅底字卡！`, "error"); }
+        }
+
+        const g6TermsData = [
+            { id: 1, left: 'GHS', right: '聯合國化學品全球分類及標示調和制度：為降低化學品對勞工與使用者的健康危害及環境污染，並減少跨國貿易障礙，所主導推行的化學品分類與標示全球調和系統。' },
+            { id: 2, left: 'SDS', right: '安全資料表：又稱化學物質的身分證，簡要說明化學品的特性，是職場與環境安全衛生重要危害通識的參考資料。' },
+            { id: 3, left: 'LD50', right: '半數致死劑量' },
+            { id: 4, left: 'LC50', right: '半數致死濃度' },
+            { id: 5, left: 'log Kow', right: '辛醇／水分配係數：某一化學品在正辛醇相與水相濃度之比。' },
+            { id: 6, left: 'CAS No.', right: '化學文摘社號碼：由美國化學文摘社對每個化學物質註冊登記的編號，是化學物質唯一的數字識別編碼，標準格式為 XXXX-XX-X。' }
+        ];
+        let g6TermsLeftSel = null;
+        let g6TermsMatched = {};
+
+        function g6TermsShuffle(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        function initGame6Terms() {
+            g6TermsLeftSel = null;
+            g6TermsMatched = {};
+            const leftDiv = document.getElementById('g6-terms-left');
+            const rightDiv = document.getElementById('g6-terms-right');
+            const svg = document.getElementById('g6-terms-svg');
+            const result = document.getElementById('g6-terms-result');
+            if (!leftDiv || !rightDiv) return;
+            if (svg) svg.innerHTML = '';
+            if (result) result.textContent = '';
+            leftDiv.innerHTML = '';
+            g6TermsShuffle(g6TermsData).forEach(item => {
+                const card = document.createElement('button');
+                card.type = 'button';
+                card.id = `g6term-l-${item.id}`;
+                card.dataset.id = String(item.id);
+                card.className = 'g6-terms-left-card w-full text-left px-4 py-3 rounded-xl border border-slate-600 bg-slate-900/70 hover:border-cyan-400 transition font-bold text-slate-100';
+                card.textContent = item.left;
+                card.onclick = () => selectG6TermsLeft(card);
+                leftDiv.appendChild(card);
+            });
+            rightDiv.innerHTML = '';
+            g6TermsShuffle(g6TermsData).forEach(item => {
+                const card = document.createElement('button');
+                card.type = 'button';
+                card.id = `g6term-r-${item.id}`;
+                card.dataset.id = String(item.id);
+                card.className = 'g6-terms-right-card w-full text-left px-4 py-3 rounded-xl border border-slate-600 bg-slate-900/70 hover:border-emerald-400 transition font-bold text-slate-100';
+                card.textContent = item.right;
+                card.onclick = () => selectG6TermsRight(card);
+                rightDiv.appendChild(card);
+            });
+            g6TermsUpdateProgress();
+            setTimeout(() => {
+                if (typeof _g19BindDragGroup === 'function') {
+                    _g19BindDragGroup({
+                        leftSelector: '.g6-terms-left-card',
+                        rightSelector: '.g6-terms-right-card',
+                        svgId: 'g6-terms-svg',
+                        boardId: 'g6-terms-board',
+                        matchedObj: g6TermsMatched,
+                        selectLeft: selectG6TermsLeft,
+                        selectRight: selectG6TermsRight,
+                        stroke: '#22d3ee'
+                    });
+                }
+                g6TermsDrawLines();
+            }, 50);
+        }
+
+        function selectG6TermsLeft(card) {
+            triggerTimer();
+            soundClick();
+            if (!card) return;
+            const id = Number(card.dataset.id);
+            if (g6TermsMatched[id]) {
+                delete g6TermsMatched[id];
+                g6TermsLeftSel = null;
+                g6TermsPaint();
+                g6TermsDrawLines();
+                g6TermsUpdateProgress();
+                setTimeout(lsSave, 100);
+                return;
+            }
+            g6TermsLeftSel = id;
+            g6TermsPaint();
+            card.classList.add('ring-2', 'ring-cyan-300', 'scale-[1.02]');
+        }
+
+        function selectG6TermsRight(card) {
+            triggerTimer();
+            soundClick();
+            if (!card) return;
+            if (!g6TermsLeftSel) {
+                showToast('請先點選左欄英文名詞', 'error');
+                return;
+            }
+            const rightId = Number(card.dataset.id);
+            g6TermsMatched[g6TermsLeftSel] = rightId;
+            g6TermsLeftSel = null;
+            g6TermsPaint();
+            g6TermsDrawLines();
+            g6TermsUpdateProgress();
+            setTimeout(lsSave, 100);
+        }
+
+        function g6TermsPaint() {
+            const matchedRightIds = new Set(Object.values(g6TermsMatched).map(Number));
+            document.querySelectorAll('.g6-terms-left-card').forEach(el => {
+                el.className = 'g6-terms-left-card w-full text-left px-4 py-3 rounded-xl border border-slate-600 bg-slate-900/70 hover:border-cyan-400 transition font-bold text-slate-100';
+                if (g6TermsMatched[Number(el.dataset.id)]) el.classList.add('border-cyan-400', 'bg-cyan-950/40', 'opacity-80');
+            });
+            document.querySelectorAll('.g6-terms-right-card').forEach(el => {
+                el.className = 'g6-terms-right-card w-full text-left px-4 py-3 rounded-xl border border-slate-600 bg-slate-900/70 hover:border-emerald-400 transition font-bold text-slate-100';
+                if (matchedRightIds.has(Number(el.dataset.id))) el.classList.add('border-cyan-400', 'bg-cyan-950/40', 'opacity-80');
+            });
+        }
+
+        function g6TermsDrawLines() {
+            const svg = document.getElementById('g6-terms-svg');
+            const board = document.getElementById('g6-terms-board');
+            if (!svg || !board || typeof _g19SyncSvgSize !== 'function' || typeof _g19GetSvgCoords !== 'function') return;
+            svg.innerHTML = '';
+            _g19SyncSvgSize(svg, board);
+            Object.entries(g6TermsMatched).forEach(([leftId, rightId]) => {
+                const leftEl = document.getElementById(`g6term-l-${leftId}`);
+                const rightEl = document.getElementById(`g6term-r-${rightId}`);
+                if (!leftEl || !rightEl) return;
+                const a = _g19GetSvgCoords(leftEl, board, 'right');
+                const b = _g19GetSvgCoords(rightEl, board, 'left');
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', a.x);
+                line.setAttribute('y1', a.y);
+                line.setAttribute('x2', b.x);
+                line.setAttribute('y2', b.y);
+                line.setAttribute('stroke', '#22d3ee');
+                line.setAttribute('stroke-width', '4');
+                line.setAttribute('stroke-linecap', 'round');
+                line.setAttribute('opacity', '0.9');
+                svg.appendChild(line);
+            });
+        }
+
+        function g6TermsUpdateProgress() {
+            const el = document.getElementById('g6-terms-progress');
+            if (el) el.textContent = String(Object.keys(g6TermsMatched).length);
+        }
+
+        function checkGame6Terms() {
+            let correct = 0;
+            const total = g6TermsData.length;
+            Object.entries(g6TermsMatched).forEach(([leftId, rightId]) => {
+                if (Number(leftId) === Number(rightId)) correct++;
+            });
+            document.querySelectorAll('.g6-terms-left-card, .g6-terms-right-card').forEach(el => {
+                el.classList.remove('border-emerald-400', 'bg-emerald-950/50', 'border-rose-400', 'bg-rose-950/50');
+            });
+            Object.entries(g6TermsMatched).forEach(([leftId, rightId]) => {
+                const ok = Number(leftId) === Number(rightId);
+                const leftEl = document.getElementById(`g6term-l-${leftId}`);
+                const rightEl = document.getElementById(`g6term-r-${rightId}`);
+                [leftEl, rightEl].forEach(el => {
+                    if (!el) return;
+                    el.classList.add(ok ? 'border-emerald-400' : 'border-rose-400', ok ? 'bg-emerald-950/50' : 'bg-rose-950/50');
+                });
+            });
+            const result = document.getElementById('g6-terms-result');
+            if (correct === total) {
+                if (result) result.textContent = '✅ 全部配對正確';
+                soundSuccess();
+                showToast('第6關危害通識英文名詞配對正確！', 'success');
+            } else {
+                if (result) result.textContent = `目前答對 ${correct}/${total}，紅色代表需要重新配對。`;
+                soundError();
+                showToast(`答對 ${correct}/${total}，請修正錯誤配對`, 'error');
+            }
+            setTimeout(lsSave, 100);
+        }
+
+        function showAnswer6Terms() {
+            g6TermsMatched = {};
+            g6TermsData.forEach(item => { g6TermsMatched[item.id] = item.id; });
+            g6TermsPaint();
+            g6TermsDrawLines();
+            g6TermsUpdateProgress();
+            const result = document.getElementById('g6-terms-result');
+            if (result) result.textContent = '已公布解答，答案已直接連線。';
+            showToast('已公布危害通識英文名詞解答', 'info');
+            setTimeout(lsSave, 100);
         }
 
                 // --- 關卡 7 資料與邏輯 ---
@@ -7118,10 +7358,10 @@ function checkGame10() {
             { num: 16, tabId: 'tab-org-match',    icon: 'link',         title: '組織職責連連看',    desc: '考點十六：職安衛組織人員職責配對' },
             { num: 17, tabId: 'tab-explosion',    icon: 'zap',          title: '防爆電氣構造連連看', desc: '考點十七：防爆電氣構造種類代號與說明配對' },
             { num: 18, tabId: 'tab-ladder',       icon: 'move-vertical', title: '職安衛管理文件連連看', desc: '考點十八：職業安全衛生管理文件定義配對' },
-            { num: 19, tabId: 'tab-reserved-19', icon: 'bookmark-plus', title: '預留關卡（五）',      desc: '原第19關已併入第6關，保留給未來新增內容' },
+            { num: 19, tabId: 'tab-reserved-19', icon: 'git-compare-arrows', title: '管理名詞連連看', desc: '變更、緊急應變、採購及承攬名詞解釋配對' },
             { num: 20, tabId: 'tab-fire-class',    icon: 'flame',         title: '火災分類與物性排序', desc: '考點二十：火災分類、滅火原理、火災爆炸名詞、丁二烯溫度與閃火點排序' },
             { num: 21, tabId: 'tab-butadiene-sort', icon: 'construction', title: '起重機搭乘設備判斷',     desc: '考點二十一：吊掛式／直結式搭乘設備、檢查責任與安全防護' },
-            { num: 22, tabId: 'tab-flashpoint-sort',icon: 'bookmark-plus', title: '預留關卡（二）',     desc: '原第22關已併入第20關，保留給未來新增內容' },
+            { num: 22, tabId: 'tab-flashpoint-sort',icon: 'settings', title: '砂輪機構造與安全間隙', desc: '考點二十二：砂輪機部位名稱配對及安全間隙填空' },
             { num: 23, tabId: 'tab-23', icon: 'refresh-cw', title: 'CNS 45001 架構圖', desc: '考點二十三：PDCA 融入職安衛管理系統架構配合題' },
             { num: 24, tabId: 'tab-chem-equation', icon: 'flask-conical', title: '化學方程式係數填空', desc: '考點二十四：化學方程式配平係數填空' },
             { num: 26, tabId: 'tab-game26', icon: 'list-ordered', title: '緊急應變 & CCB 排序', desc: '考點二十六：緊急應變措施流程與CCB流程排序' },
@@ -7139,7 +7379,6 @@ function checkGame10() {
             { num: 40, tabId: 'tab-industry-staffing', icon: 'building-2', title: '產業分類與職安人員配置', desc: '考點四十：事業分類、管理門檻與職安人員配置' },
             { num: 41, tabId: 'tab-bird-domino-cards', icon: 'workflow', title: 'Bird 事故骨牌圖', desc: '考點四十一：事故因果連鎖模型圖卡判讀' },
             { num: 42, tabId: 'tab-explosion-proof-id', icon: 'flame', title: '危險區域與防爆標示', desc: '考點四十二：危險區域劃分與防爆電氣標示判讀' },
-            { num: 43, tabId: 'tab-auto-inspection-form', icon: 'clipboard-check', title: '自動檢查表欄位辨識', desc: '考點四十三：自動檢查表 A-D 欄位名稱配合題' },
         ];
         let currentGameNum = 1;
 
@@ -7257,10 +7496,10 @@ function checkGame10() {
             else if (gameNum === 16) initGame16();
             else if (gameNum === 17) initGame17();
             else if (gameNum === 18) initGame18();
-            else if (gameNum === 19) initReservedGame(19);
+            else if (gameNum === 19) initGame19Management();
             else if (gameNum === 20) { initGame20(); initG20e1(); initG20e2(); initG20e3(); initG20e4(); initG20b(); initGame20Sort21(); initGame20Sort22(); initG20TermsMatch(); }
             else if (gameNum === 21) initGame21CraneBasket();
-            else if (gameNum === 22) initReservedGame(22);
+            else if (gameNum === 22) initGame22Grinder();
             else if (gameNum === 23) initGame23();
             else if (gameNum === 24) initGame24();
             else if (gameNum === 25) initGame25();
@@ -7281,7 +7520,6 @@ function checkGame10() {
             else if (gameNum === 40 && typeof initGame40 === 'function') initGame40();
             else if (gameNum === 41 && typeof initGame41 === 'function') initGame41();
             else if (gameNum === 42 && typeof initGame42 === 'function') initGame42();
-            else if (gameNum === 43 && typeof initGame43 === 'function') initGame43();
         }
 
         function goToGame(num) {
@@ -7401,10 +7639,10 @@ function checkGame10() {
             else if (gameNum === 16) initGame16();
             else if (gameNum === 17) initGame17();
             else if (gameNum === 18) initGame18();
-            else if (gameNum === 19) initReservedGame(19);
+            else if (gameNum === 19) initGame19Management();
             else if (gameNum === 20) { initGame20(); initG20e1(); initG20e2(); initG20e3(); initG20e4(); initG20b(); initGame20Sort21(); initGame20Sort22(); initG20TermsMatch(); }
             else if (gameNum === 21) initGame21CraneBasket();
-            else if (gameNum === 22) initReservedGame(22);
+            else if (gameNum === 22) initGame22Grinder();
             else if (gameNum === 23) initGame23();
             else if (gameNum === 24) initGame24();
             else if (gameNum === 26) initGame26();
@@ -7424,7 +7662,6 @@ function checkGame10() {
             else if (gameNum === 40) initGame40();
             else if (gameNum === 41 && typeof initGame41 === 'function') initGame41();
             else if (gameNum === 42 && typeof initGame42 === 'function') initGame42();
-            else if (gameNum === 43 && typeof resetGame43 === 'function') resetGame43();
             else if (gameNum === 25) { g25Questions=[]; g25Answers={}; g25Current=0; if(g25TimerInterval){clearInterval(g25TimerInterval);g25TimerInterval=null;} document.getElementById("g25-start").classList.remove("hidden"); document.getElementById("g25-exam").classList.add("hidden"); document.getElementById("g25-result").classList.add("hidden"); }
             updateTrophyCount();
             showToast(`🔄 第 ${gameNum} 關已重置！`, "info");
@@ -7438,7 +7675,7 @@ function checkGame10() {
                 'safetyMasterG14Mastery', 'safetyMasterG19Mastery', 'safetyMasterG20Mastery', 'safetyMasterG21Mastery',
                 'safetyMasterG24Mastery', 'safetyMasterG26Mastery', 'safetyMasterG29Mastery',
                 'safetyMasterG35Mastery',
-                'safetyMasterG37Mastery', 'safetyMasterG40Mastery', 'safetyMasterG42Mastery', 'safetyMasterG43Mastery'
+                'safetyMasterG37Mastery', 'safetyMasterG40Mastery', 'safetyMasterG42Mastery'
             ];
             masteryKeys.forEach(key => localStorage.removeItem(key));
             gameMastery = {};
@@ -7455,7 +7692,6 @@ function checkGame10() {
             if (typeof g37Mastery !== 'undefined') g37Mastery = {};
             if (typeof g40Mastery !== 'undefined') g40Mastery = {};
             if (typeof g42Mastery !== 'undefined') g42Mastery = {};
-            if (typeof g43Mastery !== 'undefined') g43Mastery = {};
             const state = safeJsonParse(localStorage.getItem(LS_KEY), {});
             if (state && typeof state === 'object') {
                 state.gameMastery = {};
@@ -7472,7 +7708,6 @@ function checkGame10() {
                 delete state.g37Mastery;
                 delete state.g40Mastery;
                 delete state.g42Mastery;
-            delete state.g43Mastery;
                 localStorage.setItem(LS_KEY, JSON.stringify(state));
                 window._lsPendingState = state;
             }
@@ -8361,6 +8596,15 @@ function checkGame10() {
             { key: 'G29B', label: '工作場所' },
             { key: 'G29C', label: '作業場所' },
             { key: 'G29D', label: '非屬上述場所' },
+            { key: 'G30A', label: '氣體' },
+            { key: 'G30B', label: '蒸氣' },
+            { key: 'G30C', label: '粉塵' },
+            { key: 'G30D', label: '燻煙' },
+            { key: 'G30E', label: '煙塵' },
+            { key: 'G30F', label: '霧滴' },
+            { key: 'G30G', label: '霧' },
+            { key: 'G30H', label: '纖維' },
+            { key: 'G30I', label: '生物氣膠' },
         ];
 
         const g14DistractorOptions = [
@@ -8420,7 +8664,8 @@ function checkGame10() {
             { key: 'G14D26G', label: '由起始事件往後推論' }, { key: 'G14D26H', label: '時間順序' }, { key: 'G14D26I', label: '檢核表' },
             { key: 'G14D27A', label: '時間順序' }, { key: 'G14D27B', label: '起始事件' }, { key: 'G14D27C', label: '前饋' }, { key: 'G14D27D', label: '結果導向' },
             { key: 'G14D28A', label: '工程管制' }, { key: 'G14D28B', label: '工作重組' }, { key: 'G14D28C', label: '警告標籤' }, { key: 'G14D28D', label: '作業許可' },
-            { key: 'G14D29A', label: '施工場所' }, { key: 'G14D29B', label: '營業場所' }, { key: 'G14D29C', label: '休息場所' }, { key: 'G14D29D', label: '通勤場所' }
+            { key: 'G14D29A', label: '施工場所' }, { key: 'G14D29B', label: '營業場所' }, { key: 'G14D29C', label: '休息場所' }, { key: 'G14D29D', label: '通勤場所' },
+            { key: 'G14D30A', label: '氣膠' }, { key: 'G14D30B', label: '飛沫' }, { key: 'G14D30C', label: '可吸入性粉塵' }, { key: 'G14D30D', label: '煙霧' }, { key: 'G14D30E', label: '蒸發' }
         ];
 
         function g14FindOption(key) {
@@ -8604,6 +8849,7 @@ function checkGame10() {
             27: ['G27A','G27B','G27C','G27D','G27E','G27F','G27G','G27H'],
             28: ['G28A','G28B','G28C','G28D','G28E','G28F','G28G','G28H','G28I','G28J'],
             29: ['G29A','G29B','G29C','G29D'],
+            30: ['G30A','G30B','G30C','G30D','G30E','G30F','G30G','G30H','G30I'],
             distractors: {
                 1: ['G14D1A','G14D1B','G14D1C'],
                 2: ['G14D2A','G14D2B','G14D2C'],
@@ -8632,7 +8878,8 @@ function checkGame10() {
                 26: ['G14D26A','G14D26B','G14D26C','G14D26D','G14D26E','G14D26F','G14D26G','G14D26H','G14D26I'],
                 27: ['G14D27A','G14D27B','G14D27C','G14D27D'],
                 28: ['G14D28A','G14D28B','G14D28C','G14D28D'],
-                29: ['G14D29A','G14D29B','G14D29C','G14D29D']
+                29: ['G14D29A','G14D29B','G14D29C','G14D29D'],
+                30: ['G14D30A','G14D30B','G14D30C','G14D30D','G14D30E']
             }
         };
         // 各組空格 blank-id 清單
@@ -8664,7 +8911,8 @@ function checkGame10() {
             26: ['2601','2602','2603','2604','2605','2606','2607','2608','2609','2610','2611','2612','2613','2614','2615'],
             27: ['2701','2702','2703','2704','2705','2706','2707','2708'],
             28: ['2801','2802','2803','2804'],
-            29: ['2901','2902','2903','2904','2905']
+            29: ['2901','2902','2903','2904','2905'],
+            30: ['3001','3002','3003','3004','3005','3006','3007','3008','3009']
         };
 
         function g14GroupNumbers() {
@@ -8681,7 +8929,7 @@ function checkGame10() {
                 4:'hover:bg-teal-900/40',   5:'hover:bg-sky-900/40',   6:'hover:bg-orange-900/40',
                 7:'hover:bg-indigo-900/40', 8:'hover:bg-rose-900/40',  9:'hover:bg-lime-900/40',
                 10:'hover:bg-cyan-900/40', 12:'hover:bg-fuchsia-900/40', 13:'hover:bg-emerald-900/40',
-                14:'hover:bg-sky-900/40', 15:'hover:bg-orange-900/40', 16:'hover:bg-lime-900/40', 17:'hover:bg-emerald-900/40', 18:'hover:bg-cyan-900/40', 19:'hover:bg-amber-900/40', 20:'hover:bg-sky-900/40', 21:'hover:bg-cyan-900/40', 22:'hover:bg-orange-900/40', 23:'hover:bg-teal-900/40', 24:'hover:bg-rose-900/40', 25:'hover:bg-indigo-900/40', 26:'hover:bg-purple-900/40', 27:'hover:bg-cyan-900/40', 28:'hover:bg-emerald-900/40', 29:'hover:bg-amber-900/40'
+                14:'hover:bg-sky-900/40', 15:'hover:bg-orange-900/40', 16:'hover:bg-lime-900/40', 17:'hover:bg-emerald-900/40', 18:'hover:bg-cyan-900/40', 19:'hover:bg-amber-900/40', 20:'hover:bg-sky-900/40', 21:'hover:bg-cyan-900/40', 22:'hover:bg-orange-900/40', 23:'hover:bg-teal-900/40', 24:'hover:bg-rose-900/40', 25:'hover:bg-indigo-900/40', 26:'hover:bg-purple-900/40', 27:'hover:bg-cyan-900/40', 28:'hover:bg-emerald-900/40', 29:'hover:bg-amber-900/40', 30:'hover:bg-teal-900/40'
             };
             keys.forEach(key => {
                 const opt = g14FindOption(key);
@@ -9920,6 +10168,79 @@ function checkGame10() {
                 showToast('❌ 答對 ' + correct + '/' + total + '，請繼續配對！','error');
             }
             updateTrophyCount();
+        }
+
+
+        // ===== 第19關：管理名詞連連看 =====
+        const g19ManagementData = [
+            { id: 'change', left: '變更', right: '係指當技術、作業、工程和原有作業規範或設計規範有所改變或偏離，且此類改變或偏離未曾執行或發生過，或雖曾發生但無紀錄或書面資料可供依循者。但新建工程與擴建專案不在此列。' },
+            { id: 'emergency', left: '緊急應變', right: '因應事業單位發生之事故，由第一線員工或特定組織所立即採取之行動方案或措施。' },
+            { id: 'procurement', left: '採購', right: '指工程之定作、財物之買受、定製、承租及勞務之委任或僱傭等。' },
+            { id: 'contracting', left: '承攬', right: '謂當事人約定，一方為他方完成一定之工作，他方俟工作完成，給付報酬之契約。' }
+        ];
+        let g19ManagementMatched = {};
+        let g19ManagementSelectedLeft = null;
+        const g19ManagementShuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+        function initGame19Management() {
+            const left = document.getElementById('g19m-left');
+            const right = document.getElementById('g19m-right');
+            if (!left || !right) return;
+            g19ManagementMatched = {};
+            g19ManagementSelectedLeft = null;
+            left.innerHTML = g19ManagementShuffle(g19ManagementData).map(item => `
+                <button id="g19m-left-${item.id}" data-id="${item.id}" onclick="selectG19ManagementLeft(this)" class="w-full text-left rounded-xl border border-purple-500/60 bg-purple-950/30 px-4 py-3 text-sm font-bold text-purple-100 hover:bg-purple-900/50 transition min-h-[3.25rem] flex items-center">${item.left}</button>
+            `).join('');
+            right.innerHTML = g19ManagementShuffle(g19ManagementData).map(item => `
+                <button id="g19m-right-${item.id}" data-id="${item.id}" onclick="selectG19ManagementRight(this)" class="w-full text-left rounded-xl border border-slate-600 bg-slate-900/70 px-4 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-800 transition min-h-[4.75rem] flex items-center leading-relaxed">${item.right}</button>
+            `).join('');
+            if (typeof _g19BindDragGroup === 'function') {
+                _g19BindDragGroup({
+                    leftSelector: '#g19m-left button',
+                    rightSelector: '#g19m-right button',
+                    svgId: 'g19m-svg',
+                    boardId: 'g19m-board',
+                    matchedObj: g19ManagementMatched,
+                    selectLeft: selectG19ManagementLeft,
+                    selectRight: selectG19ManagementRight,
+                    stroke: '#a78bfa'
+                });
+            }
+            setTimeout(() => _g19RefreshLines('g19m-svg', 'g19m-board', 'g19m-left-', 'g19m-right-', g19ManagementData, g19ManagementMatched), 60);
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function selectG19ManagementLeft(card) {
+            g19ManagementSelectedLeft = card.dataset.id;
+            document.querySelectorAll('#g19m-left button').forEach(btn => btn.classList.remove('ring-2','ring-yellow-300'));
+            card.classList.add('ring-2','ring-yellow-300');
+        }
+
+        function selectG19ManagementRight(card) {
+            if (!g19ManagementSelectedLeft) { showToast('請先點選左欄名詞，再點右欄解釋', 'info'); return; }
+            g19ManagementMatched[g19ManagementSelectedLeft] = card.dataset.id;
+            g19ManagementSelectedLeft = null;
+            document.querySelectorAll('#g19m-left button').forEach(btn => btn.classList.remove('ring-2','ring-yellow-300'));
+            _g19PaintCards('g19m-left-', 'g19m-right-', g19ManagementData, g19ManagementMatched, ['ring-2','ring-purple-400','bg-purple-900/60','border-purple-400','text-white']);
+            _g19RefreshLines('g19m-svg', 'g19m-board', 'g19m-left-', 'g19m-right-', g19ManagementData, g19ManagementMatched);
+        }
+
+        function checkGame19Management() {
+            const isAllCorrect = g19ManagementData.every(item => g19ManagementMatched[item.id] === item.id);
+            if (!isAllCorrect) {
+                showToast('還有配對不正確，請重新調整。', 'error');
+                return;
+            }
+            markComplete(19);
+            showToast('第19關配對完成！', 'success');
+            initGameList();
+        }
+
+        function showAnswer19Management() {
+            g19ManagementMatched = Object.fromEntries(g19ManagementData.map(item => [item.id, item.id]));
+            _g19PaintCards('g19m-left-', 'g19m-right-', g19ManagementData, g19ManagementMatched, ['ring-2','ring-emerald-400','bg-emerald-900/40','border-emerald-400','text-white']);
+            _g19RefreshLines('g19m-svg', 'g19m-board', 'g19m-left-', 'g19m-right-', g19ManagementData, g19ManagementMatched);
+            showToast('已將第19關答案直接連線。', 'info');
         }
 
         // ===== 第20關：火災分類配合題 =====
@@ -14131,142 +14452,6 @@ function checkGame10() {
             { id: 'improve', label: '改善措施' }
         ];
         const g43Distractors = ['檢查人員', '檢查日期', '處理期限', '確認簽名'];
-        let g43SelectedCard = null;
-        let g43SlotData = {};
-        let g43Mastery = {};
-
-        function g43MasteryStorageKey() { return 'safetyMasterG43Mastery'; }
-        function g43LoadMastery() {
-            g43Mastery = readObjectSaveKey(g43MasteryStorageKey(), {});
-            if (!g43Mastery.main) g43Mastery.main = 0;
-            return g43Mastery;
-        }
-        function g43SaveMastery() {
-            saveObjectKey(g43MasteryStorageKey(), g43Mastery || {});
-            if (typeof lsSave === 'function') lsSave();
-        }
-        function renderG43MasteryStars() {
-            const box = document.getElementById('g43-mastery');
-            if (!box) return;
-            g43LoadMastery();
-            const score = Number(g43Mastery.main || 0);
-            box.innerHTML = `<div class="text-sm text-slate-400 mb-1">本小題熟練度</div><div class="flex items-center justify-between gap-3"><span class="font-bold text-yellow-300">${score ? '★'.repeat(score) + '☆'.repeat(5 - score) : '未評分'}</span><div class="flex gap-1">${[1,2,3,4,5].map(n => `<button type="button" class="text-2xl ${n <= score ? 'text-yellow-300' : 'text-slate-500'} hover:text-yellow-200" onclick="g43SetMastery(${n})">★</button>`).join('')}</div></div>`;
-        }
-        function g43SetMastery(score) {
-            g43Mastery.main = score;
-            g43SaveMastery();
-            renderG43MasteryStars();
-        }
-        function g43Shuffle(list) { return [...list].sort(() => Math.random() - 0.5); }
-        function g43GetLabels() { return [...g43Answers.map(x => x.label), ...g43Distractors]; }
-
-        function renderG43Cards() {
-            const pool = document.getElementById('g43-card-pool');
-            if (!pool) return;
-            const used = new Set(Object.values(g43SlotData || {}));
-            pool.innerHTML = g43Shuffle(g43GetLabels()).map(label => {
-                const hidden = used.has(label) ? 'opacity-30 pointer-events-none' : '';
-                return `<button type="button" draggable="true" data-card="${label}" class="g43-card match-card ${hidden}" onclick="g43SelectCard(this)" ondragstart="event.dataTransfer.setData('text/plain', this.dataset.card)">${label}</button>`;
-            }).join('');
-        }
-        function g43SelectCard(card) {
-            document.querySelectorAll('.g43-card').forEach(c => c.classList.remove('selected'));
-            g43SelectedCard = card?.dataset?.card || null;
-            if (card) card.classList.add('selected');
-        }
-        function setupG43Blanks() {
-            document.querySelectorAll('.g43-blank').forEach(blank => {
-                blank.onclick = () => {
-                    if (g43SelectedCard) placeG43Card(blank, g43SelectedCard);
-                    else if (blank.dataset.filled) clearG43Blank(blank);
-                };
-                blank.ondragover = event => event.preventDefault();
-                blank.ondrop = event => {
-                    event.preventDefault();
-                    const label = event.dataTransfer.getData('text/plain');
-                    if (label) placeG43Card(blank, label);
-                };
-            });
-        }
-        function placeG43Card(blank, label) {
-            const slot = blank.dataset.slotId;
-            for (const key of Object.keys(g43SlotData)) {
-                if (g43SlotData[key] === label && key !== slot) delete g43SlotData[key];
-            }
-            g43SlotData[slot] = label;
-            g43SelectedCard = null;
-            renderG43State();
-            if (typeof lsSave === 'function') lsSave();
-        }
-        function clearG43Blank(blank) {
-            delete g43SlotData[blank.dataset.slotId];
-            renderG43State();
-            if (typeof lsSave === 'function') lsSave();
-        }
-        function renderG43State() {
-            document.querySelectorAll('.g43-blank').forEach(blank => {
-                const label = g43SlotData[blank.dataset.slotId];
-                blank.textContent = label || '_';
-                blank.dataset.filled = label || '';
-                blank.classList.remove('correct', 'wrong');
-            });
-            renderG43Cards();
-        }
-        function initGame43() {
-            g43LoadMastery();
-            if (!g43SlotData) g43SlotData = {};
-            setupG43Blanks();
-            renderG43MasteryStars();
-            renderG43State();
-            const result = document.getElementById('g43-result');
-            if (result) result.textContent = '';
-        }
-        function checkGame43() {
-            let correct = 0;
-            const blanks = [...document.querySelectorAll('.g43-blank')];
-            blanks.forEach(blank => {
-                const ok = (blank.dataset.filled || '') === blank.dataset.answer;
-                blank.classList.toggle('correct', ok);
-                blank.classList.toggle('wrong', !ok);
-                if (ok) correct++;
-            });
-            const result = document.getElementById('g43-result');
-            if (correct === blanks.length) {
-                completedGames.game43 = true;
-                if (result) result.innerHTML = '<span class="text-green-300">全部正確！</span>';
-                if (typeof recordTime === 'function') recordTime(43);
-                if (typeof soundSuccess === 'function') soundSuccess();
-                if (typeof showConfetti === 'function') showConfetti();
-            } else {
-                completedGames.game43 = false;
-                if (result) result.innerHTML = `<span class="text-rose-300">目前答對 ${correct}/${blanks.length}，可直接重新放字卡。</span>`;
-                if (typeof soundError === 'function') soundError();
-            }
-            updateTrophyCount();
-            if (typeof lsSave === 'function') lsSave();
-        }
-        function showAnswer43() {
-            document.querySelectorAll('.g43-blank').forEach(blank => {
-                g43SlotData[blank.dataset.slotId] = blank.dataset.answer;
-            });
-            renderG43State();
-            const result = document.getElementById('g43-result');
-            if (result) result.innerHTML = '<span class="text-cyan-300">已將答案填入空格。</span>';
-            if (typeof lsSave === 'function') lsSave();
-        }
-        function resetGame43() {
-            g43SlotData = {};
-            completedGames.game43 = false;
-            renderG43State();
-            const result = document.getElementById('g43-result');
-            if (result) result.textContent = '';
-            updateTrophyCount();
-            if (typeof lsSave === 'function') lsSave();
-        }
-        function restoreGame43(data) {
-            g43SlotData = data && typeof data === 'object' ? { ...data } : {};
-            if (!document.getElementById('tab-auto-inspection-form')?.classList.contains('hidden')) initGame43();
-        }
 
         window.onload = () => {
             // 自動讀取存檔
@@ -14574,7 +14759,6 @@ function checkGame10() {
                 'safetyMasterG37Mastery',
                 'safetyMasterG40Mastery',
                 'safetyMasterG42Mastery',
-                'safetyMasterG43Mastery',
                 'g25_correct_ids',
                 'oshaBookmarks',
                 'oshaProgress'
@@ -14632,7 +14816,6 @@ function checkGame10() {
             const g24MasteryData = readObjectSaveKey('safetyMasterG24Mastery', typeof g24Mastery !== 'undefined' ? g24Mastery : {});
             const g26MasteryData = readObjectSaveKey('safetyMasterG26Mastery', typeof g26Mastery !== 'undefined' ? g26Mastery : {});
             const g42MasteryData = readObjectSaveKey('safetyMasterG42Mastery', typeof g42Mastery !== 'undefined' ? g42Mastery : {});
-            const g43MasteryData = readObjectSaveKey('safetyMasterG43Mastery', typeof g43Mastery !== 'undefined' ? g43Mastery : {});
             return {
                 app: '職安大師',
                 type: FULL_SYNC_TYPE,
@@ -14661,8 +14844,7 @@ function checkGame10() {
                     g40: g40MasteryData,
                     g24: g24MasteryData,
                     g26: g26MasteryData,
-                    g42: g42MasteryData,
-                    g43: g43MasteryData
+                    g42: g42MasteryData
                 },
                 g6: {
                     mastery: g6MasteryData
@@ -14698,10 +14880,6 @@ function checkGame10() {
                 g42: {
                     mastery: g42MasteryData,
                     slotData: (typeof g42SlotData !== 'undefined') ? g42SlotData : {}
-                },
-                g43: {
-                    mastery: g43MasteryData,
-                    slotData: (typeof g43SlotData !== 'undefined') ? g43SlotData : {}
                 },
                 g29: {
                     answers: safeJsonParse(localStorage.getItem('safetyMasterG29Answers'), {}),
@@ -14756,7 +14934,6 @@ function checkGame10() {
                     if (mainState.g37Mastery) mergeObjectSaveKey('safetyMasterG37Mastery', mainState.g37Mastery);
                     if (mainState.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', mainState.g40Mastery);
                     if (mainState.g42Mastery) mergeObjectSaveKey('safetyMasterG42Mastery', mainState.g42Mastery);
-                    if (mainState.g43Mastery) mergeObjectSaveKey('safetyMasterG43Mastery', mainState.g43Mastery);
                 }
 
                 if (pkg.g25 && Array.isArray(pkg.g25.correctIds)) {
@@ -14790,7 +14967,6 @@ function checkGame10() {
                 if (pkg.mastery && pkg.mastery.g37) mergeObjectSaveKey('safetyMasterG37Mastery', pkg.mastery.g37);
                 if (pkg.mastery && pkg.mastery.g40) mergeObjectSaveKey('safetyMasterG40Mastery', pkg.mastery.g40);
                 if (pkg.mastery && pkg.mastery.g42) mergeObjectSaveKey('safetyMasterG42Mastery', pkg.mastery.g42);
-                if (pkg.mastery && pkg.mastery.g43) mergeObjectSaveKey('safetyMasterG43Mastery', pkg.mastery.g43);
 
                 if (pkg.g6 && pkg.g6.mastery) mergeObjectSaveKey('safetyMasterG6Mastery', pkg.g6.mastery);
                 if (pkg.g7 && pkg.g7.mastery) mergeObjectSaveKey('safetyMasterG7Mastery', pkg.g7.mastery);
@@ -14833,14 +15009,6 @@ function checkGame10() {
                     currentMain.g42SlotData = pkg.g42.slotData;
                     localStorage.setItem(LS_KEY, JSON.stringify(currentMain));
                 }
-                if (pkg.g43 && pkg.g43.mastery) {
-                    mergeObjectSaveKey('safetyMasterG43Mastery', pkg.g43.mastery);
-                }
-                if (pkg.g43 && pkg.g43.slotData) {
-                    const currentMain = safeJsonParse(localStorage.getItem(LS_KEY), {});
-                    currentMain.g43SlotData = pkg.g43.slotData;
-                    localStorage.setItem(LS_KEY, JSON.stringify(currentMain));
-                }
 
                 if (pkg.examSimulator) {
                     if (Array.isArray(pkg.examSimulator.bookmarks)) {
@@ -14870,7 +15038,6 @@ function checkGame10() {
             if (pkg.g37Mastery) mergeObjectSaveKey('safetyMasterG37Mastery', pkg.g37Mastery);
             if (pkg.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', pkg.g40Mastery);
             if (pkg.g42Mastery) mergeObjectSaveKey('safetyMasterG42Mastery', pkg.g42Mastery);
-            if (pkg.g43Mastery) mergeObjectSaveKey('safetyMasterG43Mastery', pkg.g43Mastery);
             reloadAllMasteryFromStorage();
             return '舊版主存檔';
         }
@@ -15087,7 +15254,6 @@ function checkGame10() {
                 state.g37Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG37Mastery', typeof g37Mastery !== 'undefined' ? g37Mastery : {})));
                 state.g40Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG40Mastery', typeof g40Mastery !== 'undefined' ? g40Mastery : {})));
                 state.g42Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG42Mastery', typeof g42Mastery !== 'undefined' ? g42Mastery : {})));
-                state.g43Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG43Mastery', typeof g43Mastery !== 'undefined' ? g43Mastery : {})));
 
                 // 2. 各關卡 DOM 狀態
                 // Pattern A: data-placedId slots (games 1,2,4,5,10,13)
@@ -15304,7 +15470,6 @@ function checkGame10() {
                 if (state.g37Mastery) mergeObjectSaveKey('safetyMasterG37Mastery', state.g37Mastery);
                 if (state.g40Mastery) mergeObjectSaveKey('safetyMasterG40Mastery', state.g40Mastery);
                 if (state.g42Mastery) mergeObjectSaveKey('safetyMasterG42Mastery', state.g42Mastery);
-                if (state.g43Mastery) mergeObjectSaveKey('safetyMasterG43Mastery', state.g43Mastery);
                 if (state.bestTimes) {
                     Object.assign(bestTimes, state.bestTimes);
                 }
@@ -15323,7 +15488,6 @@ function checkGame10() {
                 if (state.g39SlotData) Object.assign(g39SlotData, state.g39SlotData);
                 if (state.g41SlotData) Object.assign(g41SlotData, state.g41SlotData);
                 if (state.g42SlotData) Object.assign(g42SlotData, state.g42SlotData);
-                if (state.g43SlotData) Object.assign(g43SlotData, state.g43SlotData);
                 if (state.g20bSlotData) Object.assign(g20bSlotData, state.g20bSlotData);
                 if (state.g11Matched) Object.assign(g11Matched, state.g11Matched);
 
@@ -15353,7 +15517,6 @@ function checkGame10() {
             localStorage.removeItem('safetyMasterG37Mastery');
             localStorage.removeItem('safetyMasterG40Mastery');
             localStorage.removeItem('safetyMasterG42Mastery');
-            localStorage.removeItem('safetyMasterG43Mastery');
             localStorage.removeItem('g25_correct_ids');
             localStorage.removeItem('oshaBookmarks');
             localStorage.removeItem('oshaProgress');
@@ -15473,7 +15636,6 @@ function exportSave() {
                     case 39: _lsRestoreSortableOrder('g39-slots', g39Items, g39SlotData, state.g39SlotData, 'emerald'); break;
                     case 41: restoreGame41(state.g41SlotData); break;
                     case 42: restoreGame42(state.g42SlotData); break;
-                    case 43: restoreGame43(state.g43SlotData); break;
                     case 37: break;
                     case 38: restoreGame38(state.g38Selected, state.g38bSelected); break;
                     case 23: _lsRestoreBlanks('.g23-blank', state.g23, 'blank'); break;
@@ -18464,10 +18626,11 @@ function exportSave() {
                         },
                         {
                             subtitle: '（二）四氯化碳有機溶劑換氣能力',
-                            desc: '某有機溶劑作業場所每小時四氯化碳消費量為 5 kg。依有機溶劑中毒預防規則，四氯化碳屬第一種有機溶劑，換氣量 Q = 每小時消費量 W（g/hr） × 0.3。試計算所需換氣能力。',
+                            desc: '某有機溶劑作業場所每小時四氯化碳消費量為 5 kg。依有機溶劑中毒預防規則，試回答：（一）四氯化碳屬第幾種有機溶劑？（二）若設置整體換氣裝置，其所需換氣能力為每分鐘多少立方公尺？答案請四捨五入取整數。',
                             table: '',
                             hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
                                 <p class="font-bold mb-2">📐 公式：</p>
+                                <p>四氯化碳屬<strong class="text-yellow-300">第一種有機溶劑</strong>。</p>
                                 <p>Q = 0.3 × W</p>
                                 <hr class="border-amber-700/50 my-2">
                                 <p class="font-bold text-emerald-400 mb-1">📋 解題步驟</p>
@@ -18475,13 +18638,87 @@ function exportSave() {
                                 <p>Q = 0.3 × 5000 = <strong class="text-yellow-300">1500 m³/min</strong></p>
                             </div>`,
                             blanks: [
+                                { label: '四氯化碳分類（第一種填 1、第二種填 2、第三種填 3）', answer: 1, tolerance: 0 },
                                 { label: '每小時消費量 W（g/hr）', answer: 5000, tolerance: 5 },
-                                { label: '所需換氣能力 Q（m³/min）', answer: 1500, tolerance: 5 }
+                                { label: '所需換氣能力 Q（m³/min，取整數）', answer: 1500, tolerance: 0 }
                             ],
                             solution: ''
                         },
                         {
-                            subtitle: '（三）每人新鮮空氣量 0.14 題型',
+                            subtitle: '（三）甲苯每日消費量與整體換氣能力',
+                            desc: '某有機溶劑作業場所，勞工每天作業 3 小時，甲苯之消費量共為 9.6 公斤。若設置整體換氣裝置，依規定甲苯屬第二種有機溶劑，其換氣能力 Q = 0.04 × W（W 為作業時間內每小時之有機溶劑消費量，單位 g/hr）。試計算 W 與所需換氣能力 Q，Q 請四捨五入取至整數。',
+                            table: '',
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p class="font-bold mb-2">📐 公式：</p>
+                                <p>第二種有機溶劑：Q = 0.04 × W</p>
+                                <p>W = 作業時間內的消費量（g）÷ 作業時間（hr）</p>
+                                <hr class="border-amber-700/50 my-2">
+                                <p class="font-bold text-emerald-400 mb-1">📋 解題步驟</p>
+                                <p>甲苯總消費量 = 9.6 kg × 1000 = 9600 g</p>
+                                <p>W = 9600 ÷ 3 = <strong class="text-yellow-300">3200 g/hr</strong></p>
+                                <p>Q = 0.04 × 3200 = <strong class="text-yellow-300">128 m³/min</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: '每小時甲苯消費量 W（g/hr）', answer: 3200, tolerance: 1 },
+                                { label: '所需換氣能力 Q（m³/min，取整數）', answer: 128, tolerance: 0 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（四）甲苯作業場所容許消費量',
+                            desc: '某工廠廠房長 10 公尺、寬 6 公尺、高 4 公尺，使用甲苯（第二種有機溶劑）從事產品清洗與擦拭，且未裝設整體換氣裝置。依有機溶劑中毒預防規則，試計算作業場所氣積、法規計算氣積及每小時甲苯容許消費量。答案請四捨五入取整數。',
+                            table: `<div class="overflow-x-auto mb-3"><table class="text-sm border-collapse w-full text-center text-slate-200">
+                                <thead><tr class="bg-slate-700/60"><th class="border border-slate-600 px-3 py-2">有機溶劑種類</th><th class="border border-slate-600 px-3 py-2">容許消費量</th></tr></thead>
+                                <tbody>
+                                    <tr class="bg-slate-800/60"><td class="border border-slate-600 px-3 py-2">第一種</td><td class="border border-slate-600 px-3 py-2">1/15 × 作業場所氣積</td></tr>
+                                    <tr class="bg-slate-800/40"><td class="border border-slate-600 px-3 py-2">第二種</td><td class="border border-slate-600 px-3 py-2">2/5 × 作業場所氣積</td></tr>
+                                    <tr class="bg-slate-800/60"><td class="border border-slate-600 px-3 py-2">第三種</td><td class="border border-slate-600 px-3 py-2">3/2 × 作業場所氣積</td></tr>
+                                </tbody>
+                            </table><p class="text-xs text-slate-400 mt-2">氣積超過 150 m³ 時，以 150 m³ 計算；容許消費量單位為公克。</p></div>`,
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p class="font-bold mb-2">📐 公式：</p>
+                                <p>作業場所氣積 = 長 × 寬 × 高</p>
+                                <p>第二種有機溶劑容許消費量 = 2/5 × 法規計算氣積</p>
+                                <hr class="border-amber-700/50 my-2">
+                                <p class="font-bold text-emerald-400 mb-1">📋 解題步驟</p>
+                                <p>作業場所氣積 = 10 × 6 × 4 = <strong class="text-yellow-300">240 m³</strong></p>
+                                <p>240 m³ ＞ 150 m³，因此法規計算氣積取 <strong class="text-yellow-300">150 m³</strong></p>
+                                <p>每小時容許消費量 = 2/5 × 150 = <strong class="text-yellow-300">60 g/hr</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: '作業場所氣積（m³）', answer: 240, tolerance: 0 },
+                                { label: '法規計算氣積（m³）', answer: 150, tolerance: 0 },
+                                { label: '每小時甲苯容許消費量（g/hr，取整數）', answer: 60, tolerance: 0 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（五）甲苯法規換氣量與理論換氣量比較',
+                            desc: '某室內作業場所每小時使用甲苯 0.5 公斤，欲以整體換氣裝置避免作業環境中甲苯濃度超過容許濃度。已知甲苯為第二種有機溶劑、分子量 M = 92、8 小時日時量平均容許濃度 C = 100 ppm，25°C、1 atm 時每克分子體積為 24.45 L。試計算法規換氣量、理論換氣量及應採用的最低換氣量，答案取至小數點後 2 位。',
+                            table: '',
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p class="font-bold mb-2">📐 公式：</p>
+                                <p>法規換氣量：Q<sub>法規</sub> = 0.04 × W</p>
+                                <p>理論換氣量：Q<sub>理論</sub> = (24.45 × 10³ × W) ÷ (60 × C × M)</p>
+                                <p>最低換氣量應取法規值與理論值中較大者。</p>
+                                <hr class="border-amber-700/50 my-2">
+                                <p class="font-bold text-emerald-400 mb-1">📋 解題步驟</p>
+                                <p>W = 0.5 × 1000 = <strong class="text-yellow-300">500 g/hr</strong></p>
+                                <p>Q<sub>法規</sub> = 0.04 × 500 = <strong class="text-yellow-300">20.00 m³/min</strong></p>
+                                <p>Q<sub>理論</sub> = (24.45 × 10³ × 500) ÷ (60 × 100 × 92)</p>
+                                <p>= 22.1467... ≈ <strong class="text-yellow-300">22.15 m³/min</strong></p>
+                                <p>因 22.15 ＞ 20.00，故最低換氣量取 <strong class="text-yellow-300">22.15 m³/min</strong></p>
+                            </div>`,
+                            blanks: [
+                                { label: '每小時甲苯消費量 W（g/hr）', answer: 500, tolerance: 0 },
+                                { label: '法規換氣量（m³/min，小數點後2位）', answer: 20.00, tolerance: 0.01 },
+                                { label: '理論換氣量（m³/min，小數點後2位）', answer: 22.15, tolerance: 0.02 },
+                                { label: '應採用的最低換氣量（m³/min，小數點後2位）', answer: 22.15, tolerance: 0.02 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（六）每人新鮮空氣量 0.14 題型',
                             desc: '某工作場所每勞工所占空間為 30 m³，以機械通風方式提供每位勞工 0.14 m³/min 之新鮮空氣，試計算每小時換氣次數。',
                             table: '',
                             hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
@@ -18499,7 +18736,7 @@ function exportSave() {
                             solution: ''
                         },
                         {
-                            subtitle: '（四）每人新鮮空氣量 0.6 題型',
+                            subtitle: '（七）每人新鮮空氣量 0.6 題型',
                             desc: '工作場所每一勞工平均占 5 m³，雇主提供每一勞工平均每分鐘 0.6 m³ 新鮮空氣。試計算每小時換氣次數。',
                             table: '',
                             hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
@@ -18517,7 +18754,7 @@ function exportSave() {
                             solution: ''
                         },
                         {
-                            subtitle: '（五）排氣機定律',
+                            subtitle: '（八）排氣機定律',
                             desc: '事業單位為加強排氣效果，增加排氣機轉速，使氣罩表面風速增為原來之 1.2 倍。依排氣機定律，試計算排氣機所需動力增為原來幾倍。',
                             table: '',
                             visualFormula: [
@@ -18536,7 +18773,7 @@ function exportSave() {
                             solution: ''
                         },
                         {
-                            subtitle: '（六）負壓隔離病房換氣量',
+                            subtitle: '（九）負壓隔離病房換氣量',
                             desc: '某負壓隔離病房唯一進氣口之 4 點風速分別為 1.6、2.1、1.8、1.7 m/s，進氣口規格為 30 cm × 30 cm，病室氣積為 40 m³。試計算進氣風量、每小時換氣次數，並判斷換氣狀況。若 6~15 次/hr 為正常，正常填 1。',
                             table: '',
                             hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
@@ -18554,6 +18791,34 @@ function exportSave() {
                                 { label: '進氣風量（m³/hr，小數點後2位）', answer: 583.20, tolerance: 0.5 },
                                 { label: '每小時換氣次數 ACH（次/hr，小數點後2位）', answer: 14.58, tolerance: 0.1 },
                                 { label: '是否為正常換氣（正常填1）', answer: 1, tolerance: 0 }
+                            ],
+                            solution: ''
+                        },
+                        {
+                            subtitle: '（十）實驗室穩態濃度與防爆換氣判斷',
+                            desc: '某實驗室排氣設備每分鐘排出 60 L 空氣，有害物發生率為 5 g/min，分子量 M = 80；在 25°C、1 atm 下，爆炸範圍為 1.1%～2.3%。試計算：（一）室內穩態濃度為多少 mg/m³，並換算為 g/m³？（二）若有害物全部外洩，在理想狀態下是否有爆炸危險？有爆炸危險填 1，無危險填 0。',
+                            table: '',
+                            visualFormula: [
+                                { title: '穩態濃度', math: 'C = W / Q', note: 'W 與 Q 的單位須先統一。' },
+                                { title: '理論防爆換氣量', math: 'Q = 24.45×10³×W / (LEL%×10⁴×M)', note: '本題 W 使用 g/min，因此公式中不再除以 60。' }
+                            ],
+                            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                                <p class="font-bold mb-2">📐 公式：</p>
+                                <p>穩態濃度 C = W ÷ Q；理論防爆換氣量 Q<sub>理論</sub> = 24.45×10³×W ÷ (LEL%×10⁴×M)</p>
+                                <hr class="border-amber-700/50 my-2">
+                                <p class="font-bold text-emerald-400 mb-1">📋 解題步驟</p>
+                                <p>實際排氣量 = 60 L/min × 10⁻³ = <strong class="text-yellow-300">0.06 m³/min</strong></p>
+                                <p>有害物發生率 = 5 g/min × 10³ = <strong class="text-yellow-300">5000 mg/min</strong></p>
+                                <p>C = 5000 ÷ 0.06 = <strong class="text-yellow-300">83333.33 mg/m³</strong> = <strong class="text-yellow-300">83.33 g/m³</strong></p>
+                                <p>Q<sub>理論</sub> = 24.45×10³×5 ÷ (1.1×10⁴×80) = 0.1389… ≈ <strong class="text-yellow-300">0.14 m³/min</strong></p>
+                                <p>實際排氣量 0.06 ＜ 理論防爆換氣量 0.14，因此理想狀態下<strong class="text-red-300">有爆炸危險</strong>。</p>
+                            </div>`,
+                            blanks: [
+                                { label: '實際排氣量（m³/min，小數點後2位）', answer: 0.06, tolerance: 0.005 },
+                                { label: '室內穩態濃度（mg/m³，小數點後2位）', answer: 83333.33, tolerance: 0.1 },
+                                { label: '室內穩態濃度（g/m³，小數點後2位）', answer: 83.33, tolerance: 0.02 },
+                                { label: '理論防爆換氣量（m³/min，小數點後2位）', answer: 0.14, tolerance: 0.01 },
+                                { label: '是否有爆炸危險（有填1、無填0）', answer: 1, tolerance: 0 }
                             ],
                             solution: ''
                         }
@@ -18763,17 +19028,17 @@ function exportSave() {
                         },
                         {
                             subtitle: '（二）液氧溫度與冷凍能力',
-                            desc: '① 溫度 5℃、表壓 1.6 kg/cm² 之液氧，若表壓為 2 kg/cm²，求溫度。② 離心式壓縮機額定輸出 4 kW，求 1 日冷凍能力。③ 吸收式冷凍設備 1 小時入熱量 4000 仟卡，求 1 日冷凍能力。',
+                            desc: '① 溫度 5℃、表壓 1.6 kg/cm² 之液氧，若表壓為 2 kg/cm²，求溫度。② 離心式壓縮機額定輸出 4,000 W，求 1 日冷凍能力。③ 吸收式冷凍設備 1 小時加熱於發生器之入熱量為 4,000 仟卡，求 1 日冷凍能力。（冷凍能力均四捨五入至小數點後 1 位）',
                             table: '',
                             hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
                                 <p>(1.6+1.033)/(2+1.033) = (273.15+5)/(273.15+X)，X = <strong class="text-yellow-300">47.26℃</strong></p>
-                                <p>離心式：4 ÷ 1.2 = <strong class="text-yellow-300">3.33 公噸</strong></p>
-                                <p>吸收式：4000 ÷ 6640 = <strong class="text-yellow-300">0.60 公噸</strong></p>
+                                <p>離心式：4,000 W = 4 kW；4 ÷ 1.2 = 3.33… ≈ <strong class="text-yellow-300">3.3 公噸</strong></p>
+                                <p>吸收式：4,000 ÷ 6,640 = 0.6024… ≈ <strong class="text-yellow-300">0.6 公噸</strong></p>
                             </div>`,
                             blanks: [
                                 { label: '液氧表壓2 kg/cm²時溫度（℃，小數點後2位）', answer: 47.26, tolerance: 0.05 },
-                                { label: '離心式壓縮機1日冷凍能力（公噸，小數點後2位）', answer: 3.33, tolerance: 0.03 },
-                                { label: '吸收式冷凍設備1日冷凍能力（公噸，小數點後2位）', answer: 0.60, tolerance: 0.02 }
+                                { label: '離心式壓縮機1日冷凍能力（公噸，小數點後1位）', answer: 3.3, tolerance: 0.05 },
+                                { label: '吸收式冷凍設備1日冷凍能力（公噸，小數點後1位）', answer: 0.6, tolerance: 0.05 }
                             ],
                             solution: ''
                         },
@@ -18936,6 +19201,29 @@ function exportSave() {
                     ]
                 }
         ,{
+            id: 'bmi-calculation',
+            title: '身體質量指數（BMI）',
+            subgroups: [
+                {
+                    subtitle: '（一）BMI 計算',
+                    desc: '某事業單位進行職場健康促進活動，其中某勞工身高 165 公分，體重 57 公斤。此勞工之身體質量指數（BMI）為何？請四捨五入至小數點第 1 位。',
+                    table: '',
+                    visualFormula: [
+                        { title: '身體質量指數', math: 'BMI = 體重(kg) / 身高(m)^2', note: '身高須先由公分換算為公尺。165 公分 = 1.65 公尺。' }
+                    ],
+                    hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                        <p>BMI = 體重(kg) ÷ 身高(m)<sup>2</sup></p>
+                        <p>165 公分 = <strong class="text-yellow-300">1.65 公尺</strong></p>
+                        <p>BMI = 57 ÷ 1.65<sup>2</sup> = 20.936... ≈ <strong class="text-yellow-300">20.9</strong></p>
+                    </div>`,
+                    blanks: [
+                        { label: 'BMI（小數點第1位）', answer: 20.9, tolerance: 0.05 }
+                    ],
+                    solution: ''
+                }
+            ]
+        }
+        ,{
             id: 'nurse-firstaid-calculation',
             title: '醫護與急救人員計算',
             subgroups: [
@@ -18996,6 +19284,27 @@ function exportSave() {
                 { label: '喪葬費（元）', answer: 200000, tolerance: 0 },
                 { label: '死亡補償（元）', answer: 1600000, tolerance: 0 },
                 { label: '雇主應給付總額（元）', answer: 1800000, tolerance: 0 }
+            ],
+            solution: ''
+        },
+        {
+            id: 'radar-flux-density-distance',
+            title: '雷達天線電磁波通量密度計算',
+            desc: '距離一雷達天線 1 公尺處測得之電磁波通量密度（flux density）為 90 mW/cm²。在距離雷達天線 3 公尺時，電磁波通量密度應為多少 mW/cm²？',
+            table: '',
+            hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
+                <p class="font-bold mb-2">📐 公式：</p>
+                <p>電磁波通量密度與距離的平方成反比：</p>
+                <p>E₁：E₂ = R₂²：R₁²</p>
+                <p class="mt-1">也可寫成 E₂ = E₁ × (R₁ ÷ R₂)²</p>
+                <hr class="border-amber-700/50 my-2">
+                <p class="font-bold text-emerald-400 mb-1">📋 解題步驟</p>
+                <p>已知 E₁ = 90 mW/cm²、R₁ = 1 m、R₂ = 3 m</p>
+                <p>E₂ = 90 × (1 ÷ 3)²</p>
+                <p>= 90 × 1/9 = <strong class="text-yellow-300">10 mW/cm²</strong></p>
+            </div>`,
+            blanks: [
+                { label: '距離 3 公尺時的電磁波通量密度（mW/cm²）', answer: 10, tolerance: 0.1 }
             ],
             solution: ''
         }
@@ -19313,6 +19622,30 @@ function exportSave() {
                     '時量平均綜合溫度熱指數',
                     `WBGT<sub>avg</sub> = ${g29Frac('WBGT₁×t₁ + WBGT₂×t₂ + ...', 't₁ + t₂ + ...')}`,
                     '如果題目有作息比例，先依時間比例做加權平均。'
+                ));
+            }
+
+            if (text.includes('電磁波通量密度') || text.includes('flux density')) {
+                cards.push(g29FormulaCard(
+                    '電磁波通量密度與距離',
+                    `E₂ = E₁ × (${g29Frac('R₁', 'R₂')})<sup>2</sup>`,
+                    '通量密度與距離平方成反比；距離變為 3 倍，通量密度變為 1/9。'
+                ));
+            }
+
+            if (text.includes('有機溶劑') && (text.includes('0.3 × W') || text.includes('0.04 × W') || text.includes('0.01 × W'))) {
+                cards.push(g29FormulaCard(
+                    '有機溶劑整體換氣能力',
+                    `W = ${g29Frac('作業期間消費量（g）', '作業時間（hr）')}　Q = 係數 × W`,
+                    '第一種係數 0.3、第二種係數 0.04、第三種係數 0.01；先把公斤換成公克，再求每小時消費量。'
+                ));
+            }
+
+            if (text.includes('理論換氣量') && text.includes('24.45')) {
+                cards.push(g29FormulaCard(
+                    '有機溶劑理論換氣量',
+                    `Q = ${g29Frac('24.45 × 10³ × W', '60 × C × M')}`,
+                    'W 為 g/hr、C 為 ppm、M 為分子量；算出後與法規換氣量比較，採較大值。'
                 ));
             }
 
@@ -19673,6 +20006,159 @@ function exportSave() {
         })();
 
     
+// ===== 第22關：砂輪機構造與安全間隙 =====
+const g22gParts = [
+  { id: 1, name: '面罩',       pct: { x: 11, y: 10 } },
+  { id: 2, name: '研磨輪',     pct: { x: 8,  y: 51 } },
+  { id: 3, name: '工作物支架', pct: { x: 20, y: 75 } },
+  { id: 4, name: '護罩',       pct: { x: 87, y: 45 } },
+  { id: 5, name: '電源開關',   pct: { x: 52, y: 84 } }
+];
+let g22gSlots = {};
+let g22gSelected = null;
+
+function g22gShuffle(items) {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function g22gCard(part) {
+  const card = document.createElement('button');
+  card.type = 'button';
+  card.dataset.id = String(part.id);
+  card.draggable = true;
+  card.className = 'g22g-card px-3 py-2 rounded-lg border border-cyan-500/60 bg-cyan-950/80 text-cyan-100 text-sm font-bold hover:bg-cyan-900 transition';
+  card.textContent = part.name;
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.g22g-card').forEach(c => c.classList.remove('ring-2', 'ring-amber-400'));
+    g22gSelected = part.id;
+    card.classList.add('ring-2', 'ring-amber-400');
+  });
+  card.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('text/plain', String(part.id));
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  return card;
+}
+
+function g22gPlace(partId, slotId) {
+  const target = g22gSlots[slotId];
+  if (!target) return;
+  Object.values(g22gSlots).forEach(s => {
+    if (s.filledId === partId) {
+      s.filledId = null;
+      s.el.innerHTML = `<span class="opacity-70">${s.answerId}</span>`;
+    }
+  });
+  target.filledId = partId;
+  const part = g22gParts.find(p => p.id === partId);
+  target.el.innerHTML = `<span class="opacity-70 mr-1">${target.answerId}</span>${part ? part.name : ''}`;
+  target.el.classList.remove('border-red-500', 'border-emerald-400', 'bg-emerald-950/85');
+  g22gSelected = null;
+  document.querySelectorAll('.g22g-card').forEach(c => c.classList.remove('ring-2', 'ring-amber-400'));
+}
+
+function g22gInitSlots() {
+  const layer = document.getElementById('g22g-slots');
+  if (!layer) return;
+  layer.innerHTML = '';
+  g22gSlots = {};
+  g22gParts.forEach(part => {
+    const slot = document.createElement('button');
+    slot.type = 'button';
+    slot.className = 'absolute -translate-x-1/2 -translate-y-1/2 min-w-[84px] sm:min-w-[104px] px-2 py-1.5 rounded-lg border-2 border-dashed border-amber-300 bg-slate-950/85 text-[10px] sm:text-xs font-black text-white shadow-lg backdrop-blur-sm';
+    slot.style.left = `${part.pct.x}%`;
+    slot.style.top = `${part.pct.y}%`;
+    slot.innerHTML = `<span class="opacity-70">${part.id}</span>`;
+    slot.addEventListener('click', () => { if (g22gSelected) g22gPlace(g22gSelected, part.id); });
+    slot.addEventListener('dragover', e => e.preventDefault());
+    slot.addEventListener('drop', e => {
+      e.preventDefault();
+      const id = Number(e.dataTransfer.getData('text/plain'));
+      if (id) g22gPlace(id, part.id);
+    });
+    layer.appendChild(slot);
+    g22gSlots[part.id] = { el: slot, answerId: part.id, filledId: null };
+  });
+}
+
+function g22gBuildPool() {
+  const pool = document.getElementById('g22g-pool');
+  if (!pool) return;
+  pool.innerHTML = '';
+  g22gShuffle(g22gParts).forEach(part => pool.appendChild(g22gCard(part)));
+}
+
+function initGame22Grinder() {
+  g22gSelected = null;
+  const img = document.getElementById('g22g-img');
+  const ready = () => { g22gInitSlots(); g22gBuildPool(); };
+  if (img && !img.complete) img.onload = ready;
+  else setTimeout(ready, 0);
+}
+
+function resetGame22Grinder() {
+  initGame22Grinder();
+  ['g22g-gap-tongue', 'g22g-gap-rest'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; el.classList.remove('border-red-500', 'border-emerald-400'); }
+  });
+  const msg = document.getElementById('g22g-msg');
+  if (msg) msg.textContent = '';
+}
+
+function showAnswerGame22Grinder() {
+  g22gParts.forEach(part => g22gPlace(part.id, part.id));
+  document.getElementById('g22g-gap-tongue').value = '10';
+  document.getElementById('g22g-gap-rest').value = '3';
+  const msg = document.getElementById('g22g-msg');
+  msg.className = 'mt-5 min-h-[28px] text-center font-bold text-amber-300';
+  msg.textContent = '解答：舌板間隙 10 mm 以下；工作物支架間隙 3 mm 以下。';
+}
+
+function checkGame22Grinder() {
+  let correct = 0;
+  Object.values(g22gSlots).forEach(slot => {
+    const ok = slot.filledId === slot.answerId;
+    if (ok) correct++;
+    slot.el.classList.toggle('border-emerald-400', ok);
+    slot.el.classList.toggle('bg-emerald-950/85', ok);
+    slot.el.classList.toggle('border-red-500', !ok);
+  });
+  const tongue = document.getElementById('g22g-gap-tongue');
+  const rest = document.getElementById('g22g-gap-rest');
+  const tongueOk = Number(tongue.value) === 10;
+  const restOk = Number(rest.value) === 3;
+  [ [tongue, tongueOk], [rest, restOk] ].forEach(([el, ok]) => {
+    el.classList.toggle('border-emerald-400', ok);
+    el.classList.toggle('border-red-500', !ok);
+  });
+  correct += Number(tongueOk) + Number(restOk);
+  const msg = document.getElementById('g22g-msg');
+  if (correct === 7) {
+    msg.className = 'mt-5 min-h-[28px] text-center font-bold text-emerald-300';
+    msg.textContent = '全部正確！砂輪機部位與兩項安全間隙都答對了。';
+    completedGames['game22'] = true;
+    recordTime(22);
+    lsSave();
+    updateTrophyCount();
+    soundSuccess();
+    showConfetti();
+  } else {
+    msg.className = 'mt-5 min-h-[28px] text-center font-bold text-rose-300';
+    msg.textContent = `目前答對 ${correct}／7，紅框處請再確認。`;
+  }
+}
+
+window.addEventListener('resize', () => {
+  const sec = document.getElementById('tab-flashpoint-sort');
+  if (sec && !sec.classList.contains('hidden')) g22gInitSlots();
+});
+
 // ===== 第30關：堆高機配件填空 =====
 const g30Parts = [
   { id:  1, name: '護頂架', pct: { x: 60.1, y: 3.2 } },
@@ -21180,6 +21666,7 @@ window.addEventListener('resize', () => {
 </script>
 </body>
 </html>
+
 
 
 
