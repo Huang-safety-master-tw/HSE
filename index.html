@@ -387,6 +387,9 @@
         #sticky-note-text:empty::before { content: attr(data-placeholder); color: rgba(120, 53, 15, .48); pointer-events: none; }
         #sticky-note-text ol { list-style: decimal; padding-left: 1.65rem; margin: .35rem 0; }
         #sticky-note-text ol li { padding-left: .2rem; }
+        #sticky-note-text .sticky-fraction { display: inline-flex; flex-direction: column; align-items: stretch; justify-content: center; min-width: 1.4em; margin: 0 .18em; vertical-align: middle; line-height: 1.08; text-align: center; }
+        #sticky-note-text .sticky-fraction-top { padding: 0 .2em .08em; border-bottom: 1.5px solid currentColor; }
+        #sticky-note-text .sticky-fraction-bottom { padding: .08em .2em 0; }
         .sticky-symbol-btn { border: 1px solid rgba(161,98,7,.35); background: rgba(255,255,255,.55); border-radius: .45rem; padding: .2rem .46rem; font-weight: 900; }
         .sticky-symbol-btn:hover { background: white; }
         @media (max-width: 640px) {
@@ -22159,7 +22162,7 @@ window.addEventListener('resize', () => {
             <button type="button" onclick="toggleStickyNote(false)" class="w-8 h-8 rounded-lg bg-amber-900/10 hover:bg-amber-900/20 font-black" aria-label="收合便利貼">－</button>
         </div>
         <div class="px-3 py-2 border-b border-amber-500/40 flex flex-wrap gap-1.5" aria-label="公式符號快捷列">
-            <button class="sticky-symbol-btn" onclick="insertStickyText('×')">×</button><button class="sticky-symbol-btn" onclick="insertStickyText('÷')">÷</button><button class="sticky-symbol-btn" onclick="insertStickyText('√')">√</button><button class="sticky-symbol-btn" onclick="insertStickyText('²')">²</button><button class="sticky-symbol-btn" onclick="insertStickyText('³')">³</button><button class="sticky-symbol-btn" onclick="insertStickyExponent()" title="自行輸入次方數">xⁿ</button><button class="sticky-symbol-btn" onclick="insertStickyText('π')">π</button><button class="sticky-symbol-btn" onclick="insertStickyText('→')">→</button><button class="sticky-symbol-btn" onclick="insertStickyText('≤')">≤</button><button class="sticky-symbol-btn" onclick="insertStickyText('≥')">≥</button>
+            <button class="sticky-symbol-btn" onclick="insertStickyText('×')">×</button><button class="sticky-symbol-btn" onclick="insertStickyText('÷')">÷</button><button class="sticky-symbol-btn" onclick="insertStickyText('√')">√</button><button class="sticky-symbol-btn" onclick="insertStickyText('²')">²</button><button class="sticky-symbol-btn" onclick="insertStickyText('³')">³</button><button class="sticky-symbol-btn" onclick="insertStickyExponent()" title="自行輸入次方數">xⁿ</button><button class="sticky-symbol-btn" onclick="insertStickyFraction()" title="插入直式分數">分數</button><button class="sticky-symbol-btn" onclick="insertStickyText('π')">π</button><button class="sticky-symbol-btn" onclick="insertStickyText('→')">→</button><button class="sticky-symbol-btn" onclick="insertStickyText('≤')">≤</button><button class="sticky-symbol-btn" onclick="insertStickyText('≥')">≥</button>
             <span class="flex gap-1 border-l border-amber-600/30 pl-2">
                 <button class="sticky-symbol-btn" onclick="formatStickyNote('bold')" title="選取文字後加粗"><strong>B</strong></button>
                 <button class="sticky-symbol-btn bg-pink-400" onclick="formatStickyNote('highlight')" title="選取文字後加入桃紅色螢光劃記">🖍</button>
@@ -22224,6 +22227,21 @@ window.addEventListener('resize', () => {
             const escaped = exponent.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
             restoreStickyRange();
             document.execCommand('insertHTML', false, '<sup>' + escaped + '</sup>');
+            saveStickyNote();
+        }
+        function escapeStickyHtml(value) {
+            return value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+        }
+        function insertStickyFraction() {
+            const topValue = prompt('請輸入分子：');
+            if (topValue === null) return;
+            const bottomValue = prompt('請輸入分母：');
+            if (bottomValue === null) return;
+            const top = topValue.trim(), bottom = bottomValue.trim();
+            if (!top || !bottom) { alert('分子與分母都必須填寫。'); return; }
+            if (top.length > 24 || bottom.length > 24) { alert('分子與分母各最多 24 個字元。'); return; }
+            restoreStickyRange();
+            document.execCommand('insertHTML', false, '<span class="sticky-fraction" contenteditable="false"><span class="sticky-fraction-top">' + escapeStickyHtml(top) + '</span><span class="sticky-fraction-bottom">' + escapeStickyHtml(bottom) + '</span></span>&nbsp;');
             saveStickyNote();
         }
         function insertStickyGame() {
