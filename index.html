@@ -22157,7 +22157,7 @@ window.addEventListener('resize', () => {
             <button type="button" onclick="toggleStickyNote(false)" class="w-8 h-8 rounded-lg bg-amber-900/10 hover:bg-amber-900/20 font-black" aria-label="收合便利貼">－</button>
         </div>
         <div class="px-3 py-2 border-b border-amber-500/40 flex flex-wrap gap-1.5" aria-label="公式符號快捷列">
-            <button class="sticky-symbol-btn" onclick="insertStickyText('×')">×</button><button class="sticky-symbol-btn" onclick="insertStickyText('÷')">÷</button><button class="sticky-symbol-btn" onclick="insertStickyText('√')">√</button><button class="sticky-symbol-btn" onclick="insertStickyText('²')">²</button><button class="sticky-symbol-btn" onclick="insertStickyText('³')">³</button><button class="sticky-symbol-btn" onclick="insertStickyText('π')">π</button><button class="sticky-symbol-btn" onclick="insertStickyText('→')">→</button><button class="sticky-symbol-btn" onclick="insertStickyText('≤')">≤</button><button class="sticky-symbol-btn" onclick="insertStickyText('≥')">≥</button>
+            <button class="sticky-symbol-btn" onclick="insertStickyText('×')">×</button><button class="sticky-symbol-btn" onclick="insertStickyText('÷')">÷</button><button class="sticky-symbol-btn" onclick="insertStickyText('√')">√</button><button class="sticky-symbol-btn" onclick="insertStickyText('²')">²</button><button class="sticky-symbol-btn" onclick="insertStickyText('³')">³</button><button class="sticky-symbol-btn" onclick="insertStickyExponent()" title="自行輸入次方數">xⁿ</button><button class="sticky-symbol-btn" onclick="insertStickyText('π')">π</button><button class="sticky-symbol-btn" onclick="insertStickyText('→')">→</button><button class="sticky-symbol-btn" onclick="insertStickyText('≤')">≤</button><button class="sticky-symbol-btn" onclick="insertStickyText('≥')">≥</button>
             <span class="flex gap-1 border-l border-amber-600/30 pl-2">
                 <button class="sticky-symbol-btn" onclick="formatStickyNote('bold')" title="選取文字後加粗"><strong>B</strong></button>
                 <button class="sticky-symbol-btn bg-pink-400" onclick="formatStickyNote('highlight')" title="選取文字後加入桃紅色螢光劃記">🖍</button>
@@ -22211,6 +22211,17 @@ window.addEventListener('resize', () => {
         function insertStickyText(text) {
             const area = stickyTextarea(); if (!area) return;
             restoreStickyRange(); document.execCommand('insertText', false, text); saveStickyNote();
+        }
+        function insertStickyExponent() {
+            const value = prompt('請輸入次方數（例如：4、12、-1）：');
+            if (value === null) return;
+            const exponent = value.trim();
+            if (!exponent) return;
+            if (exponent.length > 12) { alert('次方內容最多 12 個字元。'); return; }
+            const escaped = exponent.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+            restoreStickyRange();
+            document.execCommand('insertHTML', false, '<sup>' + escaped + '</sup>');
+            saveStickyNote();
         }
         function insertStickyGame() {
             let label = '主畫面';
