@@ -385,6 +385,8 @@
             background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, rgba(161,98,7,.18) 28px);
         }
         #sticky-note-text:empty::before { content: attr(data-placeholder); color: rgba(120, 53, 15, .48); pointer-events: none; }
+        #sticky-note-text ol { list-style: decimal; padding-left: 1.65rem; margin: .35rem 0; }
+        #sticky-note-text ol li { padding-left: .2rem; }
         .sticky-symbol-btn { border: 1px solid rgba(161,98,7,.35); background: rgba(255,255,255,.55); border-radius: .45rem; padding: .2rem .46rem; font-weight: 900; }
         .sticky-symbol-btn:hover { background: white; }
         @media (max-width: 640px) {
@@ -22161,6 +22163,7 @@ window.addEventListener('resize', () => {
             <span class="flex gap-1 border-l border-amber-600/30 pl-2">
                 <button class="sticky-symbol-btn" onclick="formatStickyNote('bold')" title="選取文字後加粗"><strong>B</strong></button>
                 <button class="sticky-symbol-btn bg-pink-400" onclick="formatStickyNote('highlight')" title="選取文字後加入桃紅色螢光劃記">🖍</button>
+                <button class="sticky-symbol-btn" onclick="formatStickyNote('orderedList')" title="建立或取消自動編號清單">1. 2. 3.</button>
                 <button class="sticky-symbol-btn" onclick="formatStickyNote('clear')" title="清除選取文字格式">清除格式</button>
             </span>
             <span class="ml-auto flex gap-1 border-l border-amber-600/30 pl-2">
@@ -22238,7 +22241,8 @@ window.addEventListener('resize', () => {
             if (action === 'bold') document.execCommand('bold', false, null);
             else if (action === 'highlight') {
                 if (!document.execCommand('hiliteColor', false, '#ff69b4')) document.execCommand('backColor', false, '#ff69b4');
-            } else if (action === 'clear') document.execCommand('removeFormat', false, null);
+            } else if (action === 'orderedList') document.execCommand('insertOrderedList', false, null);
+            else if (action === 'clear') document.execCommand('removeFormat', false, null);
             saveStickyNote();
         }
         function changeStickyFont(delta) {
