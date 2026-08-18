@@ -4139,26 +4139,27 @@
                     <div class="bg-slate-800/50 border border-orange-700/60 rounded-xl p-4">
                         <h3 class="text-sm font-bold text-orange-300 mb-1 flex items-center gap-2"><i data-lucide="flame" class="w-4 h-4"></i> 延伸小題⑧：火災爆炸名詞連連看</h3>
                         <div id="g20-mastery-terms" class="mb-3"></div>
-                        <p class="text-xs text-slate-400 mb-3">請將左側名詞與右側定義連線配對。點選左側名詞後，再點選右側定義即可建立連線。</p>
+                        <p class="text-xs text-slate-300 mb-1"><strong class="text-orange-200">題目：</strong>解釋下列火災爆炸常見相關名詞（共 15 題）。</p>
+                        <p class="text-xs text-slate-400 mb-3">請將左側名詞與右側完整解釋連線配對。點選左側名詞後，再點選右側解釋即可建立連線。</p>
                         <div id="g20terms-groups" class="space-y-6">
                         <div class="rounded-2xl border border-orange-700/50 bg-slate-950/45 p-4">
                             <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
-                                <h4 class="font-bold text-orange-200">?????????????</h4>
+                                <h4 class="font-bold text-orange-200">第一組：基礎名詞配對（8 題）</h4>
                                 <div class="flex flex-wrap gap-2">
-                                    <button class="btn-secondary text-sm" onclick="initG20TermsMatch('basic')">?????</button>
-                                    <button class="btn-secondary text-sm" onclick="showAnswerG20Terms(false, 'basic')">?????</button>
-                                    <button class="btn-primary text-sm" onclick="checkG20TermsMatch('basic')">?????</button>
+                                    <button class="btn-secondary text-sm" onclick="initG20TermsMatch('basic')">重置配對</button>
+                                    <button class="btn-secondary text-sm" onclick="showAnswerG20Terms(false, 'basic')">公布解答</button>
+                                    <button class="btn-primary text-sm" onclick="checkG20TermsMatch('basic')">驗證答案</button>
                                 </div>
                             </div>
                             <div id="g20terms-arena-basic" class="relative grid lg:grid-cols-[minmax(0,0.9fr)_5rem_minmax(0,1.25fr)] gap-y-8 lg:gap-x-4 xl:gap-x-6">
                                 <svg id="g20terms-svg-basic" class="pointer-events-none absolute inset-0 z-0 h-full w-full" aria-hidden="true"></svg>
                                 <div class="relative z-10">
-                                    <h5 class="mb-3 font-bold text-orange-100">??</h5>
+                                    <h5 class="mb-3 font-bold text-orange-100">名詞</h5>
                                     <div id="g20terms-left-basic" class="space-y-4"></div>
                                 </div>
                                 <div class="hidden lg:block"></div>
                                 <div class="relative z-10">
-                                    <h5 class="mb-3 font-bold text-orange-100">??</h5>
+                                    <h5 class="mb-3 font-bold text-orange-100">定義</h5>
                                     <div id="g20terms-right-basic" class="space-y-4"></div>
                                 </div>
                             </div>
@@ -4167,22 +4168,22 @@
 
                         <div class="rounded-2xl border border-orange-700/50 bg-slate-950/45 p-4">
                             <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
-                                <h4 class="font-bold text-orange-200">?????????????</h4>
+                                <h4 class="font-bold text-orange-200">第二組：進階名詞配對（7 題）</h4>
                                 <div class="flex flex-wrap gap-2">
-                                    <button class="btn-secondary text-sm" onclick="initG20TermsMatch('advanced')">?????</button>
-                                    <button class="btn-secondary text-sm" onclick="showAnswerG20Terms(false, 'advanced')">?????</button>
-                                    <button class="btn-primary text-sm" onclick="checkG20TermsMatch('advanced')">?????</button>
+                                    <button class="btn-secondary text-sm" onclick="initG20TermsMatch('advanced')">重置配對</button>
+                                    <button class="btn-secondary text-sm" onclick="showAnswerG20Terms(false, 'advanced')">公布解答</button>
+                                    <button class="btn-primary text-sm" onclick="checkG20TermsMatch('advanced')">驗證答案</button>
                                 </div>
                             </div>
                             <div id="g20terms-arena-advanced" class="relative grid lg:grid-cols-[minmax(0,0.9fr)_5rem_minmax(0,1.25fr)] gap-y-8 lg:gap-x-4 xl:gap-x-6">
                                 <svg id="g20terms-svg-advanced" class="pointer-events-none absolute inset-0 z-0 h-full w-full" aria-hidden="true"></svg>
                                 <div class="relative z-10">
-                                    <h5 class="mb-3 font-bold text-orange-100">??</h5>
+                                    <h5 class="mb-3 font-bold text-orange-100">名詞</h5>
                                     <div id="g20terms-left-advanced" class="space-y-4"></div>
                                 </div>
                                 <div class="hidden lg:block"></div>
                                 <div class="relative z-10">
-                                    <h5 class="mb-3 font-bold text-orange-100">??</h5>
+                                    <h5 class="mb-3 font-bold text-orange-100">定義</h5>
                                     <div id="g20terms-right-advanced" class="space-y-4"></div>
                                 </div>
                             </div>
@@ -11875,21 +11876,21 @@ function checkGame10() {
         }
 
         const g20TermPairs = [
-            { id: 'flash-point', term: '閃火點', def: '產生小火但無法持續燃燒的最低溫度。' },
-            { id: 'fire-point', term: '著火點', def: '遇熱源後可持續燃燒達 5 秒以上的最低溫度。' },
-            { id: 'ignition-temp', term: '著火溫度', def: '不靠外部引火，在空氣中可自行維持燃燒的最低溫度。' },
-            { id: 'sublimation', term: '昇華', def: '固態物質直接轉化為氣態的過程。' },
-            { id: 'origin', term: '起火點', def: '依煙痕、炭痕或火羽痕跡判斷的起火處。' },
-            { id: 'explosive-limit', term: '爆炸界限', def: '爆炸下限與爆炸上限之間，遇火源可能燃燒或爆炸的濃度範圍。' },
-            { id: 'lel', term: '爆炸下限', def: '爆炸範圍的最低濃度界限，數值越低越危險。' },
-            { id: 'uel', term: '爆炸上限', def: '爆炸範圍的最高濃度界限。' },
-            { id: 'fire-elements', term: '燃燒四要素', def: '可燃物、助燃物、熱能與連鎖反應。' },
-            { id: 'flashover', term: '閃燃', def: '室內可燃性氣體蓄積後突然全面引火，短時間形成火海。' },
-            { id: 'backdraft', term: '爆燃', def: '缺氧燃燒產生可燃性氣體，空氣瞬間進入後劇烈燃燒或爆炸，又稱復燃。' },
-            { id: 'bleve', term: '沸騰液體膨脹蒸氣雲爆炸（BLEVE）', def: '易燃液體容器受外部火災加熱，因高蒸氣壓造成容器破裂並可能伴隨火球。' },
-            { id: 'mie', term: '最低著火能量（MIE）', def: '可點燃最易引燃混合物的最小火花放電能量。' },
-            { id: 'impact-sensitivity', term: '衝擊感度', def: '使爆炸性物質起爆所需衝擊能的指標，數值越小越危險。' },
-            { id: 'boiling-point', term: '沸點', def: '液體沸騰產生蒸氣；沸點越低越容易氣化形成可燃性混合氣。' }
+            { id: 'flash-point', term: '閃火點', def: '係指能使可燃性液體蒸發或揮發性固體昇華，與空氣混合所產生的可燃性混合氣體，一接觸熱源就產生小火，但無法持續燃燒的最低溫度。' },
+            { id: 'fire-point', term: '著火點', def: '可燃性混合氣體遇熱源持續燃燒時間達 5 秒以上，此時之最低溫度稱為著火點。著火點溫度較該物質之閃火點高約 5～20°C；評估或表示物質危險程度時，常用閃火點而較少用燃點。' },
+            { id: 'ignition-temp', term: '著火溫度', def: '可燃性物質不自他處獲得熱能引燃的狀況下，於空氣中可自行維持燃燒之最低溫度。' },
+            { id: 'sublimation', term: '昇華', def: '是指固態物質直接轉化為氣態的過程。' },
+            { id: 'origin', term: '起火點', def: '室內燃燒產生火羽，使天花板或其他位置產生煙痕跡或炭痕跡，根據上述痕跡判斷起火處。' },
+            { id: 'explosive-limit', term: '爆炸界限', def: '可分為爆炸下限及爆炸上限；可燃性氣體或可燃性粉塵在空氣中的濃度介於二者之間，遇火源便可燃燒，在密閉空間或特殊條件下可能引起爆炸，因此爆炸界限亦即燃燒界限。' },
+            { id: 'lel', term: '爆炸下限', def: '以可燃性氣體或蒸氣之體積百分比表示之爆炸範圍最低濃度界限，稱為爆炸下限。爆炸下限值越低越危險。' },
+            { id: 'uel', term: '爆炸上限', def: '以可燃性氣體或蒸氣之體積百分比表示之爆炸範圍最高濃度界限，稱為爆炸上限。' },
+            { id: 'fire-elements', term: '燃燒四要素', def: '可燃物（燃料）、助燃物（氧氣）、熱能（溫度、能量）、連鎖反應。' },
+            { id: 'flashover', term: '閃燃', def: '係指室內起火後，火勢逐漸擴大過程中，因燃燒所生之可燃性氣體蓄積於天花板附近；此種氣體與空氣混合，正好進入燃燒範圍且達燃點之際，一舉引火形成巨大火苗，使室內頓時成為火海之狀態。' },
+            { id: 'backdraft', term: '爆燃', def: '缺氧狀態下持續燃燒，產生大量燃燒不完全之可燃性氣體；如大量空氣瞬間進入該空間，將產生劇烈燃燒，甚至爆炸。此種現象一般又稱為複燃（Back Draft）現象。' },
+            { id: 'bleve', term: '沸騰液體膨脹蒸氣雲爆炸（BLEVE）', def: '易燃液體（如丙烷）之儲槽若逢外部火災，容器受熱使內部產生高蒸氣壓，無液體的儲槽上方因火焰加熱造成延性破壞，槽體高壓造成儲槽破裂；若內容物為易燃性物質，常伴隨著火球。' },
+            { id: 'mie', term: '最低著火能量（MIE）', def: '就電氣設備而言，可以點燃最易引燃之氣體、蒸氣與空氣混合物的最小電容性火花放電能量。常應用於防爆設計，若能使熱能不超過可燃物質 MIE，則可防止燃燒爆炸。' },
+            { id: 'impact-sensitivity', term: '衝擊感度', def: '使爆炸性物質或混合性危險物質起爆之衝擊能值；該值愈小愈危險。' },
+            { id: 'boiling-point', term: '沸點', def: '液體沸騰時會產生蒸發現象；沸點越低之液體越容易氣化，釋出可燃性蒸氣與空氣混合形成可燃性混合氣體，在常溫下易引發火災、爆炸。' }
         ];
         const g20TermGroups = {
             basic: g20TermPairs.slice(0, 8),
@@ -11912,8 +11913,8 @@ function checkGame10() {
                 const result = document.getElementById(`g20terms-result-${key}`);
                 const items = g20TermGroups[key] || [];
                 if (!leftWrap || !rightWrap || !items.length) return;
-                const left = shuffle([...items]);
-                const right = shuffle([...items]);
+                const left = gSortShuffle(items);
+                const right = gSortShuffle(items);
                 g20TermsState[key] = { selected: null, matches: {}, left, right };
                 leftWrap.innerHTML = left.map((item, idx) => `
                     <button type="button" class="g20terms-node g20terms-left-node w-full rounded-xl border border-slate-600 bg-slate-800/80 px-4 py-3 text-left font-bold text-slate-100 transition hover:border-orange-400" data-group="${key}" data-side="left" data-id="${item.id}">
@@ -12013,7 +12014,7 @@ function checkGame10() {
                     }
                 });
                 if (result) {
-                    result.textContent = groupCorrect === items.length ? `? ?????${groupCorrect}/${items.length}` : `???? ${groupCorrect}/${items.length}?????????`;
+                    result.textContent = groupCorrect === items.length ? `✓ 全部答對！${groupCorrect}/${items.length}` : `目前答對 ${groupCorrect}/${items.length}，請再檢查配對。`;
                     result.className = `mt-4 font-bold ${groupCorrect === items.length ? 'text-emerald-300' : 'text-amber-300'}`;
                 }
                 refreshG20TermsNodes(key);
@@ -12031,7 +12032,7 @@ function checkGame10() {
                 state.selected = null;
                 const result = document.getElementById(`g20terms-result-${key}`);
                 if (result) {
-                    result.textContent = `????????${items.length}/${items.length}`;
+                    result.textContent = `已公布正確答案：${items.length}/${items.length}`;
                     result.className = 'mt-4 font-bold text-emerald-300';
                 }
                 refreshG20TermsNodes(key);
