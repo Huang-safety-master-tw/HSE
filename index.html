@@ -419,7 +419,15 @@
                     <p class="text-xs text-slate-400">職安術科考題衝刺</p>
                 </div>
             </div>
-            <div class="flex items-center gap-4 text-sm">
+            <div class="flex flex-wrap justify-center md:justify-end items-center gap-4 text-sm">
+                <div class="bg-slate-800/80 px-4 py-2 rounded-lg border border-slate-700 flex items-center gap-2" title="本機日期今天累計的頁面可見時間">
+                    <i data-lucide="clock-3" class="text-cyan-400 w-4 h-4"></i>
+                    <span>今日上線：<strong id="online-today-time" class="text-cyan-300 tabular-nums">00:00:00</strong></span>
+                </div>
+                <div class="bg-slate-800/80 px-4 py-2 rounded-lg border border-slate-700 flex items-center gap-2" title="此瀏覽器累計的頁面可見時間">
+                    <i data-lucide="history" class="text-indigo-400 w-4 h-4"></i>
+                    <span>總上線：<strong id="online-total-time" class="text-indigo-300 tabular-nums">00:00:00</strong></span>
+                </div>
                 <div class="bg-slate-800/80 px-4 py-2 rounded-lg border border-slate-700 flex items-center gap-2">
                     <i data-lucide="trophy" class="text-yellow-500 w-4 h-4"></i>
                     <span>完美過關：<strong id="completed-count" class="text-yellow-400">0</strong>/40</span>
@@ -22333,6 +22341,98 @@ window.addEventListener('resize', () => {
             handle.addEventListener('pointercancel', () => { drag = null; });
         }
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initStickyNote); else initStickyNote();
+    </script>
+    <script>
+        // ===== 今日／總上線時間 =====
+        (() => {
+            const TOTAL_KEY = 'safetyMasterOnlineTotalSeconds';
+            const TODAY_PREFIX = 'safetyMasterOnlineToday:';
+            const todayEl = document.getElementById('online-today-time');
+            const totalEl = document.getElementById('online-total-time');
+            if (!todayEl || !totalEl) return;
+
+            const localDateKey = (date = new Date()) => {
+                const y = date.getFullYear();
+                const m = String(date.getMonth() + 1).padStart(2, '0');
+                const d = String(date.getDate()).padStart(2, '0');
+                return `${y}-${m}-${d}`;
+            };
+            const readSeconds = key => {
+                try {
+                    const value = Number(localStorage.getItem(key));
+                    return Number.isFinite(value) && value >= 0 ? Math.floor(value) : 0;
+                } catch (e) { return 0; }
+            };
+            const formatDuration = seconds => {
+                const value = Math.max(0, Math.floor(seconds));
+                const h = String(Math.floor(value / 3600)).padStart(2, '0');
+                const m = String(Math.floor((value % 3600) / 60)).padStart(2, '0');
+                const s = String(value % 60).padStart(2, '0');
+                return `${h}:${m}:${s}`;
+            };
+
+            let activeDate = localDateKey();
+            let todaySeconds = readSeconds(TODAY_PREFIX + activeDate);
+            let totalSeconds = readSeconds(TOTAL_KEY);
+            let remainderMs = 0;
+            let lastVisibleAt = document.visibilityState === 'visible' ? Date.now() : null;
+            let secondsSinceSave = 0;
+
+            const refreshDate = () => {
+                const currentDate = localDateKey();
+                if (currentDate === activeDate) return;
+                persist();
+                activeDate = currentDate;
+                todaySeconds = readSeconds(TODAY_PREFIX + activeDate);
+                remainderMs = 0;
+            };
+            const render = () => {
+                todayEl.textContent = formatDuration(todaySeconds);
+                totalEl.textContent = formatDuration(totalSeconds);
+            };
+            const persist = () => {
+                try {
+                    localStorage.setItem(TOTAL_KEY, String(totalSeconds));
+                    localStorage.setItem(TODAY_PREFIX + activeDate, String(todaySeconds));
+                } catch (e) {}
+                secondsSinceSave = 0;
+            };
+            const update = () => {
+                refreshDate();
+                if (document.visibilityState !== 'visible' || lastVisibleAt === null) {
+                    render();
+                    return;
+                }
+                const now = Date.now();
+                remainderMs += Math.max(0, now - lastVisibleAt);
+                lastVisibleAt = now;
+                const wholeSeconds = Math.floor(remainderMs / 1000);
+                if (wholeSeconds > 0) {
+                    remainderMs -= wholeSeconds * 1000;
+                    todaySeconds += wholeSeconds;
+                    totalSeconds += wholeSeconds;
+                    secondsSinceSave += wholeSeconds;
+                    if (secondsSinceSave >= 5) persist();
+                }
+                render();
+            };
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    update();
+                    persist();
+                    lastVisibleAt = null;
+                } else {
+                    refreshDate();
+                    lastVisibleAt = Date.now();
+                    render();
+                }
+            });
+            window.addEventListener('pagehide', () => { update(); persist(); });
+            window.addEventListener('beforeunload', () => { update(); persist(); });
+            window.setInterval(update, 1000);
+            render();
+        })();
     </script>
 </body>
 </html>
