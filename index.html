@@ -4478,7 +4478,7 @@
             <div class="mb-5 text-center">
               <span class="bg-fuchsia-500/20 text-fuchsia-300 text-xs px-3 py-1 rounded-full font-bold">第 3 關・新增小題</span>
               <h2 class="text-2xl font-black mt-3">職業安全衛生管理計畫 PDCA 分類</h2>
-              <p class="text-sm text-slate-400 mt-2">先放入 P／D／C／A 階段字卡，再將各項管理措施放進正確象限。可點已放置的字卡退回重排。</p>
+              <p class="text-sm text-slate-400 mt-2">先放入 P／D／C／A 階段字卡，再將各項管理措施放進正確象限。每個象限可連續放入多張；選取下一張字卡後，直接點象限內已放置的字卡即可繼續加入。未選新字卡時，點已放置字卡可退回重排。</p>
               <div id="g3-mastery-practice" class="mt-3 flex justify-center"></div>
             </div>
 
@@ -9327,6 +9327,7 @@ function checkGame10() {
             ['13', '14'],
             ['15', '16'],
             ['20', '21', '22'],
+            ['1301', '1302'],
             ['1402', '1403', '1404', '1405', '1406', '1407', '1408', '1409'],
             ['1411', '1412', '1413', '1414', '1415'],
             ['1417', '1418', '1419', '1420', '1421'],
@@ -14738,6 +14739,8 @@ function checkGame10() {
             if (typeof g19LoadMastery === 'function') g19LoadMastery();
             if (typeof g20LoadMastery === 'function') g20LoadMastery();
             if (typeof g21LoadMastery === 'function') g21LoadMastery();
+            if (typeof g3MasteryData !== 'undefined') g3MasteryData = readObjectSaveKey('safetyMasterG3Mastery', {});
+            if (typeof g22SubMastery !== 'undefined') g22SubMastery = readObjectSaveKey('safetyMasterG22SubMastery', {});
             if (typeof g24LoadMastery === 'function') g24LoadMastery();
             if (typeof g26LoadMastery === 'function') g26LoadMastery();
             if (typeof g29LoadMastery === 'function') g29LoadMastery();
@@ -15007,6 +15010,7 @@ function checkGame10() {
                 'safetyMasterG19Mastery',
                 'safetyMasterG20Mastery',
                 'safetyMasterG21Mastery',
+                'safetyMasterG22SubMastery',
                 'safetyMasterG29Answers',
                 'safetyMasterG29Mastery',
                 'safetyMasterG37Mastery',
@@ -15062,6 +15066,8 @@ function checkGame10() {
             const g19MasteryData = readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {});
             const g20MasteryData = readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {});
             const g21MasteryData = readObjectSaveKey('safetyMasterG21Mastery', typeof g21Mastery !== 'undefined' ? g21Mastery : {});
+            const g22MasteryData = readObjectSaveKey('safetyMasterG22SubMastery', typeof g22SubMastery !== 'undefined' ? g22SubMastery : {});
+            const g3MasterySyncData = readObjectSaveKey('safetyMasterG3Mastery', typeof g3MasteryData !== 'undefined' ? g3MasteryData : {});
             const g29MasteryData = readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {});
             const g40MasteryData = readObjectSaveKey('safetyMasterG40Mastery', typeof g40Mastery !== 'undefined' ? g40Mastery : {});
             const g35MasteryData = readObjectSaveKey('safetyMasterG35Mastery', typeof g35Mastery !== 'undefined' ? g35Mastery : {});
@@ -15084,6 +15090,7 @@ function checkGame10() {
                 },
                 mastery: {
                     games: mainState.gameMastery || {},
+                    g3: g3MasterySyncData,
                     g6: g6MasteryData,
                     g7: g7MasteryData,
                     g12: g12MasteryData,
@@ -15091,6 +15098,7 @@ function checkGame10() {
                     g19: g19MasteryData,
                     g20: g20MasteryData,
                     g21: g21MasteryData,
+                    g22: g22MasteryData,
                     g29: g29MasteryData,
                     g35: g35MasteryData,
                     g37: g37MasteryData,
@@ -15119,6 +15127,9 @@ function checkGame10() {
                 },
                 g21: {
                     mastery: g21MasteryData
+                },
+                g22: {
+                    mastery: g22MasteryData
                 },
                 g37: {
                     mastery: g37MasteryData,
@@ -15173,6 +15184,7 @@ function checkGame10() {
                         mainState.gameMastery || {}
                     );
                     localStorage.setItem(LS_KEY, JSON.stringify(mergedMainState));
+                    if (mainState.g3Mastery) mergeObjectSaveKey('safetyMasterG3Mastery', mainState.g3Mastery);
                     if (mainState.g6Mastery) mergeObjectSaveKey('safetyMasterG6Mastery', mainState.g6Mastery);
                     if (mainState.g7Mastery) mergeObjectSaveKey('safetyMasterG7Mastery', mainState.g7Mastery);
                     if (mainState.g12Mastery) mergeObjectSaveKey('safetyMasterG12Mastery', mainState.g12Mastery);
@@ -15180,6 +15192,7 @@ function checkGame10() {
                     if (mainState.g19Mastery) mergeObjectSaveKey('safetyMasterG19Mastery', mainState.g19Mastery);
                     if (mainState.g20Mastery) mergeObjectSaveKey('safetyMasterG20Mastery', mainState.g20Mastery);
                     if (mainState.g21Mastery) mergeObjectSaveKey('safetyMasterG21Mastery', mainState.g21Mastery);
+                    if (mainState.g22Mastery) mergeObjectSaveKey('safetyMasterG22SubMastery', mainState.g22Mastery);
                     if (mainState.g24Mastery) mergeObjectSaveKey('safetyMasterG24Mastery', mainState.g24Mastery);
                     if (mainState.g26Mastery) mergeObjectSaveKey('safetyMasterG26Mastery', mainState.g26Mastery);
                     if (mainState.g29Mastery) mergeObjectSaveKey('safetyMasterG29Mastery', mainState.g29Mastery);
@@ -15198,6 +15211,7 @@ function checkGame10() {
                     currentMain.gameMastery = Object.assign({}, currentMain.gameMastery || {}, pkg.mastery.games);
                     localStorage.setItem(LS_KEY, JSON.stringify(currentMain));
                 }
+                if (pkg.mastery && pkg.mastery.g3) mergeObjectSaveKey('safetyMasterG3Mastery', pkg.mastery.g3);
                 if (pkg.mastery && pkg.mastery.g6) mergeObjectSaveKey('safetyMasterG6Mastery', pkg.mastery.g6);
                 if (pkg.mastery && pkg.mastery.g7) mergeObjectSaveKey('safetyMasterG7Mastery', pkg.mastery.g7);
                 if (pkg.mastery && pkg.mastery.g12) mergeObjectSaveKey('safetyMasterG12Mastery', pkg.mastery.g12);
@@ -15211,6 +15225,7 @@ function checkGame10() {
                     mergeObjectSaveKey('safetyMasterG20Mastery', pkg.mastery.g20);
                 }
                 if (pkg.mastery && pkg.mastery.g21) mergeObjectSaveKey('safetyMasterG21Mastery', pkg.mastery.g21);
+                if (pkg.mastery && pkg.mastery.g22) mergeObjectSaveKey('safetyMasterG22SubMastery', pkg.mastery.g22);
                 if (pkg.mastery && pkg.mastery.g24) mergeObjectSaveKey('safetyMasterG24Mastery', pkg.mastery.g24);
                 if (pkg.mastery && pkg.mastery.g26) mergeObjectSaveKey('safetyMasterG26Mastery', pkg.mastery.g26);
                 if (pkg.mastery && pkg.mastery.g29) {
@@ -15239,6 +15254,9 @@ function checkGame10() {
                 }
                 if (pkg.g21 && pkg.g21.mastery) {
                     mergeObjectSaveKey('safetyMasterG21Mastery', pkg.g21.mastery);
+                }
+                if (pkg.g22 && pkg.g22.mastery) {
+                    mergeObjectSaveKey('safetyMasterG22SubMastery', pkg.g22.mastery);
                 }
 
                 if (pkg.g37 && pkg.g37.mastery) {
@@ -15493,6 +15511,7 @@ function checkGame10() {
                 // 1. completedGames
                 state.completedGames = JSON.parse(JSON.stringify(completedGames));
                 state.gameMastery = JSON.parse(JSON.stringify(gameMastery));
+                state.g3Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG3Mastery', typeof g3MasteryData !== 'undefined' ? g3MasteryData : {})));
                 state.g6Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG6Mastery', typeof g6Mastery !== 'undefined' ? g6Mastery : {})));
                 state.g7Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG7Mastery', typeof g7hMastery !== 'undefined' ? g7hMastery : {})));
                 state.g12Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG12Mastery', typeof g12Mastery !== 'undefined' ? g12Mastery : {})));
@@ -15500,6 +15519,7 @@ function checkGame10() {
                 state.g19Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG19Mastery', typeof g19Mastery !== 'undefined' ? g19Mastery : {})));
                 state.g20Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG20Mastery', typeof g20Mastery !== 'undefined' ? g20Mastery : {})));
                 state.g21Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG21Mastery', typeof g21Mastery !== 'undefined' ? g21Mastery : {})));
+                state.g22Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG22SubMastery', typeof g22SubMastery !== 'undefined' ? g22SubMastery : {})));
                 state.g24Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG24Mastery', typeof g24Mastery !== 'undefined' ? g24Mastery : {})));
                 state.g26Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG26Mastery', typeof g26Mastery !== 'undefined' ? g26Mastery : {})));
                 state.g29Mastery = JSON.parse(JSON.stringify(readObjectSaveKey('safetyMasterG29Mastery', typeof g29Mastery !== 'undefined' ? g29Mastery : {})));
@@ -15695,6 +15715,7 @@ function checkGame10() {
                 if (state.gameMastery) {
                     Object.assign(gameMastery, state.gameMastery);
                 }
+                if (state.g3Mastery) mergeObjectSaveKey('safetyMasterG3Mastery', state.g3Mastery);
                 if (state.g6Mastery) {
                     mergeObjectSaveKey('safetyMasterG6Mastery', state.g6Mastery);
                 }
@@ -15714,6 +15735,7 @@ function checkGame10() {
                     mergeObjectSaveKey('safetyMasterG20Mastery', state.g20Mastery);
                 }
                 if (state.g21Mastery) mergeObjectSaveKey('safetyMasterG21Mastery', state.g21Mastery);
+                if (state.g22Mastery) mergeObjectSaveKey('safetyMasterG22SubMastery', state.g22Mastery);
                 if (state.g24Mastery) mergeObjectSaveKey('safetyMasterG24Mastery', state.g24Mastery);
                 if (state.g26Mastery) mergeObjectSaveKey('safetyMasterG26Mastery', state.g26Mastery);
                 if (state.g29Mastery) {
@@ -20707,6 +20729,8 @@ function renderGame22SubMastery() {
 function setGame22SubMastery(key, value) {
   g22SubMastery[key] = value;
   localStorage.setItem(G22_SUB_MASTERY_KEY, JSON.stringify(g22SubMastery));
+  if (typeof lsSave === 'function') lsSave();
+  if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g22-mastery');
   renderGame22SubMastery();
 }
 
@@ -22094,7 +22118,15 @@ window.addEventListener('resize', () => {
           placed.dataset.targetPhase = phase;
           placed.className = 'rounded-xl border border-white/20 bg-slate-900/80 px-3 py-2 text-left text-xs font-bold text-white hover:bg-slate-800 transition';
           placed.textContent = card.text;
-          placed.onclick = event => { event.stopPropagation(); returnG3PdcaCard(card.id); };
+          placed.title = '先選下一張字卡後點此，可繼續放入；未選字卡時點此可退回';
+          placed.onclick = event => {
+            event.stopPropagation();
+            if (g3PdcaSelectedId) {
+              placeG3PdcaItem(phase);
+              return;
+            }
+            returnG3PdcaCard(card.id);
+          };
           zone.appendChild(placed);
           document.querySelector(`#g3p-card-pool .g3p-card[data-id="${card.id}"]`).classList.add('hidden');
           g3PdcaSelectedId = null;
