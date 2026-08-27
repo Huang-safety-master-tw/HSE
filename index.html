@@ -8763,7 +8763,7 @@ function checkGame10() {
             { key: 'G16G', label: '安全上下' },
             { key: 'G16H', label: '繫材扣牢' },
             { key: 'G16I', label: '彎曲尖端' },
-            { key: 'G16J', label: '加蓋' },
+            { key: 'G16J', label: '予以覆蓋' },
             { key: 'G16K', label: '加裝護套' },
             { key: 'G16L', label: '安全帽' },
 
@@ -9041,6 +9041,77 @@ function checkGame10() {
             showToast(`第${group}組已標記：${g14MasteryLabel(rating)}`, 'success');
         }
 
+        function g14GroupNoteStorageKey(group) {
+            return 'safetyMasterG14GroupNote_' + group;
+        }
+
+        function g14SaveGroupNote(group, value) {
+            try {
+                const key = g14GroupNoteStorageKey(group);
+                const note = String(value || '');
+                if (note.trim()) localStorage.setItem(key, note);
+                else localStorage.removeItem(key);
+                const button = document.getElementById('g14-note-toggle-' + group);
+                if (button) button.textContent = note.trim() ? '📝 題組筆記（已記錄）' : '📝 題組筆記';
+                if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g14-group-note');
+            } catch (e) {
+                console.warn('第14關題組筆記儲存失敗:', e);
+            }
+        }
+
+        function g14ToggleGroupNote(group) {
+            const panel = document.getElementById('g14-note-panel-' + group);
+            const textarea = document.getElementById('g14-note-' + group);
+            if (!panel) return;
+            panel.classList.toggle('hidden');
+            if (!panel.classList.contains('hidden') && textarea) textarea.focus();
+        }
+
+        function g14ClearGroupNote(group) {
+            if (!window.confirm('確定清除第 ' + group + ' 組筆記？')) return;
+            const textarea = document.getElementById('g14-note-' + group);
+            if (textarea) textarea.value = '';
+            g14SaveGroupNote(group, '');
+            showToast('第 ' + group + ' 組筆記已清除', 'info');
+        }
+
+        function ensureG14GroupNotes() {
+            g14GroupNumbers().forEach(group => {
+                const optionsWrap = document.getElementById('g14-group' + group + '-opts-wrap');
+                if (!optionsWrap || document.getElementById('g14-note-wrap-' + group)) return;
+                const savedNote = localStorage.getItem(g14GroupNoteStorageKey(group)) || '';
+                const wrap = document.createElement('div');
+                wrap.id = 'g14-note-wrap-' + group;
+                wrap.className = 'mt-4 border-t border-slate-700/70 pt-3';
+                const toggle = document.createElement('button');
+                toggle.type = 'button';
+                toggle.id = 'g14-note-toggle-' + group;
+                toggle.className = 'px-3 py-2 rounded-lg border border-amber-500/60 bg-amber-950/30 text-amber-200 hover:bg-amber-900/50 text-sm font-bold';
+                toggle.textContent = savedNote.trim() ? '📝 題組筆記（已記錄）' : '📝 題組筆記';
+                toggle.addEventListener('click', () => g14ToggleGroupNote(group));
+                const panel = document.createElement('div');
+                panel.id = 'g14-note-panel-' + group;
+                panel.className = 'hidden mt-3 space-y-2';
+                const textarea = document.createElement('textarea');
+                textarea.id = 'g14-note-' + group;
+                textarea.rows = 4;
+                textarea.value = savedNote;
+                textarea.placeholder = '第 ' + group + ' 組筆記、口訣或易錯處…';
+                textarea.className = 'w-full rounded-xl border border-slate-600 bg-slate-950/70 p-3 text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none';
+                textarea.addEventListener('input', event => g14SaveGroupNote(group, event.target.value));
+                const clear = document.createElement('button');
+                clear.type = 'button';
+                clear.className = 'px-3 py-1.5 rounded-lg border border-rose-500/50 text-rose-300 hover:bg-rose-950/40 text-xs font-bold';
+                clear.textContent = '清除本組筆記';
+                clear.addEventListener('click', () => g14ClearGroupNote(group));
+                panel.appendChild(textarea);
+                panel.appendChild(clear);
+                wrap.appendChild(toggle);
+                wrap.appendChild(panel);
+                optionsWrap.appendChild(wrap);
+            });
+        }
+
 
         function resetGame14Group(grp) {
             soundClick();
@@ -9240,6 +9311,7 @@ function checkGame10() {
             g14GroupNumbers().forEach(g => _g14RenderGroupOpts(g));
             ensureG14MasteryControls();
             ensureG14GroupResetButtons();
+            ensureG14GroupNotes();
             renderG14MasteryStars();
             initGame39();
             // Reset blanks and bind drag events
@@ -15072,7 +15144,7 @@ function checkGame10() {
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 if (!key) continue;
-                if (/^safetyMaster.*Mastery$/i.test(key) || /^safetyMasterG29Note_q\d+_s\d+$/.test(key)) {
+                if (/^safetyMaster.*Mastery$/i.test(key) || /^safetyMasterG29Note_q\d+_s\d+$/.test(key) || /^safetyMasterG14GroupNote_\d+$/.test(key)) {
                     const value = localStorage.getItem(key);
                     if (value !== null) snapshot[key] = value;
                 }
@@ -15862,6 +15934,12 @@ function checkGame10() {
             localStorage.removeItem('oshaBookmarks');
             localStorage.removeItem('oshaProgress');
             removeAllG29Notes();
+            const g14NoteKeys = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && /^safetyMasterG14GroupNote_\d+$/.test(key)) g14NoteKeys.push(key);
+            }
+            g14NoteKeys.forEach(key => localStorage.removeItem(key));
             window._lsPendingState = null;
             showToast('🗑️ 存檔已清除', 'info');
             _lsHideIndicator();
@@ -15872,12 +15950,13 @@ function exportSave() {
             const hasG29Answers = data.g29 && data.g29.answers && Object.keys(data.g29.answers).length > 0;
             const hasG29Notes = data.g29 && data.g29.notes && Object.keys(data.g29.notes).length > 0;
             const hasG29Mastery = data.g29 && data.g29.mastery && Object.keys(data.g29.mastery).length > 0;
+            const hasG14Notes = Object.keys(data.localStorageSnapshot || {}).some(key => /^safetyMasterG14GroupNote_\d+$/.test(key));
             const hasG25 = data.g25 && Array.isArray(data.g25.correctIds) && data.g25.correctIds.length > 0;
             const hasExam = data.examSimulator && (
                 (Array.isArray(data.examSimulator.bookmarks) && data.examSimulator.bookmarks.length > 0) ||
                 data.examSimulator.progress
             );
-            if (!hasMain && !hasG29Answers && !hasG29Notes && !hasG29Mastery && !hasG25 && !hasExam) {
+            if (!hasMain && !hasG29Answers && !hasG29Notes && !hasG29Mastery && !hasG14Notes && !hasG25 && !hasExam) {
                 showToast('⚠️ 目前沒有存檔可以下載', 'error');
                 return;
             }
