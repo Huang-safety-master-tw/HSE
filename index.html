@@ -3401,11 +3401,11 @@
                 <div id="g14-selected-indicator" class="hidden"><span id="g14-selected-label"></span></div>
 
 <!-- 第十一組：是非題 -->
-                <div class="mb-3 bg-slate-900/40 border border-violet-800/30 rounded-xl p-4">
+                <div class="mb-3 bg-slate-900/40 border border-violet-800/30 rounded-xl p-4" id="g14-group11">
                   <h3 class="text-xs font-bold text-violet-400 mb-2 flex items-center gap-2">
                     <i data-lucide="check-square" class="w-4 h-4"></i> 第十一組：是非題（點選「是」或「否」作答）
                   </h3>
-                  <div id="g14-group10" class="g14-group">
+                  <div id="g14-tf-questions" class="g14-group">
                     <div class="space-y-3 mb-4">
                         <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-3">
                             <p class="text-sm text-white mb-2">① 孕婦已懷孕但未告知雇主，雇主明知或可得而知者，仍需負相關法律責任。</p>
@@ -3465,10 +3465,10 @@
                 </div>
 
                 <!-- 原第39關併入：勞基法第59條遺屬受領補償順位 -->
-                <div class="mt-8 border border-emerald-700/50 bg-slate-950/55 rounded-2xl p-5" id="g14-inheritance-group">
+                <div class="mt-8 border border-emerald-700/50 bg-slate-950/55 rounded-2xl p-5" id="g14-group32">
                     <div class="mb-4">
                         <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-emerald-900/60 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-700">第十二組</span>
+                            <span class="bg-emerald-900/60 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-700">第32題組</span>
                             <span class="text-xs text-slate-400">勞動基準法第59條</span>
                         </div>
                         <h3 class="text-xl font-black text-white">遺屬受領補償順位排序</h3>
@@ -7829,6 +7829,15 @@ function checkGame10() {
             }
             initGameByNumber(num);
             lsRestoreGame(num);
+            // 第14關必須在舊作答畫面還原完成後，再套用題組分頁；否則還原內容會覆蓋隱藏狀態。
+            if (num === 14) {
+                setTimeout(() => {
+                    if (typeof g14RenderPagination === 'function') g14RenderPagination();
+                    if (typeof g14ApplyPage === 'function') g14ApplyPage();
+                    if (typeof ensureG14FlagControls === 'function') ensureG14FlagControls();
+                    if (typeof renderG14MasteryStars === 'function') renderG14MasteryStars();
+                }, 80);
+            }
             // 第30關：圖片可能尚未渲染，延遲初始化
             if (num === 30) {
                 setTimeout(() => {
@@ -8990,6 +8999,9 @@ function checkGame10() {
         let g14ActiveGroup = 0;
         let g14DragKey = null;
         let g14Mastery = {};
+        let g14Flags = {};
+        let g14SubFlags = {};
+        let g14CurrentPageGroup = 1;
 
         function g14MasteryStorageKey() {
             return 'safetyMasterG14Mastery';
@@ -9067,6 +9079,178 @@ function checkGame10() {
             showToast(`第${group}組已標記：${g14MasteryLabel(rating)}`, 'success');
         }
 
+        function g14FlagStorageKey() { return 'safetyMasterG14Flags'; }
+        function g14LoadFlags() {
+            try { g14Flags = JSON.parse(localStorage.getItem(g14FlagStorageKey()) || '{}') || {}; }
+            catch (e) { g14Flags = {}; }
+        }
+        function g14SaveFlags() {
+            try {
+                localStorage.setItem(g14FlagStorageKey(), JSON.stringify(g14Flags));
+                if (typeof lsSave === 'function') lsSave();
+                if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g14-flags');
+            } catch (e) { console.warn('第14關不熟悉記號儲存失敗:', e); }
+        }
+        function g14IsFlagged(group) { return !!g14Flags['group-' + group]; }
+        function g14SubFlagStorageKey() { return 'safetyMasterG14SubFlags'; }
+        function g14LoadSubFlags() {
+            try { g14SubFlags = JSON.parse(localStorage.getItem(g14SubFlagStorageKey()) || '{}') || {}; }
+            catch (e) { g14SubFlags = {}; }
+        }
+        function g14SaveSubFlags() {
+            try {
+                localStorage.setItem(g14SubFlagStorageKey(), JSON.stringify(g14SubFlags));
+                if (typeof lsSave === 'function') lsSave();
+                if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g14-sub-flags');
+            } catch (e) { console.warn('第14關小題記號儲存失敗:', e); }
+        }
+        function g14SubFlagKey(kind, id) { return kind + '-' + id; }
+        function g14IsSubFlagged(kind, id) { return !!g14SubFlags[g14SubFlagKey(kind, id)]; }
+        function g14ToggleSubFlag(kind, id, event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            const key = g14SubFlagKey(kind, id);
+            if (g14SubFlags[key]) delete g14SubFlags[key]; else g14SubFlags[key] = true;
+            g14SaveSubFlags();
+            ensureG14SubFlagControls();
+            g14RenderPagination();
+            showToast(g14SubFlags[key] ? '🚩 已標記這一小題' : '已取消小題記號', g14SubFlags[key] ? 'error' : 'info');
+        }
+        function g14SubFlagButtonHtml(kind, id) {
+            const flagged = g14IsSubFlagged(kind, id);
+            return `<button type="button" onclick="g14ToggleSubFlag('${kind}','${id}',event)" draggable="false" class="g14-sub-flag-btn ml-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border align-middle text-xs transition ${flagged ? 'bg-rose-600 border-rose-300 text-white shadow shadow-rose-950/40' : 'bg-slate-900/70 border-slate-600 text-slate-500 hover:border-rose-500 hover:text-rose-300'}" title="${flagged ? '取消這一小題的易錯記號' : '標記這一小題容易出錯'}" aria-pressed="${flagged}">${flagged ? '⚠' : '○'}</button>`;
+        }
+        function g14GroupHasSubFlag(group) {
+            if (group === 11) return [1, 2, 3, 4, 5].some(id => g14IsSubFlagged('tf', id));
+            if (group === 32) return g39Items.some(item => g14IsSubFlagged('inheritance', item.id));
+            return (g14GroupBlanks[group] || []).some(id => g14IsSubFlagged('blank', id));
+        }
+        function ensureG14SubFlagControls() {
+            document.querySelectorAll('#tab-matching .g14-blank[data-blank-id]').forEach(blank => {
+                const id = blank.dataset.blankId;
+                let button = blank.nextElementSibling;
+                if (!button || !button.classList.contains('g14-sub-flag-btn')) {
+                    blank.insertAdjacentHTML('afterend', g14SubFlagButtonHtml('blank', id));
+                } else {
+                    button.outerHTML = g14SubFlagButtonHtml('blank', id);
+                }
+            });
+            document.querySelectorAll('#g39-slots .g-sort-card[data-id]').forEach(card => {
+                const id = card.dataset.id;
+                let wrap = card.querySelector('.g14-inheritance-sub-flag');
+                if (!wrap) {
+                    wrap = document.createElement('span');
+                    wrap.className = 'g14-inheritance-sub-flag';
+                    card.appendChild(wrap);
+                }
+                wrap.innerHTML = g14SubFlagButtonHtml('inheritance', id);
+            });
+            document.querySelectorAll('#g14-tf-questions > .space-y-3 > div').forEach((question, index) => {
+                const id = String(index + 1);
+                let wrap = question.querySelector('.g14-tf-sub-flag');
+                if (!wrap) {
+                    wrap = document.createElement('span');
+                    wrap.className = 'g14-tf-sub-flag float-right -mt-1';
+                    question.insertAdjacentElement('afterbegin', wrap);
+                }
+                wrap.innerHTML = g14SubFlagButtonHtml('tf', id);
+            });
+        }
+        function g14ToggleFlag(group) {
+            const key = 'group-' + group;
+            if (g14Flags[key]) delete g14Flags[key]; else g14Flags[key] = true;
+            g14SaveFlags();
+            g14RenderPagination();
+            ensureG14FlagControls();
+            showToast(g14Flags[key] ? '🚩 第' + group + '組已標記為不熟悉' : '已取消第' + group + '組標記', g14Flags[key] ? 'error' : 'info');
+        }
+        function g14FlagButtonHtml(group) {
+            const flagged = g14IsFlagged(group);
+            return `<button type="button" onclick="g14ToggleFlag(${group})" class="px-3 py-1.5 rounded-lg border text-xs font-black transition ${flagged ? 'bg-rose-600 border-rose-300 text-white shadow shadow-rose-950/50' : 'bg-slate-900/50 border-slate-600 text-slate-400 hover:border-rose-500 hover:text-rose-300'}" aria-pressed="${flagged}" title="${flagged ? '取消不熟悉記號' : '標記這個題組不熟悉'}">${flagged ? '⚠ 不熟悉' : '○ 標記不熟悉'}</button>`;
+        }
+        function ensureG14FlagControls() {
+            g14GroupNumbers().forEach(group => {
+                document.querySelectorAll('#g14-group' + group).forEach(groupEl => {
+                    const header = groupEl.querySelector('.flex.items-center.gap-2');
+                    if (!header) return;
+                    let wrap = header.querySelector('[data-g14-flag-control="' + group + '"]');
+                    if (!wrap) { wrap = document.createElement('span'); wrap.dataset.g14FlagControl = String(group); header.appendChild(wrap); }
+                    wrap.innerHTML = g14FlagButtonHtml(group);
+                });
+            });
+        }
+
+        function ensureG14Pagination() {
+            const section = document.getElementById('tab-matching');
+            if (!section || document.getElementById('g14-page-nav')) return;
+            const intro = section.querySelector('.glass-panel > .mb-4');
+            if (!intro) return;
+            const nav = document.createElement('div');
+            nav.id = 'g14-page-nav';
+            nav.className = 'mb-5 rounded-2xl border border-slate-600 bg-slate-950/80 p-3 shadow-lg';
+            nav.innerHTML = '<div class="flex items-center justify-between gap-3 mb-2"><span class="text-xs font-black text-slate-300">題組頁碼</span><span id="g14-page-status" class="text-[10px] text-slate-500"></span></div><div id="g14-page-buttons" class="flex flex-wrap gap-2"></div>';
+            // 頁碼位於題目最上方的一般文件流中，不隨捲軸固定或黏著。
+            intro.insertAdjacentElement('afterend', nav);
+            const panel = section.querySelector('.glass-panel');
+            if (panel && !document.getElementById('g14-bottom-nav')) {
+                const bottomNav = document.createElement('div');
+                bottomNav.id = 'g14-bottom-nav';
+                bottomNav.className = 'mt-6 flex items-center justify-between gap-3 rounded-2xl border border-slate-600 bg-slate-950/80 p-4 shadow-lg';
+                bottomNav.innerHTML = '<button type="button" id="g14-prev-page" onclick="g14StepPage(-1)" class="rounded-xl border border-slate-600 bg-slate-800 px-5 py-3 text-sm font-black text-slate-100 transition hover:border-emerald-500 hover:text-emerald-200">← 上一頁</button><span id="g14-bottom-page-status" class="text-xs font-bold text-slate-400"></span><button type="button" id="g14-next-page" onclick="g14StepPage(1)" class="rounded-xl border border-slate-600 bg-slate-800 px-5 py-3 text-sm font-black text-slate-100 transition hover:border-emerald-500 hover:text-emerald-200">下一頁 →</button>';
+                panel.appendChild(bottomNav);
+            }
+        }
+        function g14RenderPagination() {
+            ensureG14Pagination();
+            const groups = g14GroupNumbers();
+            if (!groups.includes(g14CurrentPageGroup)) g14CurrentPageGroup = groups[0] || 1;
+            const box = document.getElementById('g14-page-buttons');
+            if (box) box.innerHTML = groups.map(group => {
+                const active = group === g14CurrentPageGroup, flagged = g14IsFlagged(group) || g14GroupHasSubFlag(group);
+                const cls = active ? 'bg-emerald-500 border-emerald-300 text-slate-950' : flagged ? 'bg-rose-950/80 border-rose-500 text-rose-100' : 'bg-slate-800 border-slate-600 text-slate-200 hover:border-emerald-500';
+                return `<button type="button" onclick="g14GoToPage(${group})" class="relative min-w-10 h-10 px-3 rounded-lg border font-black text-sm transition ${cls}" ${active ? 'aria-current="page"' : ''}>${group}${flagged ? '<span class="absolute -right-1 -top-1 w-3 h-3 rounded-full bg-rose-400 border-2 border-slate-950"></span>' : ''}</button>`;
+            }).join('');
+            const status = document.getElementById('g14-page-status'); if (status) status.textContent = '目前第 ' + g14CurrentPageGroup + ' 組／共 ' + groups.length + ' 組';
+            const bottomStatus = document.getElementById('g14-bottom-page-status'); if (bottomStatus) bottomStatus.textContent = '第 ' + g14CurrentPageGroup + '／' + groups.length + ' 頁';
+            const currentIndex = groups.indexOf(g14CurrentPageGroup);
+            const prev = document.getElementById('g14-prev-page');
+            const next = document.getElementById('g14-next-page');
+            if (prev) {
+                prev.disabled = currentIndex <= 0;
+                prev.classList.toggle('opacity-40', prev.disabled);
+                prev.classList.toggle('cursor-not-allowed', prev.disabled);
+            }
+            if (next) {
+                next.disabled = currentIndex < 0 || currentIndex >= groups.length - 1;
+                next.classList.toggle('opacity-40', next.disabled);
+                next.classList.toggle('cursor-not-allowed', next.disabled);
+            }
+        }
+        function g14StepPage(direction) {
+            const groups = g14GroupNumbers();
+            const currentIndex = groups.indexOf(g14CurrentPageGroup);
+            const targetIndex = currentIndex + Number(direction || 0);
+            if (targetIndex < 0 || targetIndex >= groups.length) return;
+            g14GoToPage(groups[targetIndex]);
+        }
+        function g14ApplyPage() {
+            const current = String(g14CurrentPageGroup);
+            document.querySelectorAll('#tab-matching [id^="g14-group"]').forEach(el => {
+                const match = el.id.match(/^g14-group(\d+)(?:-opts-wrap)?$/);
+                if (!match) return;
+                const visible = match[1] === current;
+                el.classList.toggle('hidden', !visible);
+                if (visible) el.style.removeProperty('display');
+                else el.style.setProperty('display', 'none', 'important');
+            });
+        }
+        function g14GoToPage(group) {
+            if (!g14GroupNumbers().includes(Number(group))) return;
+            g14CurrentPageGroup = Number(group);
+            g14Selected = null; g14ActiveGroup = g14CurrentPageGroup;
+            g14RenderPagination(); g14ApplyPage(); ensureG14FlagControls(); renderG14MasteryStars();
+            const nav = document.getElementById('g14-page-nav'); if (nav) nav.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+
         function g14GroupNoteStorageKey(group) {
             return 'safetyMasterG14GroupNote_' + group;
         }
@@ -9103,7 +9287,8 @@ function checkGame10() {
 
         function ensureG14GroupNotes() {
             g14GroupNumbers().forEach(group => {
-                const optionsWrap = document.getElementById('g14-group' + group + '-opts-wrap');
+                const optionsWrap = document.getElementById('g14-group' + group + '-opts-wrap')
+                    || document.getElementById('g14-group' + group);
                 if (!optionsWrap || document.getElementById('g14-note-wrap-' + group)) return;
                 const savedNote = localStorage.getItem(g14GroupNoteStorageKey(group)) || '';
                 const wrap = document.createElement('div');
@@ -9289,7 +9474,10 @@ function checkGame10() {
         };
 
         function g14GroupNumbers() {
-            return Object.keys(g14GroupBlanks).map(Number).filter(Number.isFinite).sort((a, b) => a - b);
+            const groups = Object.keys(g14GroupBlanks).map(Number).filter(Number.isFinite);
+            if (document.getElementById('g14-group11')) groups.push(11);
+            if (document.getElementById('g14-group32')) groups.push(32);
+            return [...new Set(groups)].sort((a, b) => a - b);
         }
 
         function _g14RenderGroupOpts(grp) {
@@ -9331,6 +9519,8 @@ function checkGame10() {
 
         function initGame14() {
             g14LoadMastery();
+            g14LoadFlags();
+            g14LoadSubFlags();
             g14Selected = null;
             g14ActiveGroup = 0;
             g14DragKey = null;
@@ -9339,6 +9529,9 @@ function checkGame10() {
             ensureG14GroupResetButtons();
             ensureG14GroupNotes();
             renderG14MasteryStars();
+            ensureG14FlagControls();
+            g14RenderPagination();
+            g14ApplyPage();
             initGame39();
             // Reset blanks and bind drag events
             document.querySelectorAll('.g14-blank').forEach(blank => {
@@ -9376,6 +9569,7 @@ function checkGame10() {
                     }
                 });
             });
+            ensureG14SubFlagControls();
             g14GroupNumbers().forEach(g => {
                 const ind = document.getElementById('g14-selected-indicator-' + g);
                 if (ind) ind.classList.add('hidden');
@@ -11785,6 +11979,7 @@ function checkGame10() {
             gSortBind('g39-slots', g39SlotData, 'emerald');
             gSortClearResult('g39-slots', 'emerald');
             gSortSyncData('g39-slots', g39SlotData, false);
+            if (typeof ensureG14SubFlagControls === 'function') ensureG14SubFlagControls();
         }
 
         function checkGame39() {
@@ -14295,6 +14490,7 @@ function checkGame10() {
 
         function showAnswer39() {
             gSortShowAnswer('g39-slots', g39Items, g39SlotData, 'emerald', 'g39-reveal', '📖 第39關解答已直接排入排序清單！');
+            if (typeof ensureG14SubFlagControls === 'function') ensureG14SubFlagControls();
         }
 
         function showAnswer22() {
@@ -15368,6 +15564,8 @@ function checkGame10() {
                 'safetyMasterG7Mastery',
                 'safetyMasterG12Mastery',
                 'safetyMasterG14Mastery',
+                'safetyMasterG14Flags',
+                'safetyMasterG14SubFlags',
                 'safetyMasterG19Mastery',
                 'safetyMasterG20Mastery',
                 'safetyMasterG21Mastery',
