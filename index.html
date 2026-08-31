@@ -4584,14 +4584,40 @@
           </div>
         </section>
         <section id="tab-23" class="game-section hidden w-full">
-          <div class="glass-panel max-w-3xl mx-auto p-8 rounded-2xl text-center border border-dashed border-slate-600">
-            <div class="mx-auto mb-4 w-14 h-14 rounded-2xl bg-slate-800 flex items-center justify-center text-slate-300"><i data-lucide="bookmark-plus" class="w-7 h-7"></i></div>
-            <span class="bg-slate-700/70 text-slate-300 text-xs px-3 py-1 rounded-full font-bold">第 23 關</span>
-            <h2 class="text-2xl font-black mt-3">預留關卡</h2>
-            <p class="text-sm text-slate-400 mt-2">本關內容已併入第 3 關，這個位置保留給後續新增題目。</p>
-            <div class="mt-6 flex flex-wrap justify-center gap-3">
-              <button onclick="goToGame(3)" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold">前往第 3 關整合題組</button>
-              <button onclick="goToMenu()" class="px-5 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold">返回選單</button>
+          <div class="max-w-6xl mx-auto space-y-5">
+            <div class="glass-panel rounded-2xl border border-amber-500/30 p-5 md:p-7 overflow-hidden relative">
+              <div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+              <div class="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+                <div>
+                  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="bg-amber-500/15 text-amber-300 border border-amber-500/30 text-xs px-3 py-1 rounded-full font-black">第 23 關・闖關模式</span><span class="bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs px-3 py-1 rounded-full font-bold">施工進度會隨過關成長</span></div>
+                  <h2 class="text-2xl md:text-3xl font-black text-white">建築工地全流程挑戰</h2>
+                  <p class="text-sm text-slate-300 mt-2 max-w-3xl">從工地開設、開挖、基礎工程，一路蓋到高處作業。每一階段請選出所有必要的安全措施，答對才能往上施工。</p>
+                </div>
+                <div class="grid grid-cols-3 gap-2 min-w-[280px]">
+                  <div class="rounded-xl bg-slate-950/60 border border-slate-700 p-3 text-center"><div class="text-[11px] text-slate-400">目前階段</div><div id="g23c-stage-stat" class="font-black text-cyan-300 mt-1">1 / 5</div></div>
+                  <div class="rounded-xl bg-slate-950/60 border border-slate-700 p-3 text-center"><div class="text-[11px] text-slate-400">已完成</div><div id="g23c-clear-stat" class="font-black text-emerald-300 mt-1">0 / 5</div></div>
+                  <div class="rounded-xl bg-slate-950/60 border border-slate-700 p-3 text-center"><div class="text-[11px] text-slate-400">安全分數</div><div id="g23c-score-stat" class="font-black text-amber-300 mt-1">100</div></div>
+                </div>
+              </div>
+              <div class="mt-5 h-2 rounded-full bg-slate-800 overflow-hidden"><div id="g23c-progress" class="h-full rounded-full bg-gradient-to-r from-amber-500 via-orange-400 to-emerald-400 transition-all duration-700" style="width:0%"></div></div>
+            </div>
+            <div id="g23c-stage-nav" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2"></div>
+            <div class="grid lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,.75fr)] gap-5 items-start">
+              <div class="glass-panel rounded-2xl border border-slate-700 p-5 md:p-7">
+                <div class="flex items-start justify-between gap-4"><div><div id="g23c-stage-kicker" class="text-xs font-black tracking-widest text-amber-300">STAGE 01</div><h3 id="g23c-stage-title" class="text-2xl font-black text-white mt-1"></h3><p id="g23c-stage-scene" class="text-sm text-slate-300 mt-2 leading-relaxed"></p></div><div id="g23c-stage-icon" class="shrink-0 w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-300"></div></div>
+                <div class="mt-5 rounded-xl border border-cyan-500/25 bg-cyan-950/20 p-4"><div class="text-xs font-black text-cyan-300 mb-1">任務</div><p id="g23c-prompt" class="font-bold text-slate-100"></p><p class="text-xs text-slate-400 mt-1">本題可能有一個以上正確答案，請全部選出。</p></div>
+                <div id="g23c-options" class="mt-4 grid sm:grid-cols-2 gap-3"></div>
+                <div id="g23c-feedback" class="hidden mt-4 rounded-xl border px-4 py-3 text-sm leading-relaxed"></div>
+                <div class="mt-5 flex flex-wrap items-center justify-between gap-3"><div class="flex flex-wrap gap-2"><button onclick="g23cResetStage()" class="px-4 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold">重選</button><button onclick="g23cRevealHint()" class="px-4 py-2.5 rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white font-bold">顯示提示</button></div><button id="g23c-check-btn" onclick="g23cCheckStage()" class="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-black shadow-lg shadow-amber-950/30">確認安全措施</button></div>
+                <div id="g23c-hint" class="hidden mt-4 rounded-xl border border-indigo-500/30 bg-indigo-950/30 p-4 text-sm text-indigo-100"></div>
+                <div id="g23c-law-card" class="mt-5 rounded-xl border border-slate-700 bg-slate-950/50 p-4"><div class="flex items-center gap-2 text-emerald-300 font-black text-sm"><i data-lucide="book-open-check" class="w-4 h-4"></i> 本階段法規觀念</div><p id="g23c-law" class="text-sm text-slate-300 mt-2 leading-relaxed"></p><p class="text-[11px] text-slate-500 mt-2">本模式先建立施工安全判斷；涉及公尺、樓層、間距等數值的進階關卡，將於正式核對法規條文後加入。</p></div>
+                <div class="mt-5 border-t border-slate-700 pt-4"><div class="flex flex-wrap items-center justify-between gap-3"><div><div class="text-sm font-black text-slate-200">本階段熟練度</div><div class="text-xs text-slate-500">依自己的熟悉程度評分，可同步至雲端。</div></div><div id="g23c-mastery" class="flex gap-1"></div></div></div>
+              </div>
+              <aside class="glass-panel rounded-2xl border border-slate-700 p-5 lg:sticky lg:top-24">
+                <div class="flex items-center justify-between gap-3 mb-4"><div><div class="text-xs font-black tracking-widest text-slate-500">LIVE SITE</div><h3 class="font-black text-white">工地施工進度</h3></div><button onclick="g23cRestartAll()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300">重新開工</button></div>
+                <div class="relative min-h-[430px] rounded-2xl overflow-hidden border border-slate-700 bg-gradient-to-b from-sky-950/80 via-slate-900 to-slate-950 p-4 flex flex-col justify-end"><div class="absolute top-5 right-6 w-12 h-12 rounded-full bg-amber-200/80 shadow-[0_0_35px_rgba(253,230,138,.45)]"></div><div class="absolute left-5 top-10 bottom-16 w-1.5 bg-amber-400/80 rounded-full"><div class="absolute left-0 top-0 w-24 h-1.5 bg-amber-400/80"></div><div class="absolute left-[86px] top-0 w-1 h-20 bg-amber-300/70"></div></div><div id="g23c-building" class="relative mx-auto w-[76%] max-w-[240px] flex flex-col-reverse gap-1"></div><div class="relative h-7 mt-1 rounded-sm bg-stone-700 border-t-4 border-stone-500"><span class="absolute left-1/2 -translate-x-1/2 top-1 text-[10px] font-black text-amber-200 whitespace-nowrap">安全施工基地</span></div><div class="absolute bottom-1 left-0 right-0 h-2 bg-emerald-900/60"></div></div>
+                <div id="g23c-site-message" class="mt-4 rounded-xl bg-slate-950/50 border border-slate-700 p-3 text-sm text-slate-300 text-center">先完成工地開設檢查，才能正式動工。</div>
+              </aside>
             </div>
           </div>
         </section>
@@ -7622,7 +7648,7 @@ function checkGame10() {
             { num: 20, tabId: 'tab-fire-class',    icon: 'flame',         title: '火災分類與物性排序', desc: '考點二十：火災分類、滅火原理、火災爆炸名詞、丁二烯溫度與閃火點排序' },
             { num: 21, tabId: 'tab-butadiene-sort', icon: 'construction', title: '起重機搭乘設備判斷',     desc: '考點二十一：吊掛式／直結式搭乘設備、檢查責任與安全防護' },
             { num: 22, tabId: 'tab-flashpoint-sort',icon: 'settings', title: '配件填空', desc: '砂輪機配件、安全間隙與堆高機配件填空' },
-            { num: 23, tabId: 'tab-23', icon: 'bookmark-plus', title: '預留關卡', desc: '本關內容已併入第 3 關，保留供後續新增題目' },
+            { num: 23, tabId: 'tab-23', icon: 'building-2', title: '建築工地全流程挑戰', desc: '闖關模式：從工地開設、開挖、基礎一路蓋到高處作業' },
             { num: 24, tabId: 'tab-chem-equation', icon: 'flask-conical', title: '化學方程式係數填空', desc: '考點二十四：化學方程式配平係數填空' },
             { num: 26, tabId: 'tab-game26', icon: 'list-ordered', title: '緊急應變 & CCB 排序', desc: '考點二十六：緊急應變措施流程與CCB流程排序' },
             { num: 27, tabId: 'tab-game27', icon: 'table', title: '五欄式安全作業標準', desc: '考點二十七：五欄式安全作業標準配合題' },
@@ -7760,7 +7786,7 @@ function checkGame10() {
             else if (gameNum === 20) { initGame20(); initG20e1(); initG20e2(); initG20e3(); initG20e4(); initG20b(); initGame20Sort21(); initGame20Sort22(); initG20TermsMatch(); }
             else if (gameNum === 21) initGame21CraneBasket();
             else if (gameNum === 22) initGame22Accessories();
-            else if (gameNum === 23) initGame23();
+            else if (gameNum === 23) initGame23Construction();
             else if (gameNum === 24) initGame24();
             else if (gameNum === 25) initGame25();
             else if (gameNum === 26) initGame26();
@@ -14518,6 +14544,224 @@ function checkGame10() {
                 showToast('✗ 答對 ' + correct + '/' + total + '，請修正紅框處係數！', 'error');
             }
         }
+        // ===== 第23關：建築工地全流程闖關 =====
+        const G23C_SAVE_KEY = 'safetyMasterG23Construction';
+        const G23C_MASTERY_KEY = 'safetyMasterG23ConstructionMastery';
+        const g23cStages = [
+            {
+                title: '工地開設', icon: 'signpost-big', build: '基地整備',
+                scene: '建案剛取得施工範圍，機具與人員即將進場。你是現場安全管理人員，必須先把工地基本秩序建立起來。',
+                prompt: '正式施工前，哪些措施應優先完成？',
+                hint: '先想「外人不能誤闖、工人能安全通行、危險能被看見」。',
+                law: '施工場所應妥善區隔、維持安全通道與出入口管理，並以標示、照明及現場管理降低第三人與勞工作業風險。',
+                options: [
+                    ['fence','設置適當圍籬與出入口管制',1], ['route','規劃人車分流與安全通道',1],
+                    ['sign','設置必要的警告標示與夜間照明',1], ['open','為方便進料，出入口全日敞開且無人管制',0]
+                ]
+            },
+            {
+                title: '開挖工程', icon: 'shovel', build: '地下開挖',
+                scene: '怪手開始開挖地下室，土方車頻繁進出；開挖面、地下水與機械迴轉都可能造成重大事故。',
+                prompt: '面對開挖作業，哪些控制措施是正確的？',
+                hint: '注意三件事：土會不會崩、東西會不會掉、人會不會被機具撞。',
+                law: '開挖作業應依地質及深度評估崩塌風險，採取支撐或適當坡度等防護；開口邊緣、堆置物、排水及施工機械動線也應納入管理。',
+                options: [
+                    ['support','依地質與開挖狀況採支撐或適當放坡',1], ['edge','開挖邊緣防護並避免土方、材料不當堆置',1],
+                    ['spotter','管制機械迴轉半徑，必要時設指揮人員',1], ['solo','讓人員進入挖斗下方，以便快速校正位置',0]
+                ]
+            },
+            {
+                title: '基礎工程', icon: 'blocks', build: '基礎完成',
+                scene: '基礎鋼筋、模板與吊掛材料同時進行，現場出現突出鋼筋、吊物與臨時通道等複合危害。',
+                prompt: '哪些措施能讓基礎工程安全往下進行？',
+                hint: '觀察「突出物、吊掛區、模板支撐、臨時通行」四類風險。',
+                law: '鋼筋、模板及吊掛作業應分別控制穿刺、倒塌、飛落與人員進入吊物下方等危害；臨時通道須保持穩固與暢通。',
+                options: [
+                    ['rebar','突出鋼筋採彎曲、加蓋或其他適當防護',1], ['lift','劃設吊掛作業區並禁止人員位於吊物下方',1],
+                    ['form','模板支撐依設計組立並在使用前確認',1], ['shortcut','以未固定模板當作臨時通道抄近路',0]
+                ]
+            },
+            {
+                title: '一樓結構', icon: 'warehouse', build: '一樓結構',
+                scene: '一樓梁柱與樓板逐漸成形，樓板開口、施工架、臨時用電與上下設備開始大量出現。',
+                prompt: '樓板與結構施工期間，哪些措施應落實？',
+                hint: '高低差開始出現：防墜、通行與用電都要一起顧。',
+                law: '樓板、開口及高低差場所應採護欄、護蓋或其他有效防墜措施；施工架、上下設備與臨時用電須保持合格、穩固並接受檢查。',
+                options: [
+                    ['opening','樓板開口設護欄或固定且有標示的護蓋',1], ['access','設置安全上下設備並保持通道暢通',1],
+                    ['power','臨時用電採適當漏電與線路防護',1], ['remove','為搬運方便，拆除防護後不必立即復原',0]
+                ]
+            },
+            {
+                title: '樓板護欄與施工架', icon: 'hard-hat', build: '三樓封頂',
+                scene: '三樓樓板完成後，你先到樓板邊緣驗收木製護欄；接著外牆班組進場搭設鋼管施工架，必須確認 CNS 型式及壁連座間距。',
+                prompt: '進入高處施工階段，哪些措施不可缺少？',
+                hint: '先以集體防護保護所有人，再補足個人防護與下方管制。',
+                law: '高處作業應優先設置工作平台、護欄、安全網等集體防護；仍有墜落風險時，應使用適當的個人防墜系統，並管制下方區域與天候條件。',
+                options: [
+                    ['collective','優先設置工作平台、護欄或安全網等防護',1], ['harness','仍有墜落風險時使用合適的個人防墜系統',1],
+                    ['below','管制下方區域並防止物體飛落',1], ['weather','強風豪雨時照常趕工，只要戴安全帽即可',0]
+                ]
+            }
+        ];
+        let g23cState = { current: 0, cleared: [], score: 100, selected: [] };
+        let g23cMastery = {};
+
+        function g23cReadJson(key, fallback) {
+            try { const v = JSON.parse(localStorage.getItem(key)); return v && typeof v === 'object' ? v : fallback; }
+            catch (e) { return fallback; }
+        }
+        function g23cLoad() {
+            const saved = g23cReadJson(G23C_SAVE_KEY, {});
+            g23cState = {
+                current: Math.max(0, Math.min(g23cStages.length - 1, Number(saved.current) || 0)),
+                cleared: Array.isArray(saved.cleared) ? saved.cleared.filter(i => Number.isInteger(i) && i >= 0 && i < g23cStages.length) : [],
+                score: Math.max(0, Math.min(100, Number(saved.score) || 100)), selected: []
+            };
+            g23cMastery = g23cReadJson(G23C_MASTERY_KEY, {});
+        }
+        function g23cSave(reason) {
+            localStorage.setItem(G23C_SAVE_KEY, JSON.stringify({ current:g23cState.current, cleared:g23cState.cleared, score:g23cState.score }));
+            localStorage.setItem(G23C_MASTERY_KEY, JSON.stringify(g23cMastery));
+            if (typeof lsSave === 'function') lsSave();
+            if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave(reason || 'g23-construction');
+        }
+        function initGame23Construction() { g23cLoad(); g23cRender(); }
+        function g23cCanOpen(index) { return index === 0 || g23cState.cleared.includes(index - 1); }
+        function g23cOpenStage(index) {
+            if (!g23cCanOpen(index)) { showToast('🔒 請先完成前一個施工階段。', 'error'); return; }
+            g23cState.current = index; g23cState.selected = []; g23cSave('g23-stage'); g23cRender(); window.scrollTo({top:0,behavior:'smooth'});
+        }
+        function g23cRender() {
+            const stage = g23cStages[g23cState.current]; if (!stage) return;
+            const setText = (id, value) => { const el=document.getElementById(id); if(el) el.textContent=value; };
+            setText('g23c-stage-stat', (g23cState.current + 1) + ' / ' + g23cStages.length);
+            setText('g23c-clear-stat', g23cState.cleared.length + ' / ' + g23cStages.length);
+            setText('g23c-score-stat', g23cState.score);
+            const progress=document.getElementById('g23c-progress'); if(progress) progress.style.width=(g23cState.cleared.length/g23cStages.length*100)+'%';
+            setText('g23c-stage-kicker','STAGE '+String(g23cState.current+1).padStart(2,'0'));
+            setText('g23c-stage-title',stage.title); setText('g23c-stage-scene',stage.scene); setText('g23c-prompt',stage.prompt); setText('g23c-law',stage.law);
+            const icon=document.getElementById('g23c-stage-icon'); if(icon) icon.innerHTML='<i data-lucide="'+stage.icon+'" class="w-6 h-6"></i>';
+            const nav=document.getElementById('g23c-stage-nav');
+            if(nav) nav.innerHTML=g23cStages.map((s,i)=>{ const open=g23cCanOpen(i), clear=g23cState.cleared.includes(i), active=i===g23cState.current; return '<button onclick="g23cOpenStage('+i+')" '+(open?'':'aria-disabled="true"')+' class="rounded-xl border p-3 text-left transition '+(active?'border-amber-400 bg-amber-500/15':clear?'border-emerald-500/40 bg-emerald-950/25':open?'border-slate-600 bg-slate-800/70 hover:border-cyan-500':'border-slate-800 bg-slate-900/50 opacity-45')+'"><div class="text-[10px] font-black '+(clear?'text-emerald-300':'text-slate-500')+'">'+(clear?'✓ 已完成':open?'STAGE '+(i+1):'🔒 未解鎖')+'</div><div class="text-sm font-black text-white mt-1">'+s.title+'</div></button>'; }).join('');
+            const options=document.getElementById('g23c-options');
+            if(options) options.innerHTML=stage.options.map((o,i)=>'<button onclick="g23cToggleOption(\''+o[0]+'\')" data-g23c-option="'+o[0]+'" class="text-left rounded-xl border-2 p-4 transition border-slate-700 bg-slate-900/60 hover:border-cyan-500"><span class="inline-flex w-6 h-6 rounded-md border border-slate-500 items-center justify-center mr-2 text-transparent">✓</span><span class="text-sm font-bold text-slate-200">'+o[1]+'</span></button>').join('');
+            const hint=document.getElementById('g23c-hint'); if(hint){hint.classList.add('hidden');hint.textContent='💡 '+stage.hint;}
+            const feedback=document.getElementById('g23c-feedback'); if(feedback){feedback.classList.add('hidden');feedback.textContent='';}
+            const mastery=document.getElementById('g23c-mastery'); if(mastery){ const value=Number(g23cMastery[g23cState.current]||0); mastery.innerHTML=[1,2,3,4,5].map(n=>'<button onclick="g23cSetMastery('+n+')" class="text-2xl transition hover:scale-110 '+(n<=value?'text-amber-300':'text-slate-600')+'" title="'+n+' 星">★</button>').join(''); }
+            g23cRenderBuilding(); safeCreateIcons();
+        }
+        function g23cToggleOption(id) {
+            const pos=g23cState.selected.indexOf(id); if(pos>=0) g23cState.selected.splice(pos,1); else g23cState.selected.push(id);
+            document.querySelectorAll('[data-g23c-option]').forEach(btn=>{ const on=g23cState.selected.includes(btn.dataset.g23cOption); btn.classList.toggle('border-cyan-400',on);btn.classList.toggle('bg-cyan-950/40',on);btn.classList.toggle('border-slate-700',!on);const mark=btn.querySelector('span');if(mark){mark.classList.toggle('text-cyan-300',on);mark.classList.toggle('text-transparent',!on);} });
+        }
+        function g23cCheckStage() {
+            const stage=g23cStages[g23cState.current]; const correct=stage.options.filter(o=>o[2]).map(o=>o[0]).sort(); const chosen=[...g23cState.selected].sort();
+            const ok=correct.length===chosen.length && correct.every((v,i)=>v===chosen[i]); const feedback=document.getElementById('g23c-feedback'); if(!feedback)return;
+            feedback.classList.remove('hidden','border-emerald-500/40','bg-emerald-950/30','text-emerald-100','border-rose-500/40','bg-rose-950/30','text-rose-100');
+            if(ok){ if(!g23cState.cleared.includes(g23cState.current)) g23cState.cleared.push(g23cState.current); feedback.classList.add('border-emerald-500/40','bg-emerald-950/30','text-emerald-100'); feedback.innerHTML='<b>安全檢查通過！</b> '+stage.build+'已完成。'+(g23cState.current<g23cStages.length-1?'下一階段已解鎖。':'你已完成第一期工程！'); showToast('🏗️ '+stage.title+'完成，工地向前推進！','success'); g23cSave('g23-clear'); g23cRenderBuilding(); setTimeout(()=>{ if(g23cState.current<g23cStages.length-1) g23cOpenStage(g23cState.current+1); else g23cRender(); },900); }
+            else { g23cState.score=Math.max(0,g23cState.score-5); feedback.classList.add('border-rose-500/40','bg-rose-950/30','text-rose-100'); feedback.innerHTML='<b>尚未通過。</b> 可能漏選必要措施，或選到會增加危害的作法；請參考提示再試一次。'; setTextContentSafe('g23c-score-stat',g23cState.score); g23cSave('g23-miss'); }
+        }
+        function setTextContentSafe(id,value){const el=document.getElementById(id);if(el)el.textContent=value;}
+        function g23cResetStage(){g23cState.selected=[];g23cRender();}
+        function g23cRevealHint(){const el=document.getElementById('g23c-hint');if(el)el.classList.toggle('hidden');}
+        function g23cSetMastery(value){g23cMastery[g23cState.current]=value;g23cSave('g23-mastery');g23cRender();showToast('⭐ 本階段熟練度已設為 '+value+' 星。','success');}
+        function g23cRenderBuilding(){
+            const box=document.getElementById('g23c-building');if(!box)return; const clear=g23cState.cleared.length;
+            const layers=[['基地圍籬','h-10 bg-stone-600 border-stone-400'],['開挖與基礎','h-14 bg-amber-950 border-amber-700'],['一樓結構','h-16 bg-slate-700 border-cyan-800'],['二樓結構','h-16 bg-slate-700 border-cyan-800'],['三樓封頂','h-16 bg-slate-700 border-amber-400']];
+            box.innerHTML=layers.map((x,i)=>'<div class="relative '+x[1]+' border-2 rounded-sm transition-all duration-700 '+(i<clear?'opacity-100 translate-y-0':'opacity-20 translate-y-3 grayscale')+'"><div class="absolute inset-2 grid grid-cols-3 gap-2">'+[0,1,2].map(()=>'<span class="bg-sky-300/50 border border-sky-200/30"></span>').join('')+'</div><span class="absolute left-2 top-1 text-[9px] font-black text-white/80">'+x[0]+'</span></div>').join('');
+            const msg=document.getElementById('g23c-site-message');if(msg)msg.textContent=clear===0?'先完成工地開設檢查，才能正式動工。':clear===g23cStages.length?'第一期工程安全完成！下一版將繼續增建樓層與法規門檻事件。':'目前完成 '+clear+' 個階段，下一項工作：'+g23cStages[Math.min(clear,g23cStages.length-1)].title+'。';
+        }
+        function g23cRestartAll(){ if(!confirm('確定要清除本關施工進度與分數嗎？熟練度會保留。'))return; g23cState={current:0,cleared:[],score:100,selected:[]};g23cSave('g23-restart');g23cRender();showToast('🏗️ 工地已重新開工。','info'); }
+
+        // 進階版：施工情境法規填空配合題（依營造安全衛生設施標準整理）
+        const g23cFillSets = [
+            {
+                ref:'營造安全衛生設施標準第 5、8 條',
+                rows:[
+                    ['工作場所暴露之鋼筋、鋼材等易生職業災害者，應採取','彎曲尖端','、加蓋或加裝護套等防護設施。'],
+                    ['工作場所周圍應設置','固定式圍籬','，並於明顯位置裝設警告標示。'],
+                    ['大規模土木工程設置固定式圍籬有困難時，得以移動式圍籬或','警示帶','圍成警示區替代。']
+                ], distractors:['安全網','安全母索']
+            },
+            {
+                ref:'營造安全衛生設施標準第 66、71 條',
+                rows:[
+                    ['露天開挖垂直深度達','一點五公尺','以上者，應指定露天開挖作業主管。'],
+                    ['開挖深度在一點五公尺以上，使勞工進入開挖面作業者，應設','擋土支撐','。'],
+                    ['替代方法須經專任工程人員或相關執業技師','簽認安全性','，始得不設擋土支撐。']
+                ], distractors:['二公尺','安全網']
+            },
+            {
+                ref:'營造安全衛生設施標準第 129、131 條',
+                rows:[
+                    ['暴露之鋼筋應採取彎曲、加蓋或','加裝護套','等防護設施。'],
+                    ['利用鋼筋結構作為通道時，表面應','舖以木板','，使能安全通行。'],
+                    ['模板支撐之支柱應視土質狀況襯以墊板、座板等，以防止支柱','沉陷','。'],
+                    ['模板支撐支柱之腳部應予以固定，以防止','移動','。']
+                ], distractors:['油漆標示','拆除']
+            },
+            {
+                ref:'營造安全衛生設施標準第 19、21 條',
+                rows:[
+                    ['高度二公尺以上且有墜落危險之場所，應設置護欄、護蓋或','安全網','等防護設備。'],
+                    ['臨時性開口處使用之護蓋，表面應漆以','黃色','並書以警告訊息。'],
+                    ['護蓋應以有效方法防止滑溜、掉落、掀出或','移動','。'],
+                    ['柵狀護蓋之柵條間隔不得大於','三公分','。']
+                ], distractors:['紅色','五公分']
+            },
+            {
+                ref:'營造安全衛生設施標準第 20、59 條及施工架安全檢查重點',
+                rows:[
+                    ['【事件13・樓板邊緣】護欄上欄杆高度應為','90','公分以上。'],
+                    ['【事件13・樓板邊緣】上欄杆、中欄杆及樓板面間之上下開口距離，不得大於','55','公分。'],
+                    ['【事件14・木製護欄】上欄杆應平整，斷面應在','30','平方公分以上。'],
+                    ['【事件14・木製護欄】中欄杆斷面應在','25','平方公分以上。'],
+                    ['【事件14・木製護欄】腳趾板高度應在','10','公分以上。'],
+                    ['【事件14・木製護欄】腳趾板厚度應在','1','公分以上。'],
+                    ['【事件15・材料進場】鋼管施工架使用國家標準','CNS 4750','型式者，應符合國家標準同等以上規定。'],
+                    ['【事件16・單管施工架】壁連座垂直方向間距不得超過','5.0','公尺。'],
+                    ['【事件16・單管施工架】壁連座水平方向間距不得超過','5.5','公尺。'],
+                    ['【事件16・框式施工架】壁連座垂直方向間距不得超過','9.0','公尺。'],
+                    ['【事件16・框式施工架】壁連座水平方向間距不得超過','8.0','公尺。']
+                ], distractors:['7.5','3.0','CNS 14252','45']
+            }
+        ];
+        let g23cHeldCard = '';
+        g23cStages.forEach((stage,index)=>{ stage.fillSet=g23cFillSets[index]; stage.prompt='閱讀施工情境，將下方字卡放入正確的法規空格。'; stage.law=g23cFillSets[index].ref+'。完成後再核對完整句意與數值門檻。'; });
+
+        function g23cRenderFillExercise(stage) {
+            if (!g23cState.selected || Array.isArray(g23cState.selected)) g23cState.selected={};
+            const set=stage.fillSet; const answers=set.rows.map(r=>r[1]);
+            const cards=[...answers,...set.distractors].sort(()=>Math.random()-.5);
+            const rows=set.rows.map((r,i)=>'<div class="rounded-xl border border-slate-700 bg-slate-950/45 p-4 text-sm leading-8 text-slate-200"><span class="text-amber-300 font-black mr-2">'+(i+1)+'.</span>'+r[0]+' <button data-g23c-blank="'+i+'" onclick="g23cPlaceCard('+i+')" class="inline-flex min-w-[110px] min-h-[34px] px-3 py-1 mx-1 rounded-lg border-2 border-dashed '+(g23cState.selected[i]?'border-cyan-400 bg-cyan-950/60 text-cyan-200':'border-slate-500 bg-slate-800 text-slate-400')+' items-center justify-center font-black">'+(g23cState.selected[i]||'放入字卡')+'</button> '+r[2]+'</div>').join('');
+            const pool='<div class="sm:col-span-2 mt-2 rounded-xl border border-amber-500/25 bg-amber-950/15 p-4"><div class="text-xs font-black text-amber-300 mb-3">待放置字卡</div><div class="flex flex-wrap gap-2">'+cards.map(card=>'<button onclick="g23cHoldCard(this)" data-g23c-card="'+card+'" class="px-3 py-2 rounded-lg border border-amber-500/40 bg-slate-800 hover:bg-amber-900/40 text-sm font-bold text-amber-100 transition">'+card+'</button>').join('')+'</div><p class="text-[11px] text-slate-500 mt-3">先點字卡，再點空格；點已填入的空格可更換答案。字卡可重複取用。</p></div>';
+            return rows+pool;
+        }
+        function g23cHoldCard(button){g23cHeldCard=button.dataset.g23cCard||'';document.querySelectorAll('[data-g23c-card]').forEach(b=>b.classList.remove('ring-2','ring-amber-300','scale-105'));button.classList.add('ring-2','ring-amber-300','scale-105');}
+        function g23cPlaceCard(index){if(!g23cHeldCard){showToast('請先選擇一張字卡。','error');return;}if(!g23cState.selected||Array.isArray(g23cState.selected))g23cState.selected={};g23cState.selected[index]=g23cHeldCard;g23cHeldCard='';g23cRender();}
+
+        function g23cRender() {
+            const stage=g23cStages[g23cState.current]; if(!stage)return; const setText=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
+            setText('g23c-stage-stat',(g23cState.current+1)+' / '+g23cStages.length);setText('g23c-clear-stat',g23cState.cleared.length+' / '+g23cStages.length);setText('g23c-score-stat',g23cState.score);
+            const progress=document.getElementById('g23c-progress');if(progress)progress.style.width=(g23cState.cleared.length/g23cStages.length*100)+'%';
+            setText('g23c-stage-kicker','STAGE '+String(g23cState.current+1).padStart(2,'0'));setText('g23c-stage-title',stage.title);setText('g23c-stage-scene',stage.scene);setText('g23c-prompt',stage.prompt);setText('g23c-law',stage.law);
+            const icon=document.getElementById('g23c-stage-icon');if(icon)icon.innerHTML='<i data-lucide="'+stage.icon+'" class="w-6 h-6"></i>';
+            const nav=document.getElementById('g23c-stage-nav');if(nav)nav.innerHTML=g23cStages.map((s,i)=>{const open=g23cCanOpen(i),clear=g23cState.cleared.includes(i),active=i===g23cState.current;return '<button onclick="g23cOpenStage('+i+')" '+(open?'':'aria-disabled="true"')+' class="rounded-xl border p-3 text-left transition '+(active?'border-amber-400 bg-amber-500/15':clear?'border-emerald-500/40 bg-emerald-950/25':open?'border-slate-600 bg-slate-800/70 hover:border-cyan-500':'border-slate-800 bg-slate-900/50 opacity-45')+'"><div class="text-[10px] font-black '+(clear?'text-emerald-300':'text-slate-500')+'">'+(clear?'✓ 已完成':open?'STAGE '+(i+1):'🔒 未解鎖')+'</div><div class="text-sm font-black text-white mt-1">'+s.title+'</div></button>';}).join('');
+            const options=document.getElementById('g23c-options');if(options)options.innerHTML=g23cRenderFillExercise(stage);
+            const hint=document.getElementById('g23c-hint');if(hint){hint.classList.add('hidden');hint.textContent='💡 '+stage.hint;}const feedback=document.getElementById('g23c-feedback');if(feedback){feedback.classList.add('hidden');feedback.textContent='';}
+            const mastery=document.getElementById('g23c-mastery');if(mastery){const value=Number(g23cMastery[g23cState.current]||0);mastery.innerHTML=[1,2,3,4,5].map(n=>'<button onclick="g23cSetMastery('+n+')" class="text-2xl transition hover:scale-110 '+(n<=value?'text-amber-300':'text-slate-600')+'" title="'+n+' 星">★</button>').join('');}
+            g23cRenderBuilding();safeCreateIcons();
+        }
+        function g23cCheckStage(){
+            const stage=g23cStages[g23cState.current], rows=stage.fillSet.rows, feedback=document.getElementById('g23c-feedback');if(!feedback)return;let correct=0;
+            rows.forEach((r,i)=>{const blank=document.querySelector('[data-g23c-blank="'+i+'"]'),ok=(g23cState.selected&&g23cState.selected[i]===r[1]);if(ok)correct++;if(blank){blank.classList.toggle('border-emerald-400',ok);blank.classList.toggle('bg-emerald-950/60',ok);blank.classList.toggle('border-rose-400',!ok);blank.classList.toggle('bg-rose-950/50',!ok);}});
+            const ok=correct===rows.length;feedback.classList.remove('hidden','border-emerald-500/40','bg-emerald-950/30','text-emerald-100','border-rose-500/40','bg-rose-950/30','text-rose-100');
+            if(ok){if(!g23cState.cleared.includes(g23cState.current))g23cState.cleared.push(g23cState.current);feedback.classList.add('border-emerald-500/40','bg-emerald-950/30','text-emerald-100');feedback.innerHTML='<b>法規配合完成！</b> '+stage.fillSet.ref+' 的關鍵用語與數值皆正確。';showToast('🏗️ '+stage.title+'法規配合完成！','success');g23cSave('g23-clear');g23cRenderBuilding();setTimeout(()=>{if(g23cState.current<g23cStages.length-1)g23cOpenStage(g23cState.current+1);else g23cRender();},1100);}
+            else{g23cState.score=Math.max(0,g23cState.score-5);feedback.classList.add('border-rose-500/40','bg-rose-950/30','text-rose-100');feedback.innerHTML='<b>答對 '+correct+' / '+rows.length+' 格。</b> 紅框空格仍需調整；請對照施工情境與提示。';setTextContentSafe('g23c-score-stat',g23cState.score);g23cSave('g23-miss');}
+        }
+        function g23cResetStage(){g23cState.selected={};g23cHeldCard='';g23cRender();}
+
         function showAnswer24() {
             document.querySelectorAll('.g24-input').forEach(inp => {
                 inp.value = inp.dataset.ans || '';
@@ -15128,7 +15372,10 @@ function checkGame10() {
                 'safetyMasterG20Mastery',
                 'safetyMasterG21Mastery',
                 'safetyMasterG22SubMastery',
+                'safetyMasterG23Construction',
+                'safetyMasterG23ConstructionMastery',
                 'safetyMasterG29Answers',
+                'safetyMasterG29Flags',
                 'safetyMasterG29Mastery',
                 'safetyMasterG37Mastery',
                 'safetyMasterG40Mastery',
@@ -19737,6 +19984,7 @@ function exportSave() {
         let g29ShowNote = {};
         let g29Answers = {};
         let g29Mastery = {};
+        let g29Flags = {};
 
         function g29AnswerStorageKey() {
             return 'safetyMasterG29Answers';
@@ -19778,6 +20026,37 @@ function exportSave() {
             } catch (e) {
                 console.warn('第29關熟練度儲存失敗:', e);
             }
+        }
+
+        function g29FlagStorageKey() { return 'safetyMasterG29Flags'; }
+        function g29FlagKey(qIdx, subgroupIdx, blankIdx) { return qIdx + '-' + subgroupIdx + '-' + blankIdx; }
+        function g29LoadFlags() {
+            try { g29Flags = JSON.parse(localStorage.getItem(g29FlagStorageKey()) || '{}') || {}; }
+            catch (e) { g29Flags = {}; }
+        }
+        function g29SaveFlags() {
+            try {
+                localStorage.setItem(g29FlagStorageKey(), JSON.stringify(g29Flags));
+                if (typeof lsSave === 'function') lsSave();
+                if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('g29-flags');
+            } catch (e) { console.warn('第29關易錯記號儲存失敗:', e); }
+        }
+        function g29IsFlagged(qIdx, subgroupIdx, blankIdx) { return !!g29Flags[g29FlagKey(qIdx, subgroupIdx, blankIdx)]; }
+        function g29ToggleFlag(qIdx, subgroupIdx, blankIdx) {
+            const key = g29FlagKey(qIdx, subgroupIdx, blankIdx);
+            if (g29Flags[key]) delete g29Flags[key]; else g29Flags[key] = true;
+            g29SaveFlags();
+            const isFlagged = !!g29Flags[key];
+            g29Render();
+            showToast(isFlagged ? '🚩 已標記為易錯小題' : '已取消易錯記號', isFlagged ? 'error' : 'info');
+        }
+        function g29RenderFlagButton(qIdx, subgroupIdx, blankIdx) {
+            const flagged = g29IsFlagged(qIdx, subgroupIdx, blankIdx);
+            return `<button type="button" onclick="g29ToggleFlag(${qIdx}, ${subgroupIdx}, ${blankIdx})" class="w-9 h-9 shrink-0 rounded-lg border flex items-center justify-center transition ${flagged ? 'bg-rose-600 border-rose-300 text-white shadow-lg shadow-rose-950/40' : 'bg-slate-800 border-slate-600 text-slate-500 hover:text-rose-300 hover:border-rose-500'}" title="${flagged ? '取消易錯記號' : '標記這一小題容易出錯'}" aria-pressed="${flagged}"><span aria-hidden="true">${flagged ? '⚠' : '○'}</span></button>`;
+        }
+        function g29QuestionHasFlag(qIdx) {
+            const prefix = qIdx + '-';
+            return Object.keys(g29Flags).some(key => g29Flags[key] && key.startsWith(prefix));
         }
 
         function g29MasteryKey(qIdx, subgroupIdx) {
@@ -20125,6 +20404,7 @@ function exportSave() {
             g29EnsureRandomWageQuestion();
             g29LoadAnswers();
             g29LoadMastery();
+            g29LoadFlags();
             g29Current = 0;
             g29ShowHint = {};
             g29ShowNote = {};
@@ -20165,6 +20445,7 @@ function exportSave() {
                         const inputType = isFractionInput ? 'text' : 'number';
                         const inputStep = isFractionInput ? '' : ' step="0.01"';
                         html += `<div class="flex items-center gap-3 flex-wrap">
+                            ${g29RenderFlagButton(g29Current, si, bi)}
                             <span class="text-slate-300 text-sm min-w-[220px]">${b.label}：</span>
                             <input type="${inputType}"${inputStep} id="g29-input-${si}-${bi}" value="${savedValue}" oninput="g29HandleInput(${g29Current}, ${si}, ${bi}, this.value)" placeholder="請輸入答案"
                                 class="bg-slate-900 border border-slate-600 text-white rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-sky-400 transition">
@@ -20197,6 +20478,7 @@ function exportSave() {
                     const inputType = isFractionInput ? 'text' : 'number';
                     const inputStep = isFractionInput ? '' : ' step="0.01"';
                     html += `<div class="flex items-center gap-3 flex-wrap">
+                        ${g29RenderFlagButton(g29Current, 0, i)}
                         <span class="text-slate-300 text-sm min-w-[220px]">${b.label}：</span>
                         <input type="${inputType}"${inputStep} id="g29-input-0-${i}" value="${savedValue}" oninput="g29HandleInput(${g29Current}, 0, ${i}, this.value)" placeholder="請輸入答案"
                             class="bg-slate-900 border border-slate-600 text-white rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-sky-400 transition">
@@ -20221,10 +20503,11 @@ function exportSave() {
             if (!container) return;
             container.innerHTML = g29Bank.map((_, index) => {
                 const active = index === g29Current;
+                const flagged = g29QuestionHasFlag(index);
                 const classes = active
                     ? 'bg-emerald-500 border-emerald-300 text-slate-950 shadow-lg shadow-emerald-950/30'
-                    : 'bg-slate-800 border-slate-600 text-slate-200 hover:bg-slate-700 hover:border-emerald-500 hover:text-white';
-                return `<button type="button" onclick="g29GoTo(${index})" class="min-w-10 h-10 px-3 rounded-lg border text-sm font-black transition ${classes}" aria-label="前往第 ${index + 1} 頁"${active ? ' aria-current="page"' : ''}>${index + 1}</button>`;
+                    : flagged ? 'bg-rose-950/70 border-rose-500 text-rose-100 hover:bg-rose-900' : 'bg-slate-800 border-slate-600 text-slate-200 hover:bg-slate-700 hover:border-emerald-500 hover:text-white';
+                return `<button type="button" onclick="g29GoTo(${index})" class="relative min-w-10 h-10 px-3 rounded-lg border text-sm font-black transition ${classes}" aria-label="前往第 ${index + 1} 頁${flagged ? '，含易錯標記' : ''}"${active ? ' aria-current="page"' : ''}>${index + 1}${flagged ? '<span class="absolute -right-1 -top-1 w-3 h-3 rounded-full bg-rose-400 border-2 border-slate-950"></span>' : ''}</button>`;
             }).join('');
         }
 
