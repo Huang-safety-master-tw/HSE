@@ -5738,6 +5738,7 @@
         let activeSelection = null;
         let completedGames = { game1: false, game2: false, game3: false, game4: false, game5: false, game6: false, game7: false, game8: false, game9: false, game10: false, game11: false, game12: false, game13: false, game14: false, game15: false, game16: false, game17: false, game18: false, game19: false, game20: false, game21: false, game22: false , game23: false, game24: false, game25: false, game26: false, game27: false, game28: false, game29: false, game30: false, game31: false, game32: false, game33: false, game34: false, game35: false, game36: false, game37: false, game38: false, game39: false, game40: false, game41: false, game42: false};
         let gameMastery = {};
+        let universalSubFlags = {};
 
         // --- 音效 ---
         function soundClick() { try { const a = new AudioContext(); const o = a.createOscillator(); const g = a.createGain(); o.connect(g); g.connect(a.destination); o.frequency.value = 440; g.gain.setValueAtTime(0.1, a.currentTime); g.gain.exponentialRampToValueAtTime(0.001, a.currentTime + 0.1); o.start(a.currentTime); o.stop(a.currentTime + 0.1); } catch(e){} }
@@ -7674,6 +7675,81 @@ function checkGame10() {
             }
         }
 
+        function universalSubFlagStorageKey() { return 'safetyMasterUniversalSubFlags'; }
+        function loadUniversalSubFlags() {
+            try { universalSubFlags = JSON.parse(localStorage.getItem(universalSubFlagStorageKey()) || '{}') || {}; }
+            catch (e) { universalSubFlags = {}; }
+        }
+        function saveUniversalSubFlags() {
+            try {
+                localStorage.setItem(universalSubFlagStorageKey(), JSON.stringify(universalSubFlags));
+                if (typeof lsSave === 'function') lsSave();
+                if (typeof scheduleCloudAutoSave === 'function') scheduleCloudAutoSave('universal-sub-flags');
+            } catch (e) { console.warn('小題待克服記號儲存失敗:', e); }
+        }
+        function universalSubFlagKey(gameNum, onclickValue, occurrence) {
+            return 'game' + gameNum + '|' + String(onclickValue || '').replace(/\s+/g, '') + '|' + occurrence;
+        }
+        function universalFlagButtonClass(flagged) {
+            return 'universal-submark-btn inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border text-sm font-black transition ' + (flagged
+                ? 'bg-rose-600 border-rose-300 text-white shadow shadow-rose-950/40'
+                : 'bg-slate-800 border-slate-600 text-slate-400 hover:border-rose-500 hover:text-rose-300');
+        }
+        function toggleUniversalSubFlag(key, button, event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            if (universalSubFlags[key]) delete universalSubFlags[key]; else universalSubFlags[key] = true;
+            saveUniversalSubFlags();
+            const flagged = !!universalSubFlags[key];
+            if (button) {
+                button.className = universalFlagButtonClass(flagged);
+                button.textContent = flagged ? '⚠' : '○';
+                button.setAttribute('aria-pressed', String(flagged));
+            }
+            buildMenu();
+            showToast(flagged ? '🚩 已標記這一小題待克服' : '已取消小題記號', flagged ? 'error' : 'info');
+        }
+        function ensureUniversalSubMarks(gameNum) {
+            if ([14, 25, 29, 30, 39].includes(Number(gameNum))) return;
+            const game = gameList.find(item => item.num === Number(gameNum));
+            const section = game ? document.getElementById(game.tabId) : null;
+            if (!section) return;
+            const checkButtons = [...section.querySelectorAll('button[onclick*="check"], button[onclick*="Check"]')]
+                .filter(button => !button.classList.contains('universal-submark-btn') && button.closest('.game-section') === section);
+            if (checkButtons.length < 2) return;
+            const occurrenceMap = {};
+            checkButtons.forEach(checkButton => {
+                const action = checkButton.getAttribute('onclick') || checkButton.textContent.trim();
+                occurrenceMap[action] = (occurrenceMap[action] || 0) + 1;
+                const key = universalSubFlagKey(gameNum, action, occurrenceMap[action]);
+                let marker = checkButton.previousElementSibling;
+                if (!marker || !marker.classList.contains('universal-submark-btn') || marker.dataset.flagKey !== key) {
+                    marker = document.createElement('button');
+                    marker.type = 'button';
+                    marker.dataset.flagKey = key;
+                    marker.addEventListener('click', event => toggleUniversalSubFlag(key, marker, event));
+                    checkButton.insertAdjacentElement('beforebegin', marker);
+                }
+                const flagged = !!universalSubFlags[key];
+                marker.className = universalFlagButtonClass(flagged);
+                marker.textContent = flagged ? '⚠' : '○';
+                marker.setAttribute('aria-pressed', String(flagged));
+                marker.title = flagged ? '取消這一小題的待克服記號' : '標記這一小題尚未克服';
+            });
+        }
+        function getGamePendingFlagCount(gameNum) {
+            if (Number(gameNum) === 14) {
+                const groupFlags = (() => { try { return JSON.parse(localStorage.getItem('safetyMasterG14Flags') || '{}') || {}; } catch(e) { return {}; } })();
+                const subFlags = (() => { try { return JSON.parse(localStorage.getItem('safetyMasterG14SubFlags') || '{}') || {}; } catch(e) { return {}; } })();
+                return Object.values(groupFlags).filter(Boolean).length + Object.values(subFlags).filter(Boolean).length;
+            }
+            if (Number(gameNum) === 29) {
+                const flags = (() => { try { return JSON.parse(localStorage.getItem('safetyMasterG29Flags') || '{}') || {}; } catch(e) { return {}; } })();
+                return Object.values(flags).filter(Boolean).length;
+            }
+            const prefix = 'game' + gameNum + '|';
+            return Object.keys(universalSubFlags).filter(key => key.startsWith(prefix) && universalSubFlags[key]).length;
+        }
+
         function getGameMastery(gameNum) {
             const value = Number(gameMastery['game' + gameNum] || 0);
             return Number.isFinite(value) ? Math.max(0, Math.min(5, value)) : 0;
@@ -7728,6 +7804,7 @@ function checkGame10() {
                 const bestBadge = best
                     ? `<span class="flex items-center gap-1 text-xs text-yellow-400 font-bold"><span>🏆</span><span>${best}</span></span>`
                     : `<span class="text-xs text-slate-600">尚未挑戰</span>`;
+                const pendingCount = getGamePendingFlagCount(g.num);
                 return `<div onclick="goToGame(${g.num})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goToGame(${g.num});}" role="button" tabindex="0"
                     class="glass-panel p-5 rounded-2xl text-left hover:border-blue-500 border border-transparent transition-all hover:shadow-lg hover:shadow-blue-500/10 group relative cursor-pointer">
                     <div class="flex items-center justify-between mb-1">
@@ -7748,6 +7825,7 @@ function checkGame10() {
                         <h3 class="font-black text-white text-sm">${g.title}</h3>
                     </div>
                     <p class="text-xs text-slate-400">${g.desc}</p>
+                    ${pendingCount ? `<div class="mt-3 inline-flex items-center gap-1.5 rounded-full border border-rose-500/60 bg-rose-950/60 px-2.5 py-1 text-xs font-black text-rose-200">⚠ 待克服 ${pendingCount} 題</div>` : ''}
                     ${g.num === 25 ? `<p class="text-xs text-slate-500 mt-1.5">題庫共 <span class="text-blue-400 font-bold">${(g25Bank.s.length + g25Bank.m.length).toLocaleString()}</span> 題・已答對 <span class="text-emerald-400 font-bold">${g25CorrectIds.size.toLocaleString()}</span> 題</p>` : ''}
                 </div>`;
             }).join('');
@@ -7829,6 +7907,9 @@ function checkGame10() {
             }
             initGameByNumber(num);
             lsRestoreGame(num);
+            // 多題組關卡共用的個別「待克服」記號；延遲補跑可涵蓋動態產生的題組。
+            setTimeout(() => ensureUniversalSubMarks(num), 100);
+            setTimeout(() => ensureUniversalSubMarks(num), 350);
             // 第14關必須在舊作答畫面還原完成後，再套用題組分頁；否則還原內容會覆蓋隱藏狀態。
             if (num === 14) {
                 setTimeout(() => {
@@ -15289,6 +15370,7 @@ function checkGame10() {
             } catch (e) {
                 gameMastery = {};
             }
+            loadUniversalSubFlags();
             if (typeof g6LoadMastery === 'function') g6LoadMastery();
             if (typeof g7hLoadMastery === 'function') g7hLoadMastery();
             if (typeof g12LoadMastery === 'function') g12LoadMastery();
@@ -15566,6 +15648,7 @@ function checkGame10() {
                 'safetyMasterG14Mastery',
                 'safetyMasterG14Flags',
                 'safetyMasterG14SubFlags',
+                'safetyMasterUniversalSubFlags',
                 'safetyMasterG19Mastery',
                 'safetyMasterG20Mastery',
                 'safetyMasterG21Mastery',
