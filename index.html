@@ -9268,7 +9268,7 @@ function checkGame10() {
             const nav = document.createElement('div');
             nav.id = 'g14-page-nav';
             nav.className = 'mb-5 rounded-2xl border border-slate-600 bg-slate-950/80 p-3 shadow-lg';
-            nav.innerHTML = '<div class="flex items-center justify-between gap-3 mb-2"><span class="text-xs font-black text-slate-300">題組頁碼</span><span id="g14-page-status" class="text-[10px] text-slate-500"></span></div><div id="g14-page-buttons" class="flex flex-wrap gap-2"></div>';
+            nav.innerHTML = '<div class="flex items-center justify-between gap-3 mb-2"><span class="text-xs font-black text-slate-300">主題頁碼</span><span id="g14-page-status" class="text-[10px] text-slate-500"></span></div><div id="g14-page-buttons" class="flex flex-wrap gap-2"></div>';
             // 頁碼位於題目最上方的一般文件流中，不隨捲軸固定或黏著。
             intro.insertAdjacentElement('afterend', nav);
             const panel = section.querySelector('.glass-panel');
@@ -9282,17 +9282,20 @@ function checkGame10() {
         }
         function g14RenderPagination() {
             ensureG14Pagination();
-            const groups = g14GroupNumbers();
-            if (!groups.includes(g14CurrentPageGroup)) g14CurrentPageGroup = groups[0] || 1;
+            const pages = g14PageDefinitions();
+            const pageIds = pages.map(page => page.id);
+            if (!pageIds.includes(g14CurrentPageGroup)) g14CurrentPageGroup = pageIds[0] || 1;
             const box = document.getElementById('g14-page-buttons');
-            if (box) box.innerHTML = groups.map(group => {
-                const active = group === g14CurrentPageGroup, flagged = g14IsFlagged(group) || g14GroupHasSubFlag(group);
+            if (box) box.innerHTML = pages.map(page => {
+                const active = page.id === g14CurrentPageGroup;
+                const flagged = page.groups.some(group => g14IsFlagged(group) || g14GroupHasSubFlag(group));
                 const cls = active ? 'bg-emerald-500 border-emerald-300 text-slate-950' : flagged ? 'bg-rose-950/80 border-rose-500 text-rose-100' : 'bg-slate-800 border-slate-600 text-slate-200 hover:border-emerald-500';
-                return `<button type="button" onclick="g14GoToPage(${group})" class="relative min-w-10 h-10 px-3 rounded-lg border font-black text-sm transition ${cls}" ${active ? 'aria-current="page"' : ''}>${group}${flagged ? '<span class="absolute -right-1 -top-1 w-3 h-3 rounded-full bg-rose-400 border-2 border-slate-950"></span>' : ''}</button>`;
+                return `<button type="button" onclick="g14GoToPage(${page.id})" class="relative min-h-10 px-3 py-2 rounded-lg border text-left transition ${cls}" ${active ? 'aria-current="page"' : ''}><span class="font-black text-sm">${page.id}</span><span class="ml-1 text-xs font-bold">${page.title}</span>${flagged ? '<span class="absolute -right-1 -top-1 w-3 h-3 rounded-full bg-rose-400 border-2 border-slate-950"></span>' : ''}</button>`;
             }).join('');
-            const status = document.getElementById('g14-page-status'); if (status) status.textContent = '目前第 ' + g14CurrentPageGroup + ' 組／共 ' + groups.length + ' 組';
-            const bottomStatus = document.getElementById('g14-bottom-page-status'); if (bottomStatus) bottomStatus.textContent = '第 ' + g14CurrentPageGroup + '／' + groups.length + ' 頁';
-            const currentIndex = groups.indexOf(g14CurrentPageGroup);
+            const currentPage = pages.find(page => page.id === g14CurrentPageGroup);
+            const status = document.getElementById('g14-page-status'); if (status) status.textContent = currentPage ? '第 ' + currentPage.id + '／' + pages.length + ' 頁・' + currentPage.title : '';
+            const bottomStatus = document.getElementById('g14-bottom-page-status'); if (bottomStatus) bottomStatus.textContent = currentPage ? '第 ' + currentPage.id + '／' + pages.length + ' 頁・' + currentPage.title : '';
+            const currentIndex = pageIds.indexOf(g14CurrentPageGroup);
             const prev = document.getElementById('g14-prev-page');
             const next = document.getElementById('g14-next-page');
             if (prev) {
@@ -9301,33 +9304,34 @@ function checkGame10() {
                 prev.classList.toggle('cursor-not-allowed', prev.disabled);
             }
             if (next) {
-                next.disabled = currentIndex < 0 || currentIndex >= groups.length - 1;
+                next.disabled = currentIndex < 0 || currentIndex >= pages.length - 1;
                 next.classList.toggle('opacity-40', next.disabled);
                 next.classList.toggle('cursor-not-allowed', next.disabled);
             }
         }
         function g14StepPage(direction) {
-            const groups = g14GroupNumbers();
-            const currentIndex = groups.indexOf(g14CurrentPageGroup);
+            const pageIds = g14PageDefinitions().map(page => page.id);
+            const currentIndex = pageIds.indexOf(g14CurrentPageGroup);
             const targetIndex = currentIndex + Number(direction || 0);
-            if (targetIndex < 0 || targetIndex >= groups.length) return;
-            g14GoToPage(groups[targetIndex]);
+            if (targetIndex < 0 || targetIndex >= pageIds.length) return;
+            g14GoToPage(pageIds[targetIndex]);
         }
         function g14ApplyPage() {
-            const current = String(g14CurrentPageGroup);
+            const currentPage = g14PageDefinitions().find(page => page.id === g14CurrentPageGroup);
+            const visibleGroups = currentPage ? currentPage.groups.map(String) : [];
             document.querySelectorAll('#tab-matching [id^="g14-group"]').forEach(el => {
                 const match = el.id.match(/^g14-group(\d+)(?:-opts-wrap)?$/);
                 if (!match) return;
-                const visible = match[1] === current;
+                const visible = visibleGroups.includes(match[1]);
                 el.classList.toggle('hidden', !visible);
                 if (visible) el.style.removeProperty('display');
                 else el.style.setProperty('display', 'none', 'important');
             });
         }
-        function g14GoToPage(group) {
-            if (!g14GroupNumbers().includes(Number(group))) return;
-            g14CurrentPageGroup = Number(group);
-            g14Selected = null; g14ActiveGroup = g14CurrentPageGroup;
+        function g14GoToPage(pageId) {
+            if (!g14PageDefinitions().some(page => page.id === Number(pageId))) return;
+            g14CurrentPageGroup = Number(pageId);
+            g14Selected = null; g14ActiveGroup = 0;
             g14RenderPagination(); g14ApplyPage(); ensureG14FlagControls(); renderG14MasteryStars();
             const nav = document.getElementById('g14-page-nav'); if (nav) nav.scrollIntoView({behavior:'smooth', block:'start'});
         }
@@ -9556,9 +9560,51 @@ function checkGame10() {
 
         function g14GroupNumbers() {
             const groups = Object.keys(g14GroupBlanks).map(Number).filter(Number.isFinite);
-            if (document.getElementById('g14-group11')) groups.push(11);
-            if (document.getElementById('g14-group32')) groups.push(32);
+            // 同時掃描畫面上的題組容器；未來新增題組即使尚未加入空格表，也不會從分頁消失。
+            document.querySelectorAll('#tab-matching [id^="g14-group"]').forEach(element => {
+                const match = element.id.match(/^g14-group(\d+)$/);
+                if (match) groups.push(Number(match[1]));
+            });
             return [...new Set(groups)].sort((a, b) => a - b);
+        }
+
+        // 第14關動態分類設定：新增題組時可在容器加上 data-g14-category="新分類名稱"；
+        // 新分類會自動產生新頁，未指定分類則自動進入「⚠ 待分類」。
+        const g14KnownCategoryOrder = [
+            '基礎法規與管理', '營造安全衛生設施', '機械設備、電氣與檢查',
+            '組織、場所與勞動法規', '衛生危害與作業危害', '職災原因與損失',
+            '風險分析與控制', '其他專題'
+        ];
+        const g14GroupCategoryMap = {
+            1:'基礎法規與管理', 2:'基礎法規與管理',
+            3:'營造安全衛生設施', 5:'營造安全衛生設施', 6:'營造安全衛生設施', 7:'營造安全衛生設施', 8:'營造安全衛生設施', 9:'營造安全衛生設施', 16:'營造安全衛生設施',
+            4:'機械設備、電氣與檢查', 10:'機械設備、電氣與檢查', 12:'機械設備、電氣與檢查', 19:'機械設備、電氣與檢查', 20:'機械設備、電氣與檢查', 21:'機械設備、電氣與檢查', 23:'機械設備、電氣與檢查', 31:'機械設備、電氣與檢查',
+            11:'組織、場所與勞動法規', 17:'組織、場所與勞動法規', 18:'組織、場所與勞動法規', 29:'組織、場所與勞動法規', 32:'組織、場所與勞動法規',
+            13:'衛生危害與作業危害', 14:'衛生危害與作業危害', 15:'衛生危害與作業危害', 30:'衛生危害與作業危害',
+            22:'職災原因與損失', 24:'職災原因與損失',
+            25:'風險分析與控制', 26:'風險分析與控制', 27:'風險分析與控制', 28:'風險分析與控制'
+        };
+
+        function g14CategoryForGroup(group) {
+            const element = document.getElementById('g14-group' + group);
+            const declared = element && element.dataset ? String(element.dataset.g14Category || '').trim() : '';
+            return declared || g14GroupCategoryMap[group] || '⚠ 待分類';
+        }
+
+        function g14PageDefinitions() {
+            const buckets = new Map();
+            g14GroupNumbers().forEach(group => {
+                const category = g14CategoryForGroup(group);
+                if (!buckets.has(category)) buckets.set(category, []);
+                buckets.get(category).push(group);
+            });
+            const discovered = [...buckets.keys()].filter(category => !g14KnownCategoryOrder.includes(category) && category !== '⚠ 待分類');
+            const orderedCategories = [
+                ...g14KnownCategoryOrder.filter(category => buckets.has(category)),
+                ...discovered,
+                ...(buckets.has('⚠ 待分類') ? ['⚠ 待分類'] : [])
+            ];
+            return orderedCategories.map((title, index) => ({ id: index + 1, title, groups: buckets.get(title) || [] }));
         }
 
         function _g14RenderGroupOpts(grp) {
