@@ -515,12 +515,11 @@
                 <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div>
                         <div class="mb-1 flex items-center gap-2"><span class="text-2xl">🎰</span><h3 class="text-xl font-black text-fuchsia-100">懶人扭蛋複習</h3></div>
-                        <p class="text-sm leading-relaxed text-slate-300">按一次直接抽3個關卡或題組；本輪抽過的不重複，間隔到期或全部巡迴完才會再出現。</p>
                         <p id="review-gacha-status" class="mt-2 text-xs font-bold text-fuchsia-300"></p>
                     </div>
                     <button type="button" onclick="spinReviewGacha()" class="shrink-0 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-violet-600 px-7 py-4 text-lg font-black text-white shadow-lg shadow-fuchsia-950/50 transition hover:scale-[1.03] hover:brightness-110 active:scale-95">轉扭蛋！</button>
                 </div>
-                <div id="review-gacha-results" class="mt-5 hidden grid-cols-1 gap-3 md:grid-cols-3"></div>
+                <div id="review-gacha-results" class="mt-5 hidden grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5"></div>
             </section>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-7">
             <a href="exam-simulator.html"
@@ -8247,7 +8246,7 @@ function checkGame10() {
                 eligible = [...pool];
                 restarted = true;
             }
-            reviewGachaCurrent = reviewGachaShuffle(eligible).slice(0, Math.min(3, eligible.length));
+            reviewGachaCurrent = reviewGachaShuffle(eligible).slice(0, Math.min(5, eligible.length));
             reviewGachaCurrent.forEach(item => { state.seen[item.id] = true; state.last[item.id] = now; });
             reviewGachaWrite(state);
             const results = document.getElementById('review-gacha-results');
